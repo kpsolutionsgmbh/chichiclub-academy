@@ -1269,6 +1269,7 @@ export default function ChiChiClubAcademy() {
         }
         @media (min-width: 768px) {
           .grid-2col { grid-template-columns: 1fr 1fr !important; }
+          .grid-3col { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-extra { display: flex !important; }
         }
@@ -1697,96 +1698,62 @@ export default function ChiChiClubAcademy() {
             </div>
           </Reveal>
 
-          <div style={{
+          <div className="grid-3col" style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: 32,
+            gridTemplateColumns: "1fr",
+            gap: 24,
           }}>
             {[
               {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Z" />
-                    <path d="M8 12c1-3 2.5-5 4-5s3 2 4 5-2.5 5-4 5-3-2-4-5Z" />
-                    <line x1="12" y1="7" x2="12" y2="17" />
-                  </svg>
-                ),
+                img: IMG_RESULT1,
                 title: "Eine Technik, die kein anderer unterrichtet",
-                text: "Hyperrealistisches Microblading — so natürlich, dass selbst Profis keinen Unterschied sehen. Genau deshalb zahlen Kundinnen Premium-Preise.",
+                text: "Hyperrealistisches Microblading — so natürlich, dass selbst Profis keinen Unterschied sehen.",
               },
               {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                    <line x1="8" y1="21" x2="16" y2="21" />
-                    <line x1="12" y1="17" x2="12" y2="21" />
-                  </svg>
-                ),
+                img: IMG_RESULT2,
                 title: "Dein Business-Plan steht nach Tag 4",
-                text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung, rechtliche Absicherung — du gehst mit einem fertigen Plan nach Hause.",
+                text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung — du gehst mit einem fertigen Plan nach Hause.",
               },
               {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                  </svg>
-                ),
+                img: IMG_RESULT3,
                 title: "6 Monate persönliches Feedback",
-                text: "Jede Behandlung, die du nach der Schulung machst, kannst du uns schicken. Wir geben dir Feedback, bis du auf Profi-Niveau bist.",
+                text: "Jede Behandlung kannst du uns schicken. Wir geben dir Feedback, bis du auf Profi-Niveau bist.",
               },
               {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                    <line x1="12" y1="22.08" x2="12" y2="12" />
-                  </svg>
-                ),
+                img: IMG_RESULT4,
                 title: "Starterkit für 20 Behandlungen",
-                text: "Pigmente, Klingen, Werkzeuge — alles, was du brauchst, um direkt loszulegen. Keine teuren Fehlkäufe, keine Unsicherheit beim Material.",
+                text: "Pigmente, Klingen, Werkzeuge — alles, um direkt loszulegen. Keine Fehlkäufe, keine Unsicherheit.",
               },
               {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
-                    <circle cx="12" cy="13" r="3" />
-                  </svg>
-                ),
+                img: IMG_HERO1,
                 title: "Echte Ergebnisse für dein Portfolio",
-                text: "Du arbeitest an echten Modellen. Das heißt: echte Fotos für dein Portfolio und echtes Selbstvertrauen für deine ersten Kundinnen.",
+                text: "Du arbeitest an echten Modellen — echte Fotos für dein Portfolio und echtes Selbstvertrauen.",
               },
               {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="8" r="7" />
-                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                  </svg>
-                ),
+                img: IMG_HERO2,
                 title: "Ein Zertifikat, das Vertrauen schafft",
-                text: "Das Chi Chi Club Zertifikat steht für die höchste Qualität im Microblading. Deine Kundinnen wissen: Hier bin ich in den besten Händen.",
+                text: "Das Chi Chi Club Zertifikat steht für höchste Qualität. Deine Kundinnen wissen: Hier bin ich in den besten Händen.",
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <div style={{
                   background: "var(--ivory)",
-                  padding: 32,
+                  overflow: "hidden",
+                  height: "100%",
                   display: "flex",
-                  gap: 20,
-                  alignItems: "flex-start",
+                  flexDirection: "column",
                 }}>
-                  <div style={{
-                    flexShrink: 0,
-                    width: 48,
-                    height: 48,
-                    background: "var(--chi-chi-beige)",
-                    borderRadius: "50%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}>
-                    {item.icon}
-                  </div>
-                  <div>
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    style={{
+                      width: "100%",
+                      aspectRatio: "4/3",
+                      objectFit: "cover",
+                      display: "block",
+                    }}
+                  />
+                  <div style={{ padding: "24px 24px 28px" }}>
                     <h3 style={{
                       fontFamily: "var(--font-headline)",
                       fontWeight: 700,
