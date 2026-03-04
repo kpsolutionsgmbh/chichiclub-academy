@@ -248,7 +248,7 @@ function TestimonialSlider({ items }) {
         {getVisibleItems().map((t, i) => (
           <div key={`${current}-${i}`} className={i > 0 ? "testimonial-extra" : ""} style={{
             padding: 32,
-            background: "var(--chi-chi-beige)",
+            background: "var(--ivory)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
