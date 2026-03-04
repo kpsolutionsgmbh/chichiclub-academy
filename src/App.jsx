@@ -455,7 +455,7 @@ function RoiCalculator() {
 
   const level = levels.find(l => l.id === selectedLevel);
   const treatmentsPerWeek = Math.floor(hoursPerWeek / level.treatmentHours);
-  const treatmentsPerMonth = treatmentsPerWeek * 4;
+  const treatmentsPerMonth = Math.round(treatmentsPerWeek * 4.33);
   const monthlyRevenue = treatmentsPerMonth * level.pricePerTreatment;
   const treatmentsToBreakEven = Math.ceil(courseInvestment / level.pricePerTreatment);
   const weeksToBreakEven = treatmentsPerWeek > 0 ? Math.ceil(treatmentsToBreakEven / treatmentsPerWeek) : null;
