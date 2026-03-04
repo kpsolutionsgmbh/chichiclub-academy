@@ -1118,39 +1118,58 @@ function FunnelModal({ isOpen, onClose }) {
 }
 
 // ─── Legal Page Layout ───
-function LegalPage({ title, children, onBack }) {
+function LegalPage({ title, children, onBack, onNavigate }) {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+  const linkStyle = { color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" };
   return (
-    <div style={{ background: "var(--ivory)", minHeight: "100vh" }}>
-      <header style={{
-        padding: "20px 0",
-        borderBottom: "1px solid #000000",
-        background: "var(--ivory)",
-        position: "sticky",
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+        :root {
+          --chi-chi-beige: #DFD9CD;
+          --ivory: #F8F7F3;
+          --black: #000000;
+          --font-headline: 'Pragmatica Extended', 'Pragmatica Ext', sans-serif;
+          --font-headline-weight: 700;
+          --font-body: 'Roboto Mono', monospace;
+          --font-body-weight: 400;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); font-weight: var(--font-body-weight); background: var(--ivory); color: var(--black); -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1360px; margin: 0 auto; padding: 0 24px; }
+        @media (min-width: 768px) { .container { padding: 0 48px; } }
+        .btn-primary { display: inline-block; background: var(--black); color: var(--ivory); border: 1px solid var(--black); font-family: var(--font-headline); font-weight: 700; font-size: 14px; padding: 14px 28px; cursor: pointer; transition: all 0.2s ease; }
+        .btn-primary:hover { background: var(--ivory); color: var(--black); }
+      `}</style>
+
+      {/* NAV — identical to main page */}
+      <nav style={{
+        position: "fixed",
         top: 0,
-        zIndex: 100,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        background: "var(--ivory)",
+        borderBottom: "1px solid var(--black)",
       }}>
-        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }} style={{ display: "block" }}>
-            <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 16 }} />
+        <div className="container" style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: 64,
+        }}>
+          <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }} style={{ display: "block", lineHeight: 0 }}>
+            <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 22 }} />
           </a>
-          <button
-            onClick={onBack}
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 13,
-              color: "#000000",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              textDecoration: "underline",
-            }}
-          >
-            Zurück
+          <button className="btn-primary" onClick={onBack} style={{ fontSize: 13, padding: "10px 22px" }}>
+            Zurück zur Academy
           </button>
         </div>
-      </header>
-      <main style={{ padding: "60px 0 120px" }}>
+      </nav>
+
+      {/* CONTENT */}
+      <main style={{ paddingTop: 120, paddingBottom: 80, background: "var(--ivory)", minHeight: "100vh" }}>
         <div className="container" style={{ maxWidth: 800 }}>
           <h1 style={{
             fontFamily: "var(--font-headline)",
@@ -1172,21 +1191,44 @@ function LegalPage({ title, children, onBack }) {
           </div>
         </div>
       </main>
-      <footer style={{ padding: "40px 0", background: "#000000" }}>
-        <div className="container" style={{ textAlign: "center" }}>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ivory)", opacity: 0.4 }}>
-            © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
-          </p>
+
+      {/* FOOTER — identical to main page */}
+      <footer style={{ padding: "60px 0 40px", background: "#000000", borderTop: "1px solid rgba(248,247,243,0.15)" }}>
+        <div className="container">
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            alignItems: "center",
+            textAlign: "center",
+          }}>
+            <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }} style={{ display: "block", lineHeight: 0 }}>
+              <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 20, filter: "invert(1)" }} />
+            </a>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--ivory)" }}>
+              Chi Chi Club Academy · Hamburg
+            </p>
+            <div style={{ display: "flex", gap: 24, fontFamily: "var(--font-body)", fontSize: 13 }}>
+              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate("impressum"); }} style={linkStyle} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Impressum</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate("datenschutz"); }} style={linkStyle} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Datenschutz</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate("cookies"); }} style={linkStyle} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Cookies</a>
+            </div>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ivory)", opacity: 0.4, marginTop: 8 }}>
+              © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
+            </p>
+          </div>
         </div>
       </footer>
-    </div>
+
+      <CookieBanner />
+    </>
   );
 }
 
 // ─── Impressum Page ───
-function ImpressumPage({ onBack }) {
+function ImpressumPage({ onBack, onNavigate }) {
   return (
-    <LegalPage title="Impressum" onBack={onBack}>
+    <LegalPage title="Impressum" onBack={onBack} onNavigate={onNavigate}>
       <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16, marginTop: 0 }}>
         Angaben gemäß § 5 TMG
       </h2>
@@ -1222,10 +1264,10 @@ function ImpressumPage({ onBack }) {
 }
 
 // ─── Datenschutz Page ───
-function DatenschutzPage({ onBack }) {
+function DatenschutzPage({ onBack, onNavigate }) {
   const sectionHeading = { fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16, marginTop: 40 };
   return (
-    <LegalPage title="Datenschutzerklärung" onBack={onBack}>
+    <LegalPage title="Datenschutzerklärung" onBack={onBack} onNavigate={onNavigate}>
       <p style={{ marginBottom: 8, opacity: 0.5, fontSize: 13 }}>Stand 25. November 2021</p>
       <p style={{ marginBottom: 24 }}>
         Durch die Nutzung unserer Website erklären Sie sich mit der Erhebung, Verarbeitung und Nutzung von Daten gemäß der nachfolgenden Beschreibung einverstanden. Unsere Website kann grundsätzlich ohne Registrierung besucht werden. Dabei werden Daten wie beispielsweise aufgerufene Seiten bzw. Namen der abgerufenen Datei, Datum und Uhrzeit zu statistischen Zwecken auf dem Server gespeichert, ohne dass diese Daten unmittelbar auf Ihre Person bezogen werden. Personenbezogene Daten, insbesondere Name, Adresse oder E-Mail-Adresse werden soweit möglich auf freiwilliger Basis erhoben. Ohne Ihre Einwilligung erfolgt keine Weitergabe der Daten an Dritte.
@@ -1270,10 +1312,10 @@ function DatenschutzPage({ onBack }) {
 }
 
 // ─── Cookies Page ───
-function CookiesPage({ onBack }) {
+function CookiesPage({ onBack, onNavigate }) {
   const sectionHeading = { fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16, marginTop: 40 };
   return (
-    <LegalPage title="Cookie-Richtlinie" onBack={onBack}>
+    <LegalPage title="Cookie-Richtlinie" onBack={onBack} onNavigate={onNavigate}>
       <h2 style={{ ...sectionHeading, marginTop: 0 }}>Was sind Cookies?</h2>
       <p style={{ marginBottom: 24 }}>
         Cookies sind kleine Textdateien, die beim Besuch unserer Webseite auf Ihrem Rechner gespeichert werden. Sie dienen dazu, unsere Webseite nutzerfreundlicher, effektiver und sicherer zu machen.
@@ -1415,9 +1457,9 @@ export default function ChiChiClubAcademy() {
   const openFunnel = () => setFunnelOpen(true);
   const goHome = () => { setPage("home"); window.scrollTo(0, 0); };
 
-  if (page === "impressum") return <ImpressumPage onBack={goHome} />;
-  if (page === "datenschutz") return <DatenschutzPage onBack={goHome} />;
-  if (page === "cookies") return <CookiesPage onBack={goHome} />;
+  if (page === "impressum") return <ImpressumPage onBack={goHome} onNavigate={(p) => { setPage(p); window.scrollTo(0, 0); }} />;
+  if (page === "datenschutz") return <DatenschutzPage onBack={goHome} onNavigate={(p) => { setPage(p); window.scrollTo(0, 0); }} />;
+  if (page === "cookies") return <CookiesPage onBack={goHome} onNavigate={(p) => { setPage(p); window.scrollTo(0, 0); }} />;
 
   return (
     <>
