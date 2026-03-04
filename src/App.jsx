@@ -57,6 +57,24 @@ const testimonials = [
     text: "Ich kam aus der Medizin und hatte null Beauty-Erfahrung. Jette und ihr Team haben mir alles beigebracht — Technik, Beratung, Business. Heute arbeite ich Vollzeit als Microblading-Artistin.",
     avatar: IMG_AVATAR3,
   },
+  {
+    name: "Sophie M.",
+    role: "Ehemalige Kosmetikerin, jetzt PMU-Artistin",
+    text: "Ich hatte einen vollen Kalender, aber am Monatsende war trotzdem zu wenig da. Eine einzige Microblading-Behandlung bringt mir jetzt mehr als ein ganzer Tag mit Gesichtsbehandlungen.",
+    avatar: IMG_AVATAR1,
+  },
+  {
+    name: "Laura K.",
+    role: "Kosmetikerin mit PMU-Zusatzangebot",
+    text: "Meine Investition hatte ich nach 3 Behandlungen wieder drin. Jetzt mache ich mit Microblading mehr Umsatz als mit allen anderen Services zusammen.",
+    avatar: IMG_AVATAR3,
+  },
+  {
+    name: "Anna S.",
+    role: "Jetzt selbstständige Microblading-Artistin",
+    text: "Ich hatte vorher eine andere Schulung gemacht — reine Theorie, kein echtes Modell, kein Support danach. Bei Jette war alles anders. Hier lernt man wirklich, wie es in der Praxis funktioniert.",
+    avatar: IMG_AVATAR2,
+  },
 ];
 
 const faqs = [
@@ -161,16 +179,188 @@ function Reveal({ children, delay = 0, style = {} }) {
   );
 }
 
+// ─── Section Label ───
+function SectionLabel({ children }) {
+  return (
+    <span style={{
+      display: "inline-block",
+      fontFamily: "var(--font-body)",
+      fontSize: 11,
+      letterSpacing: "0.12em",
+      textTransform: "uppercase",
+      color: "#000000",
+      background: "var(--chi-chi-beige)",
+      padding: "6px 14px",
+      marginBottom: 20,
+    }}>
+      {children}
+    </span>
+  );
+}
+
+// ─── Stars Component ───
+function Stars({ count = 5, size = 16, color = "#D4A853" }) {
+  return (
+    <div style={{ display: "flex", gap: 2 }}>
+      {Array.from({ length: count }).map((_, i) => (
+        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill={color} stroke={color} strokeWidth="1">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+// ─── Verified Badge ───
+function VerifiedBadge() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#1DA1F2" style={{ flexShrink: 0 }}>
+      <path d="M22.25 12c0-1.43-.88-2.67-2.19-3.34.46-1.39.2-2.9-.81-3.91s-2.52-1.27-3.91-.81C14.67.63 13.43-.25 12-.25S9.33.63 8.66 1.94c-1.39-.46-2.9-.2-3.91.81s-1.27 2.52-.81 3.91C2.63 7.33 1.75 8.57 1.75 12s.88 4.67 2.19 5.34c-.46 1.39-.2 2.9.81 3.91s2.52 1.27 3.91.81c.67 1.31 1.91 2.19 3.34 2.19s2.67-.88 3.34-2.19c1.39.46 2.9.2 3.91-.81s1.27-2.52.81-3.91c1.31-.67 2.19-1.91 2.19-3.34z"/>
+      <path d="M9 12l2 2 4-4" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+// ─── Testimonial Slider ───
+function TestimonialSlider({ items }) {
+  const [current, setCurrent] = useState(0);
+  const visible = 1; // show 1 at a time on mobile, CSS handles desktop
+
+  const next = () => setCurrent((prev) => (prev + 1) % items.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + items.length) % items.length);
+
+  // Show 3 on desktop, 1 on mobile — we'll render 3 and let CSS handle
+  const getVisibleItems = () => {
+    const result = [];
+    for (let i = 0; i < 3; i++) {
+      result.push(items[(current + i) % items.length]);
+    }
+    return result;
+  };
+
+  return (
+    <div>
+      <div className="testimonial-grid" style={{
+        display: "grid",
+        gridTemplateColumns: "1fr",
+        gap: 24,
+      }}>
+        {getVisibleItems().map((t, i) => (
+          <div key={`${current}-${i}`} className={i > 0 ? "testimonial-extra" : ""} style={{
+            padding: 32,
+            background: "var(--chi-chi-beige)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            animation: "fadeSlide 0.35s ease",
+          }}>
+            <div>
+              <Stars count={5} size={14} />
+              <p style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 15,
+                lineHeight: 1.7,
+                color: "#000000",
+                marginTop: 16,
+                marginBottom: 24,
+              }}>
+                „{t.text}"
+              </p>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <img
+                src={t.avatar}
+                alt={t.name}
+                style={{ width: 44, height: 44, borderRadius: "50%", objectFit: "cover" }}
+              />
+              <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <p style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 14,
+                    color: "#000000",
+                  }}>
+                    {t.name}
+                  </p>
+                  <VerifiedBadge />
+                </div>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  color: "#000000",
+                }}>
+                  {t.role}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation arrows */}
+      <div style={{ display: "flex", gap: 12, marginTop: 24 }}>
+        <button
+          onClick={prev}
+          style={{
+            width: 44,
+            height: 44,
+            border: "1px solid #000000",
+            background: "transparent",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "#000000"; e.currentTarget.querySelector("svg").style.stroke = "var(--ivory)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.querySelector("svg").style.stroke = "#000000"; }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <button
+          onClick={next}
+          style={{
+            width: 44,
+            height: 44,
+            border: "1px solid #000000",
+            background: "#000000",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "all 0.2s ease",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "var(--ivory)"; e.currentTarget.querySelector("svg").style.stroke = "#000000"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "#000000"; e.currentTarget.querySelector("svg").style.stroke = "var(--ivory)"; }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ivory)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+        <span style={{
+          fontFamily: "var(--font-body)",
+          fontSize: 13,
+          color: "#000000",
+          display: "flex",
+          alignItems: "center",
+          marginLeft: 8,
+        }}>
+          {current + 1} / {items.length}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 // ─── FAQ Components ───
 
 function FaqItem({ question, answer, isOpen, onClick }) {
   const contentRef = useRef(null);
   return (
-    <div
-      style={{
-        borderBottom: "1px solid #000000",
-      }}
-    >
+    <div style={{ borderBottom: "1px solid #000000" }}>
       <button
         onClick={onClick}
         style={{
@@ -186,32 +376,28 @@ function FaqItem({ question, answer, isOpen, onClick }) {
           textAlign: "left",
         }}
       >
-        <span
-          style={{
-            fontFamily: "var(--font-headline)",
-            fontWeight: 700,
-            fontSize: "clamp(16px, 1.5vw, 18px)",
-            color: "#000000",
-            lineHeight: 1.3,
-          }}
-        >
+        <span style={{
+          fontFamily: "var(--font-headline)",
+          fontWeight: 700,
+          fontSize: "clamp(16px, 1.5vw, 18px)",
+          color: "#000000",
+          lineHeight: 1.3,
+        }}>
           {question}
         </span>
-        <span
-          style={{
-            flexShrink: 0,
-            width: 32,
-            height: 32,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontFamily: "var(--font-body)",
-            fontSize: 20,
-            color: "#000000",
-            transition: "transform 0.3s ease",
-            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-          }}
-        >
+        <span style={{
+          flexShrink: 0,
+          width: 32,
+          height: 32,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontFamily: "var(--font-body)",
+          fontSize: 20,
+          color: "#000000",
+          transition: "transform 0.3s ease",
+          transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+        }}>
           +
         </span>
       </button>
@@ -223,16 +409,14 @@ function FaqItem({ question, answer, isOpen, onClick }) {
           transition: "max-height 0.4s ease",
         }}
       >
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 16,
-            color: "#000000",
-            lineHeight: 1.7,
-            paddingBottom: 24,
-            maxWidth: 640,
-          }}
-        >
+        <p style={{
+          fontFamily: "var(--font-body)",
+          fontSize: 16,
+          color: "#000000",
+          lineHeight: 1.7,
+          paddingBottom: 24,
+          maxWidth: 640,
+        }}>
           {answer}
         </p>
       </div>
@@ -251,9 +435,136 @@ function FaqAccordion({ items }) {
           answer={item.a}
           isOpen={openIndex === i}
           onClick={() => setOpenIndex(openIndex === i ? null : i)}
-          index={i}
         />
       ))}
+    </div>
+  );
+}
+
+// ─── ROI Calculator ───
+function RoiCalculator() {
+  const levels = [
+    { id: "beginner", label: "Anfängerin", desc: "Gerade erst gestartet", pricePerTreatment: 150, treatmentHours: 2.5 },
+    { id: "mid", label: "Fortgeschritten", desc: "Erste Erfahrung gesammelt", pricePerTreatment: 250, treatmentHours: 2 },
+    { id: "pro", label: "Profi", desc: "Etabliert mit Stammkundinnen", pricePerTreatment: 400, treatmentHours: 1.5 },
+  ];
+
+  const [selectedLevel, setSelectedLevel] = useState("beginner");
+  const [hoursPerWeek, setHoursPerWeek] = useState(10);
+  const courseInvestment = 4500;
+
+  const level = levels.find(l => l.id === selectedLevel);
+  const treatmentsPerWeek = Math.floor(hoursPerWeek / level.treatmentHours);
+  const treatmentsPerMonth = treatmentsPerWeek * 4;
+  const monthlyRevenue = treatmentsPerMonth * level.pricePerTreatment;
+  const treatmentsToBreakEven = Math.ceil(courseInvestment / level.pricePerTreatment);
+  const weeksToBreakEven = treatmentsPerWeek > 0 ? Math.ceil(treatmentsToBreakEven / treatmentsPerWeek) : null;
+
+  return (
+    <div style={{
+      background: "var(--ivory)",
+      padding: "40px",
+    }}>
+      <div style={{ marginBottom: 32 }}>
+        <p style={{
+          fontFamily: "var(--font-body)",
+          fontSize: 12,
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+          color: "#000000",
+          marginBottom: 12,
+        }}>
+          Dein Erfahrungslevel
+        </p>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {levels.map(l => (
+            <button
+              key={l.id}
+              onClick={() => setSelectedLevel(l.id)}
+              style={{
+                padding: "10px 20px",
+                border: selectedLevel === l.id ? "2px solid #000000" : "1px solid #000000",
+                background: selectedLevel === l.id ? "#000000" : "transparent",
+                color: selectedLevel === l.id ? "var(--ivory)" : "#000000",
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 13,
+                cursor: "pointer",
+                transition: "all 0.15s ease",
+              }}
+            >
+              {l.label}
+            </button>
+          ))}
+        </div>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000", marginTop: 8 }}>
+          {level.desc} · {level.pricePerTreatment}€ pro Behandlung
+        </p>
+      </div>
+
+      <div style={{ marginBottom: 32 }}>
+        <p style={{
+          fontFamily: "var(--font-body)",
+          fontSize: 12,
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+          color: "#000000",
+          marginBottom: 12,
+        }}>
+          Stunden pro Woche für Microblading
+        </p>
+        <input
+          type="range"
+          min="5"
+          max="40"
+          value={hoursPerWeek}
+          onChange={(e) => setHoursPerWeek(Number(e.target.value))}
+          style={{ width: "100%", accentColor: "#000000" }}
+        />
+        <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-body)", fontSize: 13, color: "#000000", marginTop: 4 }}>
+          <span>5h</span>
+          <span style={{ fontWeight: 700 }}>{hoursPerWeek}h / Woche</span>
+          <span>40h</span>
+        </div>
+      </div>
+
+      {/* Results */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+        gap: 1,
+        background: "#000000",
+      }}>
+        {[
+          { label: "Behandlungen / Monat", value: treatmentsPerMonth },
+          { label: "Monatlicher Umsatz", value: `${monthlyRevenue.toLocaleString("de-DE")}€` },
+          { label: "Break-Even nach", value: weeksToBreakEven ? `${weeksToBreakEven} Wochen` : "—" },
+        ].map((item, i) => (
+          <div key={i} style={{
+            background: "var(--chi-chi-beige)",
+            padding: "24px 20px",
+            textAlign: "center",
+          }}>
+            <p style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(22px, 2.5vw, 32px)",
+              color: "#000000",
+              marginBottom: 4,
+              lineHeight: 1.15,
+            }}>
+              {item.value}
+            </p>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em", color: "#000000" }}>
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", marginTop: 16, lineHeight: 1.5 }}>
+        Basierend auf durchschnittlichen Marktpreisen. Dein tatsächlicher Umsatz hängt von Standort, Erfahrung und Kundenstamm ab.
+      </p>
     </div>
   );
 }
@@ -272,10 +583,10 @@ function FunnelModal({ isOpen, onClose }) {
       question: "Wo stehst du gerade?",
       subtext: "Damit wir dich optimal beraten können.",
       options: [
-        { value: "beginner", label: "Kompletter Neuling", desc: "Noch keine Erfahrung im Beauty-Bereich" },
-        { value: "kosmetik", label: "Kosmetikerin / Friseurin", desc: "Bereits in der Beauty-Branche tätig" },
-        { value: "pmu", label: "PMU-Erfahrung", desc: "Erfahrung mit Permanent Make-up" },
-        { value: "other", label: "Quereinsteigerin", desc: "Ich komme aus einem anderen Bereich" },
+        { value: "beginner", label: "Kompletter Neuling", desc: "Ich habe noch keine Erfahrung im Beauty-Bereich", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 7 5 4 5c0 5 3 7 8 7z"/><path d="M12 12c0-5 5-7 8-7 0 5-3 7-8 7z"/><path d="M12 22c-2 0-4-1-4-4"/><path d="M12 22c2 0 4-1 4-4"/></svg> },
+        { value: "kosmetik", label: "Kosmetikerin / Friseurin", desc: "Ich arbeite bereits in der Beauty-Branche", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="5"/><path d="M7 13c-2.5 1.5-4 4-4 7h18c0-3-1.5-5.5-4-7"/><path d="M15 3l2-1.5"/><path d="M15 3c.5.5 1.5 1 2.5.5"/><line x1="9" y1="7" x2="9.01" y2="7"/><line x1="15" y1="7" x2="15.01" y2="7"/><path d="M10 10c.5.5 1.5 1 2 1s1.5-.5 2-1"/></svg> },
+        { value: "pmu", label: "PMU-Erfahrung", desc: "Ich habe schon Permanent Make-up Erfahrung", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 3l-7.5 7.5"/><path d="M13.5 10.5L10 14l-1.5 5L3 21l2-5.5 5-1.5 3.5-3.5"/><path d="M18 6l-1.5-1.5"/><path d="M15 3l6 6"/><circle cx="6" cy="18" r="1"/></svg> },
+        { value: "other", label: "Quereinsteigerin", desc: "Ich komme aus einem ganz anderen Bereich", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg> },
       ],
     },
     {
@@ -283,21 +594,21 @@ function FunnelModal({ isOpen, onClose }) {
       question: "Was ist dein größtes Ziel?",
       subtext: "Wähle aus, was dich am meisten antreibt.",
       options: [
-        { value: "selfemployed", label: "Selbstständigkeit", desc: "Eigenes Beauty-Business aufbauen" },
-        { value: "income", label: "Mehr verdienen", desc: "Einkommen deutlich steigern" },
-        { value: "technique", label: "Technik lernen", desc: "Die beste Microblading-Technik beherrschen" },
-        { value: "freedom", label: "Kreative Freiheit", desc: "Einen Job, der mich wirklich erfüllt" },
+        { value: "selfemployed", label: "Selbstständigkeit", desc: "Ich will mein eigenes Beauty-Business aufbauen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> },
+        { value: "income", label: "Mehr verdienen", desc: "Ich will mein Einkommen deutlich steigern", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> },
+        { value: "technique", label: "Technik lernen", desc: "Ich will die beste Microblading-Technik beherrschen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> },
+        { value: "freedom", label: "Kreative Freiheit", desc: "Ich will einen Job, der mich wirklich erfüllt", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M19 14l.9 2.7L22.6 17.6l-2.7.9L19 21.2l-.9-2.7-2.7-.9 2.7-.9L19 14z"/><path d="M5 17l.6 1.8 1.8.6-1.8.6L5 21.8l-.6-1.8-1.8-.6 1.8-.6L5 17z"/></svg> },
       ],
     },
     {
       id: "timeline",
       question: "Wann möchtest du starten?",
-      subtext: "Unsere Kurse finden 3–4x pro Jahr statt.",
+      subtext: "Unsere Kursplätze sind begrenzt.",
       options: [
-        { value: "asap", label: "So schnell wie möglich", desc: "Ich bin bereit loszulegen" },
-        { value: "1-3months", label: "In 1–3 Monaten", desc: "Plane meinen Start für die nächsten Wochen" },
-        { value: "3-6months", label: "In 3–6 Monaten", desc: "Möchte mich in Ruhe vorbereiten" },
-        { value: "exploring", label: "Ich informiere mich erst", desc: "Schaue mir erstmal alles an" },
+        { value: "asap", label: "So schnell wie möglich", desc: "Ich bin bereit, sofort loszulegen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> },
+        { value: "1-3months", label: "In 1–3 Monaten", desc: "Ich plane meinen Start für die nächsten Wochen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> },
+        { value: "3-6months", label: "In 3–6 Monaten", desc: "Ich möchte mich in Ruhe vorbereiten", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
+        { value: "exploring", label: "Ich informiere mich erst", desc: "Ich schaue mir erstmal alles an", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> },
       ],
     },
   ];
@@ -316,9 +627,9 @@ function FunnelModal({ isOpen, onClose }) {
         setTimeout(() => {
           setIsChecking(false);
           setStep(questions.length + 1);
-        }, 2000);
+        }, 2500);
       }
-    }, 400);
+    }, 500);
   };
 
   const handleSubmit = () => {
@@ -373,7 +684,8 @@ function FunnelModal({ isOpen, onClose }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "rgba(0,0,0,0.5)",
+        background: "rgba(0,0,0,0.6)",
+        backdropFilter: "blur(4px)",
         animation: "fadeIn 0.3s ease",
       }}
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
@@ -381,8 +693,9 @@ function FunnelModal({ isOpen, onClose }) {
       <div
         style={{
           background: "var(--ivory)",
+          borderRadius: 16,
           width: "100%",
-          maxWidth: 520,
+          maxWidth: 560,
           maxHeight: "90vh",
           overflow: "auto",
           margin: 16,
@@ -390,7 +703,7 @@ function FunnelModal({ isOpen, onClose }) {
           animation: "slideUp 0.4s ease",
         }}
       >
-        {/* Close */}
+        {/* Close button */}
         <button
           onClick={handleClose}
           style={{
@@ -399,8 +712,9 @@ function FunnelModal({ isOpen, onClose }) {
             right: 16,
             width: 36,
             height: 36,
-            border: "1px solid #000000",
-            background: "transparent",
+            borderRadius: "50%",
+            border: "1px solid var(--chi-chi-beige)",
+            background: "var(--chi-chi-beige)",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -409,54 +723,59 @@ function FunnelModal({ isOpen, onClose }) {
           }}
           aria-label="Schließen"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
 
-        {/* Progress */}
+        {/* Progress bar */}
         {step < questions.length + 2 && (
           <div style={{ padding: "20px 24px 0" }}>
-            <div style={{ display: "flex", gap: 6 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
               {[0, 1, 2, 3, 4].map((s) => (
-                <div key={s} style={{
-                  height: 3,
-                  flex: 1,
-                  background: s <= step ? "#000000" : "var(--chi-chi-beige)",
-                  transition: "background 0.4s ease",
-                }} />
+                <div key={s} style={{ flex: 1, display: "flex", alignItems: "center" }}>
+                  <div style={{
+                    height: 5,
+                    flex: 1,
+                    borderRadius: 3,
+                    background: s <= step ? "#000000" : "var(--chi-chi-beige)",
+                    transition: "background 0.4s ease",
+                  }} />
+                </div>
               ))}
             </div>
           </div>
         )}
 
         <div style={{ padding: "32px 32px 40px" }}>
-          {/* Questions */}
+          {/* Question Steps */}
           {step < questions.length && (
             <div key={step} style={{ animation: "fadeSlide 0.35s ease" }}>
               <p style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 12,
+                fontSize: 11,
                 color: "#000000",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
                 marginBottom: 8,
+                opacity: 0.6,
               }}>
                 Frage {step + 1} von {questions.length}
               </p>
               <h3 style={{
                 fontFamily: "var(--font-headline)",
                 fontWeight: 700,
-                fontSize: "clamp(20px, 3vw, 26px)",
+                fontSize: "clamp(22px, 3vw, 28px)",
                 color: "#000000",
                 marginBottom: 6,
-                lineHeight: 1.15,
+                lineHeight: 1.2,
               }}>
                 {questions[step].question}
               </h3>
               <p style={{
                 fontFamily: "var(--font-body)",
-                fontSize: 14,
+                fontSize: 13,
                 color: "#000000",
                 marginBottom: 28,
+                opacity: 0.6,
               }}>
                 {questions[step].subtext}
               </p>
@@ -467,35 +786,62 @@ function FunnelModal({ isOpen, onClose }) {
                   return (
                     <button
                       key={opt.value}
+                      className="funnel-option"
                       onClick={() => selectAnswer(questions[step].id, opt.value)}
                       style={{
-                        padding: "16px 20px",
-                        border: isSelected ? "2px solid #000000" : "1px solid #000000",
-                        background: isSelected ? "var(--chi-chi-beige)" : "transparent",
+                        padding: "14px 18px",
+                        border: isSelected ? "2px solid #000000" : "1px solid var(--chi-chi-beige)",
+                        borderRadius: 12,
+                        background: isSelected ? "rgba(223,217,205,0.3)" : "transparent",
                         cursor: "pointer",
                         textAlign: "left",
                         transition: "all 0.15s ease",
                         display: "flex",
-                        flexDirection: "column",
-                        gap: 4,
+                        alignItems: "center",
+                        gap: 14,
+                        transform: isSelected ? "scale(1.01)" : "scale(1)",
                       }}
                     >
-                      <span style={{
-                        fontFamily: "var(--font-headline)",
-                        fontWeight: 700,
-                        fontSize: 15,
-                        color: "#000000",
+                      <div style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 10,
+                        background: isSelected ? "#000000" : "var(--chi-chi-beige)",
+                        color: isSelected ? "var(--ivory)" : "#000000",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        transition: "all 0.15s ease",
                       }}>
-                        {opt.label}
-                      </span>
-                      <span style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: 13,
-                        color: "#000000",
-                        lineHeight: 1.4,
+                        {opt.icon}
+                      </div>
+                      <div style={{ flex: 1 }}>
+                        <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 15, color: "#000000", display: "block" }}>
+                          {opt.label}
+                        </span>
+                        <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", lineHeight: 1.4, opacity: 0.6 }}>
+                          {opt.desc}
+                        </span>
+                      </div>
+                      <div style={{
+                        width: 22,
+                        height: 22,
+                        borderRadius: "50%",
+                        border: isSelected ? "none" : "2px solid var(--chi-chi-beige)",
+                        background: isSelected ? "#000000" : "transparent",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        transition: "all 0.15s ease",
                       }}>
-                        {opt.desc}
-                      </span>
+                        {isSelected && (
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ivory)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        )}
+                      </div>
                     </button>
                   );
                 })}
@@ -503,121 +849,151 @@ function FunnelModal({ isOpen, onClose }) {
             </div>
           )}
 
-          {/* Checking */}
+          {/* Checking Step */}
           {step === questions.length && (
             <div style={{ textAlign: "center", padding: "40px 0", animation: "fadeSlide 0.35s ease" }}>
               <div style={{
-                width: 48,
-                height: 48,
-                border: "2px solid var(--chi-chi-beige)",
+                width: 56,
+                height: 56,
+                border: "3px solid var(--chi-chi-beige)",
                 borderTopColor: "#000000",
+                borderRadius: "50%",
                 margin: "0 auto 28px",
                 animation: "spin 0.8s linear infinite",
               }} />
               <h3 style={{
                 fontFamily: "var(--font-headline)",
                 fontWeight: 700,
-                fontSize: 22,
+                fontSize: 24,
                 color: "#000000",
                 marginBottom: 12,
               }}>
-                Einen Moment...
+                Einen Moment bitte...
               </h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#000000", lineHeight: 1.6 }}>
-                Wir prüfen die aktuellen Kursplätze.
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000", lineHeight: 1.6, opacity: 0.6 }}>
+                Wir prüfen unsere aktuellen Kapazitäten<br />und schauen, ob wir dich aufnehmen können.
               </p>
             </div>
           )}
 
-          {/* Contact Form */}
+          {/* Contact Form Step */}
           {step === questions.length + 1 && !submitted && (
             <div style={{ animation: "fadeSlide 0.35s ease" }}>
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 16px",
+                background: "#ecfdf5",
+                borderRadius: 100,
+                marginBottom: 20,
+              }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#059669", fontWeight: 500 }}>
+                  Plätze verfügbar
+                </span>
+              </div>
+
               <h3 style={{
                 fontFamily: "var(--font-headline)",
                 fontWeight: 700,
-                fontSize: "clamp(20px, 3vw, 26px)",
+                fontSize: "clamp(22px, 3vw, 28px)",
                 color: "#000000",
-                marginBottom: 8,
-                lineHeight: 1.15,
+                marginBottom: 6,
+                lineHeight: 1.2,
               }}>
-                Kursplätze verfügbar.
+                Gute Nachricht!
               </h3>
-              <p style={{
-                fontFamily: "var(--font-body)",
-                fontSize: 14,
-                color: "#000000",
-                marginBottom: 28,
-                lineHeight: 1.6,
-              }}>
-                Hinterlasse deine Kontaktdaten. Wir melden uns innerhalb von 24 Stunden persönlich bei dir.
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000", marginBottom: 28, lineHeight: 1.6, opacity: 0.6 }}>
+                Wir haben aktuell noch Plätze frei. Hinterlasse deine Kontaktdaten und wir melden uns innerhalb von 24 Stunden bei dir.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 <div>
-                  <label style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>
+                  <label style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 6, opacity: 0.6 }}>
                     Dein Name *
                   </label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                    placeholder="Vor- und Nachname"
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      border: "1px solid #000000",
-                      background: "transparent",
-                      fontFamily: "var(--font-body)",
-                      fontSize: 15,
-                      color: "#000000",
-                      outline: "none",
-                      boxSizing: "border-box",
-                    }}
-                  />
+                  <div style={{ position: "relative" }}>
+                    <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "#000000", display: "flex", opacity: 0.4 }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      placeholder="Vor- und Nachname"
+                      style={{
+                        width: "100%",
+                        padding: "14px 16px 14px 44px",
+                        border: "1px solid var(--chi-chi-beige)",
+                        borderRadius: 10,
+                        background: "var(--chi-chi-beige)",
+                        fontFamily: "var(--font-body)",
+                        fontSize: 14,
+                        color: "#000000",
+                        outline: "none",
+                        boxSizing: "border-box",
+                      }}
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>
+                  <label style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 6, opacity: 0.6 }}>
                     Deine E-Mail *
                   </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                    placeholder="deine@email.de"
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      border: "1px solid #000000",
-                      background: "transparent",
-                      fontFamily: "var(--font-body)",
-                      fontSize: 15,
-                      color: "#000000",
-                      outline: "none",
-                      boxSizing: "border-box",
-                    }}
-                  />
+                  <div style={{ position: "relative" }}>
+                    <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "#000000", display: "flex", opacity: 0.4 }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      placeholder="deine@email.de"
+                      style={{
+                        width: "100%",
+                        padding: "14px 16px 14px 44px",
+                        border: "1px solid var(--chi-chi-beige)",
+                        borderRadius: 10,
+                        background: "var(--chi-chi-beige)",
+                        fontFamily: "var(--font-body)",
+                        fontSize: 14,
+                        color: "#000000",
+                        outline: "none",
+                        boxSizing: "border-box",
+                      }}
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>
-                    Telefonnummer (optional)
+                  <label style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 6, opacity: 0.6 }}>
+                    Deine Telefonnummer
                   </label>
-                  <input
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                    placeholder="+49 170 1234567"
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      border: "1px solid #000000",
-                      background: "transparent",
-                      fontFamily: "var(--font-body)",
-                      fontSize: 15,
-                      color: "#000000",
-                      outline: "none",
-                      boxSizing: "border-box",
-                    }}
-                  />
+                  <div style={{ position: "relative" }}>
+                    <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "#000000", display: "flex", opacity: 0.4 }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                      placeholder="+49 170 1234567"
+                      style={{
+                        width: "100%",
+                        padding: "14px 16px 14px 44px",
+                        border: "1px solid var(--chi-chi-beige)",
+                        borderRadius: 10,
+                        background: "var(--chi-chi-beige)",
+                        fontFamily: "var(--font-body)",
+                        fontSize: 14,
+                        color: "#000000",
+                        outline: "none",
+                        boxSizing: "border-box",
+                      }}
+                    />
+                  </div>
                 </div>
 
                 <button
@@ -628,35 +1004,37 @@ function FunnelModal({ isOpen, onClose }) {
                     width: "100%",
                     marginTop: 8,
                     textAlign: "center",
-                    fontSize: 14,
-                    padding: "14px 24px",
-                    opacity: (!formData.name || !formData.email) ? 0.4 : 1,
+                    borderRadius: 10,
+                    padding: "16px 24px",
+                    fontSize: 15,
+                    opacity: (!formData.name || !formData.email) ? 0.5 : 1,
                     cursor: (!formData.name || !formData.email) ? "not-allowed" : "pointer",
                   }}
                 >
                   Kostenlos beraten lassen
                 </button>
 
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textAlign: "center", lineHeight: 1.5 }}>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "#000000", textAlign: "center", lineHeight: 1.5, opacity: 0.5 }}>
                   Kein Spam. Keine Verpflichtung. Wir melden uns persönlich.
                 </p>
               </div>
             </div>
           )}
 
-          {/* Thank You */}
+          {/* Thank You Step */}
           {step === questions.length + 2 && (
             <div style={{ textAlign: "center", padding: "32px 0", animation: "fadeSlide 0.35s ease" }}>
               <div style={{
-                width: 64,
-                height: 64,
-                border: "2px solid #000000",
+                width: 72,
+                height: 72,
+                borderRadius: "50%",
+                background: "#ecfdf5",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 24px",
               }}>
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
@@ -664,44 +1042,52 @@ function FunnelModal({ isOpen, onClose }) {
               <h3 style={{
                 fontFamily: "var(--font-headline)",
                 fontWeight: 700,
-                fontSize: "clamp(22px, 3vw, 28px)",
+                fontSize: "clamp(24px, 3vw, 32px)",
                 color: "#000000",
                 marginBottom: 12,
-                lineHeight: 1.15,
+                lineHeight: 1.2,
               }}>
-                Danke, {formData.name.split(" ")[0]}.
+                Perfekt, {formData.name.split(" ")[0]}!
               </h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "#000000", marginBottom: 32, lineHeight: 1.7, maxWidth: 380, margin: "0 auto 32px" }}>
-                Deine Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden persönlich bei dir.
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#000000", marginBottom: 32, lineHeight: 1.7, maxWidth: 380, margin: "0 auto 32px", opacity: 0.6 }}>
+                Deine Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden persönlich bei dir.
               </p>
 
               <div style={{
                 background: "var(--chi-chi-beige)",
+                borderRadius: 12,
                 padding: 24,
                 marginBottom: 24,
                 textAlign: "left",
               }}>
-                <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "#000000", marginBottom: 16 }}>
+                <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "#000000", marginBottom: 12 }}>
                   Was passiert als Nächstes?
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   {[
-                    "Wir schauen uns deine Angaben an",
-                    "Du bekommst eine persönliche Nachricht",
-                    "Wir vereinbaren ein kurzes Kennenlerngespräch",
-                  ].map((text, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <span style={{
+                    { num: "1", text: "Wir schauen uns deine Angaben an" },
+                    { num: "2", text: "Du bekommst eine persönliche Nachricht von uns" },
+                    { num: "3", text: "Wir vereinbaren ein kurzes Kennenlerngespräch" },
+                  ].map(item => (
+                    <div key={item.num} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{
+                        width: 28,
+                        height: 28,
+                        borderRadius: "50%",
+                        background: "#000000",
+                        color: "var(--ivory)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                         fontFamily: "var(--font-headline)",
                         fontWeight: 700,
-                        fontSize: 13,
-                        color: "#000000",
+                        fontSize: 12,
                         flexShrink: 0,
                       }}>
-                        {i + 1}.
-                      </span>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#000000" }}>
-                        {text}
+                        {item.num}
+                      </div>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000" }}>
+                        {item.text}
                       </span>
                     </div>
                   ))}
@@ -711,12 +1097,12 @@ function FunnelModal({ isOpen, onClose }) {
               <button
                 onClick={handleClose}
                 style={{
-                  padding: "12px 24px",
-                  border: "1px solid #000000",
+                  padding: "14px 32px",
+                  border: "1px solid var(--chi-chi-beige)",
+                  borderRadius: 10,
                   background: "transparent",
                   cursor: "pointer",
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
+                  fontFamily: "var(--font-body)",
                   fontSize: 13,
                   color: "#000000",
                 }}
@@ -756,7 +1142,6 @@ export default function ChiChiClubAcademy() {
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -770,7 +1155,6 @@ export default function ChiChiClubAcademy() {
         }
 
         img { max-width: 100%; height: auto; display: block; border-radius: 0; }
-
         a { color: var(--black); text-decoration: none; }
 
         .btn-primary {
@@ -781,11 +1165,9 @@ export default function ChiChiClubAcademy() {
           font-family: var(--font-headline);
           font-weight: var(--font-headline-weight);
           font-size: 14px;
-          padding: 12px 24px;
+          padding: 14px 28px;
           cursor: pointer;
           transition: all 0.2s ease;
-          text-transform: none;
-          letter-spacing: 0;
           text-align: center;
         }
         .btn-primary:hover {
@@ -802,7 +1184,7 @@ export default function ChiChiClubAcademy() {
           font-family: var(--font-headline);
           font-weight: var(--font-headline-weight);
           font-size: 14px;
-          padding: 12px 24px;
+          padding: 14px 28px;
           cursor: pointer;
           transition: all 0.2s ease;
         }
@@ -816,7 +1198,6 @@ export default function ChiChiClubAcademy() {
           margin: 0 auto;
           padding: 0 24px;
         }
-
         @media (min-width: 768px) {
           .container { padding: 0 48px; }
         }
@@ -824,55 +1205,50 @@ export default function ChiChiClubAcademy() {
         /* Section backgrounds */
         .section-ivory { background: var(--ivory); }
         .section-beige { background: var(--chi-chi-beige); }
-        .section-black { background: var(--black); color: var(--ivory); }
 
         /* Logo marquee */
         .logo-track {
           display: flex;
-          gap: 64px;
+          gap: 80px;
           align-items: center;
-          animation: marquee 30s linear infinite;
+          animation: marquee 25s linear infinite;
         }
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+        /* Hero results marquee */
+        .results-track {
+          display: flex;
+          gap: 12px;
+          animation: resultsMarquee 20s linear infinite;
         }
-        @keyframes slideUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeSlide {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes spin {
-          to { transform: rotate(360deg); }
+        @keyframes resultsMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
 
-        /* Mobile menu */
-        .mobile-menu-overlay {
-          display: none;
-        }
-        .mobile-menu-overlay.open {
-          display: flex;
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Funnel option hover */
+        .funnel-option:hover {
+          border-color: #000000 !important;
         }
 
         /* Responsive */
         @media (max-width: 767px) {
           .desktop-only { display: none !important; }
-          .mobile-only { display: block !important; }
+          .testimonial-extra { display: none !important; }
         }
         @media (min-width: 768px) {
-          .desktop-only { display: block !important; }
-          .mobile-only { display: none !important; }
           .grid-2col { grid-template-columns: 1fr 1fr !important; }
-          .grid-2col-text-first { grid-template-columns: 1fr 1fr !important; }
+          .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
+          .testimonial-extra { display: flex !important; }
         }
       `}</style>
 
@@ -894,27 +1270,15 @@ export default function ChiChiClubAcademy() {
           justifyContent: "space-between",
           height: 64,
         }}>
-          <img
-            src={logoDataUrl}
-            alt="Chi Chi Club"
-            style={{ height: 22 }}
-          />
-          <button
-            className="btn-primary"
-            onClick={openFunnel}
-            style={{ fontSize: 12, padding: "8px 20px" }}
-          >
+          <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 22 }} />
+          <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 13, padding: "10px 22px" }}>
             Kostenlos beraten lassen
           </button>
         </div>
       </nav>
 
       {/* ─── HERO ─── */}
-      <section style={{
-        paddingTop: 140,
-        paddingBottom: 120,
-        background: "var(--ivory)",
-      }}>
+      <section style={{ paddingTop: 120, paddingBottom: 0, background: "var(--ivory)" }}>
         <div className="container">
           <div className="grid-2col" style={{
             display: "grid",
@@ -923,16 +1287,29 @@ export default function ChiChiClubAcademy() {
             alignItems: "center",
           }}>
             <div>
-              <p style={{
-                fontFamily: "var(--font-body)",
-                fontSize: 13,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
+              {/* Hamburg pin label */}
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                background: "var(--chi-chi-beige)",
+                padding: "6px 14px",
                 marginBottom: 24,
-                color: "#000000",
               }}>
-                Chi Chi Club Academy · Hamburg
-              </p>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "#000000",
+                }}>
+                  Hamburg
+                </span>
+              </div>
 
               <h1 style={{
                 fontFamily: "var(--font-headline)",
@@ -951,25 +1328,67 @@ export default function ChiChiClubAcademy() {
                 lineHeight: 1.7,
                 color: "#000000",
                 maxWidth: 560,
-                marginBottom: 40,
+                marginBottom: 32,
               }}>
                 4 Tage Intensivausbildung. Echte Modelle. Eine Technik, die es so kein zweites Mal gibt. Danach hast du alles, was du brauchst — Technik, Material, Wissen, Support — um eigenständig zu arbeiten.
               </p>
 
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                <button className="btn-primary" onClick={openFunnel}>
-                  Kostenlos beraten lassen
-                </button>
+              <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginBottom: 24 }}>
+                Kostenlos beraten lassen
+              </button>
+
+              {/* Trust element: avatars + text + stars */}
+              <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+                <div style={{ display: "flex" }}>
+                  {[IMG_AVATAR1, IMG_AVATAR2, IMG_AVATAR3].map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt=""
+                      style={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        border: "2px solid var(--ivory)",
+                        marginLeft: i > 0 ? -10 : 0,
+                        position: "relative",
+                        zIndex: 3 - i,
+                      }}
+                    />
+                  ))}
+                </div>
+                <div>
+                  <Stars count={5} size={14} color="#D4A853" />
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 13,
+                    color: "#000000",
+                    marginTop: 2,
+                  }}>
+                    30+ zufriedene Teilnehmerinnen
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 4,
-            }}>
-              <img src={IMG_HERO1} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />
-              <img src={IMG_HERO2} alt="Chi Chi Club Studio" style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />
+            {/* Results marquee column */}
+            <div style={{ overflow: "hidden", borderRadius: 0 }}>
+              <div className="results-track">
+                {[IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4, IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4].map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt="Microblading Ergebnis"
+                    style={{
+                      width: 220,
+                      height: 280,
+                      objectFit: "cover",
+                      flexShrink: 0,
+                    }}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -1003,11 +1422,7 @@ export default function ChiChiClubAcademy() {
                   }}>
                     {fact.num}
                   </p>
-                  <p style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 13,
-                    color: "#000000",
-                  }}>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000" }}>
                     {fact.label}
                   </p>
                 </div>
@@ -1038,8 +1453,8 @@ export default function ChiChiClubAcademy() {
                 src={logo.src}
                 alt={logo.alt}
                 style={{
-                  height: 20,
-                  opacity: 0.7,
+                  height: 36,
+                  opacity: 0.8,
                   flexShrink: 0,
                   filter: "grayscale(100%)",
                 }}
@@ -1060,16 +1475,7 @@ export default function ChiChiClubAcademy() {
               alignItems: "center",
             }}>
               <div>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 12,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  marginBottom: 16,
-                  color: "#000000",
-                }}>
-                  Die Technik
-                </p>
+                <SectionLabel>Die Technik</SectionLabel>
                 <h2 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1106,94 +1512,36 @@ export default function ChiChiClubAcademy() {
                 gridTemplateColumns: "1fr 1fr",
                 gap: 4,
               }}>
-                <img src={IMG_RESULT1} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT2} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT3} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT4} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT1} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT2} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT3} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT4} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ─── ERGEBNISSE / TESTIMONIALS ─── */}
+      {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
       <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
-            <p style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 16,
-              color: "#000000",
-            }}>
-              Absolventinnen
-            </p>
+            <SectionLabel>Absolventinnen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
               fontSize: "clamp(24px, 3vw, 40px)",
               lineHeight: 1.15,
               color: "#000000",
-              marginBottom: 64,
+              marginBottom: 48,
             }}>
               Was unsere Absolventinnen sagen.
             </h2>
           </Reveal>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: 32,
-          }}>
-            {testimonials.map((t, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{
-                  padding: 32,
-                  background: "var(--chi-chi-beige)",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}>
-                  <p style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 15,
-                    lineHeight: 1.7,
-                    color: "#000000",
-                    marginBottom: 32,
-                  }}>
-                    „{t.text}"
-                  </p>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      style={{ width: 40, height: 40, objectFit: "cover" }}
-                    />
-                    <div>
-                      <p style={{
-                        fontFamily: "var(--font-headline)",
-                        fontWeight: 700,
-                        fontSize: 14,
-                        color: "#000000",
-                      }}>
-                        {t.name}
-                      </p>
-                      <p style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: 12,
-                        color: "#000000",
-                      }}>
-                        {t.role}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <TestimonialSlider items={testimonials} />
+          </Reveal>
         </div>
       </section>
 
@@ -1214,16 +1562,7 @@ export default function ChiChiClubAcademy() {
               />
 
               <div>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 12,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  marginBottom: 16,
-                  color: "#000000",
-                }}>
-                  Über Jette Scherzer
-                </p>
+                <SectionLabel>Über Jette Scherzer</SectionLabel>
                 <h2 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1261,16 +1600,7 @@ export default function ChiChiClubAcademy() {
       <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
-            <p style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 16,
-              color: "#000000",
-            }}>
-              Schulungen
-            </p>
+            <SectionLabel>Schulungen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1297,16 +1627,7 @@ export default function ChiChiClubAcademy() {
                 display: "flex",
                 flexDirection: "column",
               }}>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 12,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  marginBottom: 16,
-                  color: "#000000",
-                }}>
-                  Flagship
-                </p>
+                <SectionLabel>Flagship</SectionLabel>
                 <h3 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1353,24 +1674,6 @@ export default function ChiChiClubAcademy() {
                   ))}
                 </div>
 
-                <p style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: 24,
-                  color: "#000000",
-                  marginBottom: 8,
-                }}>
-                  4.500€
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 13,
-                  color: "#000000",
-                  marginBottom: 24,
-                }}>
-                  zzgl. MwSt. · Starterkit inklusive
-                </p>
-
                 <button className="btn-primary" onClick={openFunnel} style={{ width: "100%" }}>
                   Kostenlos beraten lassen
                 </button>
@@ -1386,16 +1689,7 @@ export default function ChiChiClubAcademy() {
                 display: "flex",
                 flexDirection: "column",
               }}>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 12,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  marginBottom: 16,
-                  color: "#000000",
-                }}>
-                  Masterclass
-                </p>
+                <SectionLabel>Masterclass</SectionLabel>
                 <h3 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1442,24 +1736,6 @@ export default function ChiChiClubAcademy() {
                   ))}
                 </div>
 
-                <p style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: 24,
-                  color: "#000000",
-                  marginBottom: 8,
-                }}>
-                  1.200€
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 13,
-                  color: "#000000",
-                  marginBottom: 24,
-                }}>
-                  netto · Starterkit inklusive
-                </p>
-
                 <button className="btn-secondary" onClick={openFunnel} style={{ width: "100%" }}>
                   Kostenlos beraten lassen
                 </button>
@@ -1473,16 +1749,7 @@ export default function ChiChiClubAcademy() {
       <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
-            <p style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 16,
-              color: "#000000",
-            }}>
-              Ablauf
-            </p>
+            <SectionLabel>Ablauf</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1500,7 +1767,7 @@ export default function ChiChiClubAcademy() {
             gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
             gap: 4,
           }}>
-            {howItWorks.map((step, i) => (
+            {howItWorks.map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div style={{
                   background: "var(--chi-chi-beige)",
@@ -1509,8 +1776,8 @@ export default function ChiChiClubAcademy() {
                 }}>
                   <div style={{ position: "relative" }}>
                     <img
-                      src={step.img}
-                      alt={step.title}
+                      src={item.img}
+                      alt={item.title}
                       style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover" }}
                     />
                     <span style={{
@@ -1526,7 +1793,7 @@ export default function ChiChiClubAcademy() {
                       color: "var(--ivory)",
                       padding: "6px 12px",
                     }}>
-                      {step.day}
+                      {item.day}
                     </span>
                   </div>
                   <div style={{ padding: "24px 20px 28px" }}>
@@ -1538,7 +1805,7 @@ export default function ChiChiClubAcademy() {
                       marginBottom: 8,
                       lineHeight: 1.2,
                     }}>
-                      {step.title}
+                      {item.title}
                     </h3>
                     <p style={{
                       fontFamily: "var(--font-body)",
@@ -1546,7 +1813,7 @@ export default function ChiChiClubAcademy() {
                       color: "#000000",
                       lineHeight: 1.6,
                     }}>
-                      {step.text}
+                      {item.text}
                     </p>
                   </div>
                 </div>
@@ -1556,20 +1823,33 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
+      {/* ─── ROI CALCULATOR ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container" style={{ maxWidth: 800 }}>
+          <Reveal>
+            <SectionLabel>Dein Investment</SectionLabel>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 48,
+            }}>
+              Rechne selbst. Ab wann es sich lohnt.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <RoiCalculator />
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── FAQ ─── */}
       <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)", borderTop: "1px solid #000000" }}>
         <div className="container" style={{ maxWidth: 720 }}>
           <Reveal>
-            <p style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 12,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 16,
-              color: "#000000",
-            }}>
-              Häufige Fragen
-            </p>
+            <SectionLabel>Häufige Fragen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1600,7 +1880,6 @@ export default function ChiChiClubAcademy() {
               fontSize: "clamp(24px, 3.5vw, 44px)",
               lineHeight: 1.15,
               color: "var(--ivory)",
-              marginBottom: 24,
               maxWidth: 640,
               margin: "0 auto 24px",
             }}>
@@ -1625,8 +1904,8 @@ export default function ChiChiClubAcademy() {
                 border: "1px solid var(--ivory)",
                 fontFamily: "var(--font-headline)",
                 fontWeight: 700,
-                fontSize: 14,
-                padding: "14px 32px",
+                fontSize: 15,
+                padding: "16px 36px",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
               }}
@@ -1645,7 +1924,7 @@ export default function ChiChiClubAcademy() {
           <div style={{
             display: "flex",
             flexDirection: "column",
-            gap: 24,
+            gap: 20,
             alignItems: "center",
             textAlign: "center",
           }}>
@@ -1654,17 +1933,32 @@ export default function ChiChiClubAcademy() {
               alt="Chi Chi Club"
               style={{ height: 20, filter: "invert(1)" }}
             />
-            <div style={{
+            <p style={{
               fontFamily: "var(--font-body)",
               fontSize: 13,
               color: "var(--ivory)",
-              lineHeight: 1.7,
             }}>
-              <p>Chi Chi Club Academy · Hamburg</p>
-              <p style={{ opacity: 0.6, marginTop: 8 }}>
-                © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
-              </p>
+              Chi Chi Club Academy · Hamburg
+            </p>
+            <div style={{
+              display: "flex",
+              gap: 24,
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+            }}>
+              <a href="#" style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Impressum</a>
+              <a href="#" style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Datenschutz</a>
+              <a href="#" style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Cookies</a>
             </div>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              color: "var(--ivory)",
+              opacity: 0.4,
+              marginTop: 8,
+            }}>
+              © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
+            </p>
           </div>
         </div>
       </footer>
