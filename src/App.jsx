@@ -1117,6 +1117,104 @@ function FunnelModal({ isOpen, onClose }) {
   );
 }
 
+// ─── Cookie Banner ───
+function CookieBanner() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const consent = localStorage.getItem("chi-cookie-consent");
+    if (!consent) setVisible(true);
+  }, []);
+
+  const accept = () => {
+    localStorage.setItem("chi-cookie-consent", "all");
+    setVisible(false);
+  };
+
+  const acceptEssential = () => {
+    localStorage.setItem("chi-cookie-consent", "essential");
+    setVisible(false);
+  };
+
+  if (!visible) return null;
+
+  return (
+    <div style={{
+      position: "fixed",
+      bottom: 0,
+      left: 0,
+      right: 0,
+      zIndex: 9999,
+      background: "#000000",
+      padding: "24px",
+      animation: "fadeSlide 0.4s ease",
+    }}>
+      <div style={{
+        maxWidth: 1360,
+        margin: "0 auto",
+        display: "flex",
+        flexDirection: "column",
+        gap: 16,
+      }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, flexWrap: "wrap" }}>
+          <p style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 13,
+            lineHeight: 1.6,
+            color: "var(--ivory)",
+            maxWidth: 720,
+            flex: 1,
+            minWidth: 280,
+          }}>
+            Wir verwenden Cookies, um dir die beste Erfahrung auf unserer Website zu bieten.{" "}
+            <a href="#" style={{ color: "var(--ivory)", textDecoration: "underline", opacity: 0.7 }}>Mehr erfahren</a>
+          </p>
+          <div style={{ display: "flex", gap: 8, flexShrink: 0, flexWrap: "wrap" }}>
+            <button
+              onClick={acceptEssential}
+              style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 12,
+                padding: "10px 20px",
+                background: "transparent",
+                color: "var(--ivory)",
+                border: "1px solid var(--ivory)",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => { e.target.style.background = "var(--ivory)"; e.target.style.color = "#000000"; }}
+              onMouseLeave={(e) => { e.target.style.background = "transparent"; e.target.style.color = "var(--ivory)"; }}
+            >
+              Nur notwendige
+            </button>
+            <button
+              onClick={accept}
+              style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 12,
+                padding: "10px 20px",
+                background: "var(--ivory)",
+                color: "#000000",
+                border: "1px solid var(--ivory)",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => { e.target.style.background = "var(--chi-chi-beige)"; e.target.style.borderColor = "var(--chi-chi-beige)"; }}
+              onMouseLeave={(e) => { e.target.style.background = "var(--ivory)"; e.target.style.borderColor = "var(--ivory)"; }}
+            >
+              Alle akzeptieren
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Main Component ───
 
 export default function ChiChiClubAcademy() {
@@ -2184,6 +2282,8 @@ export default function ChiChiClubAcademy() {
           </div>
         </div>
       </footer>
+
+      <CookieBanner />
     </>
   );
 }
