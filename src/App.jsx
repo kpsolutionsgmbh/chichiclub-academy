@@ -180,7 +180,7 @@ function Reveal({ children, delay = 0, style = {} }) {
 }
 
 // ─── Section Label ───
-function SectionLabel({ children }) {
+function SectionLabel({ children, onBeige = false }) {
   return (
     <span style={{
       display: "inline-block",
@@ -189,7 +189,7 @@ function SectionLabel({ children }) {
       letterSpacing: "0.12em",
       textTransform: "uppercase",
       color: "#000000",
-      background: "var(--chi-chi-beige)",
+      background: onBeige ? "var(--ivory)" : "var(--chi-chi-beige)",
       padding: "6px 14px",
       marginBottom: 20,
     }}>
@@ -1194,7 +1194,7 @@ export default function ChiChiClubAcademy() {
         }
 
         .container {
-          max-width: 1200px;
+          max-width: 1360px;
           margin: 0 auto;
           padding: 0 24px;
         }
@@ -1219,10 +1219,32 @@ export default function ChiChiClubAcademy() {
         }
 
         /* Hero results marquee */
+        .results-marquee-wrap {
+          position: relative;
+          overflow: hidden;
+        }
+        .results-marquee-wrap::before,
+        .results-marquee-wrap::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 60px;
+          z-index: 2;
+          pointer-events: none;
+        }
+        .results-marquee-wrap::before {
+          left: 0;
+          background: linear-gradient(to right, var(--ivory), transparent);
+        }
+        .results-marquee-wrap::after {
+          right: 0;
+          background: linear-gradient(to left, var(--ivory), transparent);
+        }
         .results-track {
           display: flex;
           gap: 12px;
-          animation: resultsMarquee 20s linear infinite;
+          animation: resultsMarquee 25s linear infinite;
         }
         @keyframes resultsMarquee {
           0% { transform: translateX(0); }
@@ -1373,7 +1395,7 @@ export default function ChiChiClubAcademy() {
             </div>
 
             {/* Results marquee column */}
-            <div style={{ overflow: "hidden", borderRadius: 0 }}>
+            <div className="results-marquee-wrap">
               <div className="results-track">
                 {[IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4, IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4].map((src, i) => (
                   <img
@@ -1381,8 +1403,8 @@ export default function ChiChiClubAcademy() {
                     src={src}
                     alt="Microblading Ergebnis"
                     style={{
-                      width: 220,
-                      height: 280,
+                      width: 300,
+                      height: 400,
                       objectFit: "cover",
                       flexShrink: 0,
                     }}
@@ -1392,43 +1414,7 @@ export default function ChiChiClubAcademy() {
             </div>
           </div>
 
-          {/* Key facts */}
-          <Reveal delay={0.2}>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: 1,
-              background: "#000000",
-              marginTop: 80,
-            }}>
-              {[
-                { num: "4 Tage", label: "Intensivausbildung" },
-                { num: "6–12", label: "Teilnehmerinnen pro Kurs" },
-                { num: "20+", label: "Behandlungen im Starterkit" },
-                { num: "6 Monate", label: "Post-Academy Support" },
-              ].map((fact, i) => (
-                <div key={i} style={{
-                  background: "var(--ivory)",
-                  padding: "32px 24px",
-                  textAlign: "center",
-                }}>
-                  <p style={{
-                    fontFamily: "var(--font-headline)",
-                    fontWeight: 700,
-                    fontSize: 24,
-                    color: "#000000",
-                    marginBottom: 4,
-                    lineHeight: 1.15,
-                  }}>
-                    {fact.num}
-                  </p>
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000" }}>
-                    {fact.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+          {/* Key facts moved to before Schulungen */}
         </div>
       </section>
 
@@ -1475,7 +1461,7 @@ export default function ChiChiClubAcademy() {
               alignItems: "center",
             }}>
               <div>
-                <SectionLabel>Die Technik</SectionLabel>
+                <SectionLabel onBeige>Die Technik</SectionLabel>
                 <h2 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1596,11 +1582,50 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
+      {/* ─── KEY FACTS ─── */}
+      <section style={{ padding: "0", background: "var(--ivory)" }}>
+        <div className="container">
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: 1,
+            background: "#000000",
+          }}>
+            {[
+              { num: "4 Tage", label: "Intensivausbildung" },
+              { num: "6–12", label: "Teilnehmerinnen pro Kurs" },
+              { num: "20+", label: "Behandlungen im Starterkit" },
+              { num: "6 Monate", label: "Post-Academy Support" },
+            ].map((fact, i) => (
+              <div key={i} style={{
+                background: "var(--ivory)",
+                padding: "32px 24px",
+                textAlign: "center",
+              }}>
+                <p style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: 24,
+                  color: "#000000",
+                  marginBottom: 4,
+                  lineHeight: 1.15,
+                }}>
+                  {fact.num}
+                </p>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000" }}>
+                  {fact.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── SCHULUNGEN ─── */}
       <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
-            <SectionLabel>Schulungen</SectionLabel>
+            <SectionLabel onBeige>Schulungen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1627,7 +1652,6 @@ export default function ChiChiClubAcademy() {
                 display: "flex",
                 flexDirection: "column",
               }}>
-                <SectionLabel>Flagship</SectionLabel>
                 <h3 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1689,7 +1713,6 @@ export default function ChiChiClubAcademy() {
                 display: "flex",
                 flexDirection: "column",
               }}>
-                <SectionLabel>Masterclass</SectionLabel>
                 <h3 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1827,7 +1850,7 @@ export default function ChiChiClubAcademy() {
       <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
         <div className="container" style={{ maxWidth: 800 }}>
           <Reveal>
-            <SectionLabel>Dein Investment</SectionLabel>
+            <SectionLabel onBeige>Dein Investment</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1872,7 +1895,7 @@ export default function ChiChiClubAcademy() {
 
       {/* ─── FINAL CTA ─── */}
       <section style={{ padding: "var(--section-spacing) 0", background: "#000000" }}>
-        <div className="container" style={{ textAlign: "center" }}>
+        <div className="container" style={{ textAlign: "center", maxWidth: 900 }}>
           <Reveal>
             <h2 style={{
               fontFamily: "var(--font-headline)",
@@ -1880,8 +1903,7 @@ export default function ChiChiClubAcademy() {
               fontSize: "clamp(24px, 3.5vw, 44px)",
               lineHeight: 1.15,
               color: "var(--ivory)",
-              maxWidth: 640,
-              margin: "0 auto 24px",
+              margin: "0 auto 16px",
             }}>
               Bereit für den nächsten Schritt?
             </h2>
@@ -1890,7 +1912,6 @@ export default function ChiChiClubAcademy() {
               fontSize: 16,
               lineHeight: 1.7,
               color: "var(--ivory)",
-              maxWidth: 480,
               margin: "0 auto 40px",
             }}>
               Ein kurzes Gespräch. Keine Verpflichtung. Wir schauen gemeinsam, ob die Academy das Richtige für dich ist.
@@ -1905,7 +1926,7 @@ export default function ChiChiClubAcademy() {
                 fontFamily: "var(--font-headline)",
                 fontWeight: 700,
                 fontSize: 15,
-                padding: "16px 36px",
+                padding: "16px 40px",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
               }}
@@ -1914,6 +1935,40 @@ export default function ChiChiClubAcademy() {
             >
               Kostenlos beraten lassen
             </button>
+
+            {/* Trust element */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginTop: 32 }}>
+              <div style={{ display: "flex" }}>
+                {[IMG_AVATAR1, IMG_AVATAR2, IMG_AVATAR3].map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt=""
+                    style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                      border: "2px solid #000000",
+                      marginLeft: i > 0 ? -8 : 0,
+                      position: "relative",
+                      zIndex: 3 - i,
+                    }}
+                  />
+                ))}
+              </div>
+              <div>
+                <Stars count={5} size={13} color="#D4A853" />
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  color: "var(--ivory)",
+                  marginTop: 2,
+                }}>
+                  30+ zufriedene Teilnehmerinnen
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
