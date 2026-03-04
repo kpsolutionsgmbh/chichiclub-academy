@@ -1117,6 +1117,197 @@ function FunnelModal({ isOpen, onClose }) {
   );
 }
 
+// ─── Legal Page Layout ───
+function LegalPage({ title, children, onBack }) {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  return (
+    <div style={{ background: "var(--ivory)", minHeight: "100vh" }}>
+      <header style={{
+        padding: "20px 0",
+        borderBottom: "1px solid #000000",
+        background: "var(--ivory)",
+        position: "sticky",
+        top: 0,
+        zIndex: 100,
+      }}>
+        <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <a href="#" onClick={(e) => { e.preventDefault(); onBack(); }} style={{ display: "block" }}>
+            <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 16 }} />
+          </a>
+          <button
+            onClick={onBack}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              color: "#000000",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              textDecoration: "underline",
+            }}
+          >
+            Zurück
+          </button>
+        </div>
+      </header>
+      <main style={{ padding: "60px 0 120px" }}>
+        <div className="container" style={{ maxWidth: 800 }}>
+          <h1 style={{
+            fontFamily: "var(--font-headline)",
+            fontWeight: 700,
+            fontSize: "clamp(28px, 4vw, 48px)",
+            lineHeight: 1.15,
+            color: "#000000",
+            marginBottom: 48,
+          }}>
+            {title}
+          </h1>
+          <div style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 15,
+            lineHeight: 1.8,
+            color: "#000000",
+          }}>
+            {children}
+          </div>
+        </div>
+      </main>
+      <footer style={{ padding: "40px 0", background: "#000000" }}>
+        <div className="container" style={{ textAlign: "center" }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ivory)", opacity: 0.4 }}>
+            © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// ─── Impressum Page ───
+function ImpressumPage({ onBack }) {
+  return (
+    <LegalPage title="Impressum" onBack={onBack}>
+      <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16, marginTop: 0 }}>
+        Angaben gemäß § 5 TMG
+      </h2>
+      <p style={{ marginBottom: 24 }}>
+        Chi Chi GmbH<br />
+        Amelungstr 5<br />
+        20354 Hamburg
+      </p>
+
+      <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16 }}>
+        Kontakt
+      </h2>
+      <p style={{ marginBottom: 24 }}>
+        Telefon: 0176 66883150<br />
+        E-Mail: hi@jettescherzer.com
+      </p>
+
+      <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16 }}>
+        Vertreten durch
+      </h2>
+      <p style={{ marginBottom: 24 }}>
+        Jeanette Scherzer
+      </p>
+
+      <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16 }}>
+        Handelsregister
+      </h2>
+      <p>
+        HRB 173534
+      </p>
+    </LegalPage>
+  );
+}
+
+// ─── Datenschutz Page ───
+function DatenschutzPage({ onBack }) {
+  const sectionHeading = { fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16, marginTop: 40 };
+  return (
+    <LegalPage title="Datenschutzerklärung" onBack={onBack}>
+      <p style={{ marginBottom: 8, opacity: 0.5, fontSize: 13 }}>Stand 25. November 2021</p>
+      <p style={{ marginBottom: 24 }}>
+        Durch die Nutzung unserer Website erklären Sie sich mit der Erhebung, Verarbeitung und Nutzung von Daten gemäß der nachfolgenden Beschreibung einverstanden. Unsere Website kann grundsätzlich ohne Registrierung besucht werden. Dabei werden Daten wie beispielsweise aufgerufene Seiten bzw. Namen der abgerufenen Datei, Datum und Uhrzeit zu statistischen Zwecken auf dem Server gespeichert, ohne dass diese Daten unmittelbar auf Ihre Person bezogen werden. Personenbezogene Daten, insbesondere Name, Adresse oder E-Mail-Adresse werden soweit möglich auf freiwilliger Basis erhoben. Ohne Ihre Einwilligung erfolgt keine Weitergabe der Daten an Dritte.
+      </p>
+
+      <h2 style={sectionHeading}>Datenübermittlung und -protokollierung zu systeminternen und statistischen Zwecken</h2>
+      <p style={{ marginBottom: 24 }}>
+        Ihr Internet-Browser übermittelt beim Zugriff auf unsere Webseite aus technischen Gründen automatisch Daten an unseren Webserver. Es handelt sich dabei unter anderem um Datum und Uhrzeit des Zugriffs, URL der verweisenden Webseite, abgerufene Datei, Menge der gesendeten Daten, Browsertyp und -version, Betriebssystem sowie Ihre IP-Adresse. Diese Daten werden getrennt von anderen Daten, die Sie im Rahmen der Nutzung unseres Angebotes eingeben, gespeichert. Eine Zuordnung dieser Daten zu einer bestimmten Person ist uns nicht möglich. Diese Daten werden zu statistischen Zwecken ausgewertet und im Anschluss gelöscht.
+      </p>
+
+      <h2 style={sectionHeading}>Bestandsdaten</h2>
+      <p style={{ marginBottom: 24 }}>
+        Sofern zwischen Ihnen und uns ein Vertragsverhältnis begründet, inhaltlich ausgestaltet oder geändert werden soll, erheben und verwenden wir personenbezogene Daten von Ihnen, soweit dies zu diesen Zwecken erforderlich ist. Auf Anordnung der zuständigen Stellen dürfen wir im Einzelfall Auskunft über diese Daten (Bestandsdaten) erteilen, soweit dies für Zwecke der Strafverfolgung, zur Gefahrenabwehr, zur Erfüllung der gesetzlichen Aufgaben der Verfassungsschutzbehörden oder des Militärischen Abschirmdienstes oder zur Durchsetzung der Rechte am geistigen Eigentum erforderlich ist.
+      </p>
+
+      <h2 style={sectionHeading}>Nutzungsdaten</h2>
+      <p style={{ marginBottom: 24 }}>
+        Wir erheben und verwenden personenbezogene Daten von Ihnen, soweit dies erforderlich ist, um die Inanspruchnahme unseres Internetangebotes zu ermöglichen oder abzurechnen (Nutzungsdaten). Dazu gehören insbesondere Merkmale zu Ihrer Identifikation und Angaben zu Beginn und Ende sowie des Umfangs der Nutzung unseres Angebotes. Für Zwecke der Werbung, der Marktforschung und zur bedarfsgerechten Gestaltung unseres Internetangebotes dürfen wir bei Verwendung von Pseudonymen Nutzungsprofile erstellen. Sie haben das Recht, dieser Verwendung Ihrer Daten zu widersprechen. Die Nutzungsprofile dürfen wir nicht mit Daten über den Träger des Pseudonyms zusammenführen. Auf Anordnung der zuständigen Stellen dürfen wir im Einzelfall Auskunft über diese Daten (Bestandsdaten) erteilen, soweit dies für Zwecke der Strafverfolgung, zur Gefahrenabwehr, zur Erfüllung der gesetzlichen Aufgaben der Verfassungsschutzbehörden oder des Militärischen Abschirmdienstes oder zur Durchsetzung der Rechte am geistigen Eigentum erforderlich ist.
+      </p>
+
+      <h2 style={sectionHeading}>Cookies</h2>
+      <p style={{ marginBottom: 24 }}>
+        Um den Funktionsumfang unseres Internetangebotes zu erweitern und die Nutzung für Sie komfortabler zu gestalten, verwenden wir so genannte „Cookies". Mit Hilfe dieser „Cookies" können bei dem Aufruf unserer Webseite Daten auf Ihrem Rechner gespeichert werden. Sie haben die Möglichkeit, das Abspeichern von Cookies auf Ihrem Rechner durch entsprechende Einstellungen in Ihrem Browser zu verhindern. Hierdurch könnten allerdings der Funktionsumfang unseres Angebotes eingeschränkt werden. Des Weiteren hat Chi Chi Club keinen Einfluss auf Links, die von Chi Chi Club ausgehen. Webseiten der Partner von Chi Chi Club legen möglicherweise eigene Cookies oder sonstige Dateien auf Ihrem Computer ab, erheben Daten oder fordern personenbezogene Daten von Ihnen an.
+      </p>
+
+      <h2 style={sectionHeading}>Auskunftsrecht</h2>
+      <p style={{ marginBottom: 24 }}>
+        Als Nutzer unseres Internetangebotes haben Sie das Recht, von uns Auskunft über die zu Ihrer Person oder zu Ihrem Pseudonym gespeicherten Daten zu verlangen. Auf Ihr Verlangen kann die Auskunft auch elektronisch erteilt werden.
+      </p>
+
+      <h2 style={sectionHeading}>Datenschutzerklärung für Instagram</h2>
+      <p style={{ marginBottom: 24 }}>
+        Unsere Website verwendet Funktionen von Instagram, LLC ATTN: Arbitration Opt-out 1601 Willow Rd. Menlo Park, CA 94025. Bei Aufruf unserer Seiten mit Instagram-Plug-Ins wird eine Verbindung zwischen Ihrem Browser und den Servern von Instagram aufgebaut. Dabei werden bereits Daten an Instagram übertragen. Besitzen Sie einen Instagram-Account, können diese Daten damit verknüpft werden. Wenn Sie keine Zuordnung dieser Daten zu Ihrem Instagram-Account wünschen, loggen Sie sich bitte vor dem Besuch unserer Seite bei Instagram aus. Interaktionen, insbesondere das Nutzen einer Kommentarfunktion oder das Anklicken eines „Like"- oder „Teilen"-Buttons werden ebenfalls an Instagram weitergegeben. Mehr erfahren Sie unter https://www.instagram.com/about/legal/privacy/.
+      </p>
+
+      <h2 style={sectionHeading}>Änderungen unserer Datenschutzerklärung</h2>
+      <p>
+        Unsere Datenschutzerklärung kann sich ändern. Im Fall einer Änderung werden wir Ihre Rechte jedoch nicht ohne Ihre ausdrückliche Einwilligung einschränken. Wir werden sämtliche Änderungen unserer Datenschutzerklärung auf unserer Website veröffentlichen. Ändern wir die Datenschutzerklärung in wichtigen Teilen, werden wir Sie sogar per E-Mail über unsere Änderungen unterrichten. Sämtliche Versionen unserer Datenschutzerklärung können Sie auf Nachfrage bei uns einsehen, soweit diese Ihr Nutzungs- oder Vertragsverhältnis betreffen.
+      </p>
+    </LegalPage>
+  );
+}
+
+// ─── Cookies Page ───
+function CookiesPage({ onBack }) {
+  const sectionHeading = { fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 20, marginBottom: 16, marginTop: 40 };
+  return (
+    <LegalPage title="Cookie-Richtlinie" onBack={onBack}>
+      <h2 style={{ ...sectionHeading, marginTop: 0 }}>Was sind Cookies?</h2>
+      <p style={{ marginBottom: 24 }}>
+        Cookies sind kleine Textdateien, die beim Besuch unserer Webseite auf Ihrem Rechner gespeichert werden. Sie dienen dazu, unsere Webseite nutzerfreundlicher, effektiver und sicherer zu machen.
+      </p>
+
+      <h2 style={sectionHeading}>Welche Cookies verwenden wir?</h2>
+
+      <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 16, marginBottom: 8, marginTop: 24 }}>
+        Notwendige Cookies
+      </h3>
+      <p style={{ marginBottom: 24 }}>
+        Diese Cookies sind für den Betrieb der Webseite unbedingt erforderlich. Sie ermöglichen grundlegende Funktionen wie die Seitennavigation und den Zugang zu geschützten Bereichen. Ohne diese Cookies kann die Webseite nicht ordnungsgemäß funktionieren.
+      </p>
+
+      <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 16, marginBottom: 8, marginTop: 24 }}>
+        Analyse-Cookies
+      </h3>
+      <p style={{ marginBottom: 24 }}>
+        Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Webseite interagieren, indem sie Informationen anonym sammeln und melden. Dies hilft uns, unser Angebot kontinuierlich zu verbessern.
+      </p>
+
+      <h2 style={sectionHeading}>Ihre Wahlmöglichkeiten</h2>
+      <p style={{ marginBottom: 24 }}>
+        Sie haben die Möglichkeit, das Abspeichern von Cookies auf Ihrem Rechner durch entsprechende Einstellungen in Ihrem Browser zu verhindern. Hierdurch könnte allerdings der Funktionsumfang unseres Angebotes eingeschränkt werden. Sie können Ihre Cookie-Einstellungen jederzeit über unseren Cookie-Banner anpassen.
+      </p>
+
+      <h2 style={sectionHeading}>Kontakt</h2>
+      <p>
+        Bei Fragen zu unserer Cookie-Richtlinie können Sie uns unter hi@jettescherzer.com kontaktieren.
+      </p>
+    </LegalPage>
+  );
+}
+
 // ─── Cookie Banner ───
 function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -1219,8 +1410,14 @@ function CookieBanner() {
 
 export default function ChiChiClubAcademy() {
   const [funnelOpen, setFunnelOpen] = useState(false);
+  const [page, setPage] = useState("home");
 
   const openFunnel = () => setFunnelOpen(true);
+  const goHome = () => { setPage("home"); window.scrollTo(0, 0); };
+
+  if (page === "impressum") return <ImpressumPage onBack={goHome} />;
+  if (page === "datenschutz") return <DatenschutzPage onBack={goHome} />;
+  if (page === "cookies") return <CookiesPage onBack={goHome} />;
 
   return (
     <>
@@ -2266,9 +2463,9 @@ export default function ChiChiClubAcademy() {
               fontFamily: "var(--font-body)",
               fontSize: 13,
             }}>
-              <a href="#" style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Impressum</a>
-              <a href="#" style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Datenschutz</a>
-              <a href="#" style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Cookies</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); setPage("impressum"); }} style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Impressum</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); setPage("datenschutz"); }} style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Datenschutz</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); setPage("cookies"); }} style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Cookies</a>
             </div>
             <p style={{
               fontFamily: "var(--font-body)",
