@@ -36,239 +36,98 @@ const IMG_RESULT4 = "/images/result4.jpg";
 const logoDataUrl = "data:image/webp;base64,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";
 
 
+// ─── Data ───
 
-
-
-
-
-// ─── Testimonials ───
-const testimonial_whale = {
-  name: "Anna S.",
-  role: "Jetzt selbstständige Microblading-Artistin",
-  text: "Nach Tag 4 hatte ich mein erstes echtes Modell behandelt und ein Portfolio-Foto gemacht. Nach 3 Wochen kam meine erste zahlende Kundin – 550 € für eine Behandlung.",
-  avatar: IMG_AVATAR2,
-};
-const testimonial_afterPain = {
-  name: "Sophie M.",
-  role: "Ehemalige Kosmetikerin, jetzt PMU-Artistin",
-  text: "Ich hatte einen vollen Kalender, aber am Monatsende war trotzdem zu wenig da. Eine einzige Microblading-Behandlung bringt mir jetzt mehr als ein ganzer Tag mit Gesichtsbehandlungen.",
-  avatar: IMG_AVATAR1,
-};
-const testimonial_afterValue = {
-  name: "Laura K.",
-  role: "Kosmetikerin mit PMU-Zusatzangebot",
-  text: "Ich hatte Angst, dass 4 Tage nicht reichen. Aber nach der Schulung konnte ich sofort loslegen – und den 6-Monats-Support nutze ich bis heute aktiv.",
-  avatar: IMG_AVATAR3,
-};
-const testimonial_afterHow = {
-  name: "Sophie M.",
-  role: "Ehemalige Kosmetikerin, jetzt PMU-Artistin",
-  text: "Der Business-Tag war für mich der Game-Changer. Ich wusste plötzlich, was ich verlangen kann, wie ich Kundinnen gewinne und wie ich mich rechtlich absichere.",
-  avatar: IMG_AVATAR1,
-};
-const testimonial_afterVergleich = {
-  name: "Anna S.",
-  role: "Jetzt selbstständige Microblading-Artistin",
-  text: "Ich hatte vorher eine andere Schulung gemacht – reine Theorie, kein echtes Modell, kein Support danach. Bei Jette war alles anders. Hier lernt man wirklich, wie es in der Praxis funktioniert.",
-  avatar: IMG_AVATAR2,
-};
-const testimonial_afterRoi = {
-  name: "Laura K.",
-  role: "Kosmetikerin mit PMU-Zusatzangebot",
-  text: "Meine Investition hatte ich nach 3 Behandlungen wieder drin. Jetzt mache ich mit Microblading mehr Umsatz als mit allen anderen Services zusammen.",
-  avatar: IMG_AVATAR3,
-};
-
-// ─── How It Works Data ───
-const howItWorks = [
-  { day: "Tag 1", title: "Theorie & Grundlagen", text: "Hautkunde, Farbtheorie, Hygiene, Werkzeuge – du verstehst, warum die Technik funktioniert, bevor du sie anwendest.", img: IMG_VAL1 },
-  { day: "Tag 2", title: "Erste Striche an echten Modellen", text: "Kein Kunsthaut-Üben. Du arbeitest direkt an echten Menschen und bekommst Live-Feedback von Jette.", img: IMG_VAL2 },
-  { day: "Tag 3", title: "Vertiefung & eigener Stil", text: "Du verfeinerst deine Technik, entwickelst deinen Signature-Stil und behandelst weitere Modelle.", img: IMG_VAL3 },
-  { day: "Tag 4", title: "Dein Business-Tag", text: "Preiskalkulation, Social Media, Kundengewinnung, Recht – du gehst mit einem fertigen Business-Plan nach Hause.", img: IMG_VAL4 },
-];
-
-// ─── Pain Points Data ───
-const painPoints = [
+const testimonials = [
   {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-    ),
-    title: "Voller Kalender, aber am Ende bleibt zu wenig",
-    text: "Du arbeitest den ganzen Tag – Gesichtsbehandlungen, Wimpern, Laser – aber am Monatsende fragst du dich, wofür eigentlich.",
+    name: "Lisa M.",
+    role: "Kosmetikerin, Düsseldorf",
+    text: "Ich habe vorher zwei andere Schulungen gemacht. Die Technik hier ist eine andere Liga. Nach 25 Modellen habe ich mich getraut, echte Kundinnen zu nehmen — und die Ergebnisse waren sofort überzeugend.",
+    avatar: IMG_AVATAR1,
   },
   {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-    ),
-    title: "Klassische Treatments haben eine Umsatzgrenze",
-    text: "50–80 € pro Behandlung, 30 Minuten Vor- und Nachbereitung. Mehr Umsatz geht nur mit mehr Stunden – aber dein Tag hat ein Limit.",
+    name: "Sarah K.",
+    role: "Studio-Inhaberin, München",
+    text: "Microblading fehlte in meinem Studio. Nach der Schulung habe ich innerhalb von 3 Monaten einen komplett neuen Kundenstamm dafür aufgebaut. Das Starterkit hat mir den Einstieg extrem erleichtert.",
+    avatar: IMG_AVATAR2,
   },
   {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    ),
-    title: "Du brauchst einen Service, der Premium-Preise rechtfertigt",
-    text: "Deine Kundinnen würden mehr zahlen – wenn du etwas anbietest, das den Preis wert ist. Aber was?",
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    ),
-    title: "Selbst beibringen? YouTube reicht nicht",
-    text: "Microblading-Tutorials gibt es überall. Aber ohne echtes Feedback, ohne Korrektur, ohne Praxis an echten Menschen – wirst du nie auf Profi-Niveau kommen.",
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    ),
-    title: "Andere Schulungen liefern Theorie, aber keine Praxis",
-    text: "Die meisten Microblading-Kurse arbeiten nur an Kunsthaut. Kein echtes Modell, kein Portfolio, kein Support nach der Schulung.",
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    ),
-    title: "Ohne Zertifikat fehlt das Vertrauen",
-    text: "Kundinnen zahlen Premium nur, wenn sie dir vertrauen. Ohne anerkanntes Zertifikat und nachweisbare Ausbildung bleibst du unsichtbar.",
+    name: "Anna T.",
+    role: "Quereinsteigerin, Berlin",
+    text: "Ich kam aus der Medizin und hatte null Beauty-Erfahrung. Jette und ihr Team haben mir alles beigebracht — Technik, Beratung, Business. Heute arbeite ich Vollzeit als Microblading-Artistin.",
+    avatar: IMG_AVATAR3,
   },
 ];
 
-// ─── Value Outcomes Data ───
-const values = [
-  {
-    title: "Eine Technik, die kein anderer unterrichtet",
-    text: "Hyperrealistic Microblading sieht so natürlich aus, dass selbst Profis keinen Unterschied sehen. Genau deshalb zahlen Kundinnen Premium-Preise dafür.",
-  },
-  {
-    title: "Dein kompletter Business-Plan steht nach Tag 4",
-    text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung, rechtliche Absicherung – du gehst mit einem fertigen Plan nach Hause, nicht mit offenen Fragen.",
-  },
-  {
-    title: "6 Monate persönliches Feedback per WhatsApp",
-    text: "Jede Behandlung, die du nach der Schulung machst, kannst du uns schicken. Wir geben dir Feedback und helfen dir, schnell auf Profi-Niveau zu kommen.",
-  },
-  {
-    title: "Starterkit für deine ersten 20 Kundinnen",
-    text: "Pigmente, Klingen, Werkzeuge – alles, was du brauchst, um direkt nach der Schulung loszulegen. Keine teuren Fehlkäufe, keine Unsicherheit beim Material.",
-  },
-  {
-    title: "Du gehst mit echten Ergebnissen nach Hause",
-    text: "Während der Schulung arbeitest du an echten Modellen. Das heißt: echte Fotos für dein Portfolio und echtes Selbstvertrauen für deine ersten Kundinnen.",
-  },
-  {
-    title: "Ein Zertifikat, das Vertrauen schafft",
-    text: "Das Chi Chi Club Zertifikat steht für die höchste Qualität im Microblading. Deine Kundinnen wissen sofort: Hier bin ich in den besten Händen.",
-  },
-];
-
-// ─── Steps Data ───
-const steps = [
-  {
-    num: "1",
-    title: "Das Beratungsgespräch",
-    text: "Wir nehmen uns persönlich Zeit für dich und gehen gemeinsam durch, ob die Academy der richtige Schritt für dich ist.",
-  },
-  {
-    num: "2",
-    title: "Die Academy",
-    text: "In kleinen Gruppen (max. 6-12 Artists) lernst du intensiv und praxisnah. Du arbeitest an echten Modellen und verlässt die Academy mit einem Zertifikat.",
-  },
-  {
-    num: "3",
-    title: "Die Modelphase",
-    text: "Du setzt das Gelernte um und baust dein Portfolio auf. In der WhatsApp-Gruppe sind wir für dich da und geben Feedback.",
-  },
-  {
-    num: "4",
-    title: "Deine Karriere",
-    text: "Du baust dein eigenes Geschäft auf, gewinnst Kundinnen und lebst die kreative Freiheit, von der du geträumt hast.",
-  },
-];
-
-// ─── Differentiators Data ───
-const diffs = [
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    ),
-    title: "Die Ästhetik & Technik",
-    text: "Wir stehen für einen Stil, der in Deutschland einzigartig ist: hyperrealistisch, natürlich, understatement. Unsere Gründerin Jette war die Erste, die diesen Stil nach Deutschland gebracht hat.",
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-    ),
-    title: "Das Rundum-Sorglos-Paket",
-    text: "Von der Technik über das Business-Wissen bis zum Premium-Starterkit und dem 6-monatigen Support – wir haben an alles gedacht, damit du dich auf das Wesentliche konzentrieren kannst.",
-  },
-  {
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    ),
-    title: "Die Community & der Support",
-    text: "Wir glauben nicht an Konkurrenz, sondern an Community. Unser Support endet nicht mit dem Zertifikat; wir begleiten dich, bis du dich sicher und selbstbewusst fühlst.",
-  },
-];
-
-// ─── FAQ Data ───
 const faqs = [
   {
-    q: "Brauche ich Vorkenntnisse?",
-    a: "Nein. Ob kompletter Neuling, Kosmetikerin oder Quereinsteigerin – unsere Schulung ist so aufgebaut, dass du bei null anfangen kannst. Viele unserer erfolgreichsten Absolventinnen hatten vorher keine Erfahrung im PMU-Bereich.",
+    q: "Brauche ich Vorerfahrung?",
+    a: "Nein. Viele unserer Absolventinnen kommen aus völlig anderen Bereichen — von der Medizin bis zum Büro. Du brauchst ein Auge für Ästhetik, Lust auf Handwerk und den Willen, zu üben. Den Rest bringen wir dir bei.",
   },
   {
-    q: "Was kostet die Schulung?",
-    a: "Die genauen Preise besprechen wir gerne im persönlichen Beratungsgespräch. So können wir auch auf deine individuelle Situation eingehen und die passende Schulung für dich finden.",
+    q: "Reichen 4 Tage wirklich aus?",
+    a: "Die 4 Tage sind dein Fundament. Danach beginnt die Modelphase — du übst an echten Modellen, mit unserem Support. Im Durchschnitt brauchst du 20–30 Modelle, bis die Technik sitzt. Wir begleiten dich 6 Monate lang.",
   },
   {
-    q: "Wie viele Teilnehmerinnen sind pro Kurs dabei?",
-    a: "Wir halten die Gruppen bewusst klein: 6 bis maximal 12 Teilnehmerinnen pro Kurs. So garantieren wir persönliche Betreuung und genug Zeit für individuelle Fragen.",
+    q: "Was ist im Starterkit enthalten?",
+    a: "Alles für deine ersten 20 Behandlungen: Ringlicht, Pigmente, Klingen, Microbrushes, Inkrings, Eyebrow Pencil, Lip Applicators, Spreadsheets, Cuttermesser und ein Handbuch mit allem nochmal im Detail.",
   },
   {
-    q: "Was genau ist im Starterkit enthalten?",
-    a: "Alles, was du für deine ersten 20 Behandlungen brauchst: Ringlicht, Pigmente, Klingen, Spreadsheets, Inkrings, Cutter-Messer, Eyebrow Pencils, Microbrushes, Lip Applicators und ein ausführliches Handbuch mit allem nochmal im Detail.",
+    q: "Kann ich davon leben?",
+    a: "Eine Microblading-Behandlung kostet zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Kundinnen hast du dein Investment zurück. Wie schnell du dahin kommst, hängt von dir ab — aber du bekommst von uns auch Marketing- und Business-Know-how.",
   },
   {
-    q: "Wie läuft der Support nach der Schulung?",
-    a: "Du wirst Teil einer exklusiven WhatsApp-Gruppe mit 2 festen Ansprechpartnerinnen – 6 Monate lang. Du kannst jederzeit Fragen stellen, Fotos deiner Arbeit schicken und bekommst ehrliches Feedback.",
+    q: "Was passiert nach der Schulung?",
+    a: "Du bekommst 6 Monate WhatsApp-Support mit 2 festen Ansprechpartnern. Du schickst Fotos, wir geben Feedback. Sobald deine Ergebnisse den Chi Chi Club Standard erreichen, kannst du sie einreichen und das Qualitätssiegel verwenden.",
   },
   {
-    q: "Wo findet der Kurs statt?",
-    a: "Alle Schulungen finden in unserem Chi Chi Club Studio in Hamburg statt – dem gleichen Ort, an dem wir täglich unsere Kundinnen behandeln. Kein anonymer Seminarraum, sondern ein echtes Premium-Studio.",
-  },
-  {
-    q: "Wie schnell kann ich danach Geld verdienen?",
-    a: "Schon mit 10 Kundinnen hast du dein Investment zurück. Viele unserer Absolventinnen starten direkt nach der Schulung mit Modellen und haben innerhalb weniger Wochen zahlende Kundinnen.",
-  },
-  {
-    q: "Was ist, wenn ich nicht aus Hamburg komme?",
-    a: "Viele unserer Teilnehmerinnen reisen aus ganz Deutschland und dem DACH-Raum an. Hamburg ist gut angebunden und wir helfen dir gerne bei Hotel-Empfehlungen in Studio-Nähe.",
-  },
-  {
-    q: "Gibt es Ratenzahlung?",
-    a: "Sprich uns gerne im Beratungsgespräch darauf an – wir finden gemeinsam eine Lösung, die zu deiner Situation passt.",
-  },
-  {
-    q: "Wie oft finden die Kurse statt?",
-    a: "Die Microblading Fundamentals Schulung findet 3–4 Mal pro Jahr statt, die Freckle Masterclass alle 2 Monate. Die Plätze sind begrenzt und oft schnell ausgebucht.",
+    q: "Gibt es auch eine Freckle-Schulung?",
+    a: "Ja. Die Freckle Masterclass ist ein 1-Tages-Kurs für 1.200€ netto. Du lernst hyperrealistische Sommersprossen-Tattoos, arbeitest an 2 echten Modellen und bekommst ein Starterkit und 6 Monate Support. Alle 2 Monate verfügbar.",
   },
 ];
 
-// ─── Authority Logos (placeholder text-based) ───
 const logos = [
-  { name: "Vogue", src: LOGO_VOGUE },
-  { name: "Brigitte", src: LOGO_BRIGITTE },
-  { name: "Cosmopolitan", src: LOGO_COSMOPOLITAN },
-  { name: "Tush", src: LOGO_TUSH },
-  { name: "Grazia", src: LOGO_GRAZIA },
-  { name: "InStyle", src: LOGO_INSTYLE },
-  { name: "Jolie", src: LOGO_JOLIE },
-  { name: "trèsCLICK", src: LOGO_TRESCLICK },
-  { name: "Welt am Sonntag", src: LOGO_WELT },
-  { name: "Women\'s Health", src: LOGO_WOMENSHEALTH },
+  { src: LOGO_VOGUE, alt: "Vogue" },
+  { src: LOGO_BRIGITTE, alt: "Brigitte" },
+  { src: LOGO_COSMOPOLITAN, alt: "Cosmopolitan" },
+  { src: LOGO_TUSH, alt: "Tush" },
+  { src: LOGO_GRAZIA, alt: "Grazia" },
+  { src: LOGO_INSTYLE, alt: "InStyle" },
+  { src: LOGO_JOLIE, alt: "Jolie" },
+  { src: LOGO_TRESCLICK, alt: "TresClick" },
+  { src: LOGO_WELT, alt: "Welt" },
+  { src: LOGO_WOMENSHEALTH, alt: "Women's Health" },
 ];
 
-// ─── Scroll Reveal Hook ───
+const howItWorks = [
+  {
+    day: "Tag 1",
+    title: "Theorie & Grundlagen",
+    text: "Hautaufbau, Hygiene, erste Live-Demo durch Jette. Übung auf Silikonhaut.",
+    img: IMG_VAL1,
+  },
+  {
+    day: "Tag 2",
+    title: "Farbtheorie & Materialien",
+    text: "Pigmente, Nadeln, Browmapping. Du testest verschiedene Techniken auf Silikonhaut.",
+    img: IMG_VAL2,
+  },
+  {
+    day: "Tag 3",
+    title: "Praxis an echten Modellen",
+    text: "Beratungsgespräch, Setup, der komplette Prozess. Dein erstes echtes Modell.",
+    img: IMG_VAL3,
+  },
+  {
+    day: "Tag 4",
+    title: "Business & Abschluss",
+    text: "Zweites Modell, Social Media, Marketing, Kundengewinnung, Recht. Zertifikat.",
+    img: IMG_VAL4,
+  },
+];
+
+// ─── Hooks ───
+
 function useReveal(threshold = 0.15) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -276,8 +135,8 @@ function useReveal(threshold = 0.15) {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.unobserve(el); } },
-      { threshold, rootMargin: "0px 0px -60px 0px" }
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold }
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -285,202 +144,92 @@ function useReveal(threshold = 0.15) {
   return [ref, visible];
 }
 
-// ─── Reveal Wrapper ───
-function Reveal({ children, delay = 0, className = "", style = {} }) {
-  const [ref, visible] = useReveal(0.12);
+function Reveal({ children, delay = 0, style = {} }) {
+  const [ref, visible] = useReveal();
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "reveal--visible" : ""} ${className}`}
-      style={{ transitionDelay: `${delay}ms`, ...style }}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+        ...style,
+      }}
     >
       {children}
     </div>
   );
 }
 
-// ─── Inline Testimonial Component ───
-function InlineTestimonial({ testimonial }) {
-  return (
-    <Reveal>
-      <div style={{
-        maxWidth: 680,
-        margin: "0 auto",
-        padding: "64px 0",
-      }}>
-        <div style={{
-          position: "relative",
-          padding: "48px 40px 44px",
-          background: "var(--card)",
-          border: "1px solid var(--border)",
-        }}>
-          {/* Decorative top accent line */}
-          <div style={{ position: "absolute", top: 0, left: 40, right: 40, height: 2, background: "var(--foreground)", opacity: 0.08 }} />
+// ─── FAQ Components ───
 
-          {/* Quote mark – large, decorative */}
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" style={{ marginBottom: 20, opacity: 0.1 }}>
-            <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="var(--foreground)"/>
-            <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" fill="var(--foreground)"/>
-          </svg>
-
-          <p style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "clamp(14px, 1.3vw, 17px)",
-            color: "var(--foreground)",
-            lineHeight: 1.9,
-            marginBottom: 32,
-            fontStyle: "italic",
-          }}>
-            "{testimonial.text}"
-          </p>
-
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <img
-              src={testimonial.avatar}
-              alt={testimonial.name}
-              style={{
-                width: 52,
-                height: 52,
-                borderRadius: "50%",
-                objectFit: "cover",
-                border: "2px solid var(--background)",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-              }}
-            />
-            <div>
-              <p style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: 14,
-                color: "var(--foreground)",
-                marginBottom: 2,
-              }}>
-                {testimonial.name}
-              </p>
-              <p style={{
-                fontFamily: "var(--font-body)",
-                fontSize: 12,
-                color: "var(--muted-fg)",
-              }}>
-                {testimonial.role}
-              </p>
-            </div>
-
-            {/* 5 stars */}
-            <div style={{ marginLeft: "auto", display: "flex", gap: 3 }}>
-              {[...Array(5)].map((_, i) => (
-                <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#eab308" stroke="none">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                </svg>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </Reveal>
-  );
-}
-
-// ─── FAQ Accordion Item ───
-function FaqItem({ question, answer, number }) {
-  const [open, setOpen] = useState(false);
-
+function FaqItem({ question, answer, isOpen, onClick }) {
+  const contentRef = useRef(null);
   return (
     <div
       style={{
-        borderBottom: "1px solid var(--border)",
-        cursor: "pointer",
-        userSelect: "none",
+        borderBottom: "1px solid #000000",
       }}
-      onClick={() => setOpen(!open)}
     >
-      <div
+      <button
+        onClick={onClick}
         style={{
-          display: "flex",
-          alignItems: "center",
+          width: "100%",
           padding: "24px 0",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
           gap: 16,
+          textAlign: "left",
         }}
       >
-        {/* Number pill */}
-        <div
-          style={{
-            minWidth: 40,
-            height: 28,
-            borderRadius: 14,
-            background: open ? "var(--primary)" : "var(--card)",
-            border: open ? "none" : "1px solid var(--border)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
-            transition: "all 0.25s ease",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 12,
-              fontWeight: 600,
-              color: open ? "white" : "var(--muted-fg)",
-              transition: "color 0.25s ease",
-            }}
-          >
-            {number}
-          </span>
-        </div>
-
-        {/* Question text */}
-        <h3
+        <span
           style={{
             fontFamily: "var(--font-headline)",
             fontWeight: 700,
-            fontSize: "clamp(16px, 1.8vw, 20px)",
-            color: "var(--foreground)",
+            fontSize: "clamp(16px, 1.5vw, 18px)",
+            color: "#000000",
             lineHeight: 1.3,
-            flex: 1,
           }}
         >
           {question}
-        </h3>
-
-        {/* Chevron */}
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="var(--muted-fg)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        </span>
+        <span
           style={{
             flexShrink: 0,
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            width: 32,
+            height: 32,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: "var(--font-body)",
+            fontSize: 20,
+            color: "#000000",
             transition: "transform 0.3s ease",
+            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
           }}
         >
-          <polyline points="6 9 12 15 18 9"/>
-        </svg>
-      </div>
-
-      {/* Answer */}
+          +
+        </span>
+      </button>
       <div
+        ref={contentRef}
         style={{
-          maxHeight: open ? 300 : 0,
+          maxHeight: isOpen ? (contentRef.current?.scrollHeight || 500) + "px" : "0px",
           overflow: "hidden",
-          transition: "max-height 0.4s ease, opacity 0.3s ease",
-          opacity: open ? 1 : 0,
+          transition: "max-height 0.4s ease",
         }}
       >
         <p
           style={{
             fontFamily: "var(--font-body)",
-            fontSize: 14,
-            color: "var(--muted-fg)",
-            lineHeight: 1.8,
+            fontSize: 16,
+            color: "#000000",
+            lineHeight: 1.7,
             paddingBottom: 24,
-            paddingLeft: 56,
             maxWidth: 640,
           }}
         >
@@ -491,108 +240,20 @@ function FaqItem({ question, answer, number }) {
   );
 }
 
-
-// ─── FAQ Accordion ───
-function FaqAccordion({ faqs }) {
-  const [openIdx, setOpenIdx] = useState(null);
-
+function FaqAccordion({ items }) {
+  const [openIndex, setOpenIndex] = useState(null);
   return (
-    <div
-      style={{
-        maxWidth: 800,
-        margin: "0 auto",
-        display: "flex",
-        flexDirection: "column",
-        gap: 0,
-      }}
-    >
-      {faqs.map((f, i) => {
-        const isOpen = openIdx === i;
-        return (
-          <div
-            key={i}
-            style={{
-              borderBottom: "1px solid var(--border)",
-            }}
-          >
-            <button
-              onClick={() => setOpenIdx(isOpen ? null : i)}
-              style={{
-                width: "100%",
-                padding: "20px 0",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 16,
-                textAlign: "left",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: "clamp(14px, 1.5vw, 17px)",
-                  color: "var(--foreground)",
-                  lineHeight: 1.3,
-                }}
-              >
-                {f.q}
-              </h3>
-              <div style={{
-                width: 32,
-                height: 32,
-                borderRadius: "50%",
-                background: isOpen ? "var(--primary)" : "var(--card)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-                transition: "all 0.3s",
-              }}>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke={isOpen ? "white" : "var(--foreground)"}
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  style={{
-                    transition: "transform 0.3s",
-                    transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-                  }}
-                >
-                  <line x1="12" y1="5" x2="12" y2="19"/>
-                  <line x1="5" y1="12" x2="19" y2="12"/>
-                </svg>
-              </div>
-            </button>
-            <div
-              style={{
-                maxHeight: isOpen ? 300 : 0,
-                overflow: "hidden",
-                transition: "max-height 0.35s ease",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 13,
-                  color: "var(--muted-fg)",
-                  lineHeight: 1.8,
-                  paddingBottom: 20,
-                  maxWidth: 680,
-                }}
-              >
-                {f.a}
-              </p>
-            </div>
-          </div>
-        );
-      })}
+    <div>
+      {items.map((item, i) => (
+        <FaqItem
+          key={i}
+          question={item.q}
+          answer={item.a}
+          isOpen={openIndex === i}
+          onClick={() => setOpenIndex(openIndex === i ? null : i)}
+          index={i}
+        />
+      ))}
     </div>
   );
 }
@@ -611,10 +272,10 @@ function FunnelModal({ isOpen, onClose }) {
       question: "Wo stehst du gerade?",
       subtext: "Damit wir dich optimal beraten können.",
       options: [
-        { value: "beginner", label: "Kompletter Neuling", desc: "Ich habe noch keine Erfahrung im Beauty-Bereich", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 7 5 4 5c0 5 3 7 8 7z"/><path d="M12 12c0-5 5-7 8-7 0 5-3 7-8 7z"/><path d="M12 22c-2 0-4-1-4-4"/><path d="M12 22c2 0 4-1 4-4"/></svg> },
-        { value: "kosmetik", label: "Kosmetikerin / Friseurin", desc: "Ich arbeite bereits in der Beauty-Branche", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="5"/><path d="M7 13c-2.5 1.5-4 4-4 7h18c0-3-1.5-5.5-4-7"/><path d="M15 3l2-1.5"/><path d="M15 3c.5.5 1.5 1 2.5.5"/><line x1="9" y1="7" x2="9.01" y2="7"/><line x1="15" y1="7" x2="15.01" y2="7"/><path d="M10 10c.5.5 1.5 1 2 1s1.5-.5 2-1"/></svg> },
-        { value: "pmu", label: "PMU-Erfahrung", desc: "Ich habe schon Permanent Make-up Erfahrung", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 3l-7.5 7.5"/><path d="M13.5 10.5L10 14l-1.5 5L3 21l2-5.5 5-1.5 3.5-3.5"/><path d="M18 6l-1.5-1.5"/><path d="M15 3l6 6"/><circle cx="6" cy="18" r="1"/></svg> },
-        { value: "other", label: "Quereinsteigerin", desc: "Ich komme aus einem ganz anderen Bereich", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg> },
+        { value: "beginner", label: "Kompletter Neuling", desc: "Noch keine Erfahrung im Beauty-Bereich" },
+        { value: "kosmetik", label: "Kosmetikerin / Friseurin", desc: "Bereits in der Beauty-Branche tätig" },
+        { value: "pmu", label: "PMU-Erfahrung", desc: "Erfahrung mit Permanent Make-up" },
+        { value: "other", label: "Quereinsteigerin", desc: "Ich komme aus einem anderen Bereich" },
       ],
     },
     {
@@ -622,49 +283,46 @@ function FunnelModal({ isOpen, onClose }) {
       question: "Was ist dein größtes Ziel?",
       subtext: "Wähle aus, was dich am meisten antreibt.",
       options: [
-        { value: "selfemployed", label: "Selbstständigkeit", desc: "Ich will mein eigenes Beauty-Business aufbauen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> },
-        { value: "income", label: "Mehr verdienen", desc: "Ich will mein Einkommen deutlich steigern", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> },
-        { value: "technique", label: "Technik lernen", desc: "Ich will die beste Microblading-Technik beherrschen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> },
-        { value: "freedom", label: "Kreative Freiheit", desc: "Ich will einen Job, der mich wirklich erfüllt", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5L12 3z"/><path d="M19 14l.9 2.7L22.6 17.6l-2.7.9L19 21.2l-.9-2.7-2.7-.9 2.7-.9L19 14z"/><path d="M5 17l.6 1.8 1.8.6-1.8.6L5 21.8l-.6-1.8-1.8-.6 1.8-.6L5 17z"/></svg> },
+        { value: "selfemployed", label: "Selbstständigkeit", desc: "Eigenes Beauty-Business aufbauen" },
+        { value: "income", label: "Mehr verdienen", desc: "Einkommen deutlich steigern" },
+        { value: "technique", label: "Technik lernen", desc: "Die beste Microblading-Technik beherrschen" },
+        { value: "freedom", label: "Kreative Freiheit", desc: "Einen Job, der mich wirklich erfüllt" },
       ],
     },
     {
       id: "timeline",
       question: "Wann möchtest du starten?",
-      subtext: "Unsere Kursplätze sind begrenzt.",
+      subtext: "Unsere Kurse finden 3–4x pro Jahr statt.",
       options: [
-        { value: "asap", label: "So schnell wie möglich", desc: "Ich bin bereit, sofort loszulegen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> },
-        { value: "1-3months", label: "In 1–3 Monaten", desc: "Ich plane meinen Start für die nächsten Wochen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> },
-        { value: "3-6months", label: "In 3–6 Monaten", desc: "Ich möchte mich in Ruhe vorbereiten", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
-        { value: "exploring", label: "Ich informiere mich erst", desc: "Ich schaue mir erstmal alles an", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> },
+        { value: "asap", label: "So schnell wie möglich", desc: "Ich bin bereit loszulegen" },
+        { value: "1-3months", label: "In 1–3 Monaten", desc: "Plane meinen Start für die nächsten Wochen" },
+        { value: "3-6months", label: "In 3–6 Monaten", desc: "Möchte mich in Ruhe vorbereiten" },
+        { value: "exploring", label: "Ich informiere mich erst", desc: "Schaue mir erstmal alles an" },
       ],
     },
   ];
 
-  const totalSteps = questions.length + 3; // questions + checking + contact + thank you
+  const totalSteps = questions.length + 3;
   const progress = ((step + 1) / totalSteps) * 100;
 
   const selectAnswer = (questionId, value) => {
     setAnswers(prev => ({ ...prev, [questionId]: value }));
-    // Auto-advance with visual confirmation delay
     setTimeout(() => {
       if (step < questions.length - 1) {
         setStep(step + 1);
       } else {
-        // Show "checking" step
         setStep(questions.length);
         setIsChecking(true);
         setTimeout(() => {
           setIsChecking(false);
           setStep(questions.length + 1);
-        }, 2500);
+        }, 2000);
       }
-    }, 500);
+    }, 400);
   };
 
   const handleSubmit = () => {
     if (formData.name && formData.email) {
-      // Collect all data including UTMs and answers
       const submission = {
         ...formData,
         answers,
@@ -672,10 +330,6 @@ function FunnelModal({ isOpen, onClose }) {
         page_url: window.location.href,
       };
       console.log("Lead submission:", JSON.stringify(submission, null, 2));
-
-      // TODO: Replace with actual API endpoint
-      // fetch("/api/leads", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(submission) });
-
       setSubmitted(true);
       setStep(questions.length + 2);
     }
@@ -683,7 +337,6 @@ function FunnelModal({ isOpen, onClose }) {
 
   const handleClose = () => {
     onClose();
-    // Reset after close animation
     setTimeout(() => {
       setStep(0);
       setAnswers({});
@@ -693,7 +346,6 @@ function FunnelModal({ isOpen, onClose }) {
     }, 300);
   };
 
-  // Grab UTM params on open
   useEffect(() => {
     if (isOpen) {
       try {
@@ -721,18 +373,16 @@ function FunnelModal({ isOpen, onClose }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "rgba(0,0,0,0.6)",
-        backdropFilter: "blur(4px)",
+        background: "rgba(0,0,0,0.5)",
         animation: "fadeIn 0.3s ease",
       }}
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
     >
       <div
         style={{
-          background: "var(--background)",
-          borderRadius: 0,
+          background: "var(--ivory)",
           width: "100%",
-          maxWidth: 560,
+          maxWidth: 520,
           maxHeight: "90vh",
           overflow: "auto",
           margin: 16,
@@ -740,7 +390,7 @@ function FunnelModal({ isOpen, onClose }) {
           animation: "slideUp 0.4s ease",
         }}
       >
-        {/* Close button */}
+        {/* Close */}
         <button
           onClick={handleClose}
           style={{
@@ -749,9 +399,8 @@ function FunnelModal({ isOpen, onClose }) {
             right: 16,
             width: 36,
             height: 36,
-            borderRadius: "50%",
-            border: "1px solid var(--border)",
-            background: "var(--card)",
+            border: "1px solid #000000",
+            background: "transparent",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -760,64 +409,55 @@ function FunnelModal({ isOpen, onClose }) {
           }}
           aria-label="Schließen"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--foreground)" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
 
-        {/* Progress bar with step indicators */}
+        {/* Progress */}
         {step < questions.length + 2 && (
           <div style={{ padding: "20px 24px 0" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+            <div style={{ display: "flex", gap: 6 }}>
               {[0, 1, 2, 3, 4].map((s) => (
-                <div key={s} style={{ flex: 1, display: "flex", alignItems: "center" }}>
-                  <div style={{
-                    height: 5,
-                    flex: 1,
-                    borderRadius: 3,
-                    background: s <= step ? "var(--primary)" : "var(--border)",
-                    transition: "background 0.4s ease",
-                  }} />
-                </div>
+                <div key={s} style={{
+                  height: 3,
+                  flex: 1,
+                  background: s <= step ? "#000000" : "var(--chi-chi-beige)",
+                  transition: "background 0.4s ease",
+                }} />
               ))}
             </div>
           </div>
         )}
 
         <div style={{ padding: "32px 32px 40px" }}>
-          {/* Question Steps */}
+          {/* Questions */}
           {step < questions.length && (
             <div key={step} style={{ animation: "fadeSlide 0.35s ease" }}>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 11,
-                  color: "var(--muted-fg)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  marginBottom: 8,
-                }}
-              >
+              <p style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 12,
+                color: "#000000",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                marginBottom: 8,
+              }}>
                 Frage {step + 1} von {questions.length}
               </p>
-              <h3
-                style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: "clamp(22px, 3vw, 28px)",
-                  color: "var(--foreground)",
-                  marginBottom: 6,
-                  lineHeight: 1.2,
-                }}
-              >
+              <h3 style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: "clamp(20px, 3vw, 26px)",
+                color: "#000000",
+                marginBottom: 6,
+                lineHeight: 1.15,
+              }}>
                 {questions[step].question}
               </h3>
-              <p
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 13,
-                  color: "var(--muted-fg)",
-                  marginBottom: 28,
-                }}
-              >
+              <p style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 14,
+                color: "#000000",
+                marginBottom: 28,
+              }}>
                 {questions[step].subtext}
               </p>
 
@@ -827,323 +467,241 @@ function FunnelModal({ isOpen, onClose }) {
                   return (
                     <button
                       key={opt.value}
-                      className="funnel-option"
                       onClick={() => selectAnswer(questions[step].id, opt.value)}
                       style={{
-                        padding: "14px 18px",
-                        border: isSelected ? "2px solid var(--primary)" : "1px solid var(--border)",
-                        borderRadius: 12,
-                        background: isSelected ? "rgba(31,29,26,0.04)" : "transparent",
+                        padding: "16px 20px",
+                        border: isSelected ? "2px solid #000000" : "1px solid #000000",
+                        background: isSelected ? "var(--chi-chi-beige)" : "transparent",
                         cursor: "pointer",
                         textAlign: "left",
                         transition: "all 0.15s ease",
                         display: "flex",
-                        alignItems: "center",
-                        gap: 14,
-                        transform: isSelected ? "scale(1.01)" : "scale(1)",
+                        flexDirection: "column",
+                        gap: 4,
                       }}
                     >
-                      {/* Icon */}
-                      <div style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: 10,
-                        background: isSelected ? "var(--primary)" : "var(--card)",
-                        color: isSelected ? "white" : "var(--foreground)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                        transition: "all 0.15s ease",
+                      <span style={{
+                        fontFamily: "var(--font-headline)",
+                        fontWeight: 700,
+                        fontSize: 15,
+                        color: "#000000",
                       }}>
-                        {opt.icon}
-                      </div>
-
-                      {/* Text */}
-                      <div style={{ flex: 1 }}>
-                        <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 15, color: "var(--foreground)", display: "block" }}>
-                          {opt.label}
-                        </span>
-                        <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--muted-fg)", lineHeight: 1.4 }}>
-                          {opt.desc}
-                        </span>
-                      </div>
-
-                      {/* Radio circle */}
-                      <div style={{
-                        width: 22,
-                        height: 22,
-                        borderRadius: "50%",
-                        border: isSelected ? "none" : "2px solid var(--border)",
-                        background: isSelected ? "var(--primary)" : "transparent",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                        transition: "all 0.15s ease",
+                        {opt.label}
+                      </span>
+                      <span style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: 13,
+                        color: "#000000",
+                        lineHeight: 1.4,
                       }}>
-                        {isSelected && (
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                            <polyline points="20 6 9 17 4 12"/>
-                          </svg>
-                        )}
-                      </div>
+                        {opt.desc}
+                      </span>
                     </button>
                   );
                 })}
               </div>
-
-
             </div>
           )}
 
-          {/* Checking Step */}
+          {/* Checking */}
           {step === questions.length && (
             <div style={{ textAlign: "center", padding: "40px 0", animation: "fadeSlide 0.35s ease" }}>
-              {/* Spinner */}
               <div style={{
-                width: 56,
-                height: 56,
-                border: "3px solid var(--border)",
-                borderTopColor: "var(--primary)",
-                borderRadius: "50%",
+                width: 48,
+                height: 48,
+                border: "2px solid var(--chi-chi-beige)",
+                borderTopColor: "#000000",
                 margin: "0 auto 28px",
                 animation: "spin 0.8s linear infinite",
               }} />
-              <h3
-                style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: 24,
-                  color: "var(--foreground)",
-                  marginBottom: 12,
-                }}
-              >
-                Einen Moment bitte...
+              <h3 style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 22,
+                color: "#000000",
+                marginBottom: 12,
+              }}>
+                Einen Moment...
               </h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted-fg)", lineHeight: 1.6 }}>
-                Wir prüfen unsere aktuellen Kapazitäten<br />und schauen, ob wir dich aufnehmen können.
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#000000", lineHeight: 1.6 }}>
+                Wir prüfen die aktuellen Kursplätze.
               </p>
             </div>
           )}
 
-          {/* Contact Form Step */}
+          {/* Contact Form */}
           {step === questions.length + 1 && !submitted && (
             <div style={{ animation: "fadeSlide 0.35s ease" }}>
-              {/* Success badge */}
-              <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "8px 16px",
-                background: "#ecfdf5",
-                borderRadius: 100,
-                marginBottom: 20,
+              <h3 style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: "clamp(20px, 3vw, 26px)",
+                color: "#000000",
+                marginBottom: 8,
+                lineHeight: 1.15,
               }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#059669", fontWeight: 500 }}>
-                  Plätze verfügbar
-                </span>
-              </div>
-
-              <h3
-                style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: "clamp(22px, 3vw, 28px)",
-                  color: "var(--foreground)",
-                  marginBottom: 6,
-                  lineHeight: 1.2,
-                }}
-              >
-                Gute Nachricht!
+                Kursplätze verfügbar.
               </h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted-fg)", marginBottom: 28, lineHeight: 1.6 }}>
-                Wir haben aktuell noch Plätze frei. Hinterlasse deine Kontaktdaten und wir melden uns innerhalb von 24 Stunden bei dir.
+              <p style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 14,
+                color: "#000000",
+                marginBottom: 28,
+                lineHeight: 1.6,
+              }}>
+                Hinterlasse deine Kontaktdaten. Wir melden uns innerhalb von 24 Stunden persönlich bei dir.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 <div>
-                  <label style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 6 }}>
+                  <label style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>
                     Dein Name *
                   </label>
-                  <div style={{ position: "relative" }}>
-                    <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "var(--muted-fg)", display: "flex" }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                    <input
-                      type="text"
-                      value={formData.name}
-                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      placeholder="Vor- und Nachname"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px 14px 44px",
-                        border: "1px solid var(--border)",
-                        borderRadius: 10,
-                        background: "var(--card)",
-                        fontFamily: "var(--font-body)",
-                        fontSize: 14,
-                        color: "var(--foreground)",
-                        outline: "none",
-                        boxSizing: "border-box",
-                      }}
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    placeholder="Vor- und Nachname"
+                    style={{
+                      width: "100%",
+                      padding: "14px 16px",
+                      border: "1px solid #000000",
+                      background: "transparent",
+                      fontFamily: "var(--font-body)",
+                      fontSize: 15,
+                      color: "#000000",
+                      outline: "none",
+                      boxSizing: "border-box",
+                    }}
+                  />
                 </div>
                 <div>
-                  <label style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 6 }}>
+                  <label style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>
                     Deine E-Mail *
                   </label>
-                  <div style={{ position: "relative" }}>
-                    <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "var(--muted-fg)", display: "flex" }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      placeholder="deine@email.de"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px 14px 44px",
-                        border: "1px solid var(--border)",
-                        borderRadius: 10,
-                        background: "var(--card)",
-                        fontFamily: "var(--font-body)",
-                        fontSize: 14,
-                        color: "var(--foreground)",
-                        outline: "none",
-                        boxSizing: "border-box",
-                      }}
-                    />
-                  </div>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                    placeholder="deine@email.de"
+                    style={{
+                      width: "100%",
+                      padding: "14px 16px",
+                      border: "1px solid #000000",
+                      background: "transparent",
+                      fontFamily: "var(--font-body)",
+                      fontSize: 15,
+                      color: "#000000",
+                      outline: "none",
+                      boxSizing: "border-box",
+                    }}
+                  />
                 </div>
                 <div>
-                  <label style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 6 }}>
-                    Deine Telefonnummer
+                  <label style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>
+                    Telefonnummer (optional)
                   </label>
-                  <div style={{ position: "relative" }}>
-                    <div style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "var(--muted-fg)", display: "flex" }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    </div>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                      placeholder="+49 170 1234567"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px 14px 44px",
-                        border: "1px solid var(--border)",
-                        borderRadius: 10,
-                        background: "var(--card)",
-                        fontFamily: "var(--font-body)",
-                        fontSize: 14,
-                        color: "var(--foreground)",
-                        outline: "none",
-                        boxSizing: "border-box",
-                      }}
-                    />
-                  </div>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    placeholder="+49 170 1234567"
+                    style={{
+                      width: "100%",
+                      padding: "14px 16px",
+                      border: "1px solid #000000",
+                      background: "transparent",
+                      fontFamily: "var(--font-body)",
+                      fontSize: 15,
+                      color: "#000000",
+                      outline: "none",
+                      boxSizing: "border-box",
+                    }}
+                  />
                 </div>
-
 
                 <button
                   onClick={handleSubmit}
                   disabled={!formData.name || !formData.email}
-                  className="cta-button"
+                  className="btn-primary"
                   style={{
                     width: "100%",
                     marginTop: 8,
                     textAlign: "center",
-                    opacity: (!formData.name || !formData.email) ? 0.5 : 1,
+                    fontSize: 14,
+                    padding: "14px 24px",
+                    opacity: (!formData.name || !formData.email) ? 0.4 : 1,
                     cursor: (!formData.name || !formData.email) ? "not-allowed" : "pointer",
                   }}
                 >
-                  Kostenloses Beratungsgespräch sichern
+                  Kostenlos beraten lassen
                 </button>
 
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textAlign: "center", lineHeight: 1.5 }}>
+                <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textAlign: "center", lineHeight: 1.5 }}>
                   Kein Spam. Keine Verpflichtung. Wir melden uns persönlich.
                 </p>
               </div>
             </div>
           )}
 
-          {/* Thank You Step */}
+          {/* Thank You */}
           {step === questions.length + 2 && (
             <div style={{ textAlign: "center", padding: "32px 0", animation: "fadeSlide 0.35s ease" }}>
-              {/* Checkmark circle */}
               <div style={{
-                width: 72,
-                height: 72,
-                borderRadius: "50%",
-                background: "#ecfdf5",
+                width: 64,
+                height: 64,
+                border: "2px solid #000000",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 margin: "0 auto 24px",
               }}>
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"/>
                 </svg>
               </div>
 
-              <h3
-                style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: "clamp(24px, 3vw, 32px)",
-                  color: "var(--foreground)",
-                  marginBottom: 12,
-                  lineHeight: 1.2,
-                }}
-              >
-                Perfekt, {formData.name.split(" ")[0]}!
+              <h3 style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: "clamp(22px, 3vw, 28px)",
+                color: "#000000",
+                marginBottom: 12,
+                lineHeight: 1.15,
+              }}>
+                Danke, {formData.name.split(" ")[0]}.
               </h3>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--muted-fg)", marginBottom: 32, lineHeight: 1.7, maxWidth: 380, margin: "0 auto 32px" }}>
-                Deine Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden persönlich bei dir, um alles Weitere zu besprechen.
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "#000000", marginBottom: 32, lineHeight: 1.7, maxWidth: 380, margin: "0 auto 32px" }}>
+                Deine Anfrage ist eingegangen. Wir melden uns innerhalb von 24 Stunden persönlich bei dir.
               </p>
 
               <div style={{
-                background: "var(--card)",
-                borderRadius: 12,
+                background: "var(--chi-chi-beige)",
                 padding: 24,
                 marginBottom: 24,
-                border: "1px solid var(--border)",
                 textAlign: "left",
               }}>
-                <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "var(--foreground)", marginBottom: 12 }}>
+                <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "#000000", marginBottom: 16 }}>
                   Was passiert als Nächstes?
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   {[
-                    { num: "1", text: "Wir schauen uns deine Angaben an" },
-                    { num: "2", text: "Du bekommst eine persönliche Nachricht von uns" },
-                    { num: "3", text: "Wir vereinbaren ein kurzes Kennenlerngespräch" },
-                  ].map(item => (
-                    <div key={item.num} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <div style={{
-                        width: 28,
-                        height: 28,
-                        borderRadius: "50%",
-                        background: "var(--primary)",
-                        color: "white",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                    "Wir schauen uns deine Angaben an",
+                    "Du bekommst eine persönliche Nachricht",
+                    "Wir vereinbaren ein kurzes Kennenlerngespräch",
+                  ].map((text, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <span style={{
                         fontFamily: "var(--font-headline)",
                         fontWeight: 700,
-                        fontSize: 12,
+                        fontSize: 13,
+                        color: "#000000",
                         flexShrink: 0,
                       }}>
-                        {item.num}
-                      </div>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--foreground)" }}>
-                        {item.text}
+                        {i + 1}.
+                      </span>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#000000" }}>
+                        {text}
                       </span>
                     </div>
                   ))}
@@ -1153,14 +711,14 @@ function FunnelModal({ isOpen, onClose }) {
               <button
                 onClick={handleClose}
                 style={{
-                  padding: "14px 32px",
-                  border: "1px solid var(--border)",
-                  borderRadius: 10,
+                  padding: "12px 24px",
+                  border: "1px solid #000000",
                   background: "transparent",
                   cursor: "pointer",
-                  fontFamily: "var(--font-body)",
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
                   fontSize: 13,
-                  color: "var(--foreground)",
+                  color: "#000000",
                 }}
               >
                 Zurück zur Seite
@@ -1173,1438 +731,943 @@ function FunnelModal({ isOpen, onClose }) {
   );
 }
 
-// ─── ROI Calculator ───
-function RoiCalculator() {
-  const levels = [
-    { id: "beginner", label: "Anfängerin", desc: "Gerade erst gestartet", pricePerTreatment: 150, treatmentHours: 2.5 },
-    { id: "mid", label: "Fortgeschritten", desc: "Erste Erfahrung gesammelt", pricePerTreatment: 250, treatmentHours: 2 },
-    { id: "pro", label: "Profi", desc: "Etabliert mit Stammkundinnen", pricePerTreatment: 400, treatmentHours: 1.5 },
-  ];
+// ─── Main Component ───
 
-  const [selectedLevel, setSelectedLevel] = useState("beginner");
-  const [hoursPerWeek, setHoursPerWeek] = useState(10);
-  const courseInvestment = 450;
-
-  const level = levels.find(l => l.id === selectedLevel);
-  const treatmentsPerWeek = Math.floor(hoursPerWeek / level.treatmentHours);
-  const treatmentsPerMonth = treatmentsPerWeek * 4;
-  const monthlyRevenue = treatmentsPerMonth * level.pricePerTreatment;
-  const treatmentsToBreakEven = Math.ceil(courseInvestment / level.pricePerTreatment);
-  const weeksToBreakEven = treatmentsPerWeek > 0 ? treatmentsToBreakEven / treatmentsPerWeek : null;
-
-  const labelStyle = {
-    fontFamily: "var(--font-body)",
-    fontSize: 11,
-    color: "var(--muted-fg)",
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
-  };
-
-  return (
-    <div style={{
-      maxWidth: 640,
-      margin: "0 auto",
-      background: "var(--background)",
-      border: "1px solid var(--border)",
-      padding: "40px 36px",
-    }}>
-      {/* Step 1: Level auswählen */}
-      <p style={{ ...labelStyle, marginBottom: 14 }}>Wähle dein Level</p>
-      <div style={{ display: "flex", gap: 10, marginBottom: 36, flexWrap: "wrap" }}>
-        {levels.map((l) => {
-          const active = selectedLevel === l.id;
-          return (
-            <button
-              key={l.id}
-              onClick={() => setSelectedLevel(l.id)}
-              style={{
-                flex: "1 1 0",
-                minWidth: 150,
-                padding: "18px 16px",
-                border: active ? "2px solid var(--primary)" : "1px solid var(--border)",
-                background: active ? "var(--primary)" : "transparent",
-                color: active ? "white" : "var(--foreground)",
-                cursor: "pointer",
-                textAlign: "center",
-                transition: "all 0.15s ease",
-              }}
-            >
-              <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 16, display: "block", marginBottom: 4 }}>
-                {l.label}
-              </span>
-              <span style={{ fontFamily: "var(--font-body)", fontSize: 11, opacity: 0.7 }}>
-                {l.desc}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Step 2: Stunden pro Woche */}
-      <div style={{ marginBottom: 40 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
-          <label style={labelStyle}>Wie viel willst du arbeiten?</label>
-          <span style={{
-            fontFamily: "var(--font-headline)",
-            fontWeight: 700,
-            fontSize: 24,
-            color: "var(--foreground)",
-          }}>
-            {hoursPerWeek}h / Woche
-          </span>
-        </div>
-        <input
-          type="range"
-          min="2"
-          max="40"
-          step="1"
-          value={hoursPerWeek}
-          onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-          style={{ width: "100%", accentColor: "var(--primary)", cursor: "pointer" }}
-        />
-        <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "var(--font-body)", fontSize: 10, color: "var(--muted-fg)", marginTop: 4 }}>
-          <span>Nebenbei (2h)</span>
-          <span>Vollzeit (40h)</span>
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div style={{ height: 1, background: "var(--border)", marginBottom: 32 }} />
-
-      {/* Results Grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 20, marginBottom: 32 }}>
-        <div>
-          <p style={{ ...labelStyle, marginBottom: 4 }}>Behandlungen / Woche</p>
-          <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(20px, 3vw, 28px)", color: "var(--foreground)", lineHeight: 1 }}>
-            {treatmentsPerWeek}
-          </p>
-        </div>
-        <div>
-          <p style={{ ...labelStyle, marginBottom: 4 }}>Behandlungen / Monat</p>
-          <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(20px, 3vw, 28px)", color: "var(--foreground)", lineHeight: 1 }}>
-            {treatmentsPerMonth}
-          </p>
-        </div>
-        <div>
-          <p style={{ ...labelStyle, marginBottom: 4 }}>Break-Even</p>
-          <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(20px, 3vw, 28px)", color: "#059669", lineHeight: 1 }}>
-            {treatmentsToBreakEven} Behandl.
-          </p>
-          <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", marginTop: 2 }}>
-            {weeksToBreakEven !== null
-              ? weeksToBreakEven < 1
-                ? "< 1 Woche"
-                : "≈ " + weeksToBreakEven.toFixed(1) + " Wochen"
-              : "—"}
-          </p>
-        </div>
-      </div>
-
-      {/* Highlight Box */}
-      <div style={{
-        background: "var(--primary)",
-        color: "white",
-        padding: "28px 28px",
-        textAlign: "center",
-      }}>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 12, opacity: 0.7, marginBottom: 4 }}>
-          Dein möglicher Monatsumsatz
-        </p>
-        <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(36px, 5vw, 52px)", lineHeight: 1 }}>
-          {monthlyRevenue.toLocaleString("de-DE")} €
-        </p>
-        <p style={{ fontFamily: "var(--font-body)", fontSize: 13, opacity: 0.7, marginTop: 12, lineHeight: 1.6 }}>
-          Schon nach {treatmentsToBreakEven} Behandlungen{weeksToBreakEven !== null ? ` (${weeksToBreakEven < 1 ? "unter 1 Woche" : "≈ " + weeksToBreakEven.toFixed(1) + " Wochen"})` : ""} hast du deine {courseInvestment}-€-Investition zurück – alles danach ist reiner Gewinn.
-        </p>
-      </div>
-    </div>
-  );
-}
-
-// ─── Reusable CTA Block ───
-function CtaBlock({ headline, subtext, openFunnel }) {
-  return (
-    <Reveal>
-      <section style={{ padding: "20px 0" }}>
-        <div className="container">
-          <div style={{
-            position: "relative",
-            overflow: "hidden",
-            background: "var(--primary)",
-            padding: "80px 40px",
-            textAlign: "center",
-          }}>
-            {/* Decorative gradient circle */}
-            <div style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              width: 700,
-              height: 700,
-              borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(223,217,205,0.06) 0%, transparent 70%)",
-              transform: "translate(-50%, -50%)",
-              pointerEvents: "none",
-            }} />
-            {/* Subtle corner accents */}
-            <div style={{ position: "absolute", top: 0, left: 0, width: 80, height: 1, background: "rgba(255,255,255,0.12)" }} />
-            <div style={{ position: "absolute", top: 0, left: 0, width: 1, height: 80, background: "rgba(255,255,255,0.12)" }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: 80, height: 1, background: "rgba(255,255,255,0.12)" }} />
-            <div style={{ position: "absolute", bottom: 0, right: 0, width: 1, height: 80, background: "rgba(255,255,255,0.12)" }} />
-
-            <div style={{ position: "relative", zIndex: 1, maxWidth: 520, margin: "0 auto" }}>
-              <h2 style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: "clamp(22px, 3.5vw, 32px)",
-                color: "var(--primary-fg)",
-                marginBottom: 16,
-                lineHeight: 1.2,
-              }}>
-                {headline}
-              </h2>
-              <p style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "clamp(13px, 1.2vw, 15px)",
-                color: "rgba(255,255,255,0.65)",
-                lineHeight: 1.8,
-                marginBottom: 32,
-              }}>
-                {subtext}
-              </p>
-              <button
-                className="cta-button"
-                onClick={openFunnel}
-                style={{
-                  background: "var(--primary-fg)",
-                  color: "var(--primary)",
-                  boxShadow: "0 4px 24px rgba(255,255,255,0.12)",
-                }}
-              >
-                Jetzt kostenlos beraten lassen
-              </button>
-              <p style={{
-                fontFamily: "var(--font-body)",
-                fontSize: 12,
-                color: "rgba(255,255,255,0.4)",
-                marginTop: 16,
-                letterSpacing: "0.03em",
-              }}>
-                Ratenzahlung möglich · Keine Verpflichtung · Antwort in 24h
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </Reveal>
-  );
-}
-
-
-// ─── Main App ───
 export default function ChiChiClubAcademy() {
   const [funnelOpen, setFunnelOpen] = useState(false);
-  const [showStickyBar, setShowStickyBar] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const hero = document.getElementById("hero");
-      if (hero) {
-        const heroBottom = hero.getBoundingClientRect().bottom;
-        setShowStickyBar(heroBottom < 0);
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const openFunnel = () => setFunnelOpen(true);
-  const closeFunnel = () => setFunnelOpen(false);
-
-  const scrollToConsultation = () => {
-    openFunnel();
-  };
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Nanum+Pen+Script&family=Sacramento&family=Dancing+Script:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
 
         :root {
-          --primary: #1f1d1a;
-          --primary-fg: #ffffff;
-          --background: #F8F7F3;
-          --foreground: #2a2520;
-          --card: #DFD9CD;
-          --card-fg: #2a2520;
-          --muted: #d4cdc0;
-          --muted-fg: #7a7268;
-          --accent: #DFD9CD;
-          --accent-fg: #2a2520;
-          --border: #cec7b9;
-          --font-headline: 'Pragmatica Extended', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          --font-body: 'Roboto Mono', 'Courier New', monospace;
+          --chi-chi-beige: #DFD9CD;
+          --ivory: #F8F7F3;
+          --black: #000000;
+          --font-headline: 'Pragmatica Extended', 'Pragmatica Ext', sans-serif;
+          --font-headline-weight: 700;
+          --font-body: 'Roboto Mono', monospace;
+          --font-body-weight: 400;
+          --section-spacing: 120px;
+          --element-spacing: 24px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-          background: var(--background);
-          color: var(--foreground);
           font-family: var(--font-body);
-          font-size: 14px;
-          line-height: 1.8;
-          letter-spacing: 0.01em;
+          font-weight: var(--font-body-weight);
+          background: var(--ivory);
+          color: var(--black);
           -webkit-font-smoothing: antialiased;
-          overflow-x: hidden;
+          font-size: 16px;
+          line-height: 1.6;
         }
 
-        /* ─── Scroll Reveal System ─── */
-        .reveal {
-          opacity: 0;
-          transform: translateY(32px);
-          transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-          will-change: opacity, transform;
-        }
-        .reveal--visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        img { max-width: 100%; height: auto; display: block; border-radius: 0; }
 
-        /* ─── Subtle grain overlay on body ─── */
-        body::after {
-          content: '';
-          position: fixed;
-          top: 0; left: 0; right: 0; bottom: 0;
-          pointer-events: none;
-          z-index: 9999;
-          opacity: 0.025;
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-          background-repeat: repeat;
-          background-size: 200px;
-        }
+        a { color: var(--black); text-decoration: none; }
 
-        h1, h2, h3, h4, h5, h6 {
+        .btn-primary {
+          display: inline-block;
+          background: var(--black);
+          color: var(--ivory);
+          border: 1px solid var(--black);
           font-family: var(--font-headline);
-          font-weight: 700;
-          letter-spacing: -0.01em;
-          line-height: 1.2;
+          font-weight: var(--font-headline-weight);
+          font-size: 14px;
+          padding: 12px 24px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          text-transform: none;
+          letter-spacing: 0;
+          text-align: center;
+        }
+        .btn-primary:hover {
+          background: var(--ivory);
+          color: var(--black);
+          border: 1px solid var(--black);
+        }
+
+        .btn-secondary {
+          display: inline-block;
+          background: transparent;
+          color: var(--black);
+          border: 1px solid var(--black);
+          font-family: var(--font-headline);
+          font-weight: var(--font-headline-weight);
+          font-size: 14px;
+          padding: 12px 24px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .btn-secondary:hover {
+          background: var(--black);
+          color: var(--ivory);
         }
 
         .container {
-          width: 100%;
           max-width: 1200px;
           margin: 0 auto;
-          padding: 0 20px;
+          padding: 0 24px;
         }
 
-        @media (min-width: 640px) {
-          .container { padding: 0 32px; }
-        }
-        @media (min-width: 1024px) {
+        @media (min-width: 768px) {
           .container { padding: 0 48px; }
         }
 
-        .cta-button {
-          display: inline-block;
-          padding: 14px 32px;
-          background: var(--primary);
-          color: var(--primary-fg);
-          font-family: var(--font-headline);
-          font-size: 13px;
-          font-weight: 700;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          border-radius: 0;
-          border: none;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-          position: relative;
-          overflow: hidden;
-          text-decoration: none;
-        }
-        .cta-button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-          animation: shimmer 2.5s infinite;
-        }
-        @keyframes shimmer {
-          0% { left: -100%; }
-          100% { left: 100%; }
-        }
-        .cta-button:hover {
-          background: #302d28;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-          transform: translateY(-3px);
-        }
+        /* Section backgrounds */
+        .section-ivory { background: var(--ivory); }
+        .section-beige { background: var(--chi-chi-beige); }
+        .section-black { background: var(--black); color: var(--ivory); }
 
-        @media (min-width: 768px) {
-          .cta-button { font-size: 14px; padding: 16px 40px; }
-        }
-
-        .urgency-text {
-          font-family: var(--font-body);
-          font-size: 12px;
-          color: var(--muted-fg);
-          letter-spacing: 0.02em;
-        }
-
-        /* Hero 2-column split */
-        .hero-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 48px;
-          align-items: center;
-        }
-        @media (min-width: 768px) {
-          .hero-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-          }
-        }
-
-        /* Image gallery grid */
-        .hero-gallery {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 16px;
-        }
-        .hero-gallery-img {
-          width: 100%;
-          height: 240px;
-          border-radius: 0;
-          background-size: cover;
-          background-position: center;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        @media (min-width: 768px) {
-          .hero-gallery-img { height: 280px; }
-        }
-        .hero-gallery-img--span {
-          grid-column: 1 / -1;
-        }
-
-        /* Featured In logos */
-        .featured-logos {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 24px 32px;
-          max-width: 800px;
-          margin: 0 auto;
-          opacity: 0.5;
-          align-items: center;
-          justify-items: center;
-        }
-        .featured-logo-img {
-          height: 32px;
-          object-fit: contain;
-        }
-        @media (min-width: 640px) {
-          .featured-logos {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px 48px;
-          }
-          .featured-logo-img { height: 36px; }
-        }
-        @media (min-width: 900px) {
-          .featured-logos {
-            grid-template-columns: repeat(5, 1fr);
-          }
-          .featured-logo-img { height: 44px; }
-        }
-
-        /* How it Works 4-column grid */
-        .how-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 20px;
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-        @media (min-width: 640px) {
-          .how-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (min-width: 1024px) {
-          .how-grid { grid-template-columns: repeat(4, 1fr); }
-        }
-
-        /* About section 2-column */
-        .about-grid {
-          max-width: 1100px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 48px;
-          align-items: center;
-        }
-        @media (min-width: 768px) {
-          .about-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-          }
-        }
-
-        /* Comparison grid */
-        .compare-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 20px;
-          max-width: 1100px;
-          margin: 0 auto;
-          align-items: start;
-        }
-        @media (min-width: 900px) {
-          .compare-grid {
-            grid-template-columns: 1fr 1.2fr 1fr;
-            gap: 20px;
-          }
-          .compare-grid > :nth-child(2) {
-            margin-top: -16px;
-            margin-bottom: -16px;
-          }
-        }
-
-        /* Location grid */
-        .location-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 48px;
-          max-width: 1100px;
-          margin: 0 auto;
-          align-items: center;
-        }
-        @media (min-width: 768px) {
-          .location-grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-          }
-        }
-
-        .card {
-          background: var(--card);
-          border: 1px solid var(--border);
-          border-radius: 0;
-          padding: 36px 32px;
-          transition: box-shadow 0.4s ease, transform 0.4s ease;
-        }
-        .card:hover {
-          box-shadow: 0 12px 32px rgba(0,0,0,0.07);
-          transform: translateY(-4px);
-        }
-
-        .icon-circle {
-          width: 64px;
-          height: 64px;
-          border-radius: 50%;
-          background: rgba(226, 213, 195, 0.3);
+        /* Logo marquee */
+        .logo-track {
           display: flex;
+          gap: 64px;
           align-items: center;
-          justify-content: center;
-          color: var(--foreground);
+          animation: marquee 30s linear infinite;
         }
-
-        a { color: inherit; text-decoration: none; }
-
-        .value-card:hover {
-          box-shadow: 0 12px 32px rgba(0,0,0,0.07);
-          transform: translateY(-4px);
-        }
-
-        /* Final CTA steps horizontal on desktop */
-        @media (min-width: 768px) {
-          .final-cta-steps {
-            flex-direction: row !important;
-            text-align: center !important;
-            gap: 32px !important;
-          }
-        }
-
-        /* Hero mobile spacing */
-        @media (max-width: 768px) {
-          .hero-section {
-            padding-top: 88px !important;
-          }
-        }
-
-        /* Hide nav CTA on mobile */
-        @media (max-width: 768px) {
-          .nav-cta-desktop {
-            display: none !important;
-          }
-        }
-
-        /* Sticky bottom bar - mobile only */
-        .sticky-bottom-bar {
-          display: none;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 90;
-          padding: 12px 16px;
-          background: rgba(255,255,255,0.95);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-top: 1px solid var(--border);
-          box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-        }
-        @media (max-width: 768px) {
-          .sticky-bottom-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-          }
-        }
-
         @keyframes marquee {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
 
-        .marquee-container {
-          overflow: hidden;
-          width: 100%;
-          mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-        }
-
-        .marquee-track {
-          display: flex;
-          align-items: center;
-          gap: 64px;
-          animation: marquee 25s linear infinite;
-          width: max-content;
-        }
-
-        .marquee-track:hover {
-          animation-play-state: paused;
-        }
-
-        .results-marquee {
-          overflow: hidden;
-          width: 100%;
-          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-        }
-
-        .results-marquee-track {
-          display: flex;
-          gap: 20px;
-          animation: marquee 35s linear infinite;
-          width: max-content;
-        }
-
-        .results-marquee-track:hover {
-          animation-play-state: paused;
-        }
-
-        .results-marquee-img {
-          width: 300px;
-          height: 380px;
-          object-fit: cover;
-          flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-          .results-marquee-img {
-            width: 220px;
-            height: 280px;
-          }
-        }
-
+        /* Animations */
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
         }
         @keyframes slideUp {
-          from { opacity: 0; transform: translateY(40px); }
+          from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeSlide {
-          from { opacity: 0; transform: translateY(16px); }
+          from { opacity: 0; transform: translateY(12px); }
           to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hero staggered entry */
-        .hero-text-enter { animation: slideUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
-        .hero-text-enter--d1 { animation-delay: 0.1s; }
-        .hero-text-enter--d2 { animation-delay: 0.25s; }
-        .hero-text-enter--d3 { animation-delay: 0.4s; }
-        .hero-text-enter--d4 { animation-delay: 0.55s; }
-        .hero-text-enter--d5 { animation-delay: 0.7s; }
-        .hero-img-enter { animation: fadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
-        .hero-img-enter--d1 { animation-delay: 0.3s; }
-        .hero-img-enter--d2 { animation-delay: 0.45s; }
-        .hero-img-enter--d3 { animation-delay: 0.6s; }
-
-        /* Section separator line */
-        .section-sep {
-          width: 48px;
-          height: 1px;
-          background: var(--border);
-          margin: 0 auto;
         }
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
-        .funnel-option:hover {
-          border-color: var(--primary) !important;
-          background: rgba(31,29,26,0.02) !important;
+
+        /* Mobile menu */
+        .mobile-menu-overlay {
+          display: none;
         }
-        .funnel-option:active {
-          transform: scale(0.985) !important;
+        .mobile-menu-overlay.open {
+          display: flex;
         }
 
-        input:focus {
-          border-color: var(--primary) !important;
-          box-shadow: 0 0 0 3px rgba(31,29,26,0.08);
+        /* Responsive */
+        @media (max-width: 767px) {
+          .desktop-only { display: none !important; }
+          .mobile-only { display: block !important; }
         }
-        input::placeholder {
-          color: var(--muted-fg);
-          opacity: 0.6;
+        @media (min-width: 768px) {
+          .desktop-only { display: block !important; }
+          .mobile-only { display: none !important; }
+          .grid-2col { grid-template-columns: 1fr 1fr !important; }
+          .grid-2col-text-first { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
 
+      <FunnelModal isOpen={funnelOpen} onClose={() => setFunnelOpen(false)} />
 
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "var(--background)",
-          fontFamily: "var(--font-body)",
-        }}
-      >
-        {/* ═══ 1. Navigation ═══ */}
-        <nav
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 50,
-            background: "rgba(248,247,243,0.95)",
-            backdropFilter: "blur(8px)",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          <div
-            className="container"
-            style={{
-              height: 80,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
+      {/* ─── NAV ─── */}
+      <nav style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        background: "var(--ivory)",
+        borderBottom: "1px solid var(--black)",
+      }}>
+        <div className="container" style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: 64,
+        }}>
+          <img
+            src={logoDataUrl}
+            alt="Chi Chi Club"
+            style={{ height: 22 }}
+          />
+          <button
+            className="btn-primary"
+            onClick={openFunnel}
+            style={{ fontSize: 12, padding: "8px 20px" }}
           >
+            Kostenlos beraten lassen
+          </button>
+        </div>
+      </nav>
+
+      {/* ─── HERO ─── */}
+      <section style={{
+        paddingTop: 140,
+        paddingBottom: 120,
+        background: "var(--ivory)",
+      }}>
+        <div className="container">
+          <div className="grid-2col" style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: 48,
+            alignItems: "center",
+          }}>
+            <div>
+              <p style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 13,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                marginBottom: 24,
+                color: "#000000",
+              }}>
+                Chi Chi Club Academy · Hamburg
+              </p>
+
+              <h1 style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: "clamp(28px, 4vw, 52px)",
+                lineHeight: 1.1,
+                color: "#000000",
+                marginBottom: 24,
+              }}>
+                Hyperrealistisches Microblading lernen.
+              </h1>
+
+              <p style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 16,
+                lineHeight: 1.7,
+                color: "#000000",
+                maxWidth: 560,
+                marginBottom: 40,
+              }}>
+                4 Tage Intensivausbildung. Echte Modelle. Eine Technik, die es so kein zweites Mal gibt. Danach hast du alles, was du brauchst — Technik, Material, Wissen, Support — um eigenständig zu arbeiten.
+              </p>
+
+              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                <button className="btn-primary" onClick={openFunnel}>
+                  Kostenlos beraten lassen
+                </button>
+              </div>
+            </div>
+
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 4,
+            }}>
+              <img src={IMG_HERO1} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />
+              <img src={IMG_HERO2} alt="Chi Chi Club Studio" style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />
+            </div>
+          </div>
+
+          {/* Key facts */}
+          <Reveal delay={0.2}>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: 1,
+              background: "#000000",
+              marginTop: 80,
+            }}>
+              {[
+                { num: "4 Tage", label: "Intensivausbildung" },
+                { num: "6–12", label: "Teilnehmerinnen pro Kurs" },
+                { num: "20+", label: "Behandlungen im Starterkit" },
+                { num: "6 Monate", label: "Post-Academy Support" },
+              ].map((fact, i) => (
+                <div key={i} style={{
+                  background: "var(--ivory)",
+                  padding: "32px 24px",
+                  textAlign: "center",
+                }}>
+                  <p style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 24,
+                    color: "#000000",
+                    marginBottom: 4,
+                    lineHeight: 1.15,
+                  }}>
+                    {fact.num}
+                  </p>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 13,
+                    color: "#000000",
+                  }}>
+                    {fact.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── FEATURED IN ─── */}
+      <section style={{ padding: "60px 0", borderTop: "1px solid #000000", borderBottom: "1px solid #000000", overflow: "hidden" }}>
+        <p style={{
+          fontFamily: "var(--font-body)",
+          fontSize: 12,
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          textAlign: "center",
+          marginBottom: 32,
+          color: "#000000",
+        }}>
+          Bekannt aus
+        </p>
+        <div style={{ overflow: "hidden", position: "relative" }}>
+          <div className="logo-track">
+            {[...logos, ...logos].map((logo, i) => (
+              <img
+                key={i}
+                src={logo.src}
+                alt={logo.alt}
+                style={{
+                  height: 20,
+                  opacity: 0.7,
+                  flexShrink: 0,
+                  filter: "grayscale(100%)",
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── DIE TECHNIK ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <Reveal>
+            <div className="grid-2col" style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 64,
+              alignItems: "center",
+            }}>
+              <div>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                  color: "#000000",
+                }}>
+                  Die Technik
+                </p>
+                <h2 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(24px, 3vw, 40px)",
+                  lineHeight: 1.15,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  Einzelne Härchen. So echt, dass niemand sie bemerkt.
+                </h2>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 24,
+                  maxWidth: 560,
+                }}>
+                  Hyperrealistisches Microblading ist kein Standard-PMU. Keine Schablonen, keine gemalten Striche. Jedes einzelne Härchen wird so gesetzt, dass das Ergebnis nicht von echten Augenbrauen zu unterscheiden ist.
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  maxWidth: 560,
+                }}>
+                  Jette hat diese Technik aus Nordamerika nach Deutschland gebracht. Als Erste. Heute bildet sie mit ihrem Team die nächste Generation von Microblading-Artists aus — direkt im Studio in Hamburg.
+                </p>
+              </div>
+
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 4,
+              }}>
+                <img src={IMG_RESULT1} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT2} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT3} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT4} alt="Microblading Ergebnis Detail" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── ERGEBNISSE / TESTIMONIALS ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
+        <div className="container">
+          <Reveal>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: 16,
+              color: "#000000",
+            }}>
+              Absolventinnen
+            </p>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 64,
+            }}>
+              Was unsere Absolventinnen sagen.
+            </h2>
+          </Reveal>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: 32,
+          }}>
+            {testimonials.map((t, i) => (
+              <Reveal key={i} delay={i * 0.1}>
+                <div style={{
+                  padding: 32,
+                  background: "var(--chi-chi-beige)",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 15,
+                    lineHeight: 1.7,
+                    color: "#000000",
+                    marginBottom: 32,
+                  }}>
+                    „{t.text}"
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      style={{ width: 40, height: 40, objectFit: "cover" }}
+                    />
+                    <div>
+                      <p style={{
+                        fontFamily: "var(--font-headline)",
+                        fontWeight: 700,
+                        fontSize: 14,
+                        color: "#000000",
+                      }}>
+                        {t.name}
+                      </p>
+                      <p style={{
+                        fontFamily: "var(--font-body)",
+                        fontSize: 12,
+                        color: "#000000",
+                      }}>
+                        {t.role}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ÜBER JETTE ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)", borderTop: "1px solid #000000" }}>
+        <div className="container">
+          <Reveal>
+            <div className="grid-2col" style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 64,
+              alignItems: "center",
+            }}>
+              <img
+                src={IMG_JETTE}
+                alt="Jette Scherzer"
+                style={{ width: "100%", maxWidth: 480, aspectRatio: "3/4", objectFit: "cover" }}
+              />
+
+              <div>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                  color: "#000000",
+                }}>
+                  Über Jette Scherzer
+                </p>
+                <h2 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(24px, 3vw, 40px)",
+                  lineHeight: 1.15,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  Von Vancouver nach Hamburg. Von der Maskenbildnerin zur Pionierin.
+                </h2>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 16,
+                }}>
+                  Jette hat hyperrealistisches Microblading aus Nordamerika nach Deutschland gebracht — als Erste. In Vancouver hat sie die Technik erlernt und perfektioniert. Zurück in Hamburg hat sie den Chi Chi Club aufgebaut: ein Studio mit 7 Artists, eine Academy und einen Namen, der in der Branche Gewicht hat.
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                }}>
+                  Du lernst nicht von einer Trainerin, die Kurse verkauft. Du lernst von jemandem, der jeden Tag selbst am Kunden arbeitet.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── SCHULUNGEN ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <Reveal>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: 16,
+              color: "#000000",
+            }}>
+              Schulungen
+            </p>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 64,
+            }}>
+              Zwei Schulungen. Ein Standard.
+            </h2>
+          </Reveal>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            gap: 32,
+          }}>
+            {/* Microblading Fundamentals */}
+            <Reveal delay={0}>
+              <div style={{
+                background: "var(--ivory)",
+                padding: 40,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                  color: "#000000",
+                }}>
+                  Flagship
+                </p>
+                <h3 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(20px, 2.5vw, 28px)",
+                  lineHeight: 1.15,
+                  color: "#000000",
+                  marginBottom: 16,
+                }}>
+                  Microblading Fundamentals
+                </h3>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 32,
+                  flex: 1,
+                }}>
+                  4 Tage Intensivausbildung in hyperrealistischem Microblading. Theorie, Praxis an echten Modellen, Business-Know-how. Starterkit für 20 Behandlungen und 6 Monate Support inklusive.
+                </p>
+
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 16,
+                  marginBottom: 32,
+                  paddingTop: 24,
+                  borderTop: "1px solid #000000",
+                }}>
+                  {[
+                    { label: "Dauer", value: "4 Tage" },
+                    { label: "Frequenz", value: "3–4x / Jahr" },
+                    { label: "Teilnehmer", value: "6–12" },
+                    { label: "Ort", value: "Hamburg" },
+                  ].map((item, i) => (
+                    <div key={i}>
+                      <p style={{ fontFamily: "var(--font-body)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#000000", marginBottom: 4 }}>
+                        {item.label}
+                      </p>
+                      <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 15, color: "#000000" }}>
+                        {item.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <p style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: 24,
+                  color: "#000000",
+                  marginBottom: 8,
+                }}>
+                  4.500€
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 13,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  zzgl. MwSt. · Starterkit inklusive
+                </p>
+
+                <button className="btn-primary" onClick={openFunnel} style={{ width: "100%" }}>
+                  Kostenlos beraten lassen
+                </button>
+              </div>
+            </Reveal>
+
+            {/* Freckle Masterclass */}
+            <Reveal delay={0.1}>
+              <div style={{
+                background: "var(--ivory)",
+                padding: 40,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 12,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                  color: "#000000",
+                }}>
+                  Masterclass
+                </p>
+                <h3 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(20px, 2.5vw, 28px)",
+                  lineHeight: 1.15,
+                  color: "#000000",
+                  marginBottom: 16,
+                }}>
+                  Freckle Masterclass
+                </h3>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 32,
+                  flex: 1,
+                }}>
+                  1 Tag hyperrealistische Sommersprossen-Tattoos. Farbtheorie, Pigmente mixen, Übung auf Latexhaut und Arbeit an 2 echten Modellen. Starterkit und 6 Monate Support inklusive.
+                </p>
+
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: 16,
+                  marginBottom: 32,
+                  paddingTop: 24,
+                  borderTop: "1px solid #000000",
+                }}>
+                  {[
+                    { label: "Dauer", value: "1 Tag" },
+                    { label: "Frequenz", value: "Alle 2 Monate" },
+                    { label: "Teilnehmer", value: "6–12" },
+                    { label: "Ort", value: "Hamburg" },
+                  ].map((item, i) => (
+                    <div key={i}>
+                      <p style={{ fontFamily: "var(--font-body)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#000000", marginBottom: 4 }}>
+                        {item.label}
+                      </p>
+                      <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 15, color: "#000000" }}>
+                        {item.value}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <p style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: 24,
+                  color: "#000000",
+                  marginBottom: 8,
+                }}>
+                  1.200€
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 13,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  netto · Starterkit inklusive
+                </p>
+
+                <button className="btn-secondary" onClick={openFunnel} style={{ width: "100%" }}>
+                  Kostenlos beraten lassen
+                </button>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SO LÄUFT ES AB ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
+        <div className="container">
+          <Reveal>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: 16,
+              color: "#000000",
+            }}>
+              Ablauf
+            </p>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 64,
+            }}>
+              4 Tage. Vom ersten Strich bis zum Business-Plan.
+            </h2>
+          </Reveal>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: 4,
+          }}>
+            {howItWorks.map((step, i) => (
+              <Reveal key={i} delay={i * 0.1}>
+                <div style={{
+                  background: "var(--chi-chi-beige)",
+                  overflow: "hidden",
+                  height: "100%",
+                }}>
+                  <div style={{ position: "relative" }}>
+                    <img
+                      src={step.img}
+                      alt={step.title}
+                      style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover" }}
+                    />
+                    <span style={{
+                      position: "absolute",
+                      top: 12,
+                      left: 12,
+                      fontFamily: "var(--font-headline)",
+                      fontWeight: 700,
+                      fontSize: 11,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      background: "#000000",
+                      color: "var(--ivory)",
+                      padding: "6px 12px",
+                    }}>
+                      {step.day}
+                    </span>
+                  </div>
+                  <div style={{ padding: "24px 20px 28px" }}>
+                    <h3 style={{
+                      fontFamily: "var(--font-headline)",
+                      fontWeight: 700,
+                      fontSize: 16,
+                      color: "#000000",
+                      marginBottom: 8,
+                      lineHeight: 1.2,
+                    }}>
+                      {step.title}
+                    </h3>
+                    <p style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 14,
+                      color: "#000000",
+                      lineHeight: 1.6,
+                    }}>
+                      {step.text}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FAQ ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)", borderTop: "1px solid #000000" }}>
+        <div className="container" style={{ maxWidth: 720 }}>
+          <Reveal>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 12,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: 16,
+              color: "#000000",
+            }}>
+              Häufige Fragen
+            </p>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 48,
+            }}>
+              Was du wissen solltest.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div style={{ borderTop: "1px solid #000000" }}>
+              <FaqAccordion items={faqs} />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── FINAL CTA ─── */}
+      <section style={{ padding: "var(--section-spacing) 0", background: "#000000" }}>
+        <div className="container" style={{ textAlign: "center" }}>
+          <Reveal>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3.5vw, 44px)",
+              lineHeight: 1.15,
+              color: "var(--ivory)",
+              marginBottom: 24,
+              maxWidth: 640,
+              margin: "0 auto 24px",
+            }}>
+              Bereit für den nächsten Schritt?
+            </h2>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 16,
+              lineHeight: 1.7,
+              color: "var(--ivory)",
+              maxWidth: 480,
+              margin: "0 auto 40px",
+            }}>
+              Ein kurzes Gespräch. Keine Verpflichtung. Wir schauen gemeinsam, ob die Academy das Richtige für dich ist.
+            </p>
+            <button
+              onClick={openFunnel}
+              style={{
+                display: "inline-block",
+                background: "var(--ivory)",
+                color: "#000000",
+                border: "1px solid var(--ivory)",
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 14,
+                padding: "14px 32px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => { e.target.style.background = "var(--chi-chi-beige)"; e.target.style.borderColor = "var(--chi-chi-beige)"; }}
+              onMouseLeave={(e) => { e.target.style.background = "var(--ivory)"; e.target.style.borderColor = "var(--ivory)"; }}
+            >
+              Kostenlos beraten lassen
+            </button>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── FOOTER ─── */}
+      <footer style={{ padding: "60px 0 40px", background: "#000000", borderTop: "1px solid rgba(248,247,243,0.15)" }}>
+        <div className="container">
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 24,
+            alignItems: "center",
+            textAlign: "center",
+          }}>
             <img
               src={logoDataUrl}
               alt="Chi Chi Club"
-              style={{
-                height: "clamp(24px, 3vw, 36px)",
-                objectFit: "contain",
-              }}
+              style={{ height: 20, filter: "invert(1)" }}
             />
-            <button className="cta-button nav-cta-desktop" onClick={scrollToConsultation} style={{ fontSize: 11, padding: "10px 22px" }}>
-              Jetzt kostenlos beraten lassen
-            </button>
-          </div>
-        </nav>
-
-        {/* ═══ 2. Hero Section ═══ */}
-        <section id="hero" className="hero-section" style={{ paddingTop: 140, paddingBottom: 100 }}>
-          <div className="container">
-            <div className="hero-grid">
-              {/* Left: Text Content */}
-              <div>
-                <h1
-                  className="hero-text-enter hero-text-enter--d1"
-                  style={{
-                    fontFamily: "var(--font-headline)",
-                    fontWeight: 700,
-                    fontSize: "clamp(26px, 3.5vw, 42px)",
-                    color: "var(--foreground)",
-                    marginBottom: 24,
-                    lineHeight: 1.12,
-                  }}
-                >
-                  Eine Behandlung, die dir mehr bringt als ein ganzer Tag Gesichtsbehandlungen
-                </h1>
-                <p
-                  className="hero-text-enter hero-text-enter--d2"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "clamp(12px, 1.1vw, 14px)",
-                    color: "var(--muted-fg)",
-                    marginBottom: 36,
-                    lineHeight: 1.9,
-                    maxWidth: 500,
-                  }}
-                >
-                  Lerne Hyperrealistic Microblading – die Premium-Technik, für die
-                  Kundinnen bereit sind, 500–700 € pro Sitzung zu zahlen. In nur
-                  4 Tagen erlernst du, was wir über 10 Jahre perfektioniert haben –
-                  inklusive Business-Fundament und 6 Monaten persönlichem Support.
-                </p>
-                <div className="hero-text-enter hero-text-enter--d3">
-                  <button className="cta-button" onClick={scrollToConsultation}>
-                    Jetzt kostenlos beraten lassen
-                  </button>
-                </div>
-
-                {/* Trust Emblem */}
-                <div
-                  className="hero-text-enter hero-text-enter--d4"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 16,
-                    marginTop: 32,
-                    paddingTop: 28,
-                    borderTop: "1px solid var(--border)",
-                  }}
-                >
-                  <div style={{ display: "flex" }}>
-                    {[IMG_AVATAR1, IMG_AVATAR2, IMG_AVATAR3].map((src, i) => (
-                      <img
-                        key={i}
-                        src={src}
-                        alt={`Schülerin ${i + 1}`}
-                        style={{
-                          width: 44,
-                          height: 44,
-                          borderRadius: "50%",
-                          objectFit: "cover",
-                          border: "2px solid var(--background)",
-                          marginLeft: i > 0 ? -12 : 0,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div>
-                    <div style={{ display: "flex", gap: 2, marginBottom: 2 }}>
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#eab308" stroke="#eab308" strokeWidth="1.5">
-                          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg>
-                      ))}
-                    </div>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "var(--foreground)",
-                      }}
-                    >
-                      30+ zufriedene Schülerinnen
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Image Gallery */}
-              <div className="hero-gallery">
-                <div className="hero-gallery-img hero-img-enter hero-img-enter--d1" style={{ backgroundImage: `url(${IMG_HERO1})` }} />
-                <div className="hero-gallery-img hero-img-enter hero-img-enter--d2" style={{ backgroundImage: `url(${IMG_HERO2})` }} />
-                <div className="hero-gallery-img hero-gallery-img--span hero-img-enter hero-img-enter--d3" style={{ backgroundImage: `url(${IMG_HERO3})` }} />
-              </div>
-            </div>
-          </div>
-
-          {/* ═══ 3. Authority Logos ═══ */}
-          <div style={{ marginTop: 100 }}>
-            <p style={{ textAlign: "center", color: "var(--muted-fg)", fontSize: 11, fontFamily: "var(--font-body)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 36 }}>
-              Featured in
-            </p>
-            <div className="featured-logos">
-              {logos.map((logo) => (
-                <img key={logo.name} src={logo.src} alt={logo.name} className="featured-logo-img" />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 4. Whale Testimonial ═══ */}
-        <div className="container">
-          <InlineTestimonial testimonial={testimonial_whale} />
-        </div>
-
-        {/* ═══ 5. Relevance / Pain Points ═══ */}
-        <section style={{ padding: "60px 0" }}>
-          <div className="container">
-            <Reveal>
-              <div style={{ maxWidth: 720, margin: "0 auto 72px", textAlign: "center" }}>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 16 }}>
-                  Kommt dir das bekannt vor?
-                </p>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)", marginBottom: 20 }}>
-                  Voller Kalender, aber zu wenig Umsatz?
-                </h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(14px, 1.3vw, 17px)", color: "var(--muted-fg)", lineHeight: 1.8 }}>
-                  Wimpern, Laser oder Gesichtsbehandlungen haben eine Umsatzgrenze.
-                  Du kannst nicht 24/7 im Studio sein, um irgendwie mehr Gewinn zu machen.
-                </p>
-              </div>
-            </Reveal>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20, maxWidth: 1060, margin: "0 auto" }}>
-              {painPoints.map((p, i) => (
-                <Reveal key={i} delay={i * 80}>
-                  <div className="card" style={{ textAlign: "center", height: "100%" }}>
-                    <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
-                      <div className="icon-circle">{p.icon}</div>
-                    </div>
-                    <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 19, color: "var(--foreground)", marginBottom: 12, lineHeight: 1.3 }}>
-                      {p.title}
-                    </h3>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted-fg)", lineHeight: 1.8 }}>
-                      {p.text}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ Testimonial after Pain ═══ */}
-        <div className="container">
-          <InlineTestimonial testimonial={testimonial_afterPain} />
-        </div>
-
-        {/* ═══ 6. CTA ═══ */}
-        <CtaBlock
-          headline="Du brauchst einen Service, der Premium-Preise rechtfertigt"
-          subtext="Hyperrealistic Microblading ist genau das. Eine Behandlung, für die Kundinnen 500–700 € zahlen – und die du in nur 4 Tagen lernst."
-          openFunnel={openFunnel}
-        />
-
-        {/* ═══ 7. Value Section ═══ */}
-        <section style={{ padding: "60px 0" }}>
-          <div className="container">
-            <Reveal>
-              <div style={{ maxWidth: 720, margin: "0 auto 72px", textAlign: "center" }}>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 16 }}>
-                  Die Lösung
-                </p>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)", marginBottom: 20 }}>
-                  Was du in 4 Tagen bekommst
-                </h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(14px, 1.3vw, 17px)", color: "var(--muted-fg)", lineHeight: 1.8 }}>
-                  Du lernst in 4 Tagen, was wir über 10 Jahre perfektioniert haben –
-                  und gehst mit allem nach Hause, was du brauchst, um sofort zu starten.
-                </p>
-              </div>
-            </Reveal>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 20, maxWidth: 1060, margin: "0 auto" }}>
-              {values.map((v, i) => {
-                const valImgs = [IMG_VAL1, IMG_VAL2, IMG_VAL3, IMG_VAL4, IMG_EXTRA1, IMG_EXTRA2];
-                return (
-                  <Reveal key={i} delay={i * 80}>
-                    <div style={{ background: "var(--card)", overflow: "hidden", border: "1px solid var(--border)", transition: "box-shadow 0.4s, transform 0.4s", height: "100%" }} className="value-card">
-                      <div style={{ padding: "36px 32px 28px" }}>
-                        <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 19, color: "var(--foreground)", marginBottom: 12, lineHeight: 1.3 }}>
-                          {v.title}
-                        </h3>
-                        <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted-fg)", lineHeight: 1.8 }}>
-                          {v.text}
-                        </p>
-                      </div>
-                      <div style={{ width: "100%", aspectRatio: "16 / 10", backgroundImage: `url(${valImgs[i]})`, backgroundSize: "cover", backgroundPosition: "center" }} />
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 8. Testimonial after Value ═══ */}
-        <div className="container">
-          <InlineTestimonial testimonial={testimonial_afterValue} />
-        </div>
-
-        {/* ═══ 9. CTA ═══ */}
-        <CtaBlock
-          headline="In 4 Tagen bereit für deine ersten Kundinnen"
-          subtext="Nicht irgendwann. Nach der Schulung kannst du sofort loslegen – mit echtem Portfolio, Zertifikat und Business-Plan."
-          openFunnel={openFunnel}
-        />
-
-        {/* ═══ 10. How it Works ═══ */}
-        <section style={{ padding: "60px 0", background: "var(--card)" }}>
-          <div className="container">
-            <Reveal>
-              <div style={{ maxWidth: 720, margin: "0 auto 72px", textAlign: "center" }}>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 16 }}>
-                  So läuft die Schulung ab
-                </p>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)", marginBottom: 20 }}>
-                  4 Tage, die alles verändern
-                </h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(14px, 1.3vw, 17px)", color: "var(--muted-fg)", lineHeight: 1.8 }}>
-                  Wir nehmen dir alles ab – du musst nur erscheinen und lernen.
-                </p>
-              </div>
-            </Reveal>
-            <div className="how-grid">
-              {howItWorks.map((step, i) => (
-                <Reveal key={i} delay={i * 100}>
-                  <div style={{ background: "var(--background)", border: "1px solid var(--border)", overflow: "hidden", height: "100%" }}>
-                    {/* Image with day label */}
-                    <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3", backgroundImage: `url(${step.img})`, backgroundSize: "cover", backgroundPosition: "center" }}>
-                      <div style={{
-                        position: "absolute",
-                        top: 12,
-                        left: 12,
-                        padding: "5px 14px",
-                        background: "var(--primary)",
-                        color: "var(--primary-fg)",
-                        fontFamily: "var(--font-headline)",
-                        fontWeight: 700,
-                        fontSize: 11,
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
-                      }}>
-                        {step.day}
-                      </div>
-                    </div>
-                    {/* Text content */}
-                    <div style={{ padding: "24px 20px 28px" }}>
-                      <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 17, color: "var(--foreground)", marginBottom: 8, lineHeight: 1.3 }}>
-                        {step.title}
-                      </h3>
-                      <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--muted-fg)", lineHeight: 1.8 }}>
-                        {step.text}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 11. Results Marquee ═══ */}
-        <section style={{ padding: "60px 0" }}>
-          <Reveal>
-            <div className="container" style={{ textAlign: "center", marginBottom: 56 }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--muted-fg)", marginBottom: 16 }}>
-                Behandlungsergebnisse
-              </p>
-              <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", lineHeight: 1.15, color: "var(--foreground)" }}>
-                Echte Ergebnisse unserer Absolventinnen
-              </h2>
-            </div>
-          </Reveal>
-          <div className="results-marquee">
-            <div className="results-marquee-track">
-              {[IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4,
-                IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4].map((src, i) => (
-                <img key={i} src={src} alt={`Behandlungsergebnis ${(i % 4) + 1}`} className="results-marquee-img" loading="lazy" />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 12. Testimonial after How ═══ */}
-        <div className="container">
-          <InlineTestimonial testimonial={testimonial_afterHow} />
-        </div>
-
-        {/* ═══ 13. CTA ═══ */}
-        <CtaBlock
-          headline="Lerne von der Pionierin selbst"
-          subtext="Jette hat Hyperrealistic Microblading als Erste nach Europa gebracht. Jetzt gibt sie ihr Wissen an dich weiter."
-          openFunnel={openFunnel}
-        />
-
-        {/* ═══ 14. Über uns / Jette ═══ */}
-        <section style={{ padding: "60px 0", background: "var(--card)" }}>
-          <div className="container">
-            <div className="about-grid">
-              <Reveal>
-              <div>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 16 }}>
-                  Die Gründerin
-                </p>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)", marginBottom: 20, lineHeight: 1.1 }}>
-                  Von Vancouver nach Hamburg – Jettes Weg
-                </h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(13px, 1.2vw, 15px)", color: "var(--muted-fg)", lineHeight: 1.8, marginBottom: 28, maxWidth: 520 }}>
-                  Jette startete als Hair & Make-Up-Artistin, studierte
-                  Maskenbildnerei in Vancouver und entdeckte dort über eine
-                  Freundin das Microblading. Sie gehörte zu den Ersten in
-                  Nordamerika, die natürliches Microblading perfektionierten –
-                  und brachte diese Technik als Erste nach Deutschland.
-                </p>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(13px, 1.2vw, 15px)", color: "var(--muted-fg)", lineHeight: 1.8, marginBottom: 32, maxWidth: 520 }}>
-                  Heute leitet sie ein etabliertes Studio in Hamburg mit 7 selbst
-                  ausgebildeten Behandlerinnen – und gibt ihr gesamtes Wissen in
-                  der Chi Chi Club Academy weiter. Nicht umsonst berichten Vogue,
-                  Brigitte und Cosmopolitan über ihre Arbeit.
-                </p>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, maxWidth: 420, marginBottom: 32 }}>
-                  {[
-                    { num: "10+", label: "Jahre Erfahrung" },
-                    { num: "7", label: "Ausgebildete Artists im Team" },
-                    { num: "30+", label: "Schülerinnen" },
-                  ].map((stat, i) => (
-                    <div key={i}>
-                      <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(24px, 3vw, 32px)", color: "var(--foreground)", lineHeight: 1, marginBottom: 4 }}>
-                        {stat.num}
-                      </p>
-                      <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", lineHeight: 1.3 }}>
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ position: "relative", display: "inline-block" }}>
-                  <p style={{ fontFamily: "'Sacramento', cursive", fontSize: "clamp(52px, 6vw, 72px)", color: "var(--foreground)", lineHeight: 1, letterSpacing: "0.02em" }}>
-                    Jette
-                  </p>
-                  <svg width="140" height="16" viewBox="0 0 140 16" fill="none" style={{ display: "block", marginTop: -2, marginLeft: 4 }}>
-                    <path d="M2 10Q20 2 40 8Q60 14 80 6Q100 -2 120 8Q130 12 138 6" stroke="var(--foreground)" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.35" />
-                  </svg>
-                </div>
-              </div>
-              </Reveal>
-              <Reveal delay={150}>
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <div style={{ width: "100%", maxWidth: 420, aspectRatio: "4/5", backgroundImage: `url(${IMG_JETTE})`, backgroundSize: "cover", backgroundPosition: "center top", boxShadow: "0 16px 48px rgba(0,0,0,0.1)" }} />
-              </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 15. Vergleich (Differentiation) ═══ */}
-        <section style={{ padding: "60px 0", background: "var(--primary)", color: "var(--primary-fg)" }}>
-          <div className="container">
-            <Reveal>
-              <div style={{ maxWidth: 720, margin: "0 auto 72px", textAlign: "center" }}>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", marginBottom: 16 }}>
-                  Warum die Chi Chi Club Academy?
-                </h2>
-              </div>
-            </Reveal>
-            <Reveal>
-            <div className="compare-grid">
-              {/* Left: Andere Schulungen */}
-              <div style={{ background: "rgba(255,255,255,0.06)", padding: "32px 28px", border: "1px solid rgba(255,255,255,0.08)" }}>
-                <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 18, color: "rgba(255,255,255,0.85)", marginBottom: 28 }}>
-                  Andere Schulungen
-                </h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  {["Nur Theorie, kaum Praxis", "Arbeit nur auf Kunsthaut", "Kein Support nach der Schulung", "Kein Business-Wissen vermittelt", "Massen-Kurse, keine individuelle Betreuung", "Generische Standard-Technik"].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <div style={{ width: 28, height: 28, background: "rgba(239,68,68,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                      </div>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "rgba(255,255,255,0.6)" }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Center: Chi Chi Club Academy */}
-              <div style={{ background: "rgba(255,255,255,0.12)", padding: "40px 28px", border: "2px solid rgba(255,255,255,0.2)" }}>
-                <div style={{ textAlign: "center", marginBottom: 28 }}>
-                  <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 28, objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.9, marginBottom: 8 }} />
-                  <p style={{ fontFamily: "var(--font-body)", fontSize: 10, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>
-                    Academy
-                  </p>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  {["Hyperrealistische Technik – einzigartig in DE", "Praxis an echten Modellen ab Tag 1", "6 Monate persönlicher Support per WhatsApp", "Kompletter Business-Tag inklusive", "Max. 12 Teilnehmerinnen pro Schulung", "Eigene Stilentwicklung statt Copy-Paste", "Starterkit für 20 Behandlungen inklusive", "Anerkanntes Chi Chi Club Zertifikat"].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <div style={{ width: 28, height: 28, background: "rgba(5,150,105,0.2)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      </div>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right: Selbst beibringen */}
-              <div style={{ background: "rgba(255,255,255,0.06)", padding: "32px 28px", border: "1px solid rgba(255,255,255,0.08)" }}>
-                <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 18, color: "rgba(255,255,255,0.85)", marginBottom: 28 }}>
-                  Selbst beibringen
-                </h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  {["Kein strukturierter Lernplan", "YouTube-Tutorials als Basis", "Niemand korrigiert Fehler", "Kein Netzwerk oder Kontakte", "Teure Fehlkäufe bei Material", "Kein Zertifikat, kein Vertrauen"].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      <div style={{ width: 28, height: 28, background: "rgba(239,68,68,0.15)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                      </div>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "rgba(255,255,255,0.6)" }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ═══ 16. Testimonial after Vergleich ═══ */}
-        <div className="container">
-          <InlineTestimonial testimonial={testimonial_afterVergleich} />
-        </div>
-
-        {/* ═══ 17. CTA ═══ */}
-        <CtaBlock
-          headline="Wir nehmen wieder neue Schülerinnen auf"
-          subtext="Für kurze Zeit öffnen wir die Plätze. Lass dich kostenlos und unverbindlich von Jette persönlich beraten."
-          openFunnel={openFunnel}
-        />
-
-        {/* ═══ 18. Schulungen ═══ */}
-        <section style={{ padding: "60px 0" }}>
-          <div className="container">
-            <div style={{ maxWidth: 1060, margin: "0 auto" }}>
-              <Reveal>
-                <p style={{ textAlign: "center", fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 16 }}>
-                  Unsere Schulungen
-                </p>
-                <h2 style={{ textAlign: "center", fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)", marginBottom: 56 }}>
-                  Finde die Schulung, die zu dir passt
-                </h2>
-              </Reveal>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 24, maxWidth: 900, margin: "0 auto" }}>
-                {/* Microblading Fundamentals */}
-                <Reveal>
-                <div style={{ border: "2px solid var(--primary)", overflow: "hidden", background: "var(--card)", position: "relative" }}>
-                  <div style={{ position: "absolute", top: 16, right: 16, padding: "4px 12px", background: "var(--primary)", color: "white", fontFamily: "var(--font-body)", fontSize: 10, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>
-                    Beliebteste
-                  </div>
-                  <div style={{ padding: "32px 28px" }}>
-                    <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 22, color: "var(--foreground)", marginBottom: 4 }}>
-                      Microblading Fundamentals
-                    </h3>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted-fg)", marginBottom: 24 }}>
-                      4 Tage · max. 12 Teilnehmerinnen
-                    </p>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 28 }}>
-                      {["Hyperrealistische Microblading-Technik", "2 Tage Theorie + 2 Tage Praxis", "Arbeit an echten Modellen", "Kompletter Business-Tag (Marketing, Recht, Social Media)", "Premium-Starterkit für 20 Behandlungen", "6 Monate Support per WhatsApp", "Anerkanntes Chi Chi Club Zertifikat", "Ausführliches Handbuch"].map((item, i) => (
-                        <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><polyline points="20 6 9 17 4 12"/></svg>
-                          <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--foreground)" }}>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="cta-button" onClick={openFunnel} style={{ width: "100%", textAlign: "center" }}>
-                      Beratungsgespräch vereinbaren
-                    </button>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textAlign: "center", marginTop: 8 }}>
-                      Ratenzahlung möglich · Plätze begrenzt
-                    </p>
-                  </div>
-                </div>
-                </Reveal>
-
-                {/* Freckle Masterclass */}
-                <Reveal delay={120}>
-                <div style={{ border: "1px solid var(--border)", overflow: "hidden", background: "var(--card)" }}>
-                  <div style={{ padding: "32px 28px" }}>
-                    <h3 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 22, color: "var(--foreground)", marginBottom: 4 }}>
-                      Freckle Masterclass
-                    </h3>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted-fg)", marginBottom: 24 }}>
-                      2,5 Stunden · max. 12 Teilnehmerinnen
-                    </p>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 28 }}>
-                      {["Natürliche Freckle-Technik", "Haut, Pigmente & Farbkreis", "Pigmente mixen lernen", "Arbeit an 2 echten Modellen", "Materialien & Nadeln inklusive", "Zertifikat nach Abschluss"].map((item, i) => (
-                        <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><polyline points="20 6 9 17 4 12"/></svg>
-                          <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--foreground)" }}>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="cta-button" onClick={openFunnel} style={{ width: "100%", textAlign: "center" }}>
-                      Beratungsgespräch vereinbaren
-                    </button>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textAlign: "center", marginTop: 8 }}>
-                      Ratenzahlung möglich · Plätze begrenzt
-                    </p>
-                  </div>
-                </div>
-                </Reveal>
-              </div>
-              <div style={{ display: "flex", justifyContent: "center", gap: 16, marginTop: 32, flexWrap: "wrap" }}>
-                {["Lip Blush", "Lash & Browlifting"].map((name, i) => (
-                  <div key={i} style={{ padding: "10px 20px", border: "1px dashed var(--border)", fontFamily: "var(--font-body)", fontSize: 12, color: "var(--muted-fg)", display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#f59e0b", display: "inline-block" }}/>
-                    {name} — Coming soon
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 19. ROI Calculator ═══ */}
-        <section style={{ padding: "60px 0", background: "var(--card)" }}>
-          <div className="container">
-            <Reveal>
-              <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 16 }}>
-                  Return on Invest
-                </p>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)", marginBottom: 20 }}>
-                  Wann hat sich deine Investition bezahlt gemacht?
-                </h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(13px, 1.2vw, 16px)", color: "var(--muted-fg)", lineHeight: 1.8, maxWidth: 560, margin: "0 auto 56px" }}>
-                  Berechne, wie schnell du deine Kurskosten wieder einspielst – und ab wann jede Behandlung reiner Gewinn ist.
-                </p>
-              </div>
-            </Reveal>
-            <RoiCalculator />
-          </div>
-        </section>
-
-        {/* ═══ 20. Testimonial after ROI ═══ */}
-        <div className="container">
-          <InlineTestimonial testimonial={testimonial_afterRoi} />
-        </div>
-
-        {/* ═══ 21. CTA ═══ */}
-        <CtaBlock
-          headline="Deine Investition zahlt sich nach wenigen Behandlungen aus"
-          subtext="Starte jetzt und verdiene mit jeder Behandlung mehr als an einem ganzen Tag mit klassischen Services."
-          openFunnel={openFunnel}
-        />
-
-        {/* ═══ 22. Location ═══ */}
-        <section style={{ padding: "60px 0" }}>
-          <div className="container">
-            <Reveal>
-            <div className="location-grid">
-              <div style={{ width: "100%", minHeight: 400, backgroundImage: `url(${IMG_DIVIDER1})`, backgroundSize: "cover", backgroundPosition: "center", boxShadow: "0 12px 40px rgba(0,0,0,0.1)", position: "relative", overflow: "hidden" }}>
-                <div style={{ position: "absolute", bottom: 20, left: 20, display: "flex", alignItems: "center", gap: 8, padding: "10px 16px", background: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--foreground)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: "var(--foreground)" }}>Hamburg, Deutschland</span>
-                </div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted-fg)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 12 }}>Unser Studio</p>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)", lineHeight: 1.15, marginBottom: 20 }}>
-                  Dein Schulungsort: Hamburg
-                </h2>
-                <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(13px, 1.2vw, 15px)", color: "var(--muted-fg)", lineHeight: 1.8, marginBottom: 36, maxWidth: 480 }}>
-                  Unsere Schulungen finden im Chi Chi Club Studio statt – dem gleichen Ort, an dem wir täglich unsere Kundinnen behandeln. Kein Seminarraum, sondern ein echtes Premium-Studio.
-                </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 420 }}>
-                  {[
-                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, title: "Zentrale Lage in Hamburg", text: "Gut erreichbar mit ÖPNV und Auto" },
-                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>, title: "Echtes Premium-Studio", text: "Du lernst im laufenden Studio, nicht im Seminarraum" },
-                    { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>, title: "Kleine Gruppen, max. 6–12", text: "Persönliche Betreuung statt Massenabfertigung" },
-                  ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
-                      <div style={{ width: 44, height: 44, background: "var(--card)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "var(--foreground)" }}>
-                        {item.icon}
-                      </div>
-                      <div>
-                        <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "var(--foreground)", marginBottom: 2 }}>{item.title}</p>
-                        <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--muted-fg)", lineHeight: 1.5 }}>{item.text}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ═══ 23. FAQ ═══ */}
-        <section style={{ padding: "60px 0" }}>
-          <div className="container">
-            <Reveal>
-              <div style={{ maxWidth: 720, margin: "0 auto 72px", textAlign: "center" }}>
-                <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(28px, 4vw, 48px)", color: "var(--foreground)" }}>
-                  Alles, was du wissen musst
-                </h2>
-              </div>
-            </Reveal>
-            <div style={{ maxWidth: 720, margin: "0 auto", borderTop: "1px solid var(--border)" }}>
-              {faqs.map((f, i) => (
-                <FaqItem key={i} question={f.q} answer={f.a} number={String(i + 1).padStart(2, "0")} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══ 24. Final CTA (groß) ═══ */}
-        <section id="consultation" style={{ padding: "60px 0", textAlign: "center", background: "var(--card)", position: "relative", overflow: "hidden" }}>
-          {/* Subtle decorative circles */}
-          <div style={{ position: "absolute", top: -100, right: -100, width: 400, height: 400, borderRadius: "50%", border: "1px solid var(--border)", opacity: 0.3, pointerEvents: "none" }} />
-          <div style={{ position: "absolute", bottom: -60, left: -60, width: 240, height: 240, borderRadius: "50%", border: "1px solid var(--border)", opacity: 0.2, pointerEvents: "none" }} />
-          <Reveal>
-            <div className="container" style={{ position: "relative", zIndex: 1 }}>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--muted-fg)", marginBottom: 20 }}>
-                Dein nächster Schritt
-              </p>
-              <h2 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(32px, 5vw, 56px)", color: "var(--foreground)", marginBottom: 24, lineHeight: 1.08 }}>
-                Für kurze Zeit: Kostenlose Beratung sichern
-              </h2>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(15px, 1.4vw, 18px)", color: "var(--muted-fg)", maxWidth: 500, margin: "0 auto 48px", lineHeight: 1.8 }}>
-                Wir nehmen wieder neue Schülerinnen auf. Lass dich kostenlos und unverbindlich von Jette persönlich beraten.
-              </p>
-              <button className="cta-button" onClick={openFunnel}>
-                Jetzt kostenlos beraten lassen
-              </button>
-              <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted-fg)", marginTop: 18, letterSpacing: "0.02em" }}>
-                Ratenzahlung möglich · Keine Verpflichtung · Antwort in 24h
+            <div style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              color: "var(--ivory)",
+              lineHeight: 1.7,
+            }}>
+              <p>Chi Chi Club Academy · Hamburg</p>
+              <p style={{ opacity: 0.6, marginTop: 8 }}>
+                © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
               </p>
             </div>
-          </Reveal>
-        </section>
-
-        {/* ═══ 25. Footer ═══ */}
-        <footer style={{ padding: "64px 0 40px", borderTop: "1px solid var(--border)" }}>
-          <div className="container">
-            <div style={{ maxWidth: 800, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 32, textAlign: "center" }}>
-              <div>
-                <h4 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 13, letterSpacing: "0.05em", marginBottom: 16 }}>CHI CHI CLUB ACADEMY</h4>
-                <p style={{ fontSize: 12, color: "var(--muted-fg)", fontFamily: "var(--font-body)" }}>Hamburg, Deutschland</p>
-              </div>
-              <div>
-                <h4 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 13, letterSpacing: "0.05em", marginBottom: 16 }}>KONTAKT</h4>
-                <a href="mailto:academy@chichiclub.de" style={{ fontSize: 12, color: "var(--muted-fg)", fontFamily: "var(--font-body)" }}>academy@chichiclub.de</a>
-              </div>
-              <div>
-                <h4 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 13, letterSpacing: "0.05em", marginBottom: 16 }}>RECHTLICHES</h4>
-                <p style={{ fontSize: 12, color: "var(--muted-fg)", fontFamily: "var(--font-body)" }}>Impressum | Datenschutz</p>
-              </div>
-            </div>
-            <p style={{ textAlign: "center", fontSize: 11, color: "var(--muted-fg)", fontFamily: "var(--font-body)", marginTop: 32 }}>
-              2026 Chi Chi Club Academy
-            </p>
           </div>
-        </footer>
-
-        {/* ─── Sticky Bottom Bar (Mobile) ─── */}
-        <div className="sticky-bottom-bar" style={{ transform: showStickyBar ? "translateY(0)" : "translateY(100%)", transition: "transform 0.35s ease" }}>
-          <button onClick={openFunnel} style={{ flex: 1, padding: "16px 24px", background: "var(--primary)", color: "white", border: "none", fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 15, cursor: "pointer", letterSpacing: "0.02em" }}>
-            Jetzt beraten lassen
-          </button>
-          <a href="https://wa.me/4915123456789" target="_blank" rel="noopener noreferrer" style={{ width: 52, height: 52, background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, textDecoration: "none" }}>
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-          </a>
         </div>
-
-      </div>
-
-      <FunnelModal isOpen={funnelOpen} onClose={closeFunnel} />
+      </footer>
     </>
   );
 }
