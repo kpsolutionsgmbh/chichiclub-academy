@@ -1451,89 +1451,6 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
-      {/* ─── DIE TECHNIK ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
-        <div className="container">
-          <Reveal>
-            <div className="grid-2col" style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: 64,
-              alignItems: "center",
-            }}>
-              <div>
-                <SectionLabel onBeige>Die Technik</SectionLabel>
-                <h2 style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: "clamp(24px, 3vw, 40px)",
-                  lineHeight: 1.15,
-                  color: "#000000",
-                  marginBottom: 24,
-                }}>
-                  Einzelne Härchen. So echt, dass niemand sie bemerkt.
-                </h2>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                  marginBottom: 24,
-                  maxWidth: 560,
-                }}>
-                  Hyperrealistisches Microblading ist kein Standard-PMU. Keine Schablonen, keine gemalten Striche. Jedes einzelne Härchen wird so gesetzt, dass das Ergebnis nicht von echten Augenbrauen zu unterscheiden ist.
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                  maxWidth: 560,
-                }}>
-                  Jette hat diese Technik aus Nordamerika nach Deutschland gebracht. Als Erste. Heute bildet sie mit ihrem Team die nächste Generation von Microblading-Artists aus — direkt im Studio in Hamburg.
-                </p>
-              </div>
-
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 4,
-              }}>
-                <img src={IMG_RESULT1} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT2} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT3} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT4} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
-      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
-        <div className="container">
-          <Reveal>
-            <div style={{ textAlign: "center" }}>
-            <SectionLabel>Absolventinnen</SectionLabel>
-            <h2 style={{
-              fontFamily: "var(--font-headline)",
-              fontWeight: 700,
-              fontSize: "clamp(24px, 3vw, 40px)",
-              lineHeight: 1.15,
-              color: "#000000",
-              marginBottom: 48,
-            }}>
-              Was unsere Absolventinnen sagen.
-            </h2>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <TestimonialSlider items={testimonials} />
-          </Reveal>
-        </div>
-      </section>
-
       {/* ─── ÜBER JETTE ─── */}
       <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
@@ -1585,12 +1502,70 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
-      {/* ─── WARUM HYPERREALISTISCH ─── */}
+      {/* ─── DIE TECHNIK ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
+            <div className="grid-2col" style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 64,
+              alignItems: "center",
+            }}>
+              <div>
+                <SectionLabel>Die Technik</SectionLabel>
+                <h2 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(24px, 3vw, 40px)",
+                  lineHeight: 1.15,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  Einzelne Härchen. So echt, dass niemand sie bemerkt.
+                </h2>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 24,
+                  maxWidth: 560,
+                }}>
+                  Hyperrealistisches Microblading ist kein Standard-PMU. Keine Schablonen, keine gemalten Striche. Jedes einzelne Härchen wird so gesetzt, dass das Ergebnis nicht von echten Augenbrauen zu unterscheiden ist.
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  maxWidth: 560,
+                }}>
+                  Jette hat diese Technik aus Nordamerika nach Deutschland gebracht. Als Erste. Heute bildet sie mit ihrem Team die nächste Generation von Microblading-Artists aus — direkt im Studio in Hamburg.
+                </p>
+              </div>
+
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 4,
+              }}>
+                <img src={IMG_RESULT1} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT2} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT3} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT4} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ─── WARUM HYPERREALISTISCH ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel>Warum hyperrealistisch</SectionLabel>
+            <SectionLabel onBeige>Warum hyperrealistisch</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1680,11 +1655,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── WAS DU MITNIMMST ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Was du mitnimmst</SectionLabel>
+            <SectionLabel>Was du mitnimmst</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1737,7 +1712,7 @@ export default function ChiChiClubAcademy() {
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <div style={{
-                  background: "var(--ivory)",
+                  background: "var(--chi-chi-beige)",
                   overflow: "hidden",
                   height: "100%",
                   display: "flex",
@@ -1748,7 +1723,7 @@ export default function ChiChiClubAcademy() {
                     alt={item.title}
                     style={{
                       width: "100%",
-                      aspectRatio: "4/3",
+                      aspectRatio: "16/9",
                       objectFit: "cover",
                       display: "block",
                     }}
@@ -1777,6 +1752,31 @@ export default function ChiChiClubAcademy() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <Reveal>
+            <div style={{ textAlign: "center" }}>
+            <SectionLabel onBeige>Absolventinnen</SectionLabel>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 48,
+            }}>
+              Was unsere Absolventinnen sagen.
+            </h2>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <TestimonialSlider items={testimonials} />
+          </Reveal>
         </div>
       </section>
 
@@ -2061,7 +2061,7 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── FINAL CTA ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "#000000" }}>
+      <section style={{ padding: "60px 0", background: "#000000" }}>
         <div className="container" style={{ textAlign: "center", maxWidth: 900 }}>
           <Reveal>
             <h2 style={{
