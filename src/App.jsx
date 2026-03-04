@@ -462,7 +462,7 @@ function RoiCalculator() {
 
   return (
     <div style={{
-      background: "var(--ivory)",
+      background: "var(--chi-chi-beige)",
       padding: "40px",
     }}>
       <div style={{ marginBottom: 32 }}>
@@ -541,7 +541,7 @@ function RoiCalculator() {
           { label: "Break-Even nach", value: weeksToBreakEven ? `${weeksToBreakEven} Wochen` : "—" },
         ].map((item, i) => (
           <div key={i} style={{
-            background: "var(--chi-chi-beige)",
+            background: "var(--ivory)",
             padding: "24px 20px",
             textAlign: "center",
           }}>
@@ -1451,7 +1451,7 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── DIE TECHNIK ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
             <div className="grid-2col" style={{
@@ -1509,7 +1509,7 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
@@ -1534,7 +1534,7 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── ÜBER JETTE ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div className="grid-2col" style={{
@@ -1550,7 +1550,7 @@ export default function ChiChiClubAcademy() {
               />
 
               <div>
-                <SectionLabel>Über Jette Scherzer</SectionLabel>
+                <SectionLabel onBeige>Über Jette Scherzer</SectionLabel>
                 <h2 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -1585,11 +1585,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── WARUM HYPERREALISTISCH ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Warum hyperrealistisch</SectionLabel>
+            <SectionLabel>Warum hyperrealistisch</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1678,12 +1678,147 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
-      {/* ─── SCHULUNGEN ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
+      {/* ─── WAS DU MITNIMMST ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Schulungen</SectionLabel>
+            <SectionLabel onBeige>Was du mitnimmst</SectionLabel>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 48,
+            }}>
+              Alles, was du brauchst. Ab Tag 1.
+            </h2>
+            </div>
+          </Reveal>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: 32,
+          }}>
+            {[
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Z" />
+                    <path d="M8 12c1-3 2.5-5 4-5s3 2 4 5-2.5 5-4 5-3-2-4-5Z" />
+                    <line x1="12" y1="7" x2="12" y2="17" />
+                  </svg>
+                ),
+                title: "Eine Technik, die kein anderer unterrichtet",
+                text: "Hyperrealistisches Microblading — so natürlich, dass selbst Profis keinen Unterschied sehen. Genau deshalb zahlen Kundinnen Premium-Preise.",
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                  </svg>
+                ),
+                title: "Dein Business-Plan steht nach Tag 4",
+                text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung, rechtliche Absicherung — du gehst mit einem fertigen Plan nach Hause.",
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                ),
+                title: "6 Monate persönliches Feedback",
+                text: "Jede Behandlung, die du nach der Schulung machst, kannst du uns schicken. Wir geben dir Feedback, bis du auf Profi-Niveau bist.",
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                  </svg>
+                ),
+                title: "Starterkit für 20 Behandlungen",
+                text: "Pigmente, Klingen, Werkzeuge — alles, was du brauchst, um direkt loszulegen. Keine teuren Fehlkäufe, keine Unsicherheit beim Material.",
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+                    <circle cx="12" cy="13" r="3" />
+                  </svg>
+                ),
+                title: "Echte Ergebnisse für dein Portfolio",
+                text: "Du arbeitest an echten Modellen. Das heißt: echte Fotos für dein Portfolio und echtes Selbstvertrauen für deine ersten Kundinnen.",
+              },
+              {
+                icon: (
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="8" r="7" />
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                  </svg>
+                ),
+                title: "Ein Zertifikat, das Vertrauen schafft",
+                text: "Das Chi Chi Club Zertifikat steht für die höchste Qualität im Microblading. Deine Kundinnen wissen: Hier bin ich in den besten Händen.",
+              },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 0.05}>
+                <div style={{
+                  background: "var(--ivory)",
+                  padding: 32,
+                  display: "flex",
+                  gap: 20,
+                  alignItems: "flex-start",
+                }}>
+                  <div style={{
+                    flexShrink: 0,
+                    width: 48,
+                    height: 48,
+                    background: "var(--chi-chi-beige)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 style={{
+                      fontFamily: "var(--font-headline)",
+                      fontWeight: 700,
+                      fontSize: 16,
+                      lineHeight: 1.3,
+                      color: "#000000",
+                      marginBottom: 8,
+                    }}>
+                      {item.title}
+                    </h3>
+                    <p style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 14,
+                      lineHeight: 1.7,
+                      color: "#000000",
+                    }}>
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SCHULUNGEN ─── */}
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
+        <div className="container">
+          <Reveal>
+            <div style={{ textAlign: "center" }}>
+            <SectionLabel>Schulungen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1705,7 +1840,7 @@ export default function ChiChiClubAcademy() {
             {/* Microblading Fundamentals */}
             <Reveal delay={0}>
               <div style={{
-                background: "var(--ivory)",
+                background: "var(--chi-chi-beige)",
                 padding: 40,
                 height: "100%",
                 display: "flex",
@@ -1766,7 +1901,7 @@ export default function ChiChiClubAcademy() {
             {/* Freckle Masterclass */}
             <Reveal delay={0.1}>
               <div style={{
-                background: "var(--ivory)",
+                background: "var(--chi-chi-beige)",
                 padding: 40,
                 height: "100%",
                 display: "flex",
@@ -1828,11 +1963,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── SO LÄUFT ES AB ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel>Ablauf</SectionLabel>
+            <SectionLabel onBeige>Ablauf</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1854,7 +1989,7 @@ export default function ChiChiClubAcademy() {
             {howItWorks.map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div style={{
-                  background: "var(--chi-chi-beige)",
+                  background: "var(--ivory)",
                   overflow: "hidden",
                   height: "100%",
                 }}>
@@ -1908,11 +2043,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── ROI CALCULATOR ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--chi-chi-beige)" }}>
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Dein Investment</SectionLabel>
+            <SectionLabel>Dein Investment</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -1932,11 +2067,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section style={{ padding: "var(--section-spacing) 0", background: "var(--ivory)" }}>
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel>Häufige Fragen</SectionLabel>
+            <SectionLabel onBeige>Häufige Fragen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
