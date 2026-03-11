@@ -80,7 +80,7 @@ const testimonials = [
 const faqs = [
   {
     q: "Brauche ich Vorerfahrung?",
-    a: "Nein. Viele unserer Absolventinnen kommen aus völlig anderen Bereichen — von der Medizin bis zum Büro. Du brauchst ein Auge für Ästhetik, Lust auf Handwerk und den Willen, zu üben. Den Rest bringen wir dir bei.",
+    a: "Nein. Viele unserer Absolventinnen kommen aus völlig anderen Bereichen. Medizin, Büro, Gastronomie. Was du brauchst: ein Auge für Ästhetik und die Bereitschaft, zu üben. Die Technik bringen wir dir bei.",
   },
   {
     q: "Reichen 4 Tage wirklich aus?",
@@ -121,25 +121,26 @@ const howItWorks = [
   {
     day: "Tag 1",
     title: "Theorie & Grundlagen",
-    text: "Hautaufbau, Hygiene, erste Live-Demo durch Jette. Übung auf Silikonhaut.",
+    text: "Hautaufbau, Hygiene, erste Live-Demo durch Jette. Du übst Haarmuster auf Silikonhaut.",
     img: IMG_VAL1,
   },
   {
     day: "Tag 2",
     title: "Farbtheorie & Materialien",
-    text: "Pigmente, Nadeln, Browmapping. Du testest verschiedene Techniken auf Silikonhaut.",
+    text: "Pigmente, Nadeln, Browmapping. Du testest verschiedene Techniken und findest die perfekte Form.",
     img: IMG_VAL2,
   },
   {
     day: "Tag 3",
     title: "Praxis an echten Modellen",
-    text: "Beratungsgespräch, Setup, der komplette Prozess. Dein erstes echtes Modell.",
+    text: "Beratungsgespräch, Setup, der komplette Prozess Schritt für Schritt. Dein erstes echtes Modell.",
     img: IMG_VAL3,
   },
   {
     day: "Tag 4",
     title: "Business & Abschluss",
     text: "Zweites Modell, Social Media, Marketing, Kundengewinnung, Recht. Zertifikat.",
+
     img: IMG_VAL4,
   },
 ];
@@ -248,7 +249,7 @@ function TestimonialSlider({ items }) {
         {getVisibleItems().map((t, i) => (
           <div key={`${current}-${i}`} className={i > 0 ? "testimonial-extra" : ""} style={{
             padding: 32,
-            background: "var(--ivory)",
+            background: "var(--chi-chi-beige)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -462,7 +463,7 @@ function RoiCalculator() {
 
   return (
     <div style={{
-      background: "var(--chi-chi-beige)",
+      background: "var(--ivory)",
       padding: "40px",
     }}>
       <div style={{ marginBottom: 32 }}>
@@ -1667,7 +1668,7 @@ export default function ChiChiClubAcademy() {
                   textTransform: "uppercase",
                   color: "#000000",
                 }}>
-                  Hamburg
+                  Hamburg · Chi Chi Club Academy
                 </span>
               </div>
 
@@ -1679,7 +1680,7 @@ export default function ChiChiClubAcademy() {
                 color: "#000000",
                 marginBottom: 24,
               }}>
-                Hyperrealistisches Microblading lernen.
+                Lerne das Microblading, das niemand als Tattoo erkennt.
               </h1>
 
               <p style={{
@@ -1690,7 +1691,7 @@ export default function ChiChiClubAcademy() {
                 maxWidth: 560,
                 marginBottom: 32,
               }}>
-                4 Tage Intensivausbildung. Echte Modelle. Eine Technik, die es so kein zweites Mal gibt. Danach hast du alles, was du brauchst — Technik, Material, Wissen, Support — um eigenständig zu arbeiten.
+                Die Chi Chi Club Academy ist deine 4-tägige Intensivausbildung in hyperrealistischem Microblading. Direkt in Hamburg, von den Leuten, die diese Technik als Erste nach Deutschland gebracht haben. Du gehst mit Starterkit für 20 Behandlungen, Business-Wissen und 6 Monaten persönlichem Support nach Hause.
               </p>
 
               <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginBottom: 24 }}>
@@ -1726,7 +1727,7 @@ export default function ChiChiClubAcademy() {
                     color: "#000000",
                     marginTop: 2,
                   }}>
-                    30+ zufriedene Teilnehmerinnen
+                    30+ Absolventinnen · Von Vogue empfohlen
                   </p>
                 </div>
               </div>
@@ -1786,6 +1787,34 @@ export default function ChiChiClubAcademy() {
             ))}
           </div>
         </div>
+
+        {/* Vogue Highlight */}
+        <div style={{
+          background: "var(--chi-chi-beige)",
+          padding: 40,
+          textAlign: "center",
+          marginTop: 40,
+        }}>
+          <p style={{
+            fontFamily: "var(--font-headline)",
+            fontWeight: 700,
+            fontSize: "clamp(18px, 2.5vw, 22px)",
+            lineHeight: 1.4,
+            color: "#000000",
+            maxWidth: 700,
+            margin: "0 auto 12px",
+          }}>
+            Von Vogue als eine der Top-Beauty-Adressen Deutschlands empfohlen. Die einzige für kosmetisches Tätowieren.
+          </p>
+          <p style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 13,
+            color: "#000000",
+            opacity: 0.6,
+          }}>
+            Vogue Germany
+          </p>
+        </div>
       </section>
 
       {/* ─── ÜBER JETTE ─── */}
@@ -1814,7 +1843,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 24,
                 }}>
-                  10 Jahre Perfektion. 4 Tage für dich.
+                  Dieses Handwerk hat mir das Leben gegeben, das ich wollte.
                 </h2>
                 <p style={{
                   fontFamily: "var(--font-body)",
@@ -1823,7 +1852,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 16,
                 }}>
-                  Jette hat über 10 Jahre daran gearbeitet, hyperrealistisches Microblading zu perfektionieren — von Vancouver bis Hamburg. Sie hat die Technik als Erste nach Deutschland gebracht, ein Studio mit 7 Artists aufgebaut und einen Namen, der in der Branche Gewicht hat. All das Wissen steckt jetzt in einer 4-tägigen Ausbildung.
+                  Drei Kinder, eine Karriere in der Filmbranche, die nicht mehr zu ihrem Leben passte. Jette wollte etwas mit den Händen erschaffen. Sie hat hyperrealistisches Microblading in Nordamerika gelernt und die Technik als Erste nach Deutschland gebracht. Heute hat sie ein Studio mit 7 Artists in Hamburg, eine Academy und die Freiheit, für ihre Familie da zu sein.
                 </p>
                 <p style={{
                   fontFamily: "var(--font-body)",
@@ -1831,7 +1860,7 @@ export default function ChiChiClubAcademy() {
                   lineHeight: 1.7,
                   color: "#000000",
                 }}>
-                  Du lernst nicht von einer Trainerin, die Kurse verkauft. Du lernst von jemandem, der jeden Tag selbst am Kunden arbeitet — und 10 Jahre Erfahrung in 4 Tage gepackt hat.
+                  Du lernst nicht von einer Trainerin, die Kurse verkauft. Du lernst von jemandem, der jeden Tag selbst am Kunden arbeitet. Und die weiß, wie dieses Handwerk ein ganzes Leben verändern kann.
                 </p>
               </div>
             </div>
@@ -1859,7 +1888,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 24,
                 }}>
-                  Einzelne Härchen. So echt, dass niemand sie bemerkt.
+                  Was unterscheidet eine Kosmetikerin von einer Artistin? Ein Millimeter.
                 </h2>
                 <p style={{
                   fontFamily: "var(--font-body)",
@@ -1869,7 +1898,7 @@ export default function ChiChiClubAcademy() {
                   marginBottom: 24,
                   maxWidth: 560,
                 }}>
-                  Hyperrealistisches Microblading ist kein Standard-PMU. Keine Schablonen, keine gemalten Striche. Jedes einzelne Härchen wird so gesetzt, dass das Ergebnis nicht von echten Augenbrauen zu unterscheiden ist.
+                  Hyperrealistisches Microblading ist kein Standard-PMU. Keine Schablonen, keine gemalten Striche. Jedes einzelne Härchen wird in Wuchsrichtung, Stärke und Biegung gesetzt. Das Ergebnis sieht nicht aus wie ein Tattoo. Es sieht aus wie du. Nur besser.
                 </p>
                 <p style={{
                   fontFamily: "var(--font-body)",
@@ -1878,7 +1907,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   maxWidth: 560,
                 }}>
-                  Jette hat diese Technik aus Nordamerika nach Deutschland gebracht. Als Erste. Heute bildet sie mit ihrem Team die nächste Generation von Microblading-Artists aus — direkt im Studio in Hamburg.
+                  Diese Technik gibt es in Deutschland kein zweites Mal. Jette hat sie aus Nordamerika mitgebracht und hier als Erste etabliert. Was du hier lernst, ist nicht einfach Microblading. Es ist ein Handwerk, das zur Kunst wird.
                 </p>
               </div>
 
@@ -1911,7 +1940,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 64,
             }}>
-              So echt, dass es niemand bemerkt.
+              Niemand wird es sehen. Alle werden es spüren.
             </h2>
             </div>
           </Reveal>
@@ -1931,7 +1960,7 @@ export default function ChiChiClubAcademy() {
                   </svg>
                 ),
                 title: "Einzelne Härchen, nicht gemalte Striche",
-                text: "Hyperrealistisches Microblading setzt jedes Härchen einzeln — in Wuchsrichtung, Stärke und Biegung. Das Ergebnis ist von echten Augenbrauen nicht zu unterscheiden.",
+                text: "Jedes Härchen wird einzeln gesetzt. In Wuchsrichtung, Stärke und Biegung. Das Ergebnis ist von echten Augenbrauen nicht zu unterscheiden.",
               },
               {
                 icon: (
@@ -1939,8 +1968,8 @@ export default function ChiChiClubAcademy() {
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" />
                   </svg>
                 ),
-                title: "Natürlichkeit, die man nicht erklären muss",
-                text: "Keine Schablonen, keine Einheits-Brows. Jede Kundin bekommt Augenbrauen, die zu ihrem Gesicht passen — so natürlich, dass niemand fragt.",
+                title: "Du, nur besser",
+                text: "Keine Einheits-Brows. Jede Kundin bekommt Augenbrauen, die zu ihrem Gesicht passen. Der Moment, in dem sie in den Spiegel schaut und sagt: Das bin ich.",
               },
               {
                 icon: (
@@ -1948,8 +1977,8 @@ export default function ChiChiClubAcademy() {
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                   </svg>
                 ),
-                title: "Die Technik, die den Chi Chi Club bekannt gemacht hat",
-                text: "Jette hat diese Methode aus Nordamerika nach Deutschland gebracht und als Erste hier etabliert. Du lernst direkt von der Quelle.",
+                title: "Direkt von der Quelle",
+                text: "Diese Methode kommt aus Nordamerika. Jette hat sie nach Deutschland gebracht und als Erste hier etabliert. Du lernst direkt von den Leuten, die es angefangen haben.",
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
@@ -1991,12 +2020,85 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
-      {/* ─── WAS DU MITNIMMST ─── */}
+      {/* ─── FÜR WEN IST DAS ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel>Was du mitnimmst</SectionLabel>
+            <SectionLabel>Für wen ist das</SectionLabel>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 64,
+            }}>
+              Du hast die Basis. Hier kommt das nächste Level.
+            </h2>
+            </div>
+          </Reveal>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: 24,
+          }}>
+            {[
+              {
+                title: "Kosmetikerinnen",
+                text: "Du arbeitest schon in der Beauty-Branche und willst dein Angebot um eine Technik erweitern, die sich sofort rechnet. Deine Kundinnen fragen schon danach.",
+              },
+              {
+                title: "Quereinsteigerinnen",
+                text: "Du kommst aus einem anderen Beruf und suchst etwas Neues. Du brauchst keine Beauty-Ausbildung. Du brauchst ein Auge für Ästhetik und den Willen zu üben.",
+              },
+              {
+                title: "Mütter",
+                text: "Du willst ein Business, das sich mit deiner Familie vereinbaren lässt. Flexible Zeiten, eigene Regeln. Jette hat es mit drei Kindern aufgebaut.",
+              },
+              {
+                title: "Studio-Inhaberinnen",
+                text: "Du führst bereits ein Studio und willst Microblading als Premium-Service einführen. Oder eine Mitarbeiterin ausbilden lassen. Das Chi Chi Club Zertifikat hat in der Branche Gewicht.",
+              },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 0.1}>
+                <div style={{
+                  background: "var(--chi-chi-beige)",
+                  padding: "32px 28px",
+                  height: "100%",
+                }}>
+                  <h3 style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 18,
+                    lineHeight: 1.3,
+                    color: "#000000",
+                    marginBottom: 12,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 15,
+                    lineHeight: 1.7,
+                    color: "#000000",
+                  }}>
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── WAS DU MITNIMMST ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <Reveal>
+            <div style={{ textAlign: "center" }}>
+            <SectionLabel onBeige>Was du mitnimmst</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -2018,38 +2120,38 @@ export default function ChiChiClubAcademy() {
             {[
               {
                 img: IMG_RESULT1,
-                title: "Eine Technik, die kein anderer unterrichtet",
-                text: "Hyperrealistisches Microblading — so natürlich, dass selbst Profis keinen Unterschied sehen.",
+                title: "Eine Technik, die es kein zweites Mal gibt",
+                text: "Hyperrealistisches Microblading. So natürlich, dass selbst Profis keinen Unterschied sehen.",
               },
               {
                 img: IMG_RESULT2,
                 title: "Dein Business-Plan steht nach Tag 4",
-                text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung — du gehst mit einem fertigen Plan nach Hause.",
+                text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung. Du gehst mit einem fertigen Plan nach Hause.",
               },
               {
                 img: IMG_RESULT3,
                 title: "6 Monate persönliches Feedback",
-                text: "Jede Behandlung kannst du uns schicken. Wir geben dir Feedback, bis du auf Profi-Niveau bist.",
+                text: "Du schickst uns Fotos, wir geben dir Feedback. Per WhatsApp, mit 2 festen Ansprechpartnern. Du bist nicht allein.",
               },
               {
                 img: IMG_RESULT4,
                 title: "Starterkit für 20 Behandlungen",
-                text: "Pigmente, Klingen, Werkzeuge — alles, um direkt loszulegen. Keine Fehlkäufe, keine Unsicherheit.",
+                text: "Pigmente, Klingen, Ringlicht. Alles, um direkt loszulegen. Keine Fehlkäufe, keine Unsicherheit.",
               },
               {
                 img: IMG_HERO1,
                 title: "Echte Ergebnisse für dein Portfolio",
-                text: "Du arbeitest an echten Modellen — echte Fotos für dein Portfolio und echtes Selbstvertrauen.",
+                text: "Du arbeitest an echten Modellen. Echte Fotos für dein Portfolio und echtes Vertrauen in deine Hände.",
               },
               {
                 img: IMG_HERO2,
-                title: "Ein Zertifikat, das Vertrauen schafft",
-                text: "Das Chi Chi Club Zertifikat steht für höchste Qualität. Deine Kundinnen wissen: Hier bin ich in den besten Händen.",
+                title: "Ein Zertifikat mit Gewicht",
+                text: "Ausgebildet an Deutschlands führendem Studio für hyperrealistisches Cosmetic Tattooing. Das öffnet Türen.",
               },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <div style={{
-                  background: "var(--chi-chi-beige)",
+                  background: "var(--ivory)",
                   overflow: "hidden",
                   height: "100%",
                   display: "flex",
@@ -2093,11 +2195,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Absolventinnen</SectionLabel>
+            <SectionLabel>Absolventinnen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -2106,7 +2208,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 48,
             }}>
-              Was unsere Absolventinnen sagen.
+              Wir reden nicht viel. Die Ergebnisse tun es für uns.
             </h2>
             </div>
           </Reveal>
@@ -2118,11 +2220,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── SCHULUNGEN ─── */}
-      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel>Schulungen</SectionLabel>
+            <SectionLabel onBeige>Schulungen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -2144,7 +2246,7 @@ export default function ChiChiClubAcademy() {
             {/* Microblading Fundamentals */}
             <Reveal delay={0}>
               <div style={{
-                background: "var(--chi-chi-beige)",
+                background: "var(--ivory)",
                 padding: 40,
                 height: "100%",
                 display: "flex",
@@ -2168,7 +2270,7 @@ export default function ChiChiClubAcademy() {
                   marginBottom: 32,
                   flex: 1,
                 }}>
-                  4 Tage Intensivausbildung in hyperrealistischem Microblading. Theorie, Praxis an echten Modellen, Business-Know-how. Starterkit für 20 Behandlungen und 6 Monate Support inklusive.
+                  4 Tage Intensivausbildung in hyperrealistischem Microblading. Von der Theorie über echte Modelle bis zum Business-Plan. Starterkit für 20 Behandlungen und 6 Monate Support inklusive.
                 </p>
 
                 <div style={{
@@ -2205,7 +2307,7 @@ export default function ChiChiClubAcademy() {
             {/* Freckle Masterclass */}
             <Reveal delay={0.1}>
               <div style={{
-                background: "var(--chi-chi-beige)",
+                background: "var(--ivory)",
                 padding: 40,
                 height: "100%",
                 display: "flex",
@@ -2229,7 +2331,7 @@ export default function ChiChiClubAcademy() {
                   marginBottom: 32,
                   flex: 1,
                 }}>
-                  1 Tag hyperrealistische Sommersprossen-Tattoos. Farbtheorie, Pigmente mixen, Übung auf Latexhaut und Arbeit an 2 echten Modellen. Starterkit und 6 Monate Support inklusive.
+                  1 Tag hyperrealistische Sommersprossen-Tattoos. Farbtheorie, Pigmente mixen, Arbeit an 2 echten Modellen. Starterkit und 6 Monate Support inklusive.
                 </p>
 
                 <div style={{
@@ -2267,11 +2369,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── SO LÄUFT ES AB ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Ablauf</SectionLabel>
+            <SectionLabel>Ablauf</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -2293,7 +2395,7 @@ export default function ChiChiClubAcademy() {
             {howItWorks.map((item, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div style={{
-                  background: "var(--ivory)",
+                  background: "var(--chi-chi-beige)",
                   overflow: "hidden",
                   height: "100%",
                 }}>
@@ -2347,11 +2449,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── ROI CALCULATOR ─── */}
-      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel>Dein Investment</SectionLabel>
+            <SectionLabel onBeige>Dein Investment</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -2371,11 +2473,11 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
           <Reveal>
             <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Häufige Fragen</SectionLabel>
+            <SectionLabel>Häufige Fragen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -2409,7 +2511,7 @@ export default function ChiChiClubAcademy() {
               color: "var(--ivory)",
               margin: "0 auto 16px",
             }}>
-              Bereit für den nächsten Schritt?
+              Die Technik, die den Chi Chi Club bekannt gemacht hat. Jetzt kannst du sie lernen.
             </h2>
             <p style={{
               fontFamily: "var(--font-body)",
@@ -2469,7 +2571,7 @@ export default function ChiChiClubAcademy() {
                   color: "var(--ivory)",
                   marginTop: 2,
                 }}>
-                  30+ zufriedene Teilnehmerinnen
+                  30+ Absolventinnen · Von Vogue empfohlen
                 </p>
               </div>
             </div>
