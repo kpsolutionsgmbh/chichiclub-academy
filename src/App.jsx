@@ -147,7 +147,7 @@ const howItWorks = [
 
 // ─── Hooks ───
 
-function useReveal(threshold = 0.15) {
+function useReveal(threshold = (typeof window !== 'undefined' && window.innerWidth < 768) ? 0.1 : 0.15) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -464,7 +464,7 @@ function RoiCalculator() {
   const weeksToBreakEven = treatmentsPerWeek > 0 ? Math.ceil(treatmentsToBreakEven / treatmentsPerWeek) : null;
 
   return (
-    <div style={{
+    <div className="roi-box" style={{
       background: "var(--ivory)",
       padding: "40px",
     }}>
@@ -479,7 +479,7 @@ function RoiCalculator() {
         }}>
           Dein Erfahrungslevel
         </p>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <div className="roi-levels" style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {levels.map(l => (
             <button
               key={l.id}
@@ -532,7 +532,7 @@ function RoiCalculator() {
       </div>
 
       {/* Results */}
-      <div style={{
+      <div className="roi-results" style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
         gap: 1,
@@ -694,9 +694,10 @@ function FunnelModal({ isOpen, onClose }) {
       onClick={(e) => { if (e.target === e.currentTarget) handleClose(); }}
     >
       <div
+        className="funnel-modal"
         style={{
           background: "var(--ivory)",
-          borderRadius: 16,
+          borderRadius: 0,
           width: "100%",
           maxWidth: 560,
           maxHeight: "90vh",
@@ -738,7 +739,7 @@ function FunnelModal({ isOpen, onClose }) {
                   <div style={{
                     height: 5,
                     flex: 1,
-                    borderRadius: 3,
+                    borderRadius: 0,
                     background: s <= step ? "#000000" : "var(--chi-chi-beige)",
                     transition: "background 0.4s ease",
                   }} />
@@ -794,7 +795,7 @@ function FunnelModal({ isOpen, onClose }) {
                       style={{
                         padding: "14px 18px",
                         border: isSelected ? "2px solid #000000" : "1px solid var(--chi-chi-beige)",
-                        borderRadius: 12,
+                        borderRadius: 0,
                         background: isSelected ? "rgba(223,217,205,0.3)" : "transparent",
                         cursor: "pointer",
                         textAlign: "left",
@@ -808,7 +809,7 @@ function FunnelModal({ isOpen, onClose }) {
                       <div style={{
                         width: 44,
                         height: 44,
-                        borderRadius: 10,
+                        borderRadius: 0,
                         background: isSelected ? "#000000" : "var(--chi-chi-beige)",
                         color: isSelected ? "var(--ivory)" : "#000000",
                         display: "flex",
@@ -888,7 +889,7 @@ function FunnelModal({ isOpen, onClose }) {
                 gap: 8,
                 padding: "8px 16px",
                 background: "#ecfdf5",
-                borderRadius: 100,
+                borderRadius: 0,
                 marginBottom: 20,
               }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -931,10 +932,10 @@ function FunnelModal({ isOpen, onClose }) {
                         width: "100%",
                         padding: "14px 16px 14px 44px",
                         border: "1px solid var(--chi-chi-beige)",
-                        borderRadius: 10,
+                        borderRadius: 0,
                         background: "var(--chi-chi-beige)",
                         fontFamily: "var(--font-body)",
-                        fontSize: 14,
+                        fontSize: 16,
                         color: "#000000",
                         outline: "none",
                         boxSizing: "border-box",
@@ -959,10 +960,10 @@ function FunnelModal({ isOpen, onClose }) {
                         width: "100%",
                         padding: "14px 16px 14px 44px",
                         border: "1px solid var(--chi-chi-beige)",
-                        borderRadius: 10,
+                        borderRadius: 0,
                         background: "var(--chi-chi-beige)",
                         fontFamily: "var(--font-body)",
-                        fontSize: 14,
+                        fontSize: 16,
                         color: "#000000",
                         outline: "none",
                         boxSizing: "border-box",
@@ -987,10 +988,10 @@ function FunnelModal({ isOpen, onClose }) {
                         width: "100%",
                         padding: "14px 16px 14px 44px",
                         border: "1px solid var(--chi-chi-beige)",
-                        borderRadius: 10,
+                        borderRadius: 0,
                         background: "var(--chi-chi-beige)",
                         fontFamily: "var(--font-body)",
-                        fontSize: 14,
+                        fontSize: 16,
                         color: "#000000",
                         outline: "none",
                         boxSizing: "border-box",
@@ -1007,7 +1008,7 @@ function FunnelModal({ isOpen, onClose }) {
                     width: "100%",
                     marginTop: 8,
                     textAlign: "center",
-                    borderRadius: 10,
+                    borderRadius: 0,
                     padding: "16px 24px",
                     fontSize: 15,
                     opacity: (!formData.name || !formData.email) ? 0.5 : 1,
@@ -1058,7 +1059,7 @@ function FunnelModal({ isOpen, onClose }) {
 
               <div style={{
                 background: "var(--chi-chi-beige)",
-                borderRadius: 12,
+                borderRadius: 0,
                 padding: 24,
                 marginBottom: 24,
                 textAlign: "left",
@@ -1102,7 +1103,7 @@ function FunnelModal({ isOpen, onClose }) {
                 style={{
                   padding: "14px 32px",
                   border: "1px solid var(--chi-chi-beige)",
-                  borderRadius: 10,
+                  borderRadius: 0,
                   background: "transparent",
                   cursor: "pointer",
                   fontFamily: "var(--font-body)",
@@ -1140,8 +1141,10 @@ function LegalPage({ title, children, onBack, onNavigate }) {
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: var(--font-body); font-weight: var(--font-body-weight); background: var(--ivory); color: var(--black); -webkit-font-smoothing: antialiased; }
-        .container { max-width: 1360px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1360px; margin: 0 auto; padding: 0 16px; }
+        @media (min-width: 480px) { .container { padding: 0 24px; } }
         @media (min-width: 768px) { .container { padding: 0 48px; } }
+        @media (min-width: 1024px) { .container { padding: 0 64px; } }
         .btn-primary { display: inline-block; background: var(--black); color: var(--ivory); border: 1px solid var(--black); font-family: var(--font-headline); font-weight: 700; font-size: 14px; padding: 14px 28px; cursor: pointer; transition: all 0.2s ease; }
         .btn-primary:hover { background: var(--ivory); color: var(--black); }
       `}</style>
@@ -1392,7 +1395,7 @@ function CookieBanner() {
         flexDirection: "column",
         gap: 16,
       }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, flexWrap: "wrap" }}>
+        <div className="cookie-banner" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 24, flexWrap: "wrap" }}>
           <p style={{
             fontFamily: "var(--font-body)",
             fontSize: 13,
@@ -1536,11 +1539,11 @@ export default function ChiChiClubAcademy() {
         .container {
           max-width: 1360px;
           margin: 0 auto;
-          padding: 0 24px;
+          padding: 0 16px;
         }
-        @media (min-width: 768px) {
-          .container { padding: 0 48px; }
-        }
+        @media (min-width: 480px) { .container { padding: 0 24px; } }
+        @media (min-width: 768px) { .container { padding: 0 48px; } }
+        @media (min-width: 1024px) { .container { padding: 0 64px; } }
 
         /* Section backgrounds */
         .section-ivory { background: var(--ivory); }
@@ -1569,18 +1572,123 @@ export default function ChiChiClubAcademy() {
           border-color: #000000 !important;
         }
 
-        /* Responsive */
+        /* ─── Responsive: 5 Breakpoints ─── */
+
+        /* Mobile-first body typography */
+        body { font-size: 14px; }
+        @media (min-width: 480px) { body { font-size: 15px; } }
+        @media (min-width: 768px) { body { font-size: 16px; } }
+
+        /* Mono line-height on mobile */
         @media (max-width: 767px) {
-          .desktop-only { display: none !important; }
-          .testimonial-extra { display: none !important; }
-          .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
+          p, span, label { line-height: 1.8; }
         }
-        @media (min-width: 768px) {
+
+        /* Section spacing */
+        section:not(.hero-section) { padding: 40px 0 !important; }
+        @media (min-width: 480px) { section:not(.hero-section) { padding: 48px 0 !important; } }
+        @media (min-width: 768px) { section:not(.hero-section) { padding: 64px 0 !important; } }
+        @media (min-width: 1024px) { section:not(.hero-section) { padding: 80px 0 !important; } }
+        @media (min-width: 1360px) { section:not(.hero-section) { padding: 100px 0 !important; } }
+
+        /* Nav responsive */
+        @media (max-width: 479px) {
+          .nav-cta-full { display: none !important; }
+          .nav-cta-short { display: inline-block !important; }
+          nav .container { height: 56px !important; }
+          nav img { height: 18px !important; }
+        }
+        .nav-cta-short { display: none; }
+
+        /* Hero responsive */
+        .hero-section { padding-top: 120px !important; }
+        @media (max-width: 767px) {
+          .hero-section { padding-top: 80px !important; }
+          .hero-cta { width: 100%; text-align: center; }
+          .hero-trust { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 479px) {
+          .hero-section { padding-top: 72px !important; }
+        }
+
+        /* Statement dividers responsive */
+        .statement-divider-img { height: clamp(200px, 40vw, 400px); }
+
+        /* Jette image responsive */
+        @media (max-width: 767px) {
+          .jette-img { max-width: 100% !important; aspect-ratio: 16/9 !important; }
+        }
+
+        /* Schulungen responsive */
+        @media (max-width: 767px) {
+          .schulung-card { padding: 24px !important; }
+          .schulung-facts { font-size: 12px !important; }
+        }
+
+        /* ROI Calculator responsive */
+        @media (max-width: 479px) {
+          .roi-box { padding: 24px !important; }
+          .roi-levels { flex-direction: column !important; }
+          .roi-levels button { width: 100% !important; }
+          .roi-results { grid-template-columns: 1fr !important; }
+        }
+
+        /* Final CTA responsive */
+        @media (max-width: 767px) {
+          .final-cta-btn { width: 100%; text-align: center; }
+          .final-trust { flex-direction: column; align-items: center; }
+        }
+
+        /* Cookie Banner responsive */
+        @media (max-width: 767px) {
+          .cookie-banner { flex-direction: column !important; text-align: center; }
+          .cookie-banner > div:last-child { width: 100%; }
+          .cookie-banner button { width: 100% !important; }
+          .cookie-banner { padding: 16px !important; font-size: 12px !important; }
+        }
+
+        /* Funnel Modal responsive */
+        @media (max-width: 479px) {
+          .funnel-modal { margin: 8px !important; }
+          .funnel-modal input, .funnel-modal textarea { font-size: 16px !important; }
+        }
+
+        /* Touch targets */
+        @media (max-width: 767px) {
+          .btn-primary, .btn-secondary { min-height: 44px; }
+        }
+
+        /* Performance: reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+          .logo-track { animation: none; }
+        }
+
+        /* Grid responsive */
+        @media (max-width: 479px) {
+          .grid-4col { grid-template-columns: 1fr !important; }
+          .grid-3col { grid-template-columns: 1fr !important; }
+        }
+        @media (min-width: 480px) and (max-width: 767px) {
+          .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
+          .grid-3col { grid-template-columns: 1fr !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .grid-2col { grid-template-columns: 1fr 1fr !important; }
+          .grid-3col { grid-template-columns: repeat(2, 1fr) !important; }
+          .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
+          .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
+          .testimonial-extra { display: flex !important; }
+        }
+        @media (min-width: 1024px) {
           .grid-2col { grid-template-columns: 1fr 1fr !important; }
           .grid-3col { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-extra { display: flex !important; }
           .grid-4col { grid-template-columns: repeat(4, 1fr) !important; }
+        }
+        @media (max-width: 767px) {
+          .desktop-only { display: none !important; }
+          .testimonial-extra { display: none !important; }
         }
       `}</style>
 
@@ -1603,14 +1711,17 @@ export default function ChiChiClubAcademy() {
           height: 64,
         }}>
           <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 22 }} />
-          <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 13, padding: "10px 22px" }}>
+          <button className="btn-primary nav-cta-full" onClick={openFunnel} style={{ fontSize: 13, padding: "10px 22px" }}>
             Kostenlos beraten lassen
+          </button>
+          <button className="btn-primary nav-cta-short" onClick={openFunnel} style={{ fontSize: 12, padding: "8px 16px" }}>
+            Beratung
           </button>
         </div>
       </nav>
 
       {/* ─── HERO ─── */}
-      <section style={{ paddingTop: 120, paddingBottom: 80, background: "var(--ivory)" }}>
+      <section className="hero-section" style={{ paddingBottom: 40, background: "var(--ivory)" }}>
         <div className="container">
           <div className="grid-2col" style={{
             display: "grid",
@@ -1640,7 +1751,7 @@ export default function ChiChiClubAcademy() {
                     textTransform: "uppercase",
                     color: "#000000",
                   }}>
-                    Hamburg · Chi Chi Club Academy
+                    Hamburg
                   </span>
                 </div>
               </Reveal>
@@ -1669,31 +1780,16 @@ export default function ChiChiClubAcademy() {
                 }}>
                   Die Chi Chi Club Academy ist deine 4-tägige Intensivausbildung in hyperrealistischem Microblading. Direkt in Hamburg, von den Leuten, die diese Technik als Erste nach Deutschland gebracht haben.
                 </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 32 }}>
-                  {[
-                    "4 Tage Intensivausbildung mit echten Modellen",
-                    "Starterkit für 20 Behandlungen inklusive",
-                    "6 Monate persönlicher Support nach der Schulung",
-                  ].map((text, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
-                        <path d="M20 6L9 17l-5-5" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.5, color: "#000000" }}>
-                        {text}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+                <div style={{ marginBottom: 32 }} />
               </Reveal>
 
               <Reveal delay={0.3}>
-                <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginBottom: 24 }}>
+                <button className="btn-primary hero-cta" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginBottom: 24 }}>
                   Kostenlos beraten lassen
                 </button>
 
                 {/* Trust element */}
-                <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", marginTop: 8 }}>
+                <div className="hero-trust" style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", marginTop: 8 }}>
                   <div style={{ display: "flex" }}>
                     {[IMG_AVATAR1, IMG_AVATAR2, IMG_AVATAR3].map((src, i) => (
                       <img
@@ -1745,7 +1841,7 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── FEATURED IN ─── */}
-      <section style={{ padding: "40px 0", overflow: "hidden" }}>
+      <section style={{ padding: "20px 0 40px", overflow: "hidden" }}>
         <p style={{
           fontFamily: "var(--font-body)",
           fontSize: 12,
@@ -1788,8 +1884,10 @@ export default function ChiChiClubAcademy() {
               alignItems: "center",
             }}>
               <img
+                className="jette-img"
                 src={IMG_JETTE}
                 alt="Jette Scherzer"
+                loading="lazy"
                 style={{ width: "100%", maxWidth: 480, aspectRatio: "3/4", objectFit: "cover" }}
               />
 
@@ -1831,11 +1929,12 @@ export default function ChiChiClubAcademy() {
       {/* ─── STATEMENT DIVIDER 1 ─── */}
       <div style={{ position: "relative", overflow: "hidden" }}>
         <img
+          className="statement-divider-img"
           src={IMG_DIVIDER1}
           alt=""
+          loading="lazy"
           style={{
             width: "100%",
-            height: "clamp(280px, 40vw, 400px)",
             objectFit: "cover",
             display: "block",
           }}
@@ -1898,6 +1997,9 @@ export default function ChiChiClubAcademy() {
                     </div>
                   ))}
                 </div>
+                <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginTop: 28 }}>
+                  Kostenlos beraten lassen
+                </button>
               </div>
 
               <div style={{
@@ -1905,10 +2007,10 @@ export default function ChiChiClubAcademy() {
                 gridTemplateColumns: "1fr 1fr",
                 gap: 4,
               }}>
-                <img src={IMG_RESULT1} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT2} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT3} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
-                <img src={IMG_RESULT4} alt="Microblading Ergebnis" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT1} alt="Microblading Ergebnis" loading="lazy" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT2} alt="Microblading Ergebnis" loading="lazy" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT3} alt="Microblading Ergebnis" loading="lazy" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
+                <img src={IMG_RESULT4} alt="Microblading Ergebnis" loading="lazy" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover" }} />
               </div>
             </div>
           </Reveal>
@@ -2015,7 +2117,7 @@ export default function ChiChiClubAcademy() {
                   overflow: "hidden",
                   height: "100%",
                 }}>
-                  <img src={item.img} alt={item.title} style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
+                  <img src={item.img} alt={item.title} loading="lazy" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
                   <div style={{ padding: "20px 24px 24px" }}>
                     <h3 style={{
                       fontFamily: "var(--font-headline)",
@@ -2046,11 +2148,12 @@ export default function ChiChiClubAcademy() {
       {/* ─── STATEMENT DIVIDER 2 ─── */}
       <div style={{ position: "relative", overflow: "hidden" }}>
         <img
+          className="statement-divider-img"
           src={IMG_DIVIDER2}
           alt=""
+          loading="lazy"
           style={{
             width: "100%",
-            height: "clamp(280px, 40vw, 400px)",
             objectFit: "cover",
             display: "block",
           }}
@@ -2134,7 +2237,7 @@ export default function ChiChiClubAcademy() {
                 height: "100%",
                 display: "flex",
                 flexDirection: "column",
-              }}>
+              }} className="schulung-card">
                 <h3 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
@@ -2175,7 +2278,7 @@ export default function ChiChiClubAcademy() {
 
             {/* Freckle Masterclass */}
             <Reveal delay={0.1}>
-              <div style={{
+              <div className="schulung-card" style={{
                 background: "var(--ivory)",
                 padding: 40,
                 height: "100%",
@@ -2255,7 +2358,7 @@ export default function ChiChiClubAcademy() {
                   height: "100%",
                 }}>
                   <div style={{ position: "relative" }}>
-                    <img src={item.img} alt={item.title} style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
+                    <img src={item.img} alt={item.title} loading="lazy" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
                     <span style={{
                       position: "absolute",
                       bottom: 10,
@@ -2375,6 +2478,7 @@ export default function ChiChiClubAcademy() {
               Ein kurzes Gespräch. Keine Verpflichtung. Wir schauen gemeinsam, ob die Academy das Richtige für dich ist.
             </p>
             <button
+              className="final-cta-btn"
               onClick={openFunnel}
               style={{
                 display: "inline-block",
@@ -2395,7 +2499,7 @@ export default function ChiChiClubAcademy() {
             </button>
 
             {/* Trust element */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginTop: 32 }}>
+            <div className="final-trust" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginTop: 32 }}>
               <div style={{ display: "flex" }}>
                 {[IMG_AVATAR1, IMG_AVATAR2, IMG_AVATAR3].map((src, i) => (
                   <img
