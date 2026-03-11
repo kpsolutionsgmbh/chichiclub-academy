@@ -170,8 +170,10 @@ function Reveal({ children, delay = 0, style = {} }) {
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
-        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        filter: visible ? "blur(0)" : "blur(6px)",
+        transition: `opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s, transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s, filter 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s`,
+        willChange: "opacity, transform, filter",
         ...style,
       }}
     >
@@ -1449,252 +1451,6 @@ function CookieBanner() {
   );
 }
 
-// ─── Für Wen Bar ───
-const fuerWenData = [
-  { label: "Kosmetikerinnen", text: "Du willst dein Angebot um eine Technik erweitern, die sich nach 10 Kundinnen rechnet." },
-  { label: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Du brauchst ein Auge für Ästhetik und den Willen zu üben." },
-  { label: "Mütter", text: "Ein Business, das sich mit deiner Familie vereinbaren lässt. Jette hat es mit drei Kindern aufgebaut." },
-  { label: "Studio-Inhaberinnen", text: "Microblading als Premium-Service einführen. Oder eine Mitarbeiterin ausbilden lassen." },
-];
-
-function FuerWenBar() {
-  const [active, setActive] = useState(0);
-
-  return (
-    <div style={{ textAlign: "center" }}>
-      {/* Labels row — 4 across on desktop, 2x2 on mobile */}
-      <div className="fuer-wen-labels" style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(2, auto)",
-        justifyContent: "center",
-        gap: "16px 32px",
-      }}>
-        {fuerWenData.map((item, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            onMouseEnter={() => setActive(i)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontFamily: "var(--font-headline)",
-              fontWeight: 700,
-              fontSize: "clamp(14px, 1.5vw, 16px)",
-              color: "#000000",
-              padding: "8px 0",
-              borderBottom: active === i ? "2px solid #000000" : "2px solid transparent",
-              transition: "all 0.2s ease",
-              opacity: active === i ? 1 : 0.5,
-            }}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Reveal text */}
-      <div style={{
-        marginTop: 32,
-        minHeight: 60,
-      }}>
-        <p
-          key={active}
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 16,
-            lineHeight: 1.7,
-            color: "#000000",
-            maxWidth: 560,
-            margin: "0 auto",
-            animation: "fadeSlide 0.3s ease",
-          }}
-        >
-          {fuerWenData[active].text}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-// ─── Timeline ───
-function AblaufTimeline() {
-  const [active, setActive] = useState(0);
-
-  return (
-    <>
-      {/* Desktop: horizontal timeline */}
-      <div className="timeline-desktop" style={{ display: "none" }}>
-        {/* Line with dots */}
-        <div style={{ position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center", margin: "0 40px" }}>
-          <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1, background: "#000000" }} />
-          {howItWorks.map((item, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              style={{
-                position: "relative",
-                zIndex: 1,
-                width: active === i ? 16 : 12,
-                height: active === i ? 16 : 12,
-                borderRadius: "50%",
-                background: "#000000",
-                border: "none",
-                cursor: "pointer",
-                outline: active === i ? "2px solid #000000" : "none",
-                outlineOffset: 4,
-                transition: "all 0.2s ease",
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Labels row */}
-        <div style={{ display: "flex", justifyContent: "space-between", margin: "20px 20px 0" }}>
-          {howItWorks.map((item, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "center",
-                flex: 1,
-                padding: "0 8px",
-                opacity: active === i ? 1 : 0.5,
-                transition: "all 0.2s ease",
-              }}
-            >
-              <p style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                color: "#000000",
-                marginBottom: 6,
-              }}>
-                {item.day}
-              </p>
-              <p style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: 16,
-                color: "#000000",
-                lineHeight: 1.2,
-              }}>
-                {item.title}
-              </p>
-            </button>
-          ))}
-        </div>
-
-        {/* Expanded text */}
-        <div style={{ textAlign: "center", marginTop: 32, minHeight: 60 }}>
-          <p
-            key={active}
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: 14,
-              lineHeight: 1.6,
-              color: "#000000",
-              maxWidth: 320,
-              margin: "0 auto",
-              animation: "fadeSlide 0.3s ease",
-            }}
-          >
-            {howItWorks[active].text}
-          </p>
-        </div>
-      </div>
-
-      {/* Mobile: vertical timeline */}
-      <div className="timeline-mobile" style={{ display: "block" }}>
-        <div style={{ position: "relative", paddingLeft: 32 }}>
-          {/* Vertical line */}
-          <div style={{
-            position: "absolute",
-            left: 5,
-            top: 6,
-            bottom: 6,
-            width: 1,
-            background: "#000000",
-          }} />
-
-          {howItWorks.map((item, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              style={{
-                display: "block",
-                width: "100%",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                textAlign: "left",
-                padding: "16px 0",
-                position: "relative",
-              }}
-            >
-              {/* Dot */}
-              <div style={{
-                position: "absolute",
-                left: -32 + (active === i ? -2 : 0),
-                top: 22,
-                width: active === i ? 16 : 12,
-                height: active === i ? 16 : 12,
-                borderRadius: "50%",
-                background: "#000000",
-                outline: active === i ? "2px solid #000000" : "none",
-                outlineOffset: 4,
-                transition: "all 0.2s ease",
-              }} />
-
-              <p style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: "0.05em",
-                color: "#000000",
-                marginBottom: 4,
-                opacity: active === i ? 1 : 0.5,
-                transition: "opacity 0.2s ease",
-              }}>
-                {item.day}
-              </p>
-              <p style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: 16,
-                color: "#000000",
-                lineHeight: 1.2,
-                opacity: active === i ? 1 : 0.5,
-                transition: "opacity 0.2s ease",
-              }}>
-                {item.title}
-              </p>
-              {active === i && (
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 14,
-                  color: "#000000",
-                  lineHeight: 1.6,
-                  marginTop: 8,
-                  animation: "fadeSlide 0.3s ease",
-                }}>
-                  {item.text}
-                </p>
-              )}
-            </button>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-}
-
 // ─── Main Component ───
 
 export default function ChiChiClubAcademy() {
@@ -1802,39 +1558,6 @@ export default function ChiChiClubAcademy() {
           100% { transform: translateX(-50%); }
         }
 
-        /* Hero results marquee */
-        .results-marquee-wrap {
-          position: relative;
-          overflow: hidden;
-        }
-        .results-marquee-wrap::before,
-        .results-marquee-wrap::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          width: 60px;
-          z-index: 2;
-          pointer-events: none;
-        }
-        .results-marquee-wrap::before {
-          left: 0;
-          background: linear-gradient(to right, var(--ivory), transparent);
-        }
-        .results-marquee-wrap::after {
-          right: 0;
-          background: linear-gradient(to left, var(--ivory), transparent);
-        }
-        .results-track {
-          display: flex;
-          gap: 12px;
-          animation: resultsMarquee 25s linear infinite;
-        }
-        @keyframes resultsMarquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-
         /* Animations */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -1850,15 +1573,14 @@ export default function ChiChiClubAcademy() {
         @media (max-width: 767px) {
           .desktop-only { display: none !important; }
           .testimonial-extra { display: none !important; }
+          .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (min-width: 768px) {
           .grid-2col { grid-template-columns: 1fr 1fr !important; }
           .grid-3col { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-extra { display: flex !important; }
-          .fuer-wen-labels { grid-template-columns: repeat(4, auto) !important; }
-          .timeline-desktop { display: flex !important; }
-          .timeline-mobile { display: none !important; }
+          .grid-4col { grid-template-columns: repeat(4, 1fr) !important; }
         }
       `}</style>
 
@@ -1888,7 +1610,7 @@ export default function ChiChiClubAcademy() {
       </nav>
 
       {/* ─── HERO ─── */}
-      <section style={{ paddingTop: 120, paddingBottom: 0, background: "var(--ivory)" }}>
+      <section style={{ paddingTop: 120, paddingBottom: 80, background: "var(--ivory)" }}>
         <div className="container">
           <div className="grid-2col" style={{
             display: "grid",
@@ -1897,112 +1619,112 @@ export default function ChiChiClubAcademy() {
             alignItems: "center",
           }}>
             <div>
-              {/* Hamburg pin label */}
-              <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                background: "var(--chi-chi-beige)",
-                padding: "6px 14px",
-                marginBottom: 24,
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-                <span style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 12,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "#000000",
+              <Reveal>
+                {/* Badge */}
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  background: "var(--chi-chi-beige)",
+                  padding: "6px 14px",
+                  marginBottom: 24,
                 }}>
-                  Hamburg · Chi Chi Club Academy
-                </span>
-              </div>
-
-              <h1 style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: "clamp(28px, 4vw, 52px)",
-                lineHeight: 1.1,
-                color: "#000000",
-                marginBottom: 24,
-              }}>
-                Lerne das Microblading, das niemand als Tattoo erkennt.
-              </h1>
-
-              <p style={{
-                fontFamily: "var(--font-body)",
-                fontSize: 16,
-                lineHeight: 1.7,
-                color: "#000000",
-                maxWidth: 560,
-                marginBottom: 32,
-              }}>
-                Die Chi Chi Club Academy ist deine 4-tägige Intensivausbildung in hyperrealistischem Microblading. Direkt in Hamburg, von den Leuten, die diese Technik als Erste nach Deutschland gebracht haben. Du gehst mit Starterkit für 20 Behandlungen, Business-Wissen und 6 Monaten persönlichem Support nach Hause.
-              </p>
-
-              <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginBottom: 24 }}>
-                Kostenlos beraten lassen
-              </button>
-
-              {/* Trust element: avatars + text + stars */}
-              <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-                <div style={{ display: "flex" }}>
-                  {[IMG_AVATAR1, IMG_AVATAR2, IMG_AVATAR3].map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt=""
-                      style={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        border: "2px solid var(--ivory)",
-                        marginLeft: i > 0 ? -10 : 0,
-                        position: "relative",
-                        zIndex: 3 - i,
-                      }}
-                    />
-                  ))}
-                </div>
-                <div>
-                  <Stars count={5} size={14} color="#D4A853" />
-                  <p style={{
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  <span style={{
                     fontFamily: "var(--font-body)",
-                    fontSize: 13,
+                    fontSize: 12,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
                     color: "#000000",
-                    marginTop: 2,
                   }}>
-                    30+ Absolventinnen · Von Vogue empfohlen
-                  </p>
+                    Hamburg · Chi Chi Club Academy
+                  </span>
                 </div>
-              </div>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <h1 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(28px, 4vw, 52px)",
+                  lineHeight: 1.1,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  Lerne das Microblading, das niemand als Tattoo erkennt.
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  maxWidth: 560,
+                  marginBottom: 32,
+                }}>
+                  Die Chi Chi Club Academy ist deine 4-tägige Intensivausbildung in hyperrealistischem Microblading. Direkt in Hamburg, von den Leuten, die diese Technik als Erste nach Deutschland gebracht haben. Du gehst mit Starterkit für 20 Behandlungen, Business-Wissen und 6 Monaten persönlichem Support nach Hause.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.3}>
+                <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginBottom: 24 }}>
+                  Kostenlos beraten lassen
+                </button>
+
+                {/* Trust element */}
+                <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", marginTop: 8 }}>
+                  <div style={{ display: "flex" }}>
+                    {[IMG_AVATAR1, IMG_AVATAR2, IMG_AVATAR3].map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt=""
+                        style={{
+                          width: 36,
+                          height: 36,
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          border: "2px solid var(--ivory)",
+                          marginLeft: i > 0 ? -10 : 0,
+                          position: "relative",
+                          zIndex: 3 - i,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <div>
+                    <Stars count={5} size={14} color="#D4A853" />
+                    <p style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: 13,
+                      color: "#000000",
+                      marginTop: 2,
+                    }}>
+                      30+ Absolventinnen · Von Vogue empfohlen
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
             </div>
 
-            {/* Results marquee column */}
-            <div className="results-marquee-wrap">
-              <div className="results-track">
-                {[IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4, IMG_RESULT1, IMG_RESULT2, IMG_RESULT3, IMG_RESULT4].map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt="Microblading Ergebnis"
-                    style={{
-                      width: 300,
-                      height: 400,
-                      objectFit: "cover",
-                      flexShrink: 0,
-                    }}
-                  />
-                ))}
-              </div>
-            </div>
+            {/* Single hero image */}
+            <Reveal delay={0.2}>
+              <img
+                src={IMG_RESULT1}
+                alt="Hyperrealistisches Microblading Ergebnis"
+                style={{
+                  width: "100%",
+                  aspectRatio: "3/4",
+                  objectFit: "cover",
+                }}
+              />
+            </Reveal>
           </div>
-
-          {/* Key facts moved to before Schulungen */}
         </div>
       </section>
 
@@ -2038,9 +1760,10 @@ export default function ChiChiClubAcademy() {
         </div>
 
         {/* Vogue Highlight */}
+        <Reveal>
         <div style={{
           background: "var(--chi-chi-beige)",
-          padding: 40,
+          padding: "48px 24px",
           textAlign: "center",
           marginTop: 40,
         }}>
@@ -2057,13 +1780,17 @@ export default function ChiChiClubAcademy() {
           </p>
           <p style={{
             fontFamily: "var(--font-body)",
-            fontSize: 13,
+            fontSize: 12,
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
             color: "#000000",
-            opacity: 0.6,
+            opacity: 0.5,
+            marginTop: 16,
           }}>
             Vogue Germany
           </p>
         </div>
+        </Reveal>
       </section>
 
       {/* ─── ÜBER JETTE ─── */}
@@ -2132,7 +1859,7 @@ export default function ChiChiClubAcademy() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to top, rgba(0,0,0,0.3), transparent)",
+          background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -2218,7 +1945,45 @@ export default function ChiChiClubAcademy() {
             </div>
           </Reveal>
 
-          <FuerWenBar />
+          <div className="grid-4col" style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: 16,
+          }}>
+            {[
+              { title: "Kosmetikerinnen", text: "Du willst dein Angebot um eine Technik erweitern, die sich nach 10 Kundinnen rechnet." },
+              { title: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Du brauchst ein Auge für Ästhetik und den Willen zu üben." },
+              { title: "Mütter", text: "Ein Business, das sich mit deiner Familie vereinbaren lässt. Jette hat es mit drei Kindern aufgebaut." },
+              { title: "Studio-Inhaberinnen", text: "Microblading als Premium-Service einführen. Oder eine Mitarbeiterin ausbilden lassen." },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div style={{
+                  background: "var(--chi-chi-beige)",
+                  padding: "28px 24px",
+                  height: "100%",
+                }}>
+                  <h3 style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: 1.3,
+                    color: "#000000",
+                    marginBottom: 10,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: "#000000",
+                  }}>
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -2244,78 +2009,40 @@ export default function ChiChiClubAcademy() {
           <div className="grid-3col" style={{
             display: "grid",
             gridTemplateColumns: "1fr",
-            gap: 24,
+            gap: 16,
           }}>
             {[
-              {
-                img: IMG_RESULT1,
-                title: "Eine Technik, die es kein zweites Mal gibt",
-                text: "Hyperrealistisches Microblading. So natürlich, dass selbst Profis keinen Unterschied sehen.",
-              },
-              {
-                img: IMG_RESULT2,
-                title: "Dein Business-Plan steht nach Tag 4",
-                text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung. Du gehst mit einem fertigen Plan nach Hause.",
-              },
-              {
-                img: IMG_RESULT3,
-                title: "6 Monate persönliches Feedback",
-                text: "Du schickst uns Fotos, wir geben dir Feedback. Per WhatsApp, mit 2 festen Ansprechpartnern. Du bist nicht allein.",
-              },
-              {
-                img: IMG_RESULT4,
-                title: "Starterkit für 20 Behandlungen",
-                text: "Pigmente, Klingen, Ringlicht. Alles, um direkt loszulegen. Keine Fehlkäufe, keine Unsicherheit.",
-              },
-              {
-                img: IMG_HERO1,
-                title: "Echte Ergebnisse für dein Portfolio",
-                text: "Du arbeitest an echten Modellen. Echte Fotos für dein Portfolio und echtes Vertrauen in deine Hände.",
-              },
-              {
-                img: IMG_HERO2,
-                title: "Ein Zertifikat mit Gewicht",
-                text: "Ausgebildet an Deutschlands führendem Studio für hyperrealistisches Cosmetic Tattooing. Das öffnet Türen.",
-              },
+              { title: "Eine Technik, die es kein zweites Mal gibt", text: "Hyperrealistisches Microblading. So natürlich, dass selbst Profis keinen Unterschied sehen." },
+              { title: "Dein Business-Plan steht nach Tag 4", text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung. Du gehst mit einem fertigen Plan nach Hause." },
+              { title: "6 Monate persönliches Feedback", text: "Du schickst uns Fotos, wir geben dir Feedback. Per WhatsApp, mit 2 festen Ansprechpartnern. Du bist nicht allein." },
+              { title: "Starterkit für 20 Behandlungen", text: "Pigmente, Klingen, Ringlicht. Alles, um direkt loszulegen. Keine Fehlkäufe, keine Unsicherheit." },
+              { title: "Echte Ergebnisse für dein Portfolio", text: "Du arbeitest an echten Modellen. Echte Fotos für dein Portfolio und echtes Vertrauen in deine Hände." },
+              { title: "Ein Zertifikat mit Gewicht", text: "Ausgebildet an Deutschlands führendem Studio für hyperrealistisches Cosmetic Tattooing. Das öffnet Türen." },
             ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.05}>
+              <Reveal key={i} delay={i * 0.06}>
                 <div style={{
                   background: "var(--ivory)",
-                  overflow: "hidden",
+                  padding: "28px 24px",
                   height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
                 }}>
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "16/9",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-                  <div style={{ padding: "24px 24px 28px" }}>
-                    <h3 style={{
-                      fontFamily: "var(--font-headline)",
-                      fontWeight: 700,
-                      fontSize: 16,
-                      lineHeight: 1.3,
-                      color: "#000000",
-                      marginBottom: 8,
-                    }}>
-                      {item.title}
-                    </h3>
-                    <p style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: 14,
-                      lineHeight: 1.7,
-                      color: "#000000",
-                    }}>
-                      {item.text}
-                    </p>
-                  </div>
+                  <h3 style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: 1.3,
+                    color: "#000000",
+                    marginBottom: 10,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: "#000000",
+                  }}>
+                    {item.text}
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -2338,7 +2065,7 @@ export default function ChiChiClubAcademy() {
         <div style={{
           position: "absolute",
           inset: 0,
-          background: "linear-gradient(to top, rgba(0,0,0,0.3), transparent)",
+          background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -2503,7 +2230,7 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
-      {/* ─── ABLAUF (Timeline) ─── */}
+      {/* ─── ABLAUF ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
@@ -2515,16 +2242,60 @@ export default function ChiChiClubAcademy() {
               fontSize: "clamp(24px, 3vw, 40px)",
               lineHeight: 1.15,
               color: "#000000",
-              marginBottom: 64,
+              marginBottom: 48,
             }}>
               4 Tage. Vom ersten Strich bis zum Business-Plan.
             </h2>
             </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <AblaufTimeline />
-          </Reveal>
+          <div className="grid-4col" style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: 16,
+          }}>
+            {howItWorks.map((item, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div style={{
+                  background: "var(--chi-chi-beige)",
+                  padding: "28px 24px",
+                  height: "100%",
+                }}>
+                  <span style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 12,
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                    color: "#000000",
+                    opacity: 0.4,
+                    display: "block",
+                    marginBottom: 12,
+                  }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: 1.3,
+                    color: "#000000",
+                    marginBottom: 10,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: "#000000",
+                  }}>
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
