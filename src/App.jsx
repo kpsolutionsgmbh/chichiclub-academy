@@ -1705,7 +1705,7 @@ export default function ChiChiClubAcademy() {
                       color: "#000000",
                       marginTop: 2,
                     }}>
-                      30+ Absolventinnen · Von Vogue empfohlen
+                      30+ zufriedene Absolventinnen
                     </p>
                   </div>
                 </div>
@@ -1719,7 +1719,7 @@ export default function ChiChiClubAcademy() {
                 alt="Hyperrealistisches Microblading Ergebnis"
                 style={{
                   width: "100%",
-                  aspectRatio: "3/4",
+                  aspectRatio: "4/5",
                   objectFit: "cover",
                 }}
               />
@@ -1759,38 +1759,6 @@ export default function ChiChiClubAcademy() {
           </div>
         </div>
 
-        {/* Vogue Highlight */}
-        <Reveal>
-        <div style={{
-          background: "var(--chi-chi-beige)",
-          padding: "48px 24px",
-          textAlign: "center",
-          marginTop: 40,
-        }}>
-          <p style={{
-            fontFamily: "var(--font-headline)",
-            fontWeight: 700,
-            fontSize: "clamp(18px, 2.5vw, 22px)",
-            lineHeight: 1.4,
-            color: "#000000",
-            maxWidth: 700,
-            margin: "0 auto 12px",
-          }}>
-            Von Vogue als eine der Top-Beauty-Adressen Deutschlands empfohlen. Die einzige für kosmetisches Tätowieren.
-          </p>
-          <p style={{
-            fontFamily: "var(--font-body)",
-            fontSize: 12,
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: "#000000",
-            opacity: 0.5,
-            marginTop: 16,
-          }}>
-            Vogue Germany
-          </p>
-        </div>
-        </Reveal>
       </section>
 
       {/* ─── ÜBER JETTE ─── */}
