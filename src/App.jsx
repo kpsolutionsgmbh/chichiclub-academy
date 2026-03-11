@@ -1449,6 +1449,252 @@ function CookieBanner() {
   );
 }
 
+// ─── Für Wen Bar ───
+const fuerWenData = [
+  { label: "Kosmetikerinnen", text: "Du willst dein Angebot um eine Technik erweitern, die sich nach 10 Kundinnen rechnet." },
+  { label: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Du brauchst ein Auge für Ästhetik und den Willen zu üben." },
+  { label: "Mütter", text: "Ein Business, das sich mit deiner Familie vereinbaren lässt. Jette hat es mit drei Kindern aufgebaut." },
+  { label: "Studio-Inhaberinnen", text: "Microblading als Premium-Service einführen. Oder eine Mitarbeiterin ausbilden lassen." },
+];
+
+function FuerWenBar() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      {/* Labels row — 4 across on desktop, 2x2 on mobile */}
+      <div className="fuer-wen-labels" style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(2, auto)",
+        justifyContent: "center",
+        gap: "16px 32px",
+      }}>
+        {fuerWenData.map((item, i) => (
+          <button
+            key={i}
+            onClick={() => setActive(i)}
+            onMouseEnter={() => setActive(i)}
+            style={{
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(14px, 1.5vw, 16px)",
+              color: "#000000",
+              padding: "8px 0",
+              borderBottom: active === i ? "2px solid #000000" : "2px solid transparent",
+              transition: "all 0.2s ease",
+              opacity: active === i ? 1 : 0.5,
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Reveal text */}
+      <div style={{
+        marginTop: 32,
+        minHeight: 60,
+      }}>
+        <p
+          key={active}
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: 16,
+            lineHeight: 1.7,
+            color: "#000000",
+            maxWidth: 560,
+            margin: "0 auto",
+            animation: "fadeSlide 0.3s ease",
+          }}
+        >
+          {fuerWenData[active].text}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ─── Timeline ───
+function AblaufTimeline() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <>
+      {/* Desktop: horizontal timeline */}
+      <div className="timeline-desktop" style={{ display: "none" }}>
+        {/* Line with dots */}
+        <div style={{ position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center", margin: "0 40px" }}>
+          <div style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1, background: "#000000" }} />
+          {howItWorks.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                position: "relative",
+                zIndex: 1,
+                width: active === i ? 16 : 12,
+                height: active === i ? 16 : 12,
+                borderRadius: "50%",
+                background: "#000000",
+                border: "none",
+                cursor: "pointer",
+                outline: active === i ? "2px solid #000000" : "none",
+                outlineOffset: 4,
+                transition: "all 0.2s ease",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Labels row */}
+        <div style={{ display: "flex", justifyContent: "space-between", margin: "20px 20px 0" }}>
+          {howItWorks.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                textAlign: "center",
+                flex: 1,
+                padding: "0 8px",
+                opacity: active === i ? 1 : 0.5,
+                transition: "all 0.2s ease",
+              }}
+            >
+              <p style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+                color: "#000000",
+                marginBottom: 6,
+              }}>
+                {item.day}
+              </p>
+              <p style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 16,
+                color: "#000000",
+                lineHeight: 1.2,
+              }}>
+                {item.title}
+              </p>
+            </button>
+          ))}
+        </div>
+
+        {/* Expanded text */}
+        <div style={{ textAlign: "center", marginTop: 32, minHeight: 60 }}>
+          <p
+            key={active}
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: 14,
+              lineHeight: 1.6,
+              color: "#000000",
+              maxWidth: 320,
+              margin: "0 auto",
+              animation: "fadeSlide 0.3s ease",
+            }}
+          >
+            {howItWorks[active].text}
+          </p>
+        </div>
+      </div>
+
+      {/* Mobile: vertical timeline */}
+      <div className="timeline-mobile" style={{ display: "block" }}>
+        <div style={{ position: "relative", paddingLeft: 32 }}>
+          {/* Vertical line */}
+          <div style={{
+            position: "absolute",
+            left: 5,
+            top: 6,
+            bottom: 6,
+            width: 1,
+            background: "#000000",
+          }} />
+
+          {howItWorks.map((item, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                display: "block",
+                width: "100%",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                textAlign: "left",
+                padding: "16px 0",
+                position: "relative",
+              }}
+            >
+              {/* Dot */}
+              <div style={{
+                position: "absolute",
+                left: -32 + (active === i ? -2 : 0),
+                top: 22,
+                width: active === i ? 16 : 12,
+                height: active === i ? 16 : 12,
+                borderRadius: "50%",
+                background: "#000000",
+                outline: active === i ? "2px solid #000000" : "none",
+                outlineOffset: 4,
+                transition: "all 0.2s ease",
+              }} />
+
+              <p style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 11,
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+                color: "#000000",
+                marginBottom: 4,
+                opacity: active === i ? 1 : 0.5,
+                transition: "opacity 0.2s ease",
+              }}>
+                {item.day}
+              </p>
+              <p style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: 16,
+                color: "#000000",
+                lineHeight: 1.2,
+                opacity: active === i ? 1 : 0.5,
+                transition: "opacity 0.2s ease",
+              }}>
+                {item.title}
+              </p>
+              {active === i && (
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14,
+                  color: "#000000",
+                  lineHeight: 1.6,
+                  marginTop: 8,
+                  animation: "fadeSlide 0.3s ease",
+                }}>
+                  {item.text}
+                </p>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
 // ─── Main Component ───
 
 export default function ChiChiClubAcademy() {
@@ -1610,6 +1856,9 @@ export default function ChiChiClubAcademy() {
           .grid-3col { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-extra { display: flex !important; }
+          .fuer-wen-labels { grid-template-columns: repeat(4, auto) !important; }
+          .timeline-desktop { display: flex !important; }
+          .timeline-mobile { display: none !important; }
         }
       `}</style>
 
@@ -1868,6 +2117,40 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
+      {/* ─── STATEMENT DIVIDER 1 ─── */}
+      <div style={{ position: "relative", overflow: "hidden" }}>
+        <img
+          src={IMG_DIVIDER1}
+          alt=""
+          style={{
+            width: "100%",
+            height: "clamp(280px, 40vw, 400px)",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to top, rgba(0,0,0,0.3), transparent)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "0 24px",
+        }}>
+          <p style={{
+            fontFamily: "var(--font-headline)",
+            fontWeight: 700,
+            fontSize: "clamp(20px, 3vw, 36px)",
+            lineHeight: 1.2,
+            color: "var(--ivory)",
+            textAlign: "center",
+          }}>
+            Die Kunst des Unsichtbaren.
+          </p>
+        </div>
+      </div>
+
       {/* ─── DIE TECHNIK ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
@@ -1895,19 +2178,9 @@ export default function ChiChiClubAcademy() {
                   fontSize: 16,
                   lineHeight: 1.7,
                   color: "#000000",
-                  marginBottom: 24,
                   maxWidth: 560,
                 }}>
-                  Hyperrealistisches Microblading ist kein Standard-PMU. Keine Schablonen, keine gemalten Striche. Jedes einzelne Härchen wird in Wuchsrichtung, Stärke und Biegung gesetzt. Das Ergebnis sieht nicht aus wie ein Tattoo. Es sieht aus wie du. Nur besser.
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                  maxWidth: 560,
-                }}>
-                  Diese Technik gibt es in Deutschland kein zweites Mal. Jette hat sie aus Nordamerika mitgebracht und hier als Erste etabliert. Was du hier lernst, ist nicht einfach Microblading. Es ist ein Handwerk, das zur Kunst wird.
+                  Hyperrealistisches Microblading ist kein Standard-PMU. Jedes Härchen wird einzeln gesetzt, in Wuchsrichtung, Stärke und Biegung. Das Ergebnis sieht nicht aus wie ein Tattoo. Es sieht aus wie du. Nur besser.
                 </p>
               </div>
 
@@ -1926,100 +2199,6 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
-      {/* ─── WARUM HYPERREALISTISCH ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
-        <div className="container">
-          <Reveal>
-            <div style={{ textAlign: "center" }}>
-            <SectionLabel onBeige>Warum hyperrealistisch</SectionLabel>
-            <h2 style={{
-              fontFamily: "var(--font-headline)",
-              fontWeight: 700,
-              fontSize: "clamp(24px, 3vw, 40px)",
-              lineHeight: 1.15,
-              color: "#000000",
-              marginBottom: 64,
-            }}>
-              Niemand wird es sehen. Alle werden es spüren.
-            </h2>
-            </div>
-          </Reveal>
-
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 48,
-          }}>
-            {[
-              {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Z" />
-                    <path d="M8 12c1-3 2.5-5 4-5s3 2 4 5-2.5 5-4 5-3-2-4-5Z" />
-                    <line x1="12" y1="7" x2="12" y2="17" />
-                  </svg>
-                ),
-                title: "Einzelne Härchen, nicht gemalte Striche",
-                text: "Jedes Härchen wird einzeln gesetzt. In Wuchsrichtung, Stärke und Biegung. Das Ergebnis ist von echten Augenbrauen nicht zu unterscheiden.",
-              },
-              {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z" />
-                  </svg>
-                ),
-                title: "Du, nur besser",
-                text: "Keine Einheits-Brows. Jede Kundin bekommt Augenbrauen, die zu ihrem Gesicht passen. Der Moment, in dem sie in den Spiegel schaut und sagt: Das bin ich.",
-              },
-              {
-                icon: (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                ),
-                title: "Direkt von der Quelle",
-                text: "Diese Methode kommt aus Nordamerika. Jette hat sie nach Deutschland gebracht und als Erste hier etabliert. Du lernst direkt von den Leuten, die es angefangen haben.",
-              },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{ textAlign: "center" }}>
-                  <div style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: 56,
-                    height: 56,
-                    background: "#FFFFFF",
-                    borderRadius: "50%",
-                    marginBottom: 20,
-                  }}>
-                    {item.icon}
-                  </div>
-                  <h3 style={{
-                    fontFamily: "var(--font-headline)",
-                    fontWeight: 700,
-                    fontSize: 18,
-                    lineHeight: 1.3,
-                    color: "#000000",
-                    marginBottom: 12,
-                  }}>
-                    {item.title}
-                  </h3>
-                  <p style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 15,
-                    lineHeight: 1.7,
-                    color: "#000000",
-                  }}>
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── FÜR WEN IST DAS ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
@@ -2032,64 +2211,14 @@ export default function ChiChiClubAcademy() {
               fontSize: "clamp(24px, 3vw, 40px)",
               lineHeight: 1.15,
               color: "#000000",
-              marginBottom: 64,
+              marginBottom: 48,
             }}>
               Du hast die Basis. Hier kommt das nächste Level.
             </h2>
             </div>
           </Reveal>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 24,
-          }}>
-            {[
-              {
-                title: "Kosmetikerinnen",
-                text: "Du arbeitest schon in der Beauty-Branche und willst dein Angebot um eine Technik erweitern, die sich sofort rechnet. Deine Kundinnen fragen schon danach.",
-              },
-              {
-                title: "Quereinsteigerinnen",
-                text: "Du kommst aus einem anderen Beruf und suchst etwas Neues. Du brauchst keine Beauty-Ausbildung. Du brauchst ein Auge für Ästhetik und den Willen zu üben.",
-              },
-              {
-                title: "Mütter",
-                text: "Du willst ein Business, das sich mit deiner Familie vereinbaren lässt. Flexible Zeiten, eigene Regeln. Jette hat es mit drei Kindern aufgebaut.",
-              },
-              {
-                title: "Studio-Inhaberinnen",
-                text: "Du führst bereits ein Studio und willst Microblading als Premium-Service einführen. Oder eine Mitarbeiterin ausbilden lassen. Das Chi Chi Club Zertifikat hat in der Branche Gewicht.",
-              },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{
-                  background: "var(--chi-chi-beige)",
-                  padding: "32px 28px",
-                  height: "100%",
-                }}>
-                  <h3 style={{
-                    fontFamily: "var(--font-headline)",
-                    fontWeight: 700,
-                    fontSize: 18,
-                    lineHeight: 1.3,
-                    color: "#000000",
-                    marginBottom: 12,
-                  }}>
-                    {item.title}
-                  </h3>
-                  <p style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 15,
-                    lineHeight: 1.7,
-                    color: "#000000",
-                  }}>
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <FuerWenBar />
         </div>
       </section>
 
@@ -2194,6 +2323,40 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
+      {/* ─── STATEMENT DIVIDER 2 ─── */}
+      <div style={{ position: "relative", overflow: "hidden" }}>
+        <img
+          src={IMG_DIVIDER2}
+          alt=""
+          style={{
+            width: "100%",
+            height: "clamp(280px, 40vw, 400px)",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+        <div style={{
+          position: "absolute",
+          inset: 0,
+          background: "linear-gradient(to top, rgba(0,0,0,0.3), transparent)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "0 24px",
+        }}>
+          <p style={{
+            fontFamily: "var(--font-headline)",
+            fontWeight: 700,
+            fontSize: "clamp(20px, 3vw, 36px)",
+            lineHeight: 1.2,
+            color: "var(--ivory)",
+            textAlign: "center",
+          }}>
+            Wir reden nicht viel. Die Ergebnisse tun es für uns.
+          </p>
+        </div>
+      </div>
+
       {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
@@ -2208,7 +2371,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 48,
             }}>
-              Wir reden nicht viel. Die Ergebnisse tun es für uns.
+              Was unsere Absolventinnen sagen.
             </h2>
             </div>
           </Reveal>
@@ -2273,30 +2436,16 @@ export default function ChiChiClubAcademy() {
                   4 Tage Intensivausbildung in hyperrealistischem Microblading. Von der Theorie über echte Modelle bis zum Business-Plan. Starterkit für 20 Behandlungen und 6 Monate Support inklusive.
                 </p>
 
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 16,
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 13,
+                  color: "#000000",
                   marginBottom: 32,
                   paddingTop: 24,
                   borderTop: "1px solid #000000",
                 }}>
-                  {[
-                    { label: "Dauer", value: "4 Tage" },
-                    { label: "Frequenz", value: "3–4x / Jahr" },
-                    { label: "Teilnehmer", value: "6–12" },
-                    { label: "Ort", value: "Hamburg" },
-                  ].map((item, i) => (
-                    <div key={i}>
-                      <p style={{ fontFamily: "var(--font-body)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#000000", marginBottom: 4 }}>
-                        {item.label}
-                      </p>
-                      <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 15, color: "#000000" }}>
-                        {item.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                  4 Tage · 6–12 Teilnehmer · 3–4x pro Jahr · Hamburg
+                </p>
 
                 <button className="btn-primary" onClick={openFunnel} style={{ width: "100%" }}>
                   Kostenlos beraten lassen
@@ -2334,30 +2483,16 @@ export default function ChiChiClubAcademy() {
                   1 Tag hyperrealistische Sommersprossen-Tattoos. Farbtheorie, Pigmente mixen, Arbeit an 2 echten Modellen. Starterkit und 6 Monate Support inklusive.
                 </p>
 
-                <div style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 16,
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 13,
+                  color: "#000000",
                   marginBottom: 32,
                   paddingTop: 24,
                   borderTop: "1px solid #000000",
                 }}>
-                  {[
-                    { label: "Dauer", value: "1 Tag" },
-                    { label: "Frequenz", value: "Alle 2 Monate" },
-                    { label: "Teilnehmer", value: "6–12" },
-                    { label: "Ort", value: "Hamburg" },
-                  ].map((item, i) => (
-                    <div key={i}>
-                      <p style={{ fontFamily: "var(--font-body)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", color: "#000000", marginBottom: 4 }}>
-                        {item.label}
-                      </p>
-                      <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 15, color: "#000000" }}>
-                        {item.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                  1 Tag · 6–12 Teilnehmer · Alle 2 Monate · Hamburg
+                </p>
 
                 <button className="btn-secondary" onClick={openFunnel} style={{ width: "100%" }}>
                   Kostenlos beraten lassen
@@ -2368,7 +2503,7 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
-      {/* ─── SO LÄUFT ES AB ─── */}
+      {/* ─── ABLAUF (Timeline) ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
         <div className="container">
           <Reveal>
@@ -2387,64 +2522,9 @@ export default function ChiChiClubAcademy() {
             </div>
           </Reveal>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 4,
-          }}>
-            {howItWorks.map((item, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div style={{
-                  background: "var(--chi-chi-beige)",
-                  overflow: "hidden",
-                  height: "100%",
-                }}>
-                  <div style={{ position: "relative" }}>
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover" }}
-                    />
-                    <span style={{
-                      position: "absolute",
-                      top: 12,
-                      left: 12,
-                      fontFamily: "var(--font-headline)",
-                      fontWeight: 700,
-                      fontSize: 11,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                      background: "#000000",
-                      color: "var(--ivory)",
-                      padding: "6px 12px",
-                    }}>
-                      {item.day}
-                    </span>
-                  </div>
-                  <div style={{ padding: "24px 20px 28px" }}>
-                    <h3 style={{
-                      fontFamily: "var(--font-headline)",
-                      fontWeight: 700,
-                      fontSize: 16,
-                      color: "#000000",
-                      marginBottom: 8,
-                      lineHeight: 1.2,
-                    }}>
-                      {item.title}
-                    </h3>
-                    <p style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: 14,
-                      color: "#000000",
-                      lineHeight: 1.6,
-                    }}>
-                      {item.text}
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <AblaufTimeline />
+          </Reveal>
         </div>
       </section>
 
