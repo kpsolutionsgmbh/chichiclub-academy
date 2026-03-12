@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Sparkles, ArrowRightLeft, Heart, Building2, TrendingUp, MapPin, Clock, Eye, MessageCircle } from "lucide-react";
 
 // Auto-generated image data URLs
 const IMG_HERO1 = "/images/hero1.jpg";
@@ -10,11 +11,6 @@ const IMG_VAL1 = "/images/val1.jpg";
 const IMG_VAL2 = "/images/val2.jpg";
 const IMG_VAL3 = "/images/val3.jpg";
 const IMG_VAL4 = "/images/val4.jpg";
-const IMG_ABOUT = "/images/about.jpg";
-const IMG_STUDIO_WALL = "/images/studio_wall.jpg";
-const IMG_EXTRA1 = "/images/extra1.jpg";
-const IMG_EXTRA2 = "/images/extra2.jpg";
-const IMG_EXTRA3 = "/images/extra3.jpg";
 const IMG_AVATAR1 = "/images/avatar1.jpg";
 const IMG_AVATAR2 = "/images/avatar2.jpg";
 const IMG_AVATAR3 = "/images/avatar3.jpg";
@@ -33,6 +29,12 @@ const IMG_RESULT1 = "/images/result1.jpg";
 const IMG_RESULT2 = "/images/result2.jpg";
 const IMG_RESULT3 = "/images/result3.jpg";
 const IMG_RESULT4 = "/images/result4.jpg";
+const IMG_ACADEMY_TECHNIQUE = "/images/academy-technique.jpg";
+const IMG_ACADEMY_BUSINESS = "/images/academy-business.jpg";
+const IMG_ACADEMY_FEEDBACK = "/images/academy-feedback.jpg";
+const IMG_ACADEMY_STARTERKIT = "/images/academy-starterkit.jpg";
+const IMG_ACADEMY_PORTFOLIO = "/images/academy-portfolio.jpg";
+const IMG_ACADEMY_CERTIFICATE = "/images/academy-certificate.jpg";
 const logoDataUrl = "data:image/webp;base64,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";
 
 
@@ -42,7 +44,7 @@ const testimonials = [
   {
     name: "Lisa M.",
     role: "Kosmetikerin, Düsseldorf",
-    text: "Ich habe vorher zwei andere Schulungen gemacht. Die Technik hier ist eine andere Liga. Nach 25 Modellen habe ich mich getraut, echte Kundinnen zu nehmen — und die Ergebnisse waren sofort überzeugend.",
+    text: "Ich habe vorher zwei andere Schulungen gemacht. Die Technik hier ist eine andere Liga. Nach 25 Modellen habe ich mich getraut, echte Kundinnen zu nehmen. Die Ergebnisse waren sofort überzeugend.",
     avatar: IMG_AVATAR1,
   },
   {
@@ -54,7 +56,7 @@ const testimonials = [
   {
     name: "Anna T.",
     role: "Quereinsteigerin, Berlin",
-    text: "Ich kam aus der Medizin und hatte null Beauty-Erfahrung. Jette und ihr Team haben mir alles beigebracht — Technik, Beratung, Business. Heute arbeite ich Vollzeit als Microblading-Artistin.",
+    text: "Ich kam aus der Medizin und hatte null Beauty-Erfahrung. Jette und ihr Team haben mir alles beigebracht. Technik, Beratung, Business. Heute arbeite ich Vollzeit als Microblading-Artistin.",
     avatar: IMG_AVATAR3,
   },
   {
@@ -70,9 +72,9 @@ const testimonials = [
     avatar: IMG_AVATAR3,
   },
   {
-    name: "Anna S.",
+    name: "Marie S.",
     role: "Jetzt selbstständige Microblading-Artistin",
-    text: "Ich hatte vorher eine andere Schulung gemacht — reine Theorie, kein echtes Modell, kein Support danach. Bei Jette war alles anders. Hier lernt man wirklich, wie es in der Praxis funktioniert.",
+    text: "Was mich überzeugt hat: echte Modelle ab Tag 3, echtes Feedback, echter Support danach. Hier lernt man wirklich, wie es in der Praxis funktioniert.",
     avatar: IMG_AVATAR2,
   },
 ];
@@ -84,7 +86,7 @@ const faqs = [
   },
   {
     q: "Reichen 4 Tage wirklich aus?",
-    a: "Die 4 Tage sind dein Fundament. Danach beginnt die Modelphase — du übst an echten Modellen, mit unserem Support. Im Durchschnitt brauchst du 20–30 Modelle, bis die Technik sitzt. Wir begleiten dich 6 Monate lang.",
+    a: "Die 4 Tage sind dein Fundament. Danach beginnt die Modelphase. Du übst an echten Modellen, mit unserem Support. Im Durchschnitt brauchst du 20–30 Modelle, bis die Technik sitzt. Wir begleiten dich 6 Monate lang.",
   },
   {
     q: "Was ist im Starterkit enthalten?",
@@ -92,7 +94,7 @@ const faqs = [
   },
   {
     q: "Kann ich davon leben?",
-    a: "Eine Microblading-Behandlung kostet zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Kundinnen hast du dein Investment zurück. Wie schnell du dahin kommst, hängt von dir ab — aber du bekommst von uns auch Marketing- und Business-Know-how.",
+    a: "Eine Microblading-Behandlung kostet zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Kundinnen hast du dein Investment zurück. Wie schnell du dahin kommst, hängt von dir ab. Du bekommst von uns auch Marketing- und Business-Know-how.",
   },
   {
     q: "Was passiert nach der Schulung?",
@@ -179,6 +181,148 @@ function Reveal({ children, delay = 0, style = {} }) {
     >
       {children}
     </div>
+  );
+}
+
+// ─── Bento Grid (Dream Outcome) ───
+function BentoGrid() {
+  const smallCards = [
+    { id: "freedom", icon: <MapPin size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Studio. Deine Zeiten. Deine Regeln.", text: "Ob Vollzeit oder neben dem bestehenden Job. Du entscheidest, wie du arbeitest." },
+    { id: "flexibility", icon: <Clock size={20} strokeWidth={1.5} color="#000000" />, headline: "Arbeiten, wenn es passt.", text: "2\u20133 Behandlungen pro Woche reichen, um gut zu verdienen. Den Rest bestimmst du." },
+    { id: "demand", icon: <Eye size={20} strokeWidth={1.5} color="#000000" />, headline: "Eine Technik, die nachgefragt wird.", text: "Hyperrealistisches Microblading ist die Ausnahme am Markt. Das macht dich gefragt." },
+    { id: "support", icon: <MessageCircle size={20} strokeWidth={1.5} color="#000000" />, headline: "6 Monate Support nach der Academy.", text: "Per WhatsApp, mit 2 festen Ansprechpartnern. Du schickst ein Foto, wir geben dir Feedback." },
+  ];
+
+  return (
+    <section style={{ padding: "100px 0 60px", background: "var(--chi-chi-beige)" }}>
+      <div className="container">
+        <div style={{ textAlign: "center" }}>
+          <Reveal>
+            <SectionLabel onBeige>Dein Weg</SectionLabel>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 48,
+            }}>
+              Dein Weg als Artistin.
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="bento-grid" style={{ display: "grid", gap: 4 }}>
+          <Reveal>
+            <div
+              className="bento-large"
+              style={{
+                gridColumn: "span 2",
+                background: "#000000",
+                padding: "48px 40px",
+                minHeight: 240,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                position: "relative",
+              }}
+            >
+              <div style={{ position: "absolute", top: 32, right: 32 }}>
+                <TrendingUp size={20} strokeWidth={1.5} color="var(--ivory)" />
+              </div>
+              <h3 style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: "clamp(18px, 2vw, 24px)",
+                lineHeight: 1.3,
+                color: "var(--ivory)",
+                marginBottom: 8,
+              }}>
+                Ein Handwerk, das sich selbst trägt.
+              </h3>
+              <p style={{
+                fontFamily: "var(--font-body)",
+                fontSize: 14,
+                lineHeight: 1.7,
+                color: "var(--ivory)",
+                opacity: 0.7,
+              }}>
+                Eine Behandlung liegt bei 450{"\u2013"}550{"\u2009"}{"\u20AC"}. Nach wenigen Kundinnen hat sich dein Investment bezahlt.
+              </p>
+            </div>
+          </Reveal>
+
+          {smallCards.slice(0, 2).map((item, i) => (
+            <Reveal key={item.id} delay={(i + 1) * 0.1}>
+              <div style={{
+                background: "var(--ivory)",
+                padding: 32,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}>
+                <div style={{ marginBottom: 20 }}>
+                  {item.icon}
+                </div>
+                <h3 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  lineHeight: 1.3,
+                  color: "#000000",
+                  marginBottom: 8,
+                }}>
+                  {item.headline}
+                </h3>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                }}>
+                  {item.text}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <div className="bento-bottom" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 4, maxWidth: "66.66%", margin: "4px auto 0" }}>
+          {smallCards.slice(2).map((item, i) => (
+            <Reveal key={item.id} delay={(i + 3) * 0.1}>
+              <div style={{
+                background: "var(--ivory)",
+                padding: 32,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}>
+                <div style={{ marginBottom: 20 }}>
+                  {item.icon}
+                </div>
+                <h3 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: 16,
+                  lineHeight: 1.3,
+                  color: "#000000",
+                  marginBottom: 8,
+                }}>
+                  {item.headline}
+                </h3>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                }}>
+                  {item.text}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -584,7 +728,7 @@ function FunnelModal({ isOpen, onClose }) {
     {
       id: "experience",
       question: "Wo stehst du gerade?",
-      subtext: "Damit wir dich optimal beraten können.",
+      subtext: "Damit wir wissen, wie wir dir am besten helfen können.",
       options: [
         { value: "beginner", label: "Kompletter Neuling", desc: "Ich habe noch keine Erfahrung im Beauty-Bereich", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 7 5 4 5c0 5 3 7 8 7z"/><path d="M12 12c0-5 5-7 8-7 0 5-3 7-8 7z"/><path d="M12 22c-2 0-4-1-4-4"/><path d="M12 22c2 0 4-1 4-4"/></svg> },
         { value: "kosmetik", label: "Kosmetikerin / Friseurin", desc: "Ich arbeite bereits in der Beauty-Branche", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="5"/><path d="M7 13c-2.5 1.5-4 4-4 7h18c0-3-1.5-5.5-4-7"/><path d="M15 3l2-1.5"/><path d="M15 3c.5.5 1.5 1 2.5.5"/><line x1="9" y1="7" x2="9.01" y2="7"/><line x1="15" y1="7" x2="15.01" y2="7"/><path d="M10 10c.5.5 1.5 1 2 1s1.5-.5 2-1"/></svg> },
@@ -595,7 +739,7 @@ function FunnelModal({ isOpen, onClose }) {
     {
       id: "goal",
       question: "Was ist dein größtes Ziel?",
-      subtext: "Wähle aus, was dich am meisten antreibt.",
+      subtext: "Was ist dir am wichtigsten?",
       options: [
         { value: "selfemployed", label: "Selbstständigkeit", desc: "Ich will mein eigenes Beauty-Business aufbauen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> },
         { value: "income", label: "Mehr verdienen", desc: "Ich will mein Einkommen deutlich steigern", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> },
@@ -606,7 +750,7 @@ function FunnelModal({ isOpen, onClose }) {
     {
       id: "timeline",
       question: "Wann möchtest du starten?",
-      subtext: "Unsere Kursplätze sind begrenzt.",
+      subtext: "Damit wir den passenden Termin für dich finden.",
       options: [
         { value: "asap", label: "So schnell wie möglich", desc: "Ich bin bereit, sofort loszulegen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> },
         { value: "1-3months", label: "In 1–3 Monaten", desc: "Ich plane meinen Start für die nächsten Wochen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> },
@@ -635,15 +779,18 @@ function FunnelModal({ isOpen, onClose }) {
     }, 500);
   };
 
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
   const handleSubmit = () => {
-    if (formData.name && formData.email) {
+    if (formData.name && formData.email && isValidEmail(formData.email)) {
       const submission = {
         ...formData,
         answers,
         submitted_at: new Date().toISOString(),
         page_url: window.location.href,
       };
-      console.log("Lead submission:", JSON.stringify(submission, null, 2));
+      // TODO: Replace with actual API endpoint (webhook, CRM, etc.)
+      // console.log("Lead submission:", JSON.stringify(submission, null, 2));
       setSubmitted(true);
       setStep(questions.length + 2);
     }
@@ -875,7 +1022,7 @@ function FunnelModal({ isOpen, onClose }) {
                 Einen Moment bitte...
               </h3>
               <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000", lineHeight: 1.6, opacity: 0.6 }}>
-                Wir prüfen unsere aktuellen Kapazitäten<br />und schauen, ob wir dich aufnehmen können.
+                Einen Moment, wir bereiten dein Beratungsformular vor.
               </p>
             </div>
           )}
@@ -883,23 +1030,6 @@ function FunnelModal({ isOpen, onClose }) {
           {/* Contact Form Step */}
           {step === questions.length + 1 && !submitted && (
             <div style={{ animation: "fadeSlide 0.35s ease" }}>
-              <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "8px 16px",
-                background: "#ecfdf5",
-                borderRadius: 0,
-                marginBottom: 20,
-              }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-                <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#059669", fontWeight: 500 }}>
-                  Plätze verfügbar
-                </span>
-              </div>
-
               <h3 style={{
                 fontFamily: "var(--font-headline)",
                 fontWeight: 700,
@@ -908,10 +1038,10 @@ function FunnelModal({ isOpen, onClose }) {
                 marginBottom: 6,
                 lineHeight: 1.2,
               }}>
-                Gute Nachricht!
+                Fast geschafft.
               </h3>
               <p style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "#000000", marginBottom: 28, lineHeight: 1.6, opacity: 0.6 }}>
-                Wir haben aktuell noch Plätze frei. Hinterlasse deine Kontaktdaten und wir melden uns innerhalb von 24 Stunden bei dir.
+                Hinterlasse deine Kontaktdaten und wir melden uns innerhalb von 24 Stunden bei dir.
               </p>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
@@ -959,7 +1089,7 @@ function FunnelModal({ isOpen, onClose }) {
                       style={{
                         width: "100%",
                         padding: "14px 16px 14px 44px",
-                        border: "1px solid var(--chi-chi-beige)",
+                        border: formData.email && !isValidEmail(formData.email) ? "2px solid #dc2626" : "1px solid var(--chi-chi-beige)",
                         borderRadius: 0,
                         background: "var(--chi-chi-beige)",
                         fontFamily: "var(--font-body)",
@@ -1002,7 +1132,7 @@ function FunnelModal({ isOpen, onClose }) {
 
                 <button
                   onClick={handleSubmit}
-                  disabled={!formData.name || !formData.email}
+                  disabled={!formData.name || !formData.email || !isValidEmail(formData.email)}
                   className="btn-primary"
                   style={{
                     width: "100%",
@@ -1011,8 +1141,8 @@ function FunnelModal({ isOpen, onClose }) {
                     borderRadius: 0,
                     padding: "16px 24px",
                     fontSize: 15,
-                    opacity: (!formData.name || !formData.email) ? 0.5 : 1,
-                    cursor: (!formData.name || !formData.email) ? "not-allowed" : "pointer",
+                    opacity: (!formData.name || !formData.email || !isValidEmail(formData.email)) ? 0.5 : 1,
+                    cursor: (!formData.name || !formData.email || !isValidEmail(formData.email)) ? "not-allowed" : "pointer",
                   }}
                 >
                   Kostenlos beraten lassen
@@ -1130,7 +1260,7 @@ function LegalPage({ title, children, onBack, onNavigate }) {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
         :root {
-          --chi-chi-beige: #DFD9CD;
+          --chi-chi-beige: #E8E4DA;
           --ivory: #F8F7F3;
           --black: #000000;
           --font-headline: 'Pragmatica Extended', 'Pragmatica Ext', sans-serif;
@@ -1141,7 +1271,7 @@ function LegalPage({ title, children, onBack, onNavigate }) {
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: var(--font-body); font-weight: var(--font-body-weight); background: var(--ivory); color: var(--black); -webkit-font-smoothing: antialiased; }
-        .container { max-width: 1360px; margin: 0 auto; padding: 0 16px; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 16px; }
         @media (min-width: 480px) { .container { padding: 0 24px; } }
         @media (min-width: 768px) { .container { padding: 0 48px; } }
         @media (min-width: 1024px) { .container { padding: 0 64px; } }
@@ -1220,7 +1350,7 @@ function LegalPage({ title, children, onBack, onNavigate }) {
               <a href="#" onClick={(e) => { e.preventDefault(); onNavigate("cookies"); }} style={linkStyle} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Cookies</a>
             </div>
             <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ivory)", opacity: 0.4, marginTop: 8 }}>
-              © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
+              © 2019–{new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
             </p>
           </div>
         </div>
@@ -1356,6 +1486,48 @@ function CookiesPage({ onBack, onNavigate }) {
   );
 }
 
+// ─── Scroll to Top ───
+function ScrollToTop() {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!show) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      aria-label="Nach oben scrollen"
+      style={{
+        position: "fixed",
+        bottom: 24,
+        right: 24,
+        zIndex: 90,
+        width: 44,
+        height: 44,
+        background: "#000000",
+        border: "none",
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        opacity: 0.8,
+        transition: "opacity 0.2s",
+      }}
+      onMouseEnter={(e) => e.currentTarget.style.opacity = 1}
+      onMouseLeave={(e) => e.currentTarget.style.opacity = 0.8}
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ivory)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="18 15 12 9 6 15"/>
+      </svg>
+    </button>
+  );
+}
+
 // ─── Cookie Banner ───
 function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -1405,8 +1577,8 @@ function CookieBanner() {
             flex: 1,
             minWidth: 280,
           }}>
-            Wir verwenden Cookies, um dir die beste Erfahrung auf unserer Website zu bieten.{" "}
-            <a href="#" style={{ color: "var(--ivory)", textDecoration: "underline", opacity: 0.7 }}>Mehr erfahren</a>
+            Diese Website nutzt Cookies für Analyse und Funktionalität.{" "}
+            <a href="/cookies" onClick={(e) => { e.preventDefault(); accept(); window.dispatchEvent(new CustomEvent("navigate", { detail: "cookies" })); }} style={{ color: "var(--ivory)", textDecoration: "underline", opacity: 0.7 }}>Mehr erfahren</a>
           </p>
           <div style={{ display: "flex", gap: 8, flexShrink: 0, flexWrap: "wrap" }}>
             <button
@@ -1458,14 +1630,36 @@ function CookieBanner() {
 
 export default function ChiChiClubAcademy() {
   const [funnelOpen, setFunnelOpen] = useState(false);
-  const [page, setPage] = useState("home");
+
+  const getPageFromPath = () => {
+    const path = window.location.pathname.replace(/^\//, "");
+    if (["impressum", "datenschutz", "cookies"].includes(path)) return path;
+    return "home";
+  };
+
+  const [page, setPage] = useState(getPageFromPath);
+
+  const navigateTo = (p) => {
+    const url = p === "home" ? "/" : `/${p}`;
+    window.history.pushState({}, "", url);
+    setPage(p);
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(() => {
+    const onPopState = () => { setPage(getPageFromPath()); window.scrollTo(0, 0); };
+    window.addEventListener("popstate", onPopState);
+    const onNavigate = (e) => navigateTo(e.detail);
+    window.addEventListener("navigate", onNavigate);
+    return () => { window.removeEventListener("popstate", onPopState); window.removeEventListener("navigate", onNavigate); };
+  }, []);
 
   const openFunnel = () => setFunnelOpen(true);
-  const goHome = () => { setPage("home"); window.scrollTo(0, 0); };
+  const goHome = () => navigateTo("home");
 
-  if (page === "impressum") return <ImpressumPage onBack={goHome} onNavigate={(p) => { setPage(p); window.scrollTo(0, 0); }} />;
-  if (page === "datenschutz") return <DatenschutzPage onBack={goHome} onNavigate={(p) => { setPage(p); window.scrollTo(0, 0); }} />;
-  if (page === "cookies") return <CookiesPage onBack={goHome} onNavigate={(p) => { setPage(p); window.scrollTo(0, 0); }} />;
+  if (page === "impressum") return <ImpressumPage onBack={goHome} onNavigate={(p) => navigateTo(p)} />;
+  if (page === "datenschutz") return <DatenschutzPage onBack={goHome} onNavigate={(p) => navigateTo(p)} />;
+  if (page === "cookies") return <CookiesPage onBack={goHome} onNavigate={(p) => navigateTo(p)} />;
 
   return (
     <>
@@ -1473,7 +1667,7 @@ export default function ChiChiClubAcademy() {
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
 
         :root {
-          --chi-chi-beige: #DFD9CD;
+          --chi-chi-beige: #E8E4DA;
           --ivory: #F8F7F3;
           --black: #000000;
           --font-headline: 'Pragmatica Extended', 'Pragmatica Ext', sans-serif;
@@ -1499,6 +1693,21 @@ export default function ChiChiClubAcademy() {
 
         img { max-width: 100%; height: auto; display: block; border-radius: 0; }
         a { color: var(--black); text-decoration: none; }
+
+        .skip-nav {
+          position: absolute;
+          left: -9999px;
+          top: 0;
+          z-index: 999;
+          padding: 12px 24px;
+          background: var(--black);
+          color: var(--ivory);
+          font-family: var(--font-body);
+          font-size: 14px;
+        }
+        .skip-nav:focus {
+          left: 0;
+        }
 
         .btn-primary {
           display: inline-block;
@@ -1531,13 +1740,20 @@ export default function ChiChiClubAcademy() {
           cursor: pointer;
           transition: all 0.2s ease;
         }
+        .footer-link {
+          color: var(--ivory);
+          opacity: 0.6;
+          transition: opacity 0.2s;
+        }
+        .footer-link:hover { opacity: 1; }
+
         .btn-secondary:hover {
           background: var(--black);
           color: var(--ivory);
         }
 
         .container {
-          max-width: 1360px;
+          max-width: 1400px;
           margin: 0 auto;
           padding: 0 16px;
         }
@@ -1674,6 +1890,7 @@ export default function ChiChiClubAcademy() {
         }
         @media (min-width: 768px) and (max-width: 1023px) {
           .grid-2col { grid-template-columns: 1fr 1fr !important; }
+          .hero-grid { grid-template-columns: 11fr 9fr !important; }
           .grid-3col { grid-template-columns: repeat(2, 1fr) !important; }
           .grid-4col { grid-template-columns: repeat(2, 1fr) !important; }
           .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
@@ -1681,6 +1898,7 @@ export default function ChiChiClubAcademy() {
         }
         @media (min-width: 1024px) {
           .grid-2col { grid-template-columns: 1fr 1fr !important; }
+          .hero-grid { grid-template-columns: 11fr 9fr !important; }
           .grid-3col { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-grid { grid-template-columns: repeat(3, 1fr) !important; }
           .testimonial-extra { display: flex !important; }
@@ -1690,7 +1908,22 @@ export default function ChiChiClubAcademy() {
           .desktop-only { display: none !important; }
           .testimonial-extra { display: none !important; }
         }
+
+        /* Bento Grid */
+        .bento-grid { grid-template-columns: repeat(3, 1fr); }
+        .bento-large { grid-column: span 2; }
+        @media (max-width: 1023px) {
+          .bento-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .bento-large { grid-column: span 2; }
+        }
+        @media (max-width: 767px) {
+          .bento-grid { grid-template-columns: 1fr !important; }
+          .bento-large { grid-column: span 1 !important; }
+          .bento-bottom { grid-template-columns: 1fr !important; max-width: 100% !important; }
+        }
       `}</style>
+
+      <a href="#main-content" className="skip-nav">Zum Inhalt springen</a>
 
       <FunnelModal isOpen={funnelOpen} onClose={() => setFunnelOpen(false)} />
 
@@ -1721,9 +1954,9 @@ export default function ChiChiClubAcademy() {
       </nav>
 
       {/* ─── HERO ─── */}
-      <section className="hero-section" style={{ paddingBottom: 40, background: "var(--ivory)" }}>
+      <section id="main-content" className="hero-section" style={{ paddingBottom: 16, background: "var(--ivory)" }}>
         <div className="container">
-          <div className="grid-2col" style={{
+          <div className="grid-2col hero-grid" style={{
             display: "grid",
             gridTemplateColumns: "1fr",
             gap: 48,
@@ -1760,7 +1993,7 @@ export default function ChiChiClubAcademy() {
                 <h1 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
-                  fontSize: "clamp(28px, 4vw, 52px)",
+                  fontSize: "clamp(28px, 3.5vw, 44px)",
                   lineHeight: 1.1,
                   color: "#000000",
                   marginBottom: 24,
@@ -1817,7 +2050,7 @@ export default function ChiChiClubAcademy() {
                       color: "#000000",
                       marginTop: 2,
                     }}>
-                      30+ zufriedene Absolventinnen
+                      30+ Absolventinnen
                     </p>
                   </div>
                 </div>
@@ -1841,14 +2074,14 @@ export default function ChiChiClubAcademy() {
       </section>
 
       {/* ─── FEATURED IN ─── */}
-      <section style={{ padding: "20px 0 40px", overflow: "hidden" }}>
+      <section style={{ padding: "8px 0 32px", overflow: "hidden" }}>
         <p style={{
           fontFamily: "var(--font-body)",
           fontSize: 12,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
           textAlign: "center",
-          marginBottom: 32,
+          marginBottom: 20,
           color: "#000000",
         }}>
           Bekannt aus
@@ -1901,7 +2134,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 24,
                 }}>
-                  Dieses Handwerk hat mir das Leben gegeben, das ich wollte.
+                  Präzision trifft Vision. Seit Tag&nbsp;1.
                 </h2>
                 <p style={{
                   fontFamily: "var(--font-body)",
@@ -1910,7 +2143,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 16,
                 }}>
-                  Drei Kinder, eine Karriere in der Filmbranche, die nicht mehr zu ihrem Leben passte. Jette wollte etwas mit den Händen erschaffen. Sie hat hyperrealistisches Microblading in Nordamerika gelernt und die Technik als Erste nach Deutschland gebracht. Heute hat sie ein Studio mit 7 Artists in Hamburg, eine Academy und die Freiheit, für ihre Familie da zu sein.
+                  Jette Scherzer ist Gründerin des Chi Chi Club, Deutschlands führendem Studio für hyperrealistische kosmetische Tätowierungen in Hamburg. Ausgebildet am Blanche Macdonald Centre in Vancouver in Prothetik und Spezialeffekten, verbindet sie technische Präzision mit kreativer Vision wie niemand sonst.
                 </p>
                 <p style={{
                   fontFamily: "var(--font-body)",
@@ -1918,7 +2151,7 @@ export default function ChiChiClubAcademy() {
                   lineHeight: 1.7,
                   color: "#000000",
                 }}>
-                  Du lernst nicht von einer Trainerin, die Kurse verkauft. Du lernst von jemandem, der jeden Tag selbst am Kunden arbeitet. Und die weiß, wie dieses Handwerk ein ganzes Leben verändern kann.
+                  Heute leitet sie ein Team erfahrener Artists und gibt ihr Wissen in der Chi Chi Club Academy weiter. Drei Kinder, ein florierendes Studio, eine Academy: Jette weiß, wie dieses Handwerk ein ganzes Leben verändern kann.
                 </p>
               </div>
             </div>
@@ -1956,7 +2189,6 @@ export default function ChiChiClubAcademy() {
             color: "var(--ivory)",
             textAlign: "center",
           }}>
-            Die Kunst des Unsichtbaren.
           </p>
         </div>
       </div>
@@ -1985,9 +2217,10 @@ export default function ChiChiClubAcademy() {
                 </h2>
                 <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 560 }}>
                   {[
-                    "Jedes Härchen einzeln gesetzt. In Wuchsrichtung, Stärke und Biegung.",
-                    "Kein Standard-PMU. Kein Tattoo-Look. Es sieht aus wie du. Nur besser.",
-                    "Die Technik, die den Chi Chi Club bekannt gemacht hat. Jetzt lernst du sie.",
+                    "Jedes Härchen wird einzeln gesetzt. In Wuchsrichtung, Stärke und Biegung.",
+                    "Keine Schablonen, keine Einheits-Brows. Jedes Ergebnis ist so individuell wie das Gesicht.",
+                    "Das Ergebnis ist von echten Augenbrauen nicht zu unterscheiden. Es sieht aus wie du. Nur besser.",
+                    "Jette hat diese Technik aus Nordamerika nach Deutschland gebracht. Du lernst sie direkt von der Quelle.",
                   ].map((text, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
@@ -2017,11 +2250,14 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
+      {/* Separator */}
+      <div style={{ background: "var(--ivory)" }}><div className="container"><div style={{ height: 1, background: "#000000", opacity: 0.08 }} /></div></div>
+
       {/* ─── FÜR WEN IST DAS ─── */}
-      <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
+      <section style={{ padding: "80px 0 60px", background: "var(--ivory)" }}>
         <div className="container">
+          <div style={{ textAlign: "center" }}>
           <Reveal>
-            <div style={{ textAlign: "center" }}>
             <SectionLabel>Für wen ist das</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
@@ -2033,8 +2269,8 @@ export default function ChiChiClubAcademy() {
             }}>
               Du hast die Basis. Hier kommt das nächste Level.
             </h2>
-            </div>
           </Reveal>
+          </div>
 
           <div className="grid-4col" style={{
             display: "grid",
@@ -2042,10 +2278,10 @@ export default function ChiChiClubAcademy() {
             gap: 16,
           }}>
             {[
-              { title: "Kosmetikerinnen", text: "Du willst dein Angebot um eine Technik erweitern, die sich nach 10 Kundinnen rechnet.", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#000"/></svg> },
-              { title: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Du brauchst ein Auge für Ästhetik und den Willen zu üben.", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="#000"/></svg> },
-              { title: "Mütter", text: "Ein Business, das sich mit deiner Familie vereinbaren lässt. Jette hat es mit drei Kindern aufgebaut.", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#000"/></svg> },
-              { title: "Studio-Inhaberinnen", text: "Microblading als Premium-Service einführen. Oder eine Mitarbeiterin ausbilden lassen.", icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" fill="#000"/></svg> },
+              { title: "Kosmetikerinnen", text: "Du willst dein Angebot um eine Technik erweitern, die sich nach 10 Kundinnen rechnet.", icon: <Sparkles size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Du brauchst ein Auge für Ästhetik und den Willen zu üben.", icon: <ArrowRightLeft size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Mütter", text: "Ein Business, das sich mit deiner Familie vereinbaren lässt. Jette hat es mit drei Kindern aufgebaut.", icon: <Heart size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Ärztinnen/Medizinerinnen", text: "Du suchst eine Premium-Technik, die zu deinem Anspruch passt. Lerne das Beste von den Besten.", icon: <Building2 size={20} strokeWidth={1.5} color="#000000" /> },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.08}>
                 <div style={{
@@ -2104,12 +2340,12 @@ export default function ChiChiClubAcademy() {
             gap: 16,
           }}>
             {[
-              { title: "Eine Technik, die es kein zweites Mal gibt", text: "Hyperrealistisches Microblading. So natürlich, dass selbst Profis keinen Unterschied sehen.", img: IMG_RESULT1 },
-              { title: "Dein Business-Plan steht nach Tag 4", text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung. Du gehst mit einem fertigen Plan nach Hause.", img: IMG_RESULT2 },
-              { title: "6 Monate persönliches Feedback", text: "Du schickst uns Fotos, wir geben dir Feedback. Per WhatsApp, mit 2 festen Ansprechpartnern.", img: IMG_RESULT3 },
-              { title: "Starterkit für 20 Behandlungen", text: "Pigmente, Klingen, Ringlicht. Alles, um direkt loszulegen. Keine Fehlkäufe.", img: IMG_RESULT4 },
-              { title: "Echte Ergebnisse für dein Portfolio", text: "Du arbeitest an echten Modellen. Echte Fotos für dein Portfolio.", img: IMG_HERO1 },
-              { title: "Ein Zertifikat mit Gewicht", text: "Ausgebildet an Deutschlands führendem Studio für hyperrealistisches Cosmetic Tattooing.", img: IMG_HERO2 },
+              { title: "Eine Technik, die es kein zweites Mal gibt", text: "Hyperrealistisches Microblading. So natürlich, dass selbst Profis keinen Unterschied sehen.", img: IMG_ACADEMY_TECHNIQUE },
+              { title: "Dein Business-Plan steht nach Tag 4", text: "Preiskalkulation, Instagram-Strategie, Kundengewinnung. Du gehst mit einem fertigen Plan nach Hause.", img: IMG_ACADEMY_BUSINESS },
+              { title: "6 Monate persönliches Feedback", text: "Du schickst uns Fotos, wir geben dir Feedback. Per WhatsApp, mit 2 festen Ansprechpartnern.", img: IMG_ACADEMY_FEEDBACK },
+              { title: "Starterkit für 20 Behandlungen", text: "Pigmente, Klingen, Ringlicht. Alles, um direkt loszulegen. Keine Fehlkäufe.", img: IMG_ACADEMY_STARTERKIT },
+              { title: "Echte Ergebnisse für dein Portfolio", text: "Du arbeitest an echten Modellen. Echte Fotos für dein Portfolio.", img: IMG_ACADEMY_PORTFOLIO },
+              { title: "Ein Zertifikat mit Gewicht", text: "Ausgebildet an Deutschlands führendem Studio für hyperrealistisches Cosmetic Tattooing.", img: IMG_ACADEMY_CERTIFICATE },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.06}>
                 <div style={{
@@ -2145,6 +2381,9 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
+      {/* ─── DREAM OUTCOME BENTO GRID ─── */}
+      <BentoGrid />
+
       {/* ─── STATEMENT DIVIDER 2 ─── */}
       <div style={{ position: "relative", overflow: "hidden" }}>
         <img
@@ -2175,33 +2414,66 @@ export default function ChiChiClubAcademy() {
             color: "var(--ivory)",
             textAlign: "center",
           }}>
-            Wir reden nicht viel. Die Ergebnisse tun es für uns.
           </p>
         </div>
       </div>
 
       {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
       <section style={{ padding: "60px 0", background: "var(--ivory)" }}>
-        <div className="container">
+        <div className="container" style={{ maxWidth: 900 }}>
           <Reveal>
             <div style={{ textAlign: "center" }}>
             <SectionLabel>Absolventinnen</SectionLabel>
-            <h2 style={{
-              fontFamily: "var(--font-headline)",
-              fontWeight: 700,
-              fontSize: "clamp(24px, 3vw, 40px)",
-              lineHeight: 1.15,
-              color: "#000000",
-              marginBottom: 48,
-            }}>
-              Was unsere Absolventinnen sagen.
-            </h2>
             </div>
           </Reveal>
 
+          {/* Whale testimonial */}
           <Reveal delay={0.1}>
-            <TestimonialSlider items={testimonials} />
+            <blockquote style={{ textAlign: "center", margin: "0 auto 48px", maxWidth: 720 }}>
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>
+                <Stars count={5} size={16} color="#D4A853" />
+              </div>
+              <p style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: "clamp(20px, 2.5vw, 28px)",
+                lineHeight: 1.4,
+                color: "#000000",
+                marginBottom: 24,
+              }}>
+                &ldquo;{testimonials[2].text}&rdquo;
+              </p>
+              <footer style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
+                <img src={testimonials[2].avatar} alt={testimonials[2].name} style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }} />
+                <div>
+                  <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "#000000", display: "inline-flex", alignItems: "center", gap: 6 }}>{testimonials[2].name} <VerifiedBadge /></span>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", opacity: 0.6, display: "block" }}>{testimonials[2].role}</span>
+                </div>
+              </footer>
+            </blockquote>
           </Reveal>
+
+          {/* Divider line */}
+          <div style={{ height: 1, background: "#000000", opacity: 0.1, marginBottom: 40 }} />
+
+          {/* Compact testimonial rows */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {testimonials.filter((_, i) => i !== 2).map((t, i) => (
+              <Reveal key={i} delay={0.15 + i * 0.05}>
+                <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <img src={t.avatar} alt={t.name} style={{ width: 36, height: 36, borderRadius: "50%", objectFit: "cover", flexShrink: 0, marginTop: 2 }} />
+                  <div>
+                    <div style={{ marginBottom: 4 }}><Stars count={5} size={13} color="#D4A853" /></div>
+                    <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.7, color: "#000000", marginBottom: 6 }}>
+                      &ldquo;{t.text}&rdquo;
+                    </p>
+                    <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 12, color: "#000000", display: "inline-flex", alignItems: "center", gap: 4 }}>{t.name} <VerifiedBadge /></span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", opacity: 0.5 }}> · {t.role}</span>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -2340,7 +2612,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 48,
             }}>
-              4 Tage. Vom ersten Strich bis zum Business-Plan.
+              4 Tage. Vom ersten Strich bis zur Strategie.
             </h2>
             </div>
           </Reveal>
@@ -2417,7 +2689,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 48,
             }}>
-              Rechne selbst. Ab wann es sich lohnt.
+              Berechne jetzt deine Möglichkeiten.
             </h2>
             </div>
           </Reveal>
@@ -2527,7 +2799,7 @@ export default function ChiChiClubAcademy() {
                   color: "var(--ivory)",
                   marginTop: 2,
                 }}>
-                  30+ zufriedene Absolventinnen
+                  30+ Absolventinnen
                 </p>
               </div>
             </div>
@@ -2563,9 +2835,9 @@ export default function ChiChiClubAcademy() {
               fontFamily: "var(--font-body)",
               fontSize: 13,
             }}>
-              <a href="#" onClick={(e) => { e.preventDefault(); setPage("impressum"); }} style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Impressum</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); setPage("datenschutz"); }} style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Datenschutz</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); setPage("cookies"); }} style={{ color: "var(--ivory)", opacity: 0.6, transition: "opacity 0.2s" }} onMouseEnter={(e) => e.target.style.opacity = 1} onMouseLeave={(e) => e.target.style.opacity = 0.6}>Cookies</a>
+              <a href="/impressum" onClick={(e) => { e.preventDefault(); navigateTo("impressum"); }} className="footer-link">Impressum</a>
+              <a href="/datenschutz" onClick={(e) => { e.preventDefault(); navigateTo("datenschutz"); }} className="footer-link">Datenschutz</a>
+              <a href="/cookies" onClick={(e) => { e.preventDefault(); navigateTo("cookies"); }} className="footer-link">Cookies</a>
             </div>
             <p style={{
               fontFamily: "var(--font-body)",
@@ -2574,12 +2846,13 @@ export default function ChiChiClubAcademy() {
               opacity: 0.4,
               marginTop: 8,
             }}>
-              © {new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
+              © 2019–{new Date().getFullYear()} Chi Chi Club. Alle Rechte vorbehalten.
             </p>
           </div>
         </div>
       </footer>
 
+      <ScrollToTop />
       <CookieBanner />
     </>
   );
