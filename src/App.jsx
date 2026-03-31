@@ -122,28 +122,23 @@ const logos = [
 const howItWorks = [
   {
     day: "Tag 1",
-    title: "Theorie & Grundlagen",
-    text: "Hautaufbau, Hygiene, erste Live-Demo durch Jette. Du übst Haarmuster auf Silikonhaut.",
-    img: IMG_VAL1,
+    title: "Grundlagen & Hautverständnis",
+    items: ["Hauttypen & Fitzpatrick-Skala", "Gesundheit & Hygiene", "Live-Demo durch Jette", "Härchen & Muster üben", "Übung an Silikonhaut"],
   },
   {
     day: "Tag 2",
-    title: "Farbtheorie & Materialien",
-    text: "Pigmente, Nadeln, Browmapping. Du testest verschiedene Techniken und findest die perfekte Form.",
-    img: IMG_VAL2,
+    title: "Farbe & Mapping",
+    items: ["Farbtheorie & Farbkreis", "Pigmente mixen", "Nadeln & Materialien kennenlernen", "Brow Mapping Technik", "Mapping üben"],
   },
   {
     day: "Tag 3",
-    title: "Praxis an echten Modellen",
-    text: "Beratungsgespräch, Setup, der komplette Prozess Schritt für Schritt. Dein erstes echtes Modell.",
-    img: IMG_VAL3,
+    title: "Praxis & Kundenberatung",
+    items: ["Kundenservice & Holistic Approach", "Set-up & Vorbereitung", "Microblading Step by Step", "Heilung & Schwierigkeiten", "Demo Jette & 3 Modelle"],
   },
   {
     day: "Tag 4",
     title: "Business & Abschluss",
-    text: "Zweites Modell, Social Media, Marketing, Kundengewinnung, Recht. Zertifikat.",
-
-    img: IMG_VAL4,
+    items: ["3 Modelle betreuen", "Social Media & Marketing", "Kundengewinnung", "Fotos, Videos & Reels", "Rechtliches & Abschlussgespräch"],
   },
 ];
 
@@ -302,27 +297,6 @@ function HeroMarquee() {
       overflow: "hidden",
       position: "relative",
     }}>
-      {/* Fade edges */}
-      <div style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: 60,
-        height: "100%",
-        background: "linear-gradient(to right, var(--chi-chi-beige), transparent)",
-        zIndex: 2,
-        pointerEvents: "none",
-      }} />
-      <div style={{
-        position: "absolute",
-        top: 0,
-        right: 0,
-        width: 60,
-        height: "100%",
-        background: "linear-gradient(to left, var(--chi-chi-beige), transparent)",
-        zIndex: 2,
-        pointerEvents: "none",
-      }} />
       <div className="hero-marquee-track" style={{
         display: "flex",
         gap: 4,
@@ -360,7 +334,7 @@ function BentoGrid() {
   return (
     <section style={{ padding: "100px 0 60px", background: "var(--chi-chi-beige)" }}>
       <div className="container">
-        <div style={{ textAlign: "center" }}>
+        <div className="section-center" style={{ textAlign: "center" }}>
           <Reveal>
             <SectionLabel>Deine Vorteile</SectionLabel>
             <h2 style={{
@@ -494,16 +468,9 @@ function BentoGrid() {
 function SectionDivider() {
   return (
     <div style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: 20,
-      padding: "0 24px",
       background: "var(--chi-chi-beige)",
     }}>
-      <div style={{ flex: 1, maxWidth: 280, height: 1, background: "#000000", opacity: 0.12 }} />
-      <span style={{ fontSize: 14, color: "#000000", opacity: 0.15, lineHeight: 1 }}>✺</span>
-      <div style={{ flex: 1, maxWidth: 280, height: 1, background: "#000000", opacity: 0.12 }} />
+      <div style={{ width: "100%", height: 1, background: "#000000" }} />
     </div>
   );
 }
@@ -1970,15 +1937,18 @@ export default function ChiChiClubAcademy() {
         .section-ivory { background: var(--ivory); }
         .section-beige { background: var(--chi-chi-beige); }
 
+        /* Headlines uppercase */
+        h2 { text-transform: uppercase; }
+
         /* Card shadow */
         .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04); }
 
         /* Logo marquee */
         .logo-track {
           display: flex;
-          gap: 80px;
+          gap: 48px;
           align-items: center;
-          animation: marquee 25s linear infinite;
+          animation: marquee 15s linear infinite;
         }
         @keyframes marquee {
           0% { transform: translateX(0); }
@@ -2022,10 +1992,26 @@ export default function ChiChiClubAcademy() {
         @media (min-width: 1024px) { section:not(.hero-section):not(.featured-in) { padding: 80px 0 !important; } }
         @media (min-width: 1360px) { section:not(.hero-section):not(.featured-in) { padding: 100px 0 !important; } }
 
+        /* Mobile sticky CTA */
+        .mobile-sticky-cta {
+          display: none;
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          padding: 12px 16px;
+          padding-bottom: max(12px, env(safe-area-inset-bottom));
+          background: var(--chi-chi-beige);
+          border-top: 1px solid #000000;
+        }
+        @media (max-width: 767px) {
+          .mobile-sticky-cta { display: block; }
+          .nav-cta-full, .nav-cta-short { display: none !important; }
+        }
+
         /* Nav responsive */
         @media (max-width: 479px) {
-          .nav-cta-full { display: none !important; }
-          .nav-cta-short { display: inline-block !important; }
           nav .container { height: 56px !important; }
           nav img { height: 18px !important; }
         }
@@ -2068,6 +2054,11 @@ export default function ChiChiClubAcademy() {
         @media (max-width: 767px) {
           .final-cta-btn { width: 100%; text-align: center; }
           .final-trust { flex-direction: column; align-items: center; }
+        }
+
+        /* Bottom padding for mobile sticky CTA */
+        @media (max-width: 767px) {
+          footer { padding-bottom: 80px !important; }
         }
 
         /* Cookie Banner responsive */
@@ -2122,6 +2113,18 @@ export default function ChiChiClubAcademy() {
         @media (max-width: 767px) {
           .desktop-only { display: none !important; }
           .testimonial-extra { display: none !important; }
+          /* Mobile left-align everything */
+          h1 { font-size: 28px !important; }
+          h2 { font-size: 22px !important; text-align: left !important; }
+          h2, h3, p, blockquote, .section-center { text-align: left !important; }
+          .mobile-left-align { text-align: left !important; }
+          .mobile-left-card { text-align: left !important; }
+          /* Stars in whale testimonial */
+          blockquote > div { justify-content: flex-start !important; }
+          blockquote footer { justify-content: flex-start !important; }
+          /* Final CTA + Bekannt aus stays centered */
+          .final-cta-container, .final-cta-container h2, .final-cta-container p { text-align: center !important; }
+          .featured-in p { text-align: center !important; }
         }
 
         /* Bento Grid */
@@ -2208,7 +2211,8 @@ export default function ChiChiClubAcademy() {
                 <h1 style={{
                   fontFamily: "var(--font-headline)",
                   fontWeight: 700,
-                  fontSize: "clamp(28px, 3.5vw, 44px)",
+                  fontSize: "clamp(32px, 4.2vw, 52px)",
+                  textTransform: "uppercase",
                   lineHeight: 1.1,
                   color: "#000000",
                   marginBottom: 24,
@@ -2314,321 +2318,12 @@ export default function ChiChiClubAcademy() {
 
       </section>
 
-      {/* ─── ÜBER JETTE ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
-        <div className="container" style={{ maxWidth: 1200 }}>
-          <Reveal>
-            <div className="grid-2col" style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: 40,
-              alignItems: "center",
-            }}>
-              <img
-                className="jette-img"
-                src={IMG_JETTE}
-                alt="Jette Scherzer"
-                loading="lazy"
-                style={{ width: "100%", maxWidth: 480, aspectRatio: "3/4", objectFit: "cover" }}
-              />
-
-              <div>
-                <SectionLabel>Über Jette Scherzer</SectionLabel>
-                <h2 style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: "clamp(24px, 3vw, 40px)",
-                  lineHeight: 1.15,
-                  color: "#000000",
-                  marginBottom: 24,
-                }}>
-                  Präzision trifft Vision. Seit 2015.
-                </h2>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                  marginBottom: 16,
-                }}>
-                  Jette Scherzer ist Gründerin des Chi Chi Club, Deutschlands führendem Studio für hyperrealistische kosmetische Tätowierungen in Hamburg. Ausgebildet am Blanche Macdonald Centre in Vancouver in Prothetik und Spezialeffekten, verbindet sie technische Präzision mit kreativer Vision wie niemand sonst.
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                }}>
-                  Heute leitet sie ein Team erfahrener Artists und gibt ihr Wissen in der Chi Chi Club Academy weiter. Drei Kinder, ein florierendes Studio, eine Academy: Jette weiß, wie dieses Handwerk ein ganzes Leben verändern kann.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ─── DIE TECHNIK ─── */}
+      {/* ─── KLASSEN ─── */}
       <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
-            <div className="grid-2col" style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: 64,
-              alignItems: "center",
-            }}>
-              <div>
-                <SectionLabel>Die Technik</SectionLabel>
-                <h2 style={{
-                  fontFamily: "var(--font-headline)",
-                  fontWeight: 700,
-                  fontSize: "clamp(24px, 3vw, 40px)",
-                  lineHeight: 1.15,
-                  color: "#000000",
-                  marginBottom: 24,
-                }}>
-                  Was unterscheidet eine Kosmetikerin von einer Artistin? Ein Millimeter.
-                </h2>
-                <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 560 }}>
-                  {[
-                    "Jedes einzelne Härchen wird mit Intention in die Braue gesetzt, sodass echtes Haar vom gestochenen Haar nicht mehr zu unterscheiden ist.",
-                    "Keine Schablonen, keine Einheits-Brows. Jedes Ergebnis ist so individuell wie das Gesicht.",
-                    "Das Ergebnis ist von echten Augenbrauen nicht zu unterscheiden. Es sieht aus wie du. Nur besser.",
-                  ].map((text, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
-                        <path d="M20 6L9 17l-5-5" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.6, color: "#000000" }}>{text}</span>
-                    </div>
-                  ))}
-                </div>
-                <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginTop: 28 }}>
-                  Kostenlos beraten lassen
-                </button>
-              </div>
-
-              <TechnikSlider />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ─── FÜR WEN IST DAS ─── */}
-      <section style={{ padding: "80px 0 60px", background: "var(--chi-chi-beige)" }}>
-        <div className="container">
-          <div style={{ textAlign: "center" }}>
-          <Reveal>
-            <SectionLabel>Für wen ist das</SectionLabel>
-            <h2 style={{
-              fontFamily: "var(--font-headline)",
-              fontWeight: 700,
-              fontSize: "clamp(24px, 3vw, 40px)",
-              lineHeight: 1.15,
-              color: "#000000",
-              marginBottom: 48,
-            }}>
-              Du hast die Basis. Hier kommt das nächste Level.
-            </h2>
-          </Reveal>
-          </div>
-
-          <div className="grid-4col" style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: 16,
-          }}>
-            {[
-              { title: "Kosmetikerinnen", text: "Um dein Angebot mit einer hochpreisigen Behandlung zu erweitern, die dein Business auf das nächste Level bringt.", icon: <Sparkles size={20} strokeWidth={1.5} color="#000000" /> },
-              { title: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Der unkomplizierte Weg, um in der Beauty-Branche rentabel zu sein.", icon: <ArrowRightLeft size={20} strokeWidth={1.5} color="#000000" /> },
-              { title: "Ärztinnen/Medizinerinnen", text: "Die Premium-Technik, die zu deinem Anspruch passt. Lerne das Beste von den Besten.", icon: <Stethoscope size={20} strokeWidth={1.5} color="#000000" /> },
-              { title: "Mütter", text: "Mach es wie Jette, Mutter von 3 Kindern. Familienfreundlich, selbstbestimmt, flexibel.", icon: <Heart size={20} strokeWidth={1.5} color="#000000" /> },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className="card-shadow" style={{
-                  background: "var(--ivory)",
-                  padding: "28px 24px",
-                  height: "100%",
-                }}>
-                  <div style={{ marginBottom: 14 }}>{item.icon}</div>
-                  <h3 style={{
-                    fontFamily: "var(--font-headline)",
-                    fontWeight: 700,
-                    fontSize: 16,
-                    lineHeight: 1.3,
-                    color: "#000000",
-                    marginBottom: 10,
-                  }}>
-                    {item.title}
-                  </h3>
-                  <p style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 14,
-                    lineHeight: 1.7,
-                    color: "#000000",
-                  }}>
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ─── WAS DU MITNIMMST ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
-        <div className="container">
-          <Reveal>
-            <div style={{ textAlign: "center" }}>
-            <SectionLabel>Was du mitnimmst</SectionLabel>
-            <h2 style={{
-              fontFamily: "var(--font-headline)",
-              fontWeight: 700,
-              fontSize: "clamp(24px, 3vw, 40px)",
-              lineHeight: 1.15,
-              color: "#000000",
-              marginBottom: 48,
-            }}>
-              Lerne das, was Jette in 11 Jahren perfektioniert hat.
-            </h2>
-            </div>
-          </Reveal>
-
-          <div className="grid-3col" style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: 16,
-          }}>
-            {[
-              { title: "Hyperrealistisches Microblading", text: "Eine Technik, die sich in ihrer Natürlichkeit abhebt. Lerne so hyperrealistisch zu tätowieren, dass es sich von \u201eecht\u201c nicht mehr unterscheiden lässt." },
-              { title: "Dein Business-Setup", text: "Starte mit einem konkreten Business-Setup. Dein branchenspezifischer Plan mit allen relevanten Themen für deinen erfolgreichen Start." },
-              { title: "6 Monate persönliches Mentoring", text: "Nach deiner Schulung wirst du von Jette durch hilfreiches Feedback begleitet. Bis du dich zu 100\u2009% sicher fühlst." },
-              { title: "Starterkit für deine ersten 20 Behandlungen", text: "Alles, was du brauchst, um professionell durchstarten zu können. Im Kit sind alle Materialien, mit denen wir im Chi Chi Club am liebsten arbeiten." },
-              { title: "Echte Referenzen für dein Portfolio", text: "Während der Intensivschulung wirst du an deinen ersten Modellen üben und baust so direkt dein Portfolio auf." },
-              { title: "Social Media & Kundengewinnung", text: "Lerne, wie du deine Onlinepräsenz aufbaust, die Kunden anzieht. Von Instagram-Strategie bis zur ersten Buchung." },
-            ].map((item, i) => (
-              <Reveal key={i} delay={i * 0.06}>
-                <div className="card-shadow" style={{
-                  background: "var(--ivory)",
-                  padding: "24px",
-                  height: "100%",
-                  textAlign: "center",
-                }}>
-                  <span style={{
-                    display: "block",
-                    fontSize: 48,
-                    color: "#000000",
-                    marginBottom: 18,
-                    lineHeight: 1,
-                  }}>
-                    ✺
-                  </span>
-                  <h3 style={{
-                    fontFamily: "var(--font-headline)",
-                    fontWeight: 700,
-                    fontSize: 16,
-                    lineHeight: 1.3,
-                    color: "#000000",
-                    marginBottom: 10,
-                  }}>
-                    {item.title}
-                  </h3>
-                  <p style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: 14,
-                    lineHeight: 1.7,
-                    color: "#000000",
-                  }}>
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ─── DREAM OUTCOME BENTO GRID ─── */}
-      <BentoGrid />
-
-      <SectionDivider />
-
-      {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
-        <div className="container" style={{ maxWidth: 900 }}>
-          <Reveal>
-            <div style={{ textAlign: "center" }}>
-            <SectionLabel>Absolventinnen</SectionLabel>
-            </div>
-          </Reveal>
-
-          {/* Whale testimonial */}
-          <Reveal delay={0.1}>
-            <blockquote style={{ textAlign: "center", margin: "0 auto 48px", maxWidth: 720 }}>
-              <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>
-                <Stars count={5} size={16} color="#D4A853" />
-              </div>
-              <p style={{
-                fontFamily: "var(--font-headline)",
-                fontWeight: 700,
-                fontSize: "clamp(20px, 2.5vw, 28px)",
-                lineHeight: 1.4,
-                color: "#000000",
-                marginBottom: 24,
-              }}>
-                &ldquo;{testimonials[2].text}&rdquo;
-              </p>
-              <footer style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
-                <img src={testimonials[2].avatar} alt={testimonials[2].name} style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }} />
-                <div>
-                  <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "#000000", display: "inline-flex", alignItems: "center", gap: 6 }}>{testimonials[2].name}</span>
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", opacity: 0.6, display: "block" }}>{testimonials[2].role}</span>
-                </div>
-              </footer>
-            </blockquote>
-          </Reveal>
-
-          {/* Divider line */}
-          <div style={{ height: 1, background: "#000000", opacity: 0.1, marginBottom: 40 }} />
-
-          {/* Compact testimonial rows */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            {testimonials.filter((_, i) => i !== 2).map((t, i) => (
-              <Reveal key={i} delay={0.15 + i * 0.05}>
-                <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  <img src={t.avatar} alt={t.name} style={{ width: 36, height: 36, borderRadius: "50%", objectFit: "cover", flexShrink: 0, marginTop: 2 }} />
-                  <div>
-                    <div style={{ marginBottom: 4 }}><Stars count={5} size={13} color="#D4A853" /></div>
-                    <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.7, color: "#000000", marginBottom: 6 }}>
-                      &ldquo;{t.text}&rdquo;
-                    </p>
-                    <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 12, color: "#000000", display: "inline-flex", alignItems: "center", gap: 4 }}>{t.name}</span>
-                    <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", opacity: 0.5 }}> · {t.role}</span>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <SectionDivider />
-
-      {/* ─── SCHULUNGEN ─── */}
-      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
-        <div className="container">
-          <Reveal>
-            <div style={{ textAlign: "center" }}>
-            <SectionLabel>Schulungen</SectionLabel>
+            <div className="section-center" style={{ textAlign: "center" }}>
+            <SectionLabel>Classes</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -2637,7 +2332,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 64,
             }}>
-              Zwei Schulungen. Ein Standard.
+              Zwei Classes. Ein Standard.
             </h2>
             </div>
           </Reveal>
@@ -2746,11 +2441,197 @@ export default function ChiChiClubAcademy() {
 
       <SectionDivider />
 
+      {/* ─── FÜR WEN IST DAS ─── */}
+      <section style={{ padding: "80px 0 60px", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <div className="section-center" style={{ textAlign: "center" }}>
+          <Reveal>
+            <SectionLabel>Für wen ist das</SectionLabel>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 48,
+            }}>
+              Du hast die Basis. Hier kommt das nächste Level.
+            </h2>
+          </Reveal>
+          </div>
+
+          <div className="grid-4col" style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: 16,
+          }}>
+            {[
+              { title: "Kosmetikerinnen", text: "Um dein Angebot mit einer hochpreisigen Behandlung zu erweitern, die dein Business auf das nächste Level bringt.", icon: <Sparkles size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Der unkomplizierte Weg, um in der Beauty-Branche rentabel zu sein.", icon: <ArrowRightLeft size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Ärztinnen/Medizinerinnen", text: "Die Premium-Technik, die zu deinem Anspruch passt. Lerne das Beste von den Besten.", icon: <Stethoscope size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Mütter", text: "Mach es wie Jette, Mutter von 3 Kindern. Familienfreundlich, selbstbestimmt, flexibel.", icon: <Heart size={20} strokeWidth={1.5} color="#000000" /> },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="card-shadow" style={{
+                  background: "var(--ivory)",
+                  padding: "28px 24px",
+                  height: "100%",
+                }}>
+                  <div style={{ marginBottom: 14 }}>{item.icon}</div>
+                  <h3 style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: 1.3,
+                    color: "#000000",
+                    marginBottom: 10,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: "#000000",
+                  }}>
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ─── DIE TECHNIK ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <Reveal>
+            <div className="grid-2col" style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 64,
+              alignItems: "center",
+            }}>
+              <div>
+                <SectionLabel>Die Technik</SectionLabel>
+                <h2 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(24px, 3vw, 40px)",
+                  lineHeight: 1.15,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  Was unterscheidet eine Kosmetikerin von einer Artistin? Ein Millimeter.
+                </h2>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 560 }}>
+                  {[
+                    "Jedes einzelne Härchen wird mit Intention in die Braue gesetzt, sodass echtes Haar vom gestochenen Haar nicht mehr zu unterscheiden ist.",
+                    "Keine Schablonen, keine Einheits-Brows. Jedes Ergebnis ist so individuell wie das Gesicht.",
+                    "Das Ergebnis ist von echten Augenbrauen nicht zu unterscheiden. Es sieht aus wie du. Nur besser.",
+                  ].map((text, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                      <span style={{ flexShrink: 0, fontSize: 14, color: "#000000", marginTop: 2, lineHeight: 1.6 }}>✺</span>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.6, color: "#000000" }}>{text}</span>
+                    </div>
+                  ))}
+                </div>
+                <button className="btn-primary" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginTop: 28 }}>
+                  Kostenlos beraten lassen
+                </button>
+              </div>
+
+              <TechnikSlider />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ─── WAS DU MITNIMMST ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container">
+          <Reveal>
+            <div className="section-center" style={{ textAlign: "center" }}>
+            <SectionLabel>Was du mitnimmst</SectionLabel>
+            <h2 style={{
+              fontFamily: "var(--font-headline)",
+              fontWeight: 700,
+              fontSize: "clamp(24px, 3vw, 40px)",
+              lineHeight: 1.15,
+              color: "#000000",
+              marginBottom: 48,
+            }}>
+              Lerne das, was Jette in 11 Jahren perfektioniert hat.
+            </h2>
+            </div>
+          </Reveal>
+
+          <div className="grid-3col" style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: 16,
+          }}>
+            {[
+              { title: "Hyperrealistisches Microblading", text: "Eine Technik, die sich in ihrer Natürlichkeit abhebt. Lerne so hyperrealistisch zu tätowieren, dass es sich von \u201eecht\u201c nicht mehr unterscheiden lässt." },
+              { title: "Dein Business-Setup", text: "Starte mit einem konkreten Business-Setup. Dein branchenspezifischer Plan mit allen relevanten Themen für deinen erfolgreichen Start." },
+              { title: "6 Monate persönliches Mentoring", text: "Nach deiner Schulung wirst du von Jette durch hilfreiches Feedback begleitet. Bis du dich zu 100\u2009% sicher fühlst." },
+              { title: "Starterkit für deine ersten 20 Behandlungen", text: "Alles, was du brauchst, um professionell durchstarten zu können. Im Kit sind alle Materialien, mit denen wir im Chi Chi Club am liebsten arbeiten." },
+              { title: "Echte Referenzen für dein Portfolio", text: "Während der Intensivschulung wirst du an deinen ersten Modellen üben und baust so direkt dein Portfolio auf." },
+              { title: "Social Media & Kundengewinnung", text: "Lerne, wie du deine Onlinepräsenz aufbaust, die Kunden anzieht. Von Instagram-Strategie bis zur ersten Buchung." },
+            ].map((item, i) => (
+              <Reveal key={i} delay={i * 0.06}>
+                <div className="card-shadow mobile-left-card" style={{
+                  background: "var(--ivory)",
+                  padding: "24px",
+                  height: "100%",
+                  textAlign: "center",
+                }}>
+                  <span style={{
+                    display: "block",
+                    fontSize: 48,
+                    color: "#000000",
+                    marginBottom: 18,
+                    lineHeight: 1,
+                  }}>
+                    ✺
+                  </span>
+                  <h3 style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: 1.3,
+                    color: "#000000",
+                    marginBottom: 10,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: 14,
+                    lineHeight: 1.7,
+                    color: "#000000",
+                  }}>
+                    {item.text}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
       {/* ─── ABLAUF ─── */}
       <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container">
           <Reveal>
-            <div style={{ textAlign: "center" }}>
+            <div className="section-center" style={{ textAlign: "center" }}>
             <SectionLabel>Ablauf</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
@@ -2774,47 +2655,159 @@ export default function ChiChiClubAcademy() {
               <Reveal key={i} delay={i * 0.08}>
                 <div className="card-shadow" style={{
                   background: "var(--ivory)",
-                  overflow: "hidden",
+                  padding: "28px 24px",
                   height: "100%",
                 }}>
-                  <div style={{ position: "relative" }}>
-                    <img src={item.img} alt={item.title} loading="lazy" style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover", display: "block" }} />
-                    <span style={{
-                      position: "absolute",
-                      bottom: 10,
-                      left: 14,
-                      fontFamily: "var(--font-headline)",
-                      fontWeight: 700,
-                      fontSize: 32,
-                      color: "rgba(255,255,255,0.85)",
-                      lineHeight: 1,
-                      textShadow: "0 2px 8px rgba(0,0,0,0.4)",
-                    }}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                  <span style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: "clamp(18px, 2vw, 22px)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.05em",
+                    color: "#000000",
+                    display: "block",
+                    marginBottom: 6,
+                  }}>
+                    {item.day}
+                  </span>
+                  <h3 style={{
+                    fontFamily: "var(--font-headline)",
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: 1.3,
+                    color: "#000000",
+                    marginBottom: 16,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {item.items.map((text, j) => (
+                      <div key={j} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                        <span style={{ flexShrink: 0, fontSize: 10, color: "#000000", marginTop: 4, lineHeight: 1.6 }}>✺</span>
+                        <span style={{ fontFamily: "var(--font-body)", fontSize: 13, lineHeight: 1.6, color: "#000000" }}>{text}</span>
+                      </div>
+                    ))}
                   </div>
-                  <div style={{ padding: "16px 20px 20px" }}>
-                    <span style={{
-                      fontFamily: "var(--font-body)",
-                      fontSize: 12,
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                      color: "#000000",
-                      opacity: 0.5,
-                      display: "block",
-                      marginBottom: 4,
-                    }}>
-                      {item.day}
-                    </span>
-                    <h3 style={{
-                      fontFamily: "var(--font-headline)",
-                      fontWeight: 700,
-                      fontSize: 16,
-                      lineHeight: 1.3,
-                      color: "#000000",
-                    }}>
-                      {item.title}
-                    </h3>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ─── DREAM OUTCOME BENTO GRID ─── */}
+      <BentoGrid />
+
+      <SectionDivider />
+
+      {/* ─── ÜBER JETTE ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container" style={{ maxWidth: 1200 }}>
+          <Reveal>
+            <div className="grid-2col" style={{
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 40,
+              alignItems: "center",
+            }}>
+              <img
+                className="jette-img"
+                src={IMG_JETTE}
+                alt="Jette Scherzer"
+                loading="lazy"
+                style={{ width: "100%", maxWidth: 480, aspectRatio: "3/4", objectFit: "cover" }}
+              />
+
+              <div>
+                <SectionLabel>Über Jette Scherzer</SectionLabel>
+                <h2 style={{
+                  fontFamily: "var(--font-headline)",
+                  fontWeight: 700,
+                  fontSize: "clamp(24px, 3vw, 40px)",
+                  lineHeight: 1.15,
+                  color: "#000000",
+                  marginBottom: 24,
+                }}>
+                  Präzision trifft Vision. Seit 2015.
+                </h2>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 16,
+                }}>
+                  Jette Scherzer ist Gründerin des Chi Chi Club, Deutschlands führendem Studio für hyperrealistische kosmetische Tätowierungen in Hamburg. Ausgebildet am Blanche Macdonald Centre in Vancouver in Prothetik und Spezialeffekten, verbindet sie technische Präzision mit kreativer Vision wie niemand sonst.
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                }}>
+                  Heute leitet sie ein Team erfahrener Artists und gibt ihr Wissen in der Chi Chi Club Academy weiter. Drei Kinder, ein florierendes Studio, eine Academy: Jette weiß, wie dieses Handwerk ein ganzes Leben verändern kann.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ─── ABSOLVENTINNEN / TESTIMONIALS ─── */}
+      <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
+        <div className="container" style={{ maxWidth: 900 }}>
+          <Reveal>
+            <div className="section-center" style={{ textAlign: "center" }}>
+            <SectionLabel>Absolventinnen</SectionLabel>
+            </div>
+          </Reveal>
+
+          {/* Whale testimonial */}
+          <Reveal delay={0.1}>
+            <blockquote className="section-center" style={{ textAlign: "center", margin: "0 auto 48px", maxWidth: 720 }}>
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>
+                <Stars count={5} size={16} color="#D4A853" />
+              </div>
+              <p style={{
+                fontFamily: "var(--font-headline)",
+                fontWeight: 700,
+                fontSize: "clamp(20px, 2.5vw, 28px)",
+                lineHeight: 1.4,
+                color: "#000000",
+                marginBottom: 24,
+              }}>
+                &ldquo;{testimonials[2].text}&rdquo;
+              </p>
+              <footer style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
+                <img src={testimonials[2].avatar} alt={testimonials[2].name} style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }} />
+                <div>
+                  <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 14, color: "#000000", display: "inline-flex", alignItems: "center", gap: 6 }}>{testimonials[2].name}</span>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", opacity: 0.6, display: "block" }}>{testimonials[2].role}</span>
+                </div>
+              </footer>
+            </blockquote>
+          </Reveal>
+
+          {/* Divider line */}
+          <div style={{ height: 1, background: "#000000", opacity: 0.1, marginBottom: 40 }} />
+
+          {/* Compact testimonial rows */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {testimonials.filter((_, i) => i !== 2).map((t, i) => (
+              <Reveal key={i} delay={0.15 + i * 0.05}>
+                <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <img src={t.avatar} alt={t.name} style={{ width: 36, height: 36, borderRadius: "50%", objectFit: "cover", flexShrink: 0, marginTop: 2 }} />
+                  <div>
+                    <div style={{ marginBottom: 4 }}><Stars count={5} size={13} color="#D4A853" /></div>
+                    <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.7, color: "#000000", marginBottom: 6 }}>
+                      &ldquo;{t.text}&rdquo;
+                    </p>
+                    <span style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 12, color: "#000000", display: "inline-flex", alignItems: "center", gap: 4 }}>{t.name}</span>
+                    <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", opacity: 0.5 }}> · {t.role}</span>
                   </div>
                 </div>
               </Reveal>
@@ -2829,7 +2822,7 @@ export default function ChiChiClubAcademy() {
       <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
           <Reveal>
-            <div style={{ textAlign: "center" }}>
+            <div className="section-center" style={{ textAlign: "center" }}>
             <SectionLabel>Dein Investment</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
@@ -2880,9 +2873,7 @@ export default function ChiChiClubAcademy() {
                     "Restaurants, Hotels und öffentliche Verkehrsmittel in direkter Nähe. Auch für Anreisende unkompliziert.",
                   ].map((text, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
-                        <path d="M20 6L9 17l-5-5" stroke="#000000" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                      <span style={{ flexShrink: 0, fontSize: 14, color: "#000000", marginTop: 2, lineHeight: 1.6 }}>✺</span>
                       <span style={{ fontFamily: "var(--font-body)", fontSize: 15, lineHeight: 1.6, color: "#000000" }}>{text}</span>
                     </div>
                   ))}
@@ -2939,7 +2930,7 @@ export default function ChiChiClubAcademy() {
       <section style={{ padding: "60px 0", background: "var(--chi-chi-beige)" }}>
         <div className="container" style={{ maxWidth: 1200 }}>
           <Reveal>
-            <div style={{ textAlign: "center" }}>
+            <div className="section-center" style={{ textAlign: "center" }}>
             <SectionLabel>Häufige Fragen</SectionLabel>
             <h2 style={{
               fontFamily: "var(--font-headline)",
@@ -2964,7 +2955,7 @@ export default function ChiChiClubAcademy() {
 
       {/* ─── FINAL CTA ─── */}
       <section style={{ padding: "60px 0", background: "#000000" }}>
-        <div className="container" style={{ textAlign: "center", maxWidth: 900 }}>
+        <div className="container final-cta-container" style={{ textAlign: "center", maxWidth: 900 }}>
           <Reveal>
             <h2 style={{
               fontFamily: "var(--font-headline)",
@@ -3087,6 +3078,13 @@ export default function ChiChiClubAcademy() {
           </div>
         </div>
       </footer>
+
+      {/* Mobile sticky CTA */}
+      <div className="mobile-sticky-cta">
+        <button className="btn-primary" onClick={openFunnel} style={{ width: "100%", fontSize: 15, padding: "14px 0" }}>
+          Kostenlos beraten lassen
+        </button>
+      </div>
 
       <ScrollToTop />
       <CookieBanner />
