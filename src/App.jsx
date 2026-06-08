@@ -63,8 +63,8 @@ const faqs = [
     a: "Nein. Viele unserer Artists kommen aus völlig anderen Bereichen. Medizin, Büro, Gastronomie. Was du brauchst: ein Auge für Ästhetik und die Bereitschaft, zu üben. Die Technik bringen wir dir bei.",
   },
   {
-    q: "Reichen 4 Tage wirklich aus?",
-    a: "Die 4 Tage sind dein Fundament. Danach beginnt die Modelphase. Du übst an echten Modellen, mit unserem Support. Im Durchschnitt brauchst du 20–30 Modelle, bis die Technik sitzt. Wir begleiten dich 6 Monate lang.",
+    q: "Reicht die Schulungszeit wirklich aus?",
+    a: "Je nach Schulung dauert die Ausbildung 1 bis 4 Tage – das ist dein Fundament. Danach beginnt die Modellphase: Du übst an echten Modellen, mit unserem Support. Bis die Technik wirklich sitzt, begleiten wir dich 6 Monate lang.",
   },
   {
     q: "Was ist im Starterkit enthalten?",
@@ -72,7 +72,7 @@ const faqs = [
   },
   {
     q: "Kann ich davon leben?",
-    a: "Eine Behandlung im hyperrealistischen Tätowieren kostet zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Kund:innen hast du dein Investment zurück. Wie schnell du dahin kommst, hängt von dir ab. Du bekommst von uns auch Marketing- und Business-Know-how. Ein Business, das dir nicht nur Einkommen gibt, sondern ein Leben, das du dir wirklich wünschst – mit der Freiheit, es so zu gestalten, wie es zu dir passt.",
+    a: "Eine Behandlung im hyperrealistischen Tätowieren liegt je nach Technik bei 350–800€. Eine Microblading-Behandlung kostet z.B. zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück. Wie schnell du dahin kommst, hängt von dir ab – Marketing- und Business-Know-how bekommst du von uns dazu. Ein Business, das dir nicht nur Einkommen gibt, sondern ein Leben, das du dir wirklich wünschst – mit der Freiheit, es so zu gestalten, wie es zu dir passt.",
   },
   {
     q: "Was passiert nach der Schulung?",
@@ -451,7 +451,7 @@ function BentoGrid() {
                 color: "var(--ivory)",
                 opacity: 0.7,
               }}>
-                Eine Behandlung liegt bei 350{"\u2013"}800{"\u2009"}{"\u20AC"}. Hyperrealistisches T\u00E4towieren ist kein Trend \u2013 es ist eine zeitlose Behandlungsm\u00F6glichkeit zur Rekonstruktion, zum Ausgleichen von Asymmetrien und zur nat\u00FCrlichen Versch\u00F6nerung.
+                Eine Behandlung liegt bei 350–800 €. Hyperrealistisches Tätowieren ist kein Trend – es ist eine zeitlose Behandlungsmöglichkeit zur Rekonstruktion, zum Ausgleichen von Asymmetrien und zur natürlichen Verschönerung.
               </p>
             </div>
           </Reveal>
@@ -2192,7 +2192,7 @@ export default function ChiChiClubAcademy() {
 
         /* Jette image responsive */
         @media (max-width: 767px) {
-          .jette-img { max-width: 100% !important; aspect-ratio: 16/9 !important; }
+          .jette-img { max-width: 100% !important; aspect-ratio: 4/5 !important; }
         }
 
         /* Schulungen responsive */
@@ -2299,6 +2299,10 @@ export default function ChiChiClubAcademy() {
           /* Final CTA + Bekannt aus stays centered */
           .final-cta-container, .final-cta-container h2, .final-cta-container p { text-align: center !important; }
           .featured-in p { text-align: center !important; }
+          /* Testimonials etwas kleiner auf mobile */
+          .testimonial-grid > div { padding: 22px !important; }
+          .testimonial-grid p { font-size: 13.5px !important; line-height: 1.6 !important; }
+          blockquote p { font-size: clamp(17px, 5vw, 20px) !important; }
         }
 
         /* Bento Grid */
