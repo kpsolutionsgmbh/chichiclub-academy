@@ -64,7 +64,7 @@ const faqs = [
   },
   {
     q: "Reicht die Schulungszeit wirklich aus?",
-    a: "Je nach Schulung dauert die Ausbildung 1 bis 4 Tage – das ist dein Fundament. Danach beginnt die Modellphase: Du übst an echten Modellen, mit unserem Support. Bis die Technik wirklich sitzt, begleiten wir dich 6 Monate lang.",
+    a: "Je nach Schulung dauert die Ausbildung 1 bis 4 Tage. Das ist dein Fundament. Danach beginnt die Modellphase: Du übst an echten Modellen, begleitet von unserem Mentorship. Bis die Technik wirklich sitzt, begleiten wir dich 6 Monate lang.",
   },
   {
     q: "Was ist im Starterkit enthalten?",
@@ -72,15 +72,15 @@ const faqs = [
   },
   {
     q: "Kann ich davon leben?",
-    a: "Eine Behandlung im hyperrealistischen Tätowieren liegt je nach Technik bei 350–800€. Eine Microblading-Behandlung kostet z.B. zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück. Wie schnell du dahin kommst, hängt von dir ab – Marketing- und Business-Know-how bekommst du von uns dazu. Ein Business, das dir nicht nur Einkommen gibt, sondern ein Leben, das du dir wirklich wünschst – mit der Freiheit, es so zu gestalten, wie es zu dir passt.",
+    a: "Eine Behandlung im hyperrealistischen Tätowieren liegt je nach Technik bei 350–800€. Eine Microblading-Behandlung kostet z.B. zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück. Wie schnell du dahin kommst, hängt von dir ab. Marketing- und Business-Know-how bekommst du von uns dazu. Ein Business, das dir nicht nur Einkommen gibt, sondern ein Leben, das du dir wirklich wünschst. Mit der Freiheit, es so zu gestalten, wie es zu dir passt.",
   },
   {
     q: "Was passiert nach der Schulung?",
-    a: "Du bekommst 6 Monate WhatsApp-Support mit 2 festen Ansprechpartnern. Du schickst Fotos, wir geben Feedback. Sobald deine Ergebnisse den Chi Chi Club Standard erreichen, kannst du sie einreichen und das Qualitätssiegel verwenden.",
+    a: "Du bekommst Zugang zu einem 6-monatigen Mentorship mit Jette und bist Teil der Chi Chi Club Community via WhatsApp. Sobald deine Ergebnisse den Chi Chi Club Standard erreichen, kannst du sie einreichen und den Namen „Chi Chi Club Artist“ verwenden.",
   },
   {
     q: "Welche Schulungen bietet ihr an?",
-    a: "Drei Wege ins hyperrealistische Tätowieren: Microblading (Augenbrauen, 4 Tage), Lip Blush (Lippen, 3 Tage) und Freckles (Sommersprossen, 1 Tag). Jede Schulung beinhaltet Theorie, Arbeit an echten Modellen, Starterkit und 6 Monate Support.",
+    a: "Drei Wege ins hyperrealistische Tätowieren: Microblading (Augenbrauen, 4 Tage), Lip Blush (Lippen, 3 Tage) und Freckles (Sommersprossen, 1 Tag). Jede Schulung beinhaltet Theorie, Arbeit an echten Modellen, Starterkit und 6 Monate Mentorship.",
   },
   {
     q: "Was kosten die Schulungen?",
@@ -451,7 +451,7 @@ function BentoGrid() {
                 color: "var(--ivory)",
                 opacity: 0.7,
               }}>
-                Eine Behandlung liegt bei 350–800 €. Hyperrealistisches Tätowieren ist kein Trend – es ist eine zeitlose Behandlungsmöglichkeit zur Rekonstruktion, zum Ausgleichen von Asymmetrien und zur natürlichen Verschönerung.
+                Eine Behandlung liegt bei 350–800 €. Hyperrealistisches Tätowieren ist kein Trend, sondern eine zeitlose Behandlungsmöglichkeit zur Rekonstruktion, zum Ausgleichen von Asymmetrien und zur natürlichen Verschönerung.
               </p>
             </div>
           </Reveal>
@@ -2408,7 +2408,7 @@ export default function ChiChiClubAcademy() {
                   maxWidth: 560,
                   marginBottom: 20,
                 }}>
-                  Die Chi Chi Club Academy ist deine Intensivausbildung im hyperrealistischen Tätowieren. Microblading, Lip Blush und Freckles – direkt in Hamburg, von den Leuten, die diese Technik als Erste nach Deutschland gebracht haben.
+                  Die Chi Chi Club Academy ist deine Intensivausbildung im hyperrealistischen Tätowieren. Microblading, Lip Blush und Freckles. Direkt in Hamburg, von den Leuten, die diese Technik als Erste nach Deutschland gebracht haben.
                 </p>
                 <div style={{ marginBottom: 32 }} />
               </Reveal>
@@ -2523,17 +2523,17 @@ export default function ChiChiClubAcademy() {
             {[
               {
                 title: "Microblading",
-                desc: "4 Tage Intensivausbildung im hyperrealistischen Tätowieren der Augenbrauen. Von der Theorie über echte Modelle bis zur Kundengewinnung. Starterkit für 20 Behandlungen und 6 Monate Support inklusive.",
+                desc: "4 Tage hyperrealistisches Tätowieren der Augenbrauen. Von der Theorie über echte Modelle bis zur Kundengewinnung. Starterkit für 20 Behandlungen und 6 Monate Mentorship inklusive.",
                 meta: "4 Tage · 6–12 Teilnehmer · Hamburg",
               },
               {
                 title: "Lip Blush",
-                desc: "3 Tage hyperrealistisches Tätowieren der Lippen. Hautkunde, Schattierungstechniken, Lip Mapping und Arbeit am echten Modell. Starterkit und 6 Monate Support inklusive.",
+                desc: "3 Tage hyperrealistisches Tätowieren der Lippen. Hautkunde, Schattierungstechniken, Lip Mapping und Arbeit am echten Modell. Starterkit und 6 Monate Mentorship inklusive.",
                 meta: "3 Tage · 6–12 Teilnehmer · Hamburg",
               },
               {
                 title: "Freckles",
-                desc: "1 Tag hyperrealistische Sommersprossen. Farbtheorie, Pigmente mixen, Arbeit an 2 echten Modellen. Starterkit und 6 Monate Support inklusive.",
+                desc: "1 Tag hyperrealistisches Tätowieren von Sommersprossen. Farbtheorie, Pigmente mixen, Arbeit an 2 echten Modellen. Starterkit und 6 Monate Mentorship inklusive.",
                 meta: "1 Tag · 6–12 Teilnehmer · Hamburg",
               },
             ].map((c, i) => (
