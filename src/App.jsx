@@ -2795,7 +2795,25 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 16,
                 }}>
-                  Jette Scherzer ist Gründerin des Chi Chi Club, Deutschlands führendem Studio für hyperrealistische kosmetische Tätowierungen in Hamburg. Ausgebildet am Blanche Macdonald Centre in Vancouver in Prothetik und Spezialeffekten, verbindet sie technische Präzision mit kreativer Vision wie niemand sonst.
+                  Jette Scherzer ist Gründerin des Chi Chi Club in Hamburg. Seit 2015 arbeitet sie in der Welt des kosmetischen Tätowierens. Ihr Background in Hair und Make-up hat ihr geholfen, eine eigene Technik zu entwickeln, die vor allem eines ist: natürlich. Yours but better.
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 16,
+                }}>
+                  Aufgebaut neben drei Kindern, ohne Netz, in einer Industrie, die es in Deutschland so noch nicht gab. Was als kleines Studio mit einer einzigen Liege begann, ist heute einer der begehrtesten Orte für kosmetisches Tätowieren in Europa. Ein Raum, der Ruhe ausstrahlt, in dem man sofort spürt, dass hier etwas Besonderes entsteht. Ein Ort, an dem nicht nur behandelt und unterrichtet, sondern ein echtes Erlebnis geschaffen wird.
+                </p>
+                <p style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 16,
+                  lineHeight: 1.7,
+                  color: "#000000",
+                  marginBottom: 16,
+                }}>
+                  Die Chi Chi Club Academy ist aus dem Wunsch entstanden, diese Industrie wirklich voranzubringen. Nicht durch Gatekeeping, sondern durch echten Austausch. Denn eine Industrie lebt durch die Menschen, die in ihr arbeiten. Wenn mehr Artists auf hohem Niveau arbeiten, profitiert die ganze Branche davon, und vor allem die Menschen, die sich ihnen anvertrauen.
                 </p>
                 <p style={{
                   fontFamily: "var(--font-body)",
@@ -2803,7 +2821,7 @@ export default function ChiChiClubAcademy() {
                   lineHeight: 1.7,
                   color: "#000000",
                 }}>
-                  Heute leitet sie ein Team erfahrener Artists und gibt ihr Wissen in der Chi Chi Club Academy weiter. Drei Kinder, ein florierendes Studio, eine Academy: Jette weiß, wie dieses Handwerk ein ganzes Leben verändern kann.
+                  Was Jette unterrichtet, ist nicht nur Technik. Sie gibt weiter, wie man denkt, wie man sieht, wie man Behandlungen holistisch angeht. Und wie man sich ein nachhaltiges, erfolgreiches Business aufbaut.
                 </p>
               </div>
             </div>
