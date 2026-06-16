@@ -84,7 +84,7 @@ const faqs = [
   },
   {
     q: "Was kosten die Schulungen?",
-    a: "Freckles (1 Tag): 1.200€ netto. Die Preise für Microblading und Lip Blush besprechen wir im kostenlosen Beratungsgespräch – passend zu deinem Ziel. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück.",
+    a: "Freckles (1 Tag): 1.200€ netto. Die Preise für Microblading und Lip Blush nennen wir dir transparent im kostenlosen Beratungsgespräch, passend zu deinem Ziel. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück.",
   },
 ];
 
