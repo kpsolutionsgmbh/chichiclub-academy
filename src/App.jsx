@@ -353,7 +353,6 @@ function GalleryMarquee() {
     { src: "/images/studio_wall.jpg", alt: "Chi Chi Club Studio" },
     { src: "/images/divider2.jpg", alt: "Schulungsraum" },
     { src: "/images/extra1.jpg", alt: "Schulung im Chi Chi Club" },
-    { src: "/images/academy-portfolio.jpg", alt: "Arbeit am Modell" },
     { src: "/images/extra2.jpg", alt: "Schulung im Chi Chi Club" },
     { src: "/images/extra3.jpg", alt: "Eindruck aus der Academy" },
     { src: "/images/divider1.jpg", alt: "Chi Chi Club Studio Hamburg" },
@@ -385,6 +384,49 @@ function GalleryMarquee() {
         ))}
       </div>
     </div>
+  );
+}
+
+function AboutText() {
+  const [open, setOpen] = useState(false);
+  const pStyle = { fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.7, color: "#000000", marginBottom: 16 };
+  return (
+    <>
+      <p style={pStyle}>
+        Jette Scherzer ist Gründerin des Chi Chi Club in Hamburg. Seit 2015 arbeitet sie in der Welt des kosmetischen Tätowierens. Ihr Background in Hair und Make-up hat ihr geholfen, eine eigene Technik zu entwickeln, die vor allem eines ist: natürlich. Yours but better.
+      </p>
+      {open && (
+        <>
+          <p style={pStyle}>
+            Aufgebaut neben drei Kindern, ohne Netz, in einer Industrie, die es in Deutschland so noch nicht gab. Was als kleines Studio mit einer einzigen Liege begann, ist heute einer der begehrtesten Orte für kosmetisches Tätowieren in Europa. Ein Raum, der Ruhe ausstrahlt, in dem man sofort spürt, dass hier etwas Besonderes entsteht. Ein Ort, an dem nicht nur behandelt und unterrichtet, sondern ein echtes Erlebnis geschaffen wird.
+          </p>
+          <p style={pStyle}>
+            Die Chi Chi Club Academy ist aus dem Wunsch entstanden, diese Industrie wirklich voranzubringen. Nicht durch Gatekeeping, sondern durch echten Austausch. Denn eine Industrie lebt durch die Menschen, die in ihr arbeiten. Wenn mehr Artists auf hohem Niveau arbeiten, profitiert die ganze Branche davon, und vor allem die Menschen, die sich ihnen anvertrauen.
+          </p>
+          <p style={pStyle}>
+            Was Jette unterrichtet, ist nicht nur Technik. Sie gibt weiter, wie man denkt, wie man sieht, wie man Behandlungen holistisch angeht. Und wie man sich ein nachhaltiges, erfolgreiches Business aufbaut.
+          </p>
+        </>
+      )}
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          fontFamily: "var(--font-body)",
+          fontSize: 13,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "#000000",
+          background: "transparent",
+          border: "none",
+          borderBottom: "1px solid #000000",
+          padding: "2px 0",
+          cursor: "pointer",
+          marginTop: 4,
+        }}
+      >
+        {open ? "Weniger anzeigen" : "Mehr lesen"}
+      </button>
+    </>
   );
 }
 
@@ -2788,41 +2830,7 @@ export default function ChiChiClubAcademy() {
                 }}>
                   Präzision trifft Vision. Seit 2015.
                 </h2>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                  marginBottom: 16,
-                }}>
-                  Jette Scherzer ist Gründerin des Chi Chi Club in Hamburg. Seit 2015 arbeitet sie in der Welt des kosmetischen Tätowierens. Ihr Background in Hair und Make-up hat ihr geholfen, eine eigene Technik zu entwickeln, die vor allem eines ist: natürlich. Yours but better.
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                  marginBottom: 16,
-                }}>
-                  Aufgebaut neben drei Kindern, ohne Netz, in einer Industrie, die es in Deutschland so noch nicht gab. Was als kleines Studio mit einer einzigen Liege begann, ist heute einer der begehrtesten Orte für kosmetisches Tätowieren in Europa. Ein Raum, der Ruhe ausstrahlt, in dem man sofort spürt, dass hier etwas Besonderes entsteht. Ein Ort, an dem nicht nur behandelt und unterrichtet, sondern ein echtes Erlebnis geschaffen wird.
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                  marginBottom: 16,
-                }}>
-                  Die Chi Chi Club Academy ist aus dem Wunsch entstanden, diese Industrie wirklich voranzubringen. Nicht durch Gatekeeping, sondern durch echten Austausch. Denn eine Industrie lebt durch die Menschen, die in ihr arbeiten. Wenn mehr Artists auf hohem Niveau arbeiten, profitiert die ganze Branche davon, und vor allem die Menschen, die sich ihnen anvertrauen.
-                </p>
-                <p style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: 16,
-                  lineHeight: 1.7,
-                  color: "#000000",
-                }}>
-                  Was Jette unterrichtet, ist nicht nur Technik. Sie gibt weiter, wie man denkt, wie man sieht, wie man Behandlungen holistisch angeht. Und wie man sich ein nachhaltiges, erfolgreiches Business aufbaut.
-                </p>
+                <AboutText />
               </div>
             </div>
           </Reveal>
