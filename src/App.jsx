@@ -2512,7 +2512,7 @@ export default function ChiChiClubAcademy() {
                       color: "#000000",
                       marginTop: 2,
                     }}>
-                      Artists in ganz Deutschland ausgebildet
+                      Artists international ausgebildet
                     </p>
                   </div>
                 </div>
@@ -3129,7 +3129,7 @@ export default function ChiChiClubAcademy() {
                   color: "var(--ivory)",
                   marginTop: 2,
                 }}>
-                  Artists in ganz Deutschland ausgebildet
+                  Artists international ausgebildet
                 </p>
               </div>
             </div>
