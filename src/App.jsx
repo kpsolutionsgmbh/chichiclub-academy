@@ -1035,6 +1035,8 @@ function FunnelModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", utm_source: "", utm_medium: "", utm_campaign: "", utm_content: "", utm_term: "" });
   const [isChecking, setIsChecking] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const questions = [
     {
@@ -1088,18 +1090,31 @@ function FunnelModal({ isOpen, onClose }) {
 
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (sending) return;
     if (formData.name && formData.email && isValidEmail(formData.email)) {
       const submission = {
         ...formData,
         answers,
-        submitted_at: new Date().toISOString(),
         page_url: window.location.href,
+        referrer: document.referrer || "",
       };
-      // TODO: Replace with actual API endpoint (webhook, CRM, etc.)
-      // console.log("Lead submission:", JSON.stringify(submission, null, 2));
-      setSubmitted(true);
-      setStep(questions.length + 1);
+      setSending(true);
+      setSubmitError("");
+      try {
+        const res = await fetch("/api/lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(submission),
+        });
+        if (!res.ok) throw new Error("status " + res.status);
+        setSubmitted(true);
+        setStep(questions.length + 1);
+      } catch (e) {
+        setSubmitError("Das hat leider nicht geklappt. Bitte versuch es noch einmal oder schreib uns direkt per WhatsApp.");
+      } finally {
+        setSending(false);
+      }
     }
   };
 
@@ -1111,6 +1126,8 @@ function FunnelModal({ isOpen, onClose }) {
       setFormData({ name: "", email: "", phone: "", utm_source: "", utm_medium: "", utm_campaign: "", utm_content: "", utm_term: "" });
       setSubmitted(false);
       setIsChecking(false);
+      setSending(false);
+      setSubmitError("");
     }, 300);
   };
 
@@ -1412,7 +1429,7 @@ function FunnelModal({ isOpen, onClose }) {
 
                 <button
                   onClick={handleSubmit}
-                  disabled={!formData.name || !formData.email || !isValidEmail(formData.email)}
+                  disabled={sending || !formData.name || !formData.email || !isValidEmail(formData.email)}
                   className="btn-primary"
                   style={{
                     width: "100%",
@@ -1421,12 +1438,18 @@ function FunnelModal({ isOpen, onClose }) {
                     borderRadius: 0,
                     padding: "16px 24px",
                     fontSize: 15,
-                    opacity: (!formData.name || !formData.email || !isValidEmail(formData.email)) ? 0.5 : 1,
-                    cursor: (!formData.name || !formData.email || !isValidEmail(formData.email)) ? "not-allowed" : "pointer",
+                    opacity: (sending || !formData.name || !formData.email || !isValidEmail(formData.email)) ? 0.5 : 1,
+                    cursor: (sending || !formData.name || !formData.email || !isValidEmail(formData.email)) ? "not-allowed" : "pointer",
                   }}
                 >
-                  Kostenlos beraten lassen
+                  {sending ? "Wird gesendet…" : "Kostenlos beraten lassen"}
                 </button>
+
+                {submitError && (
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "#000000", textAlign: "center", lineHeight: 1.5, background: "var(--chi-chi-beige)", padding: "10px 12px" }}>
+                    {submitError}
+                  </p>
+                )}
 
                 <p style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "#000000", textAlign: "center", lineHeight: 1.5, opacity: 0.5 }}>
                   Kein Spam. Keine Verpflichtung. Wir melden uns persönlich.

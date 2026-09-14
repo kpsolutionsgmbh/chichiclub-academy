@@ -1,0 +1,9 @@
+Skills
+Images
+node_modules
+dist
+*.heic
+*.jpeg
+*.pdf
+dist-index.html
+.env*
