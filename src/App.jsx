@@ -2588,7 +2588,7 @@ export default function ChiChiClubAcademy() {
             {[
               {
                 title: "Microblading",
-                desc: "4 Tage hyperrealistisches Tätowieren der Augenbrauen. Von der Theorie über echte Modelle bis zur Kundengewinnung. Starterkit für 20 Behandlungen und 6 Monate Mentorship inklusive.",
+                desc: "4 Tage hyperrealistisches Tätowieren der Augenbrauen. Hauttypen, Brow Mapping, Härchentechnik und Arbeit an 2 echten Modellen. Starterkit für 20 Behandlungen und 6 Monate Mentorship inklusive.",
                 meta: "4 Tage · 6–12 Teilnehmer · Hamburg",
               },
               {
