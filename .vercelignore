@@ -1,9 +1,9 @@
-Skills
-Images
-node_modules
-dist
-*.heic
-*.jpeg
-*.pdf
-dist-index.html
+/Skills
+/Images
+/node_modules
+/dist
+/*.heic
+/*.jpeg
+/*.pdf
+/dist-index.html
 .env*
