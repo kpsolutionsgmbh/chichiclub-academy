@@ -72,7 +72,7 @@ const faqs = [
   },
   {
     q: "Kann ich davon leben?",
-    a: "Eine Behandlung im hyperrealistischen Tätowieren liegt je nach Technik bei 350–800€. Eine Microblading-Behandlung kostet z.B. zwischen 450–550€ und dauert 2–3 Stunden. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück. Wie schnell du dahin kommst, hängt von dir ab. Marketing- und Business-Know-how bekommst du von uns dazu. Ein Business, das dir nicht nur Einkommen gibt, sondern ein Leben, das du dir wirklich wünschst. Mit der Freiheit, es so zu gestalten, wie es zu dir passt.",
+    a: "Eine Behandlung im hyperrealistischen Tätowieren liegt je nach Technik bei 350–800€. Eine Microblading-Behandlung kostet z.B. zwischen 450–750€ und dauert 2–3 Stunden. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück. Wie schnell du dahin kommst, hängt von dir ab. Marketing- und Business-Know-how bekommst du von uns dazu. Ein Business, das dir nicht nur Einkommen gibt, sondern ein Leben, das du dir wirklich wünschst. Mit der Freiheit, es so zu gestalten, wie es zu dir passt.",
   },
   {
     q: "Was passiert nach der Schulung?",
@@ -84,7 +84,7 @@ const faqs = [
   },
   {
     q: "Was kosten die Schulungen?",
-    a: "Freckles (1 Tag): 1.200€ netto. Die Preise für Microblading und Lip Blush nennen wir dir transparent im kostenlosen Beratungsgespräch, passend zu deinem Ziel. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück.",
+    a: "Lip Blush (3 Tage): 4.500€ netto. Freckles (1 Tag): 1.200€ netto. Den Preis für Microblading nennen wir dir im kostenlosen Beratungsgespräch. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück.",
   },
 ];
 
@@ -2473,7 +2473,7 @@ export default function ChiChiClubAcademy() {
                   maxWidth: 560,
                   marginBottom: 20,
                 }}>
-                  Die Chi Chi Club Academy ist deine Intensivausbildung im hyperrealistischen Tätowieren. Microblading, Lip Blush und Freckles. Direkt in Hamburg, von den Leuten, die diese Technik als Erste nach Deutschland gebracht haben.
+                  Die Chi Chi Club Academy ist deine Intensivausbildung im hyperrealistischen Tätowieren. Microblading, Lip Blush und Freckles. Direkt in Hamburg, von Jette, die diese Technik als Erste nach Deutschland gebracht hat.
                 </p>
                 <div style={{ marginBottom: 32 }} />
               </Reveal>
@@ -2512,7 +2512,7 @@ export default function ChiChiClubAcademy() {
                       color: "#000000",
                       marginTop: 2,
                     }}>
-                      30+ ausgebildete Artists
+                      Artists in ganz Deutschland ausgebildet
                     </p>
                   </div>
                 </div>
@@ -3129,7 +3129,7 @@ export default function ChiChiClubAcademy() {
                   color: "var(--ivory)",
                   marginTop: 2,
                 }}>
-                  30+ ausgebildete Artists
+                  Artists in ganz Deutschland ausgebildet
                 </p>
               </div>
             </div>
