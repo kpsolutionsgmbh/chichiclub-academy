@@ -1,15 +1,46 @@
 {
   "functions": {
-    "api/**/*.js": { "regions": ["fra1"] }
+    "api/**/*.js": {
+      "regions": [
+        "fra1"
+      ]
+    }
   },
   "rewrites": [
-    { "source": "/admin", "destination": "/index.html" },
-    { "source": "/admin/(.*)", "destination": "/index.html" }
+    {
+      "source": "/admin",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/modell",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/impressum",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/datenschutz",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/cookies",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/admin(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }

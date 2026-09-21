@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import ModelFunnel from "./ModelFunnel.jsx";
 import { Sparkles, ArrowRightLeft, Heart, Stethoscope, TrendingUp, MapPin, Clock, Eye, MessageCircle, Megaphone, Users, Award } from "lucide-react";
 
 // Auto-generated image data URLs
@@ -2016,6 +2017,12 @@ function AblaufTabs() {
 
 export default function ChiChiClubAcademy() {
   const [funnelOpen, setFunnelOpen] = useState(false);
+  const [modelOpen, setModelOpen] = useState(() => window.location.pathname.replace(/\/+$/, "") === "/modell");
+  const openModel = () => setModelOpen(true);
+  const closeModel = () => {
+    setModelOpen(false);
+    if (window.location.pathname.replace(/\/+$/, "") === "/modell") window.history.replaceState({}, "", "/" + window.location.search);
+  };
 
   const getPageFromPath = () => {
     const path = window.location.pathname.replace(/^\//, "");
@@ -2125,6 +2132,21 @@ export default function ChiChiClubAcademy() {
           padding: 14px 28px;
           cursor: pointer;
           transition: all 0.2s ease;
+        }
+        .model-section { padding: 90px 0; background-size: cover; background-position: center; }
+        .model-card { display: flex; align-items: stretch; gap: 22px; width: 100%; max-width: 620px; margin-left: auto; background: var(--ivory); border: none; border-radius: 0; padding: 18px; text-align: left; cursor: pointer; color: #000000; transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.18); }
+        .model-card:hover { transform: translateY(-3px); box-shadow: 0 16px 50px rgba(0,0,0,0.26); }
+        .model-card img { width: 170px; min-height: 190px; object-fit: cover; flex-shrink: 0; display: block; }
+        .model-card-text { display: flex; flex-direction: column; justify-content: center; padding: 6px 8px 6px 0; }
+        .model-card-tag { align-self: flex-start; font-family: var(--font-body); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; border: 1px solid rgba(0,0,0,0.3); padding: 4px 9px; margin-bottom: 14px; }
+        .model-card-h { font-family: var(--font-headline); font-weight: 700; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.18; margin-bottom: 10px; }
+        .model-card-p { font-family: var(--font-body); font-size: 13px; line-height: 1.6; opacity: 0.7; margin-bottom: 16px; }
+        .model-card-link { font-family: var(--font-body); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: underline; text-underline-offset: 4px; }
+        @media (max-width: 640px) {
+          .model-section { padding: 56px 0; }
+          .model-card { flex-direction: column; gap: 14px; padding: 14px; margin: 0 auto; }
+          .model-card img { width: 100%; height: 200px; min-height: 0; }
+          .model-card-text { padding: 4px 4px 8px; }
         }
         .footer-link {
           color: var(--ivory);
@@ -2387,6 +2409,7 @@ export default function ChiChiClubAcademy() {
       <a href="#main-content" className="skip-nav">Zum Inhalt springen</a>
 
       <FunnelModal isOpen={funnelOpen} onClose={() => setFunnelOpen(false)} />
+      {modelOpen && <ModelFunnel onClose={closeModel} />}
 
       {/* ─── NAV ─── */}
       <nav style={{
@@ -3056,6 +3079,23 @@ export default function ChiChiClubAcademy() {
         </div>
       </section>
 
+      {/* ─── MODELL WERDEN ─── */}
+      <section className="model-section" aria-label="Modell werden" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.18)), url(${IMG_HERO2})` }}>
+        <div className="container">
+          <Reveal>
+            <button type="button" className="model-card" onClick={openModel}>
+              <img src={IMG_RESULT1} alt="Ergebnis einer Behandlung im Chi Chi Club" loading="lazy" />
+              <span className="model-card-text">
+                <span className="model-card-tag">Modell werden</span>
+                <span className="model-card-h">Werde Modell in der Chi Chi Club Academy.</span>
+                <span className="model-card-p">Microblading, Freckles oder Lip Blush. Von Jette oder unter ihrer Anleitung, zum Bruchteil des regulären Preises.</span>
+                <span className="model-card-link">Jetzt bewerben <span aria-hidden="true">↗</span></span>
+              </span>
+            </button>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── FINAL CTA ─── */}
       <section style={{ padding: "60px 0", background: "#000000" }}>
         <div className="container final-cta-container" style={{ textAlign: "center", maxWidth: 900 }}>
@@ -3168,6 +3208,7 @@ export default function ChiChiClubAcademy() {
               <a href="/impressum" onClick={(e) => { e.preventDefault(); navigateTo("impressum"); }} className="footer-link">Impressum</a>
               <a href="/datenschutz" onClick={(e) => { e.preventDefault(); navigateTo("datenschutz"); }} className="footer-link">Datenschutz</a>
               <a href="/cookies" onClick={(e) => { e.preventDefault(); navigateTo("cookies"); }} className="footer-link">Cookies</a>
+              <a href="/modell" onClick={(e) => { e.preventDefault(); openModel(); }} className="footer-link">Modell werden</a>
             </div>
             <p style={{
               fontFamily: "var(--font-body)",

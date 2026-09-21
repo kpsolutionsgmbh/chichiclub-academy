@@ -30,8 +30,28 @@ const STATUS = [
   { value: "verloren", label: "Verloren" },
 ];
 
+const MODEL_STATUS = [
+  { value: "neu", label: "Neu" },
+  { value: "kontaktiert", label: "Kontaktiert" },
+  { value: "eingeplant", label: "Eingeplant" },
+  { value: "behandelt", label: "Behandelt" },
+  { value: "abgesagt", label: "Abgesagt" },
+];
+const TREATMENTS = [
+  { value: "microblading", label: "Microblading" },
+  { value: "freckles", label: "Freckles" },
+  { value: "lipblush", label: "Lip Blush" },
+];
+const MODEL_TYPES = [
+  { value: "demo", label: "Demo-Modell bei Jette" },
+  { value: "trainee", label: "Modell bei Trainee" },
+];
+const MODEL_TYPES_SHORT = { demo: "Demo (Jette)", trainee: "Trainee" };
+const treatList = (arr) => (arr && arr.length ? arr.map((v) => TREATMENTS.find((t) => t.value === v)?.label || v).join(", ") : "—");
+const typeList = (arr, short) => (arr && arr.length ? arr.map((v) => (short ? MODEL_TYPES_SHORT[v] : MODEL_TYPES.find((t) => t.value === v)?.label) || v).join(", ") : "—");
+
 const label = (group, value) => (value ? LABELS[group]?.[value] || value : "—");
-const statusLabel = (v) => STATUS.find((s) => s.value === v)?.label || v || "—";
+const statusLabel = (v) => [...STATUS, ...MODEL_STATUS].find((s) => s.value === v)?.label || v || "—";
 
 const fmtDate = (iso) => {
   if (!iso) return "—";
@@ -98,7 +118,12 @@ const CSS = `
   .adm-pill { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 8px; border: 1px solid var(--black); }
   .adm-pill.neu { background: var(--black); color: var(--ivory); }
   .adm-pill.gewonnen { background: var(--chi-chi-beige); }
-  .adm-pill.verloren { opacity: 0.4; }
+  .adm-pill.verloren, .adm-pill.abgesagt { opacity: 0.4; }
+  .adm-pill.behandelt { background: var(--chi-chi-beige); }
+  .adm-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--black); margin-bottom: 24px; }
+  .adm-tab { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px 20px; border: 1px solid transparent; border-bottom: none; opacity: 0.5; margin-bottom: -1px; }
+  .adm-tab:hover { opacity: 1; }
+  .adm-tab.active { opacity: 1; border-color: var(--black); background: var(--ivory); border-bottom: 1px solid var(--ivory); }
 
   .adm-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 100vw); background: var(--ivory); border-left: 1px solid var(--black); z-index: 50; overflow-y: auto; animation: drawerIn 0.22s ease; display: flex; flex-direction: column; }
   @keyframes drawerIn { from { transform: translateX(24px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
@@ -192,7 +217,7 @@ function Login({ onSuccess }) {
 }
 
 // ─── Detail Drawer ───
-function Drawer({ lead, onClose, onSave, onDelete }) {
+function Drawer({ lead, kind, onClose, onSave, onDelete }) {
   const [status, setStatus] = useState(lead.status || "neu");
   const [notes, setNotes] = useState(lead.notes || "");
   const [saving, setSaving] = useState(false);
@@ -250,10 +275,22 @@ function Drawer({ lead, onClose, onSave, onDelete }) {
           <Row k="E-Mail" v={lead.email} />
           <Row k="Telefon" v={lead.phone || "—"} />
 
-          <p className="adm-label" style={{ marginTop: 26, marginBottom: 2 }}>Antworten im Funnel</p>
-          <Row k="Wo steht sie" v={label("experience", lead.answers?.experience)} />
-          <Row k="Ziel" v={label("goal", lead.answers?.goal)} />
-          <Row k="Zeitrahmen" v={label("timeline", lead.answers?.timeline)} />
+          {kind === "models" ? (
+            <>
+              <p className="adm-label" style={{ marginTop: 26, marginBottom: 2 }}>Bewerbung als Modell</p>
+              <Row k="Interesse" v={treatList(lead.interested)} />
+              <Row k="Zulässig" v={treatList(lead.eligible)} />
+              <Row k="Abgelehnt" v={lead.rejected && lead.rejected.length ? treatList(lead.rejected) + " (hatte bereits)" : "—"} />
+              <Row k="Modell-Art" v={typeList(lead.model_types)} />
+            </>
+          ) : (
+            <>
+              <p className="adm-label" style={{ marginTop: 26, marginBottom: 2 }}>Antworten im Funnel</p>
+              <Row k="Wo steht sie" v={label("experience", lead.answers?.experience)} />
+              <Row k="Ziel" v={label("goal", lead.answers?.goal)} />
+              <Row k="Zeitrahmen" v={label("timeline", lead.answers?.timeline)} />
+            </>
+          )}
 
           <p className="adm-label" style={{ marginTop: 26, marginBottom: 2 }}>Herkunft</p>
           <Row k="Quelle" v={lead.utm_source || "—"} />
@@ -266,7 +303,7 @@ function Drawer({ lead, onClose, onSave, onDelete }) {
           <Row k="Gerät" v={lead.user_agent || "—"} mono />
 
           <p className="adm-label" style={{ marginTop: 26 }}>Status</p>
-          <Dropdown value={status} options={STATUS} onChange={setStatus} placeholder="" />
+          <Dropdown value={status} options={kind === "models" ? MODEL_STATUS : STATUS} onChange={setStatus} placeholder="" />
 
           <p className="adm-label" style={{ marginTop: 18 }}>Notizen</p>
           <textarea className="adm-input" rows={5} value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Gesprächsnotizen, Rückruf-Termin, Einwände…" style={{ resize: "vertical", lineHeight: 1.5 }} />
@@ -280,7 +317,7 @@ function Drawer({ lead, onClose, onSave, onDelete }) {
         <div style={{ padding: "16px 28px", borderTop: "1px solid rgba(0,0,0,0.1)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: 10, opacity: 0.4 }}>ID {lead.id}</span>
           {!confirmDel ? (
-            <button className="adm-btn small ghost" onClick={() => setConfirmDel(true)}>Lead löschen</button>
+            <button className="adm-btn small ghost" onClick={() => setConfirmDel(true)}>{kind === "models" ? "Bewerbung löschen" : "Lead löschen"}</button>
           ) : (
             <span style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 11 }}>
               Wirklich löschen?
@@ -295,7 +332,10 @@ function Drawer({ lead, onClose, onSave, onDelete }) {
 }
 
 // ─── Dashboard ───
-function Dashboard({ onLogout }) {
+function Dashboard({ onLogout, kind, setKind }) {
+  const isModels = kind === "models";
+  const API = `/api/admin/leads?kind=${kind}`;
+  const statusOpts = isModels ? MODEL_STATUS : STATUS;
   const [leads, setLeads] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -312,7 +352,7 @@ function Dashboard({ onLogout }) {
   const load = async () => {
     setLoading(true); setError("");
     try {
-      const res = await fetch("/api/admin/leads", { cache: "no-store" });
+      const res = await fetch(API, { cache: "no-store" });
       if (res.status === 401) { onLogout(); return; }
       if (!res.ok) throw new Error();
       const data = await res.json();
@@ -337,9 +377,14 @@ function Dashboard({ onLogout }) {
     const startOfToday = new Date(); startOfToday.setHours(0, 0, 0, 0);
     let out = leads.filter((l) => {
       if (fStatus && (l.status || "neu") !== fStatus) return false;
-      if (fExp && l.answers?.experience !== fExp) return false;
-      if (fGoal && l.answers?.goal !== fGoal) return false;
-      if (fTime && l.answers?.timeline !== fTime) return false;
+      if (isModels) {
+        if (fExp && !(l.eligible || []).includes(fExp)) return false;
+        if (fGoal && !(l.model_types || []).includes(fGoal)) return false;
+      } else {
+        if (fExp && l.answers?.experience !== fExp) return false;
+        if (fGoal && l.answers?.goal !== fGoal) return false;
+        if (fTime && l.answers?.timeline !== fTime) return false;
+      }
       if (fSource && l.utm_source !== fSource) return false;
       if (fRange) {
         const t = new Date(l.submitted_at).getTime();
@@ -355,9 +400,9 @@ function Dashboard({ onLogout }) {
     const get = (l) => {
       switch (sort.key) {
         case "name": return (l.name || "").toLowerCase();
-        case "status": return STATUS.findIndex((s) => s.value === (l.status || "neu"));
-        case "experience": return label("experience", l.answers?.experience);
-        case "goal": return label("goal", l.answers?.goal);
+        case "status": return statusOpts.findIndex((s) => s.value === (l.status || "neu"));
+        case "experience": return isModels ? treatList(l.eligible) : label("experience", l.answers?.experience);
+        case "goal": return isModels ? typeList(l.model_types, true) : label("goal", l.answers?.goal);
         case "timeline": return ["asap", "1-3months", "3-6months", "exploring"].indexOf(l.answers?.timeline);
         case "source": return l.utm_source || "";
         default: return l.submitted_at || "";
@@ -383,7 +428,7 @@ function Dashboard({ onLogout }) {
 
   const saveLead = async (id, patch) => {
     try {
-      const res = await fetch("/api/admin/leads", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, ...patch }) });
+      const res = await fetch(API, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, ...patch }) });
       if (res.status === 401) { onLogout(); return false; }
       if (!res.ok) throw new Error();
       const { lead } = await res.json();
@@ -394,7 +439,7 @@ function Dashboard({ onLogout }) {
 
   const deleteLead = async (id) => {
     try {
-      const res = await fetch("/api/admin/leads", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
+      const res = await fetch(API, { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
       if (!res.ok) throw new Error();
       setLeads((prev) => prev.filter((l) => l.id !== id));
       setSelectedId(null);
@@ -402,16 +447,19 @@ function Dashboard({ onLogout }) {
   };
 
   const exportCsv = () => {
-    const cols = ["Datum", "Name", "E-Mail", "Telefon", "Status", "Erfahrung", "Ziel", "Zeitrahmen", "Quelle", "Medium", "Kampagne", "Content", "Term", "Notizen", "Seite"];
+    const cols = ["Datum", "Name", "E-Mail", "Telefon", "Status", isModels ? "Zulässige Behandlungen" : "Erfahrung", isModels ? "Modell-Art" : "Ziel", isModels ? "Abgelehnt" : "Zeitrahmen", "Quelle", "Medium", "Kampagne", "Content", "Term", "Notizen", "Seite"];
     const esc = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const rows = filtered.map((l) => [
-      fmtDate(l.submitted_at), l.name, l.email, l.phone, statusLabel(l.status), label("experience", l.answers?.experience), label("goal", l.answers?.goal), label("timeline", l.answers?.timeline),
+      fmtDate(l.submitted_at), l.name, l.email, l.phone, statusLabel(l.status),
+      isModels ? treatList(l.eligible) : label("experience", l.answers?.experience),
+      isModels ? typeList(l.model_types) : label("goal", l.answers?.goal),
+      isModels ? treatList(l.rejected) : label("timeline", l.answers?.timeline),
       l.utm_source, l.utm_medium, l.utm_campaign, l.utm_content, l.utm_term, l.notes, l.page_url,
     ].map(esc).join(";"));
     const blob = new Blob(["﻿" + [cols.join(";"), ...rows].join("\n")], { type: "text/csv;charset=utf-8" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = `leads-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `${isModels ? "modelle" : "leads"}-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(a.href);
   };
@@ -435,7 +483,7 @@ function Dashboard({ onLogout }) {
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, marginBottom: 28, flexWrap: "wrap" }}>
         <div>
           <p style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.2em", opacity: 0.55, marginBottom: 8 }}>Chi Chi Club Academy</p>
-          <h1 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.1 }}>Leads</h1>
+          <h1 style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.1 }}>{isModels ? "Modelle" : "Leads"}</h1>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <button className="adm-btn ghost" onClick={load} disabled={loading}>{loading ? "Lädt…" : "Aktualisieren"}</button>
@@ -443,6 +491,11 @@ function Dashboard({ onLogout }) {
           <button className="adm-btn ghost" onClick={logout}>Logout</button>
         </div>
       </header>
+
+      <nav className="adm-tabs">
+        <button className={`adm-tab${!isModels ? " active" : ""}`} onClick={() => setKind("leads")}>Academy-Leads</button>
+        <button className={`adm-tab${isModels ? " active" : ""}`} onClick={() => setKind("models")}>Modelle</button>
+      </nav>
 
       <div className="adm-stats" style={{ marginBottom: 24 }}>
         <div className="adm-stat"><b>{stats.total}</b><span>Gesamt</span></div>
@@ -456,16 +509,16 @@ function Dashboard({ onLogout }) {
           <label className="adm-label">Suche</label>
           <input className="adm-input" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Name, E-Mail, Telefon, Notiz…" />
         </div>
-        <div><label className="adm-label">Status</label><Dropdown value={fStatus} options={STATUS} onChange={setFStatus} /></div>
+        <div><label className="adm-label">Status</label><Dropdown value={fStatus} options={statusOpts} onChange={setFStatus} /></div>
         <div><label className="adm-label">Zeitraum</label><Dropdown value={fRange} options={[{ value: "today", label: "Heute" }, { value: "7d", label: "Letzte 7 Tage" }, { value: "30d", label: "Letzte 30 Tage" }]} onChange={setFRange} /></div>
-        <div><label className="adm-label">Erfahrung</label><Dropdown value={fExp} options={toOpts("experience")} onChange={setFExp} /></div>
-        <div><label className="adm-label">Ziel</label><Dropdown value={fGoal} options={toOpts("goal")} onChange={setFGoal} /></div>
-        <div><label className="adm-label">Zeitrahmen</label><Dropdown value={fTime} options={toOpts("timeline")} onChange={setFTime} /></div>
+        <div><label className="adm-label">{isModels ? "Behandlung" : "Erfahrung"}</label><Dropdown value={fExp} options={isModels ? TREATMENTS : toOpts("experience")} onChange={setFExp} /></div>
+        <div><label className="adm-label">{isModels ? "Modell-Art" : "Ziel"}</label><Dropdown value={fGoal} options={isModels ? MODEL_TYPES : toOpts("goal")} onChange={setFGoal} /></div>
+        {!isModels && <div><label className="adm-label">Zeitrahmen</label><Dropdown value={fTime} options={toOpts("timeline")} onChange={setFTime} /></div>}
         <div><label className="adm-label">Quelle (UTM)</label><Dropdown value={fSource} options={sources} onChange={setFSource} /></div>
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10, fontSize: 11, opacity: 0.6 }}>
-        <span>{filtered.length} von {leads?.length ?? 0} Leads</span>
+        <span>{filtered.length} von {leads?.length ?? 0} {isModels ? "Bewerbungen" : "Leads"}</span>
         {anyFilter && <button onClick={resetFilters} style={{ fontSize: 11, textDecoration: "underline" }}>Filter zurücksetzen</button>}
       </div>
 
@@ -478,9 +531,9 @@ function Dashboard({ onLogout }) {
               <Th k="submitted_at">Datum</Th>
               <Th k="name">Name</Th>
               <th className="nosort adm-hide-mobile">Kontakt</th>
-              <Th k="experience" className="adm-hide-mobile">Erfahrung</Th>
-              <Th k="goal" className="adm-hide-mobile">Ziel</Th>
-              <Th k="timeline" className="adm-hide-mobile">Zeitrahmen</Th>
+              <Th k="experience" className="adm-hide-mobile">{isModels ? "Behandlung" : "Erfahrung"}</Th>
+              <Th k="goal" className="adm-hide-mobile">{isModels ? "Modell-Art" : "Ziel"}</Th>
+              {!isModels && <Th k="timeline" className="adm-hide-mobile">Zeitrahmen</Th>}
               <Th k="source" className="adm-hide-mobile">Quelle</Th>
               <Th k="status">Status</Th>
             </tr>
@@ -490,16 +543,16 @@ function Dashboard({ onLogout }) {
               <tr><td colSpan={8} style={{ padding: 40, textAlign: "center", opacity: 0.5 }}>Lädt Leads…</td></tr>
             )}
             {leads !== null && filtered.length === 0 && (
-              <tr><td colSpan={8} style={{ padding: 40, textAlign: "center", opacity: 0.5 }}>{leads.length === 0 ? "Noch keine Leads. Sobald jemand das Formular abschickt, taucht er hier auf." : "Keine Leads für diese Filter."}</td></tr>
+              <tr><td colSpan={8} style={{ padding: 40, textAlign: "center", opacity: 0.5 }}>{leads.length === 0 ? (isModels ? "Noch keine Modell-Bewerbungen." : "Noch keine Leads. Sobald jemand das Formular abschickt, taucht er hier auf.") : "Keine Leads für diese Filter."}</td></tr>
             )}
             {filtered.map((l) => (
               <tr key={l.id} className={`adm-row${selectedId === l.id ? " active" : ""}`} onClick={() => setSelectedId(l.id)}>
                 <td style={{ opacity: 0.7, fontSize: 12 }}>{fmtDate(l.submitted_at)}</td>
                 <td style={{ fontWeight: 500 }}>{l.name}</td>
                 <td className="adm-hide-mobile" style={{ fontSize: 12 }}>{l.email}{l.phone ? <><br /><span style={{ opacity: 0.6 }}>{l.phone}</span></> : null}</td>
-                <td className="adm-hide-mobile">{label("experience", l.answers?.experience)}</td>
-                <td className="adm-hide-mobile">{label("goal", l.answers?.goal)}</td>
-                <td className="adm-hide-mobile">{label("timeline", l.answers?.timeline)}</td>
+                <td className="adm-hide-mobile">{isModels ? treatList(l.eligible) : label("experience", l.answers?.experience)}</td>
+                <td className="adm-hide-mobile">{isModels ? typeList(l.model_types, true) : label("goal", l.answers?.goal)}</td>
+                {!isModels && <td className="adm-hide-mobile">{label("timeline", l.answers?.timeline)}</td>}
                 <td className="adm-hide-mobile" style={{ opacity: l.utm_source ? 1 : 0.4 }}>{l.utm_source || "direkt"}</td>
                 <td><span className={`adm-pill ${l.status || "neu"}`}>{statusLabel(l.status || "neu")}</span></td>
               </tr>
@@ -508,7 +561,7 @@ function Dashboard({ onLogout }) {
         </table>
       </div>
 
-      {selected && <Drawer lead={selected} onClose={() => setSelectedId(null)} onSave={saveLead} onDelete={deleteLead} />}
+      {selected && <Drawer lead={selected} kind={kind} onClose={() => setSelectedId(null)} onSave={saveLead} onDelete={deleteLead} />}
     </div>
   );
 }
@@ -516,6 +569,7 @@ function Dashboard({ onLogout }) {
 // ─── Root ───
 export default function Admin() {
   const [authed, setAuthed] = useState(null);
+  const [kind, setKind] = useState("leads");
 
   useEffect(() => {
     document.title = "Leads · Chi Chi Club Academy";
@@ -534,7 +588,7 @@ export default function Admin() {
       {authed === null ? (
         <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, opacity: 0.5, letterSpacing: "0.15em", textTransform: "uppercase" }}>Lädt…</div>
       ) : authed ? (
-        <Dashboard onLogout={() => setAuthed(false)} />
+        <Dashboard key={kind} kind={kind} setKind={setKind} onLogout={() => setAuthed(false)} />
       ) : (
         <Login onSuccess={() => setAuthed(true)} />
       )}
