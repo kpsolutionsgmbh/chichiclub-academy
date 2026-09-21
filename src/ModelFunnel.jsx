@@ -81,7 +81,7 @@ const Check = () => (
 );
 
 export default function ModelFunnel({ onClose }) {
-  const [step, setStep] = useState("age");
+  const [step, setStep] = useState("intro");
   const [history, setHistory] = useState([]);
   const [interested, setInterested] = useState([]);
   const [before, setBefore] = useState({});
@@ -155,7 +155,7 @@ export default function ModelFunnel({ onClose }) {
     } finally { setSending(false); }
   };
 
-  const progressMap = { age: 10, interest: 30, before: 50, mixed: 60, type: 75, contact: 90, thanks: 100, underage: 100, rejected: 100 };
+  const progressMap = { intro: 4, age: 12, interest: 30, before: 50, mixed: 60, type: 75, contact: 90, thanks: 100, underage: 100, rejected: 100 };
   const terminal = ["thanks", "underage", "rejected"].includes(step);
   const list = joinList(eligible);
 
@@ -178,11 +178,21 @@ export default function ModelFunnel({ onClose }) {
       </div>
 
       <div className="mf-body">
-        {step === "age" && (
-          <div className="mf-step" key="age">
+        {step === "intro" && (
+          <div className="mf-step" key="intro">
             <p className="mf-kicker">Modell werden</p>
             <h2 className="mf-h">Bewirb dich als Chi Chi Academy Modell.</h2>
-            <p className="mf-sub">Für Microblading, Freckles und/oder Lip Blush. Vorab eine kurze Frage: Bist du über 18 Jahre alt?</p>
+            <p className="mf-sub" style={{ marginBottom: 20 }}>Für Microblading, Freckles und/oder Lip Blush. Du wirst von Jette oder unter ihrer Anleitung behandelt, zum Bruchteil des regulären Preises.</p>
+            <div className="mf-note">Die Bewerbung dauert etwa eine Minute. Vier kurze Fragen, danach deine Kontaktdaten.</div>
+            <button className="mf-btn" onClick={() => go("age")}>Bewerbung starten</button>
+          </div>
+        )}
+
+        {step === "age" && (
+          <div className="mf-step" key="age">
+            <p className="mf-kicker">Vorab</p>
+            <h2 className="mf-h">Bist du über 18 Jahre alt?</h2>
+            <p className="mf-sub">Für kosmetisches Tätowieren musst du mindestens 18 Jahre alt sein.</p>
             <div className="mf-yn">
               <button onClick={() => go("interest")}>Ja</button>
               <button onClick={() => go("underage")}>Nein</button>

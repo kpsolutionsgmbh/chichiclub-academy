@@ -2134,12 +2134,13 @@ export default function ChiChiClubAcademy() {
           transition: all 0.2s ease;
         }
         .model-section { padding: 90px 0; background-size: cover; background-position: center; }
-        .model-card { display: flex; align-items: stretch; gap: 22px; width: 100%; max-width: 620px; margin-left: auto; background: var(--ivory); border: none; border-radius: 0; padding: 18px; text-align: left; cursor: pointer; color: #000000; transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.18); }
+        .model-card { display: flex; align-items: stretch; gap: 22px; width: 100%; max-width: 900px; margin: 0 auto; background: var(--ivory); border: none; border-radius: 0; padding: 18px; text-align: left; cursor: pointer; color: #000000; transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 10px 40px rgba(0,0,0,0.18); }
         .model-card:hover { transform: translateY(-3px); box-shadow: 0 16px 50px rgba(0,0,0,0.26); }
         .model-card img { width: 170px; min-height: 190px; object-fit: cover; flex-shrink: 0; display: block; }
         .model-card-text { display: flex; flex-direction: column; justify-content: center; padding: 6px 8px 6px 0; }
         .model-card-tag { align-self: flex-start; font-family: var(--font-body); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; border: 1px solid rgba(0,0,0,0.3); padding: 4px 9px; margin-bottom: 14px; }
-        .model-card-h { font-family: var(--font-headline); font-weight: 700; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.18; margin-bottom: 10px; }
+        .model-card-h { font-family: var(--font-headline); font-weight: 700; font-size: 22px; line-height: 1.18; margin-bottom: 10px; text-transform: uppercase; white-space: nowrap; }
+        @media (max-width: 960px) { .model-card-h { white-space: normal; font-size: 20px; } }
         .model-card-p { font-family: var(--font-body); font-size: 13px; line-height: 1.6; opacity: 0.7; margin-bottom: 16px; }
         .model-card-link { font-family: var(--font-body); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: underline; text-underline-offset: 4px; }
         @media (max-width: 640px) {
