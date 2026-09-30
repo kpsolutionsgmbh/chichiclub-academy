@@ -2484,7 +2484,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 24,
                 }}>
-                  Lerne das hyperrealistische Tätowieren, das niemand als Tattoo erkennt.
+                  Lerne hyperrealistisches Tätowieren, so natürlich, dass es niemand als Tattoo erkennt.
                 </h1>
               </Reveal>
 
@@ -2497,7 +2497,7 @@ export default function ChiChiClubAcademy() {
                   maxWidth: 560,
                   marginBottom: 20,
                 }}>
-                  Die Chi Chi Club Academy ist deine Intensivausbildung im hyperrealistischen Tätowieren. Microblading, Lip Blush und Freckles. Direkt in Hamburg, von Jette, die diese Technik als Erste nach Deutschland gebracht hat.
+                  In der Chi Chi Club Academy lernst du in einer Intensivausbildung alles über hyperrealistisches Tätowieren. Microblading, Lip Blush und Freckles. Und zwar direkt in Hamburg, bei Jette Scherzer, die diese Technik als Erste nach Deutschland gebracht hat.
                 </p>
                 <div style={{ marginBottom: 32 }} />
               </Reveal>
@@ -2612,7 +2612,7 @@ export default function ChiChiClubAcademy() {
             {[
               {
                 title: "Microblading",
-                desc: "4 Tage hyperrealistisches Tätowieren der Augenbrauen. Hauttypen, Brow Mapping, Härchentechnik und Arbeit an 2 echten Modellen. Starterkit für 20 Behandlungen und 6 Monate Mentorship inklusive.",
+                desc: "In 4 Tagen lernst du das hyperrealistische Tätowieren der Augenbrauen. Von Hauttypen und Brow Mapping über die Härchentechnik bis zur Arbeit an 2 echten Modellen. Ein Starterkit für deine ersten 20 Behandlungen und 6 Monate Mentorship sind inklusive.",
                 meta: "4 Tage · 6–12 Teilnehmer · Hamburg",
               },
               {
@@ -2703,7 +2703,7 @@ export default function ChiChiClubAcademy() {
             gap: 16,
           }}>
             {[
-              { title: "Kosmetikerinnen", text: "Um dein Angebot mit einer hochpreisigen Behandlung zu erweitern, die dein Business auf das nächste Level bringt.", icon: <Sparkles size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Kosmetikerinnen", text: "Erweitere dein Angebot um eine hochpreisige Behandlung, die dein Business auf das nächste Level bringt.", icon: <Sparkles size={20} strokeWidth={1.5} color="#000000" /> },
               { title: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Der unkomplizierte Weg, um in der Beauty-Branche rentabel zu sein.", icon: <ArrowRightLeft size={20} strokeWidth={1.5} color="#000000" /> },
               { title: "Ärztinnen & Mediziner", text: "Die Behandlung, die zu deinem Anspruch passt. Lerne das Beste von den Besten.", icon: <Stethoscope size={20} strokeWidth={1.5} color="#000000" /> },
               { title: "Mütter", text: "Mach es wie Jette, Mutter von 3 Kindern. Familienfreundlich, selbstbestimmt, flexibel.", icon: <Heart size={20} strokeWidth={1.5} color="#000000" /> },
