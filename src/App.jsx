@@ -63,31 +63,43 @@ const testimonials = [
 const faqs = [
   {
     q: "Brauche ich Vorerfahrung?",
-    a: "Nein. Viele unserer Artists kommen aus völlig anderen Bereichen. Medizin, Büro, Gastronomie. Was du brauchst: ein Auge für Ästhetik und die Bereitschaft, zu üben. Die Technik bringen wir dir bei.",
+    a: "Überhaupt nicht. Viele unserer Artists kommen ursprünglich aus ganz anderen Bereichen. Was du mitbringen solltest, sind Neugier, ein Interesse für Ästhetik und die Bereitschaft, ein neues Handwerk zu lernen. Alles andere bringen wir dir Schritt für Schritt bei.",
   },
   {
     q: "Reicht die Schulungszeit wirklich aus?",
-    a: "Je nach Schulung dauert die Ausbildung 1 bis 4 Tage. Das ist dein Fundament. Danach beginnt die Modellphase: Du übst an echten Modellen, begleitet von unserem Mentorship. Bis die Technik wirklich sitzt, begleiten wir dich 6 Monate lang.",
+    a: "Unsere Intensivausbildungen dauern je nach Technik 1 bis 4 Tage und vermitteln dir eine fundierte Grundlage aus Theorie und Praxis. Du arbeitest bereits während der Schulung an echten Modellen und wirst auch danach nicht allein gelassen. Mit 6 Monaten persönlichem Mentoring begleiten wir dich bei deinen nächsten Schritten, beantworten deine Fragen und unterstützen dich dabei, deine Technik weiterzuentwickeln.",
   },
   {
     q: "Was ist im Starterkit enthalten?",
-    a: "Alles für deine ersten 20 Behandlungen: Ringlicht, Pigmente, Klingen, Microbrushes, Inkrings, Eyebrow Pencil, Lip Applicators, Spreadsheets, Cuttermesser und ein Handbuch mit allem nochmal im Detail.",
+    a: "Alles, was du brauchst, um direkt loszulegen. Jedes Starterkit enthält sorgfältig kuratierte Tools, Pigmente und Materialien für deine ersten 20 Behandlungen, die wir über Jahre getestet und ausgewählt haben und mit denen wir selbst täglich arbeiten. Dazu gehören auch unsere eigens entwickelten Microblading-Nadeln und bei der Lip Blush Ausbildung deine eigene professionelle Tattoo-Maschine. Der genaue Inhalt variiert je nach Ausbildung.",
   },
   {
     q: "Kann ich davon leben?",
-    a: "Eine Behandlung im hyperrealistischen Tätowieren liegt je nach Technik bei 350–800€. Eine Microblading-Behandlung kostet z.B. zwischen 450–750€ und dauert 2–3 Stunden. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück. Wie schnell du dahin kommst, hängt von dir ab. Marketing- und Business-Know-how bekommst du von uns dazu. Ein Business, das dir nicht nur Einkommen gibt, sondern ein Leben, das du dir wirklich wünschst. Mit der Freiheit, es so zu gestalten, wie es zu dir passt.",
+    a: "Ja, absolut möglich! Cosmetic Tattooing bietet dir die Chance, dir ein eigenes Business aufzubauen oder ein attraktives zusätzliches Einkommen zu schaffen. Mit Behandlungspreisen von etwa 350 – 800 € steckt viel Potenzial in diesem Handwerk. Wie du dieses Potenzial nutzt, liegt in deiner Hand. Deshalb geben wir dir neben der Technik auch wertvolles Business-Wissen mit auf den Weg, um dir den Einstieg so einfach wie möglich zu machen.",
   },
   {
     q: "Was passiert nach der Schulung?",
-    a: "Du bekommst Zugang zu einem 6-monatigen Mentorship mit Jette und bist Teil der Chi Chi Club Community via WhatsApp. Sobald deine Ergebnisse den Chi Chi Club Standard erreichen, kannst du sie einreichen und den Namen „Chi Chi Club Artist“ verwenden.",
+    a: "Auch nach deiner Ausbildung sind wir für dich da. Mit 6 Monaten persönlichem Mentoring durch Jette, fachlicher Unterstützung und dem Austausch innerhalb unserer Chi Chi Club Community begleiten wir dich bei deinen nächsten Schritten. Du kannst deine Arbeiten mit uns teilen, Fragen stellen und bekommst wertvolles Feedback, um deine Technik kontinuierlich weiterzuentwickeln.",
   },
   {
-    q: "Welche Schulungen bietet ihr an?",
-    a: "Drei Wege ins hyperrealistische Tätowieren: Microblading (Augenbrauen, 4 Tage), Lip Blush (Lippen, 3 Tage) und Freckles (Sommersprossen, 1 Tag). Jede Schulung beinhaltet Theorie, Arbeit an echten Modellen, Starterkit und 6 Monate Mentorship.",
+    q: "Kann ich nach der Ausbildung direkt eigene Kundinnen behandeln?",
+    a: "Unsere Ausbildungen geben dir das fachliche und praktische Fundament für deinen Einstieg ins Cosmetic Tattooing. Nach der Ausbildung empfehlen wir dir, zunächst an weiteren Modellen zu üben, um deine Technik zu festigen und Sicherheit zu gewinnen. Dabei lassen wir dich nicht allein. Mit 6 Monaten persönlichem Mentoring begleiten wir dich, geben dir Feedback zu deinen Arbeiten und unterstützen dich Schritt für Schritt auf dem Weg zu deinen ersten eigenen Kundinnen.",
   },
   {
-    q: "Was kosten die Schulungen?",
-    a: "Microblading (4 Tage): 4.500€ netto. Lip Blush (3 Tage): 4.500€ netto. Freckles (1 Tag): 1.200€ netto. Nach ca. 10 Behandlungen hast du dein Investment in der Regel zurück.",
+    q: "Welche Ausbildungen bietet ihr an?",
+    a: "In der Chi Chi Club Academy kannst du zwischen drei Intensivausbildungen wählen: Microblading (4 Tage), Lip Blush (3 Tage) und Freckles (1 Tag). Jede Ausbildung verbindet fundiertes Fachwissen mit intensiver Praxis an echten Modellen. Ein professionelles Starterkit für deine ersten 20 Behandlungen sowie 6 Monate persönliches Mentoring sind inklusive.",
+  },
+  {
+    q: "Was kosten die Ausbildungen?",
+    a: "Die Microblading Academy (4 Tage) und die Lip Blush Academy (3 Tage) kosten jeweils 4.500 € netto. Unsere Freckle Masterclass (1 Tag) liegt bei 1.200 € netto. Im Preis enthalten sind die intensive Ausbildung, praktische Arbeit an echten Modellen, ein professionelles Starterkit für deine ersten 20 Behandlungen und 6 Monate persönliches Mentoring.",
+  },
+  {
+    q: "Kann ich die Ausbildung in Raten bezahlen?",
+    a: "Ja, natürlich! Wir wissen, dass eine Ausbildung eine größere Investition ist. Deshalb bieten wir dir die Möglichkeit, einen individuellen Ratenzahlungsplan mit uns zu vereinbaren. Sprich uns einfach an und wir finden gemeinsam eine passende Lösung.",
+  },
+  {
+    q: "Wie kann ich mich anmelden?",
+    a: "Du interessierst dich für eine unserer Ausbildungen oder möchtest dich einfach erst einmal informieren? Dann vereinbare ein kostenloses und unverbindliches Beratungsgespräch mit uns. Wir beantworten deine Fragen, erzählen dir mehr über die Academy und schauen gemeinsam, welche Ausbildung zu dir passt. Ganz ohne Verpflichtungen.",
   },
 ];
 
@@ -396,18 +408,18 @@ function AboutText() {
   return (
     <>
       <p style={pStyle}>
-        Jette Scherzer ist Gründerin des Chi Chi Club in Hamburg. Seit 2015 arbeitet sie in der Welt des kosmetischen Tätowierens. Ihr Background in Hair und Make-up hat ihr geholfen, eine eigene Technik zu entwickeln, die vor allem eines ist: natürlich. Yours but better.
+        Jette Scherzer ist Gründerin des Chi Chi Club in Hamburg. Während ihrer Zeit in Vancouver, Kanada, entdeckte sie 2015 die Kunst des Cosmetic Tattooing, erlernte das Handwerk und brachte die Technik 2019 mit nach Deutschland. Ihr Background in Hair & Make-up sowie Prosthetics & Special Effects prägt ihre Arbeit bis heute. Ein geschultes Auge für Gesichter, Proportionen, Texturen und die kleinen Details, die den Unterschied machen. Über die Jahre entwickelte Jette ihren ganz eigenen Stil. Ihr Ansatz? So natürlich wie möglich. Yours, but better.
       </p>
       {open && (
         <>
           <p style={pStyle}>
-            Aufgebaut neben drei Kindern, ohne Netz, in einer Industrie, die es in Deutschland so noch nicht gab. Was als kleines Studio mit einer einzigen Liege begann, ist heute einer der begehrtesten Orte für kosmetisches Tätowieren in Europa. Ein Raum, der Ruhe ausstrahlt, in dem man sofort spürt, dass hier etwas Besonderes entsteht. Ein Ort, an dem nicht nur behandelt und unterrichtet, sondern ein echtes Erlebnis geschaffen wird.
+            Was mit einem kleinen Studio und einer einzigen Behandlungsliege begann, ist heute ein etablierter Name im Bereich des hyperrealistischen Cosmetic Tattooing. Kundinnen reisen mittlerweile aus ganz Deutschland und darüber hinaus nach Hamburg, um sich im Chi Chi Club behandeln zu lassen. Aufgebaut neben dem Familienalltag mit drei Kindern, mit viel Leidenschaft, Durchhaltevermögen und dem Wunsch, die Branche ein Stück weit neu zu denken.
           </p>
           <p style={pStyle}>
-            Die Chi Chi Club Academy ist aus dem Wunsch entstanden, diese Industrie wirklich voranzubringen. Nicht durch Gatekeeping, sondern durch echten Austausch. Denn eine Industrie lebt durch die Menschen, die in ihr arbeiten. Wenn mehr Artists auf hohem Niveau arbeiten, profitiert die ganze Branche davon, und vor allem die Menschen, die sich ihnen anvertrauen.
+            Die Chi Chi Club Academy ist aus dem Wunsch entstanden, dieses Wissen weiterzugeben. Nicht nur Techniken, sondern auch ein Gespür für Ästhetik, den richtigen Umgang mit Menschen und die Erfahrung, wie man sich ein eigenes Business aufbaut.
           </p>
           <p style={pStyle}>
-            Was Jette unterrichtet, ist nicht nur Technik. Sie gibt weiter, wie man denkt, wie man sieht, wie man Behandlungen holistisch angeht. Und wie man sich ein nachhaltiges, erfolgreiches Business aufbaut.
+            Denn Jette glaubt daran, dass Wissen geteilt werden sollte. Dass echter Austausch uns alle weiterbringt und eine Branche nur dann wachsen kann, wenn wir voneinander lernen.
           </p>
         </>
       )}
@@ -435,11 +447,11 @@ function AboutText() {
 
 function BentoGrid() {
   const smallCards = [
-    { id: "freedom", icon: <MapPin size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Studio. Deine Zeiten. Deine Regeln.", text: "Ob Vollzeit oder neben dem bestehenden Job. Du entscheidest, wie du arbeitest." },
-    { id: "flexibility", icon: <Clock size={20} strokeWidth={1.5} color="#000000" />, headline: "Finanzielle Unabh\u00e4ngigkeit.", text: "Bau dir ein Business auf, das dir Einkommen sichert und dir erm\u00f6glicht, ein selbstbestimmtes Leben zu f\u00fchren." },
-    { id: "community", icon: <Users size={20} strokeWidth={1.5} color="#000000" />, headline: "Teil einer Community.", text: "Du wirst Teil des Chi Chi Club Netzwerks. Austausch, Support und Verbindungen, die bleiben." },
-    { id: "marketing", icon: <Megaphone size={20} strokeWidth={1.5} color="#000000" />, headline: "Marketing-Know-how inklusive.", text: "Instagram, Kundengewinnung, Onlinepräsenz. Du lernst, wie du sichtbar wirst und Buchungen generierst." },
-    { id: "certification", icon: <Award size={20} strokeWidth={1.5} color="#000000" />, headline: "Zertifiziert vom Besten.", text: "Dein Chi Chi Club Zertifikat zeigt: Du bist ausgebildet an Deutschlands führendem Studio." },
+    { id: "freedom", icon: <Clock size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Business. Dein Rhythmus.", text: "Ob als zweites Standbein neben deinem Job oder als eigene Selbstständigkeit – du entscheidest, wie du arbeitest, wann du arbeitest und wie dein Business in dein Leben passt." },
+    { id: "flexibility", icon: <Heart size={20} strokeWidth={1.5} color="#000000" />, headline: "Mehr als nur ein Job.", text: "Arbeite kreativ, entwickle deinen eigenen Stil und lerne ein Handwerk, mit dem du wirklich etwas bewegen kannst. Von kleinen ästhetischen Veränderungen bis hin zur optischen Korrektur von Asymmetrien. Eine Arbeit, die deinen Kundinnen ein neues Gefühl von Selbstbewusstsein schenkt und dich selbst jeden Tag erfüllt." },
+    { id: "community", icon: <Users size={20} strokeWidth={1.5} color="#000000" />, headline: "Teil einer Community.", text: "Werde Teil der Chi Chi Club Community und verbinde dich mit Menschen, die deine Leidenschaft für Ästhetik und dieses besondere Handwerk teilen. Für Austausch, Inspiration und wertvolle Kontakte, die über deine Ausbildung hinausgehen." },
+    { id: "marketing", icon: <Megaphone size={20} strokeWidth={1.5} color="#000000" />, headline: "Marketing & Sichtbarkeit.", text: "Gute Arbeit verdient es, gesehen zu werden. Lerne, wie du deine eigene Marke aufbaust, deine Arbeit authentisch präsentierst und genau die Kundinnen erreichst, die zu dir und deinem Stil passen." },
+    { id: "certification", icon: <Award size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Chi Chi Club Zertifikat.", text: "Nach erfolgreichem Abschluss erhältst du dein persönliches Chi Chi Club Academy Zertifikat – ein Nachweis deiner Ausbildung in einem der führenden und bekanntesten Studios Deutschlands für hyperrealistisches Cosmetic Tattooing." },
   ];
 
   return (
@@ -496,7 +508,7 @@ function BentoGrid() {
                 color: "var(--ivory)",
                 opacity: 0.7,
               }}>
-                Eine Behandlung liegt bei 350–800 €. Hyperrealistisches Tätowieren ist kein Trend, sondern eine zeitlose Behandlungsmöglichkeit zur Rekonstruktion, zum Ausgleichen von Asymmetrien und zur natürlichen Verschönerung.
+                Cosmetic Tattooing ist mehr als ein Beauty Trend. Natürlich definierte Augenbrauen, sanft betonte Lippen, Sommersprossen oder das Ausgleichen von leichten Asymmetrien – die Möglichkeiten sind vielseitig. Mit Behandlungspreisen von etwa 350–800 € eröffnet es dir die Chance, dein eigenes Business aufzubauen und langfristig finanziell unabhängig zu werden.
               </p>
             </div>
           </Reveal>
@@ -860,17 +872,17 @@ function RoiCalculator() {
     freckles: {
       label: "Freckles",
       levels: [
-        { id: "beginner", label: "Anfängerin", desc: "Gerade erst gestartet", pricePerTreatment: 250, treatmentHours: 2 },
-        { id: "mid", label: "Fortgeschritten", desc: "Erste Erfahrung gesammelt", pricePerTreatment: 350, treatmentHours: 1.5 },
-        { id: "pro", label: "Profi", desc: "Etabliert mit Stammkundinnen", pricePerTreatment: 450, treatmentHours: 1.5 },
+        { id: "beginner", label: "Anfängerin", desc: "Gerade erst gestartet", pricePerTreatment: 300, treatmentHours: 2 },
+        { id: "mid", label: "Fortgeschritten", desc: "Erste Erfahrung gesammelt", pricePerTreatment: 400, treatmentHours: 1.5 },
+        { id: "pro", label: "Profi", desc: "Etabliert mit Stammkundinnen", pricePerTreatment: 500, treatmentHours: 1.5 },
       ],
     },
     lipblush: {
       label: "Lip Blush",
       levels: [
-        { id: "beginner", label: "Anfängerin", desc: "Gerade erst gestartet", pricePerTreatment: 400, treatmentHours: 3 },
-        { id: "mid", label: "Fortgeschritten", desc: "Erste Erfahrung gesammelt", pricePerTreatment: 550, treatmentHours: 2.5 },
-        { id: "pro", label: "Profi", desc: "Etabliert mit Stammkundinnen", pricePerTreatment: 650, treatmentHours: 2.5 },
+        { id: "beginner", label: "Anfängerin", desc: "Gerade erst gestartet", pricePerTreatment: 500, treatmentHours: 3 },
+        { id: "mid", label: "Fortgeschritten", desc: "Erste Erfahrung gesammelt", pricePerTreatment: 650, treatmentHours: 2.5 },
+        { id: "pro", label: "Profi", desc: "Etabliert mit Stammkundinnen", pricePerTreatment: 800, treatmentHours: 2.5 },
       ],
     },
   };
@@ -1445,7 +1457,7 @@ function FunnelModal({ isOpen, onClose }) {
                     cursor: (sending || !formData.name || !formData.email || !isValidEmail(formData.email)) ? "not-allowed" : "pointer",
                   }}
                 >
-                  {sending ? "Wird gesendet…" : "Kostenlos beraten lassen"}
+                  {sending ? "Wird gesendet…" : "Beratungsgespräch vereinbaren"}
                 </button>
 
                 {submitError && (
@@ -2271,6 +2283,7 @@ export default function ChiChiClubAcademy() {
         @media (max-width: 767px) {
           .hero-section { padding-top: 80px !important; }
           .hero-cta { width: 100%; text-align: center; }
+          .hero-cta-wrap { display: flex !important; width: 100%; }
           .hero-trust { flex-direction: column; align-items: flex-start; }
         }
         @media (max-width: 479px) {
@@ -2432,7 +2445,7 @@ export default function ChiChiClubAcademy() {
         }}>
           <img src={logoDataUrl} alt="Chi Chi Club" style={{ height: 22 }} />
           <button className="btn-primary nav-cta-full" onClick={openFunnel} style={{ fontSize: 13, padding: "10px 22px" }}>
-            Kostenlos beraten lassen
+            Beratungsgespräch vereinbaren
           </button>
           <button className="btn-primary nav-cta-short" onClick={openFunnel} style={{ fontSize: 12, padding: "8px 16px" }}>
             Beratung
@@ -2486,7 +2499,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 24,
                 }}>
-                  Lerne hyperrealistisches Tätowieren, so natürlich, dass es niemand als Tattoo erkennt.
+                  Lerne die Kunst des hyperrealistischen Cosmetic Tattooing.
                 </h1>
               </Reveal>
 
@@ -2499,15 +2512,20 @@ export default function ChiChiClubAcademy() {
                   maxWidth: 560,
                   marginBottom: 20,
                 }}>
-                  In der Chi Chi Club Academy lernst du in einer Intensivausbildung alles über hyperrealistisches Tätowieren. Microblading, Lip Blush und Freckles. Und zwar direkt in Hamburg, bei Jette Scherzer, die diese Technik als Erste nach Deutschland gebracht hat.
+                  In der Chi Chi Club Academy in Hamburg lernst du die Techniken hinter besonders natürlichen Ergebnissen. Von Microblading über Lip Blush bis hin zu Faux Freckles – vermittelt von Gründerin Jette Scherzer, mit langjähriger Erfahrung, fundiertem Fachwissen und einem besonderen Gespür für Ästhetik und Präzision.
                 </p>
                 <div style={{ marginBottom: 32 }} />
               </Reveal>
 
               <Reveal delay={0.3}>
-                <button className="btn-primary hero-cta" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px", marginBottom: 24 }}>
-                  Kostenlos beraten lassen
-                </button>
+                <div className="hero-cta-wrap" style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", marginBottom: 24 }}>
+                  <button className="btn-primary hero-cta" onClick={openFunnel} style={{ fontSize: 15, padding: "16px 32px" }}>
+                    Beratungsgespräch vereinbaren
+                  </button>
+                  <span style={{ fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5, color: "#000000", opacity: 0.6, marginTop: 8 }}>
+                    persönlich, kostenlos und unverbindlich.
+                  </span>
+                </div>
 
                 {/* Trust element */}
                 <div className="hero-trust" style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", marginTop: 8 }}>
@@ -2601,7 +2619,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 64,
             }}>
-              Was für Schulungen bieten wir an?
+              Welche Ausbildungen bieten wir an?
             </h2>
             </div>
           </Reveal>
@@ -2614,17 +2632,17 @@ export default function ChiChiClubAcademy() {
             {[
               {
                 title: "Microblading",
-                desc: "In 4 Tagen lernst du das hyperrealistische Tätowieren der Augenbrauen. Von Hauttypen und Brow Mapping über die Härchentechnik bis zur Arbeit an 2 echten Modellen. Ein Starterkit für deine ersten 20 Behandlungen und 6 Monate Mentorship sind inklusive.",
+                desc: "In 4 Tagen lernst du das hyperrealistische Tätowieren der Augenbrauen. Von Hauttypen und Brow Mapping über die Härchentechnik und die Arbeit an 2 echten Modellen bis hin zu Business Insights und Social Media Marketing. Ein Starterkit für deine ersten 20 Behandlungen und 6 Monate Mentorship sind inklusive.",
                 meta: "4 Tage · 6–12 Teilnehmer · Hamburg",
               },
               {
                 title: "Lip Blush",
-                desc: "3 Tage hyperrealistisches Tätowieren der Lippen. Hautkunde, Schattierungstechniken, Lip Mapping und Arbeit am echten Modell. Starterkit und 6 Monate Mentorship inklusive.",
+                desc: "In 3 Tagen lernst du das hyperrealistische Tätowieren der Lippen. Von Hautkunde, Farbtheorie und Lip Mapping über präzise Schattierungstechniken bis zur Arbeit an einem echten Modell. Business Insights und Social Media Marketing inklusive. Ein professionelles Starterkit mit eigener Tattoomaschine und 6 Monate Mentorship sind ebenfalls enthalten.",
                 meta: "3 Tage · 6–12 Teilnehmer · Hamburg",
               },
               {
                 title: "Freckles",
-                desc: "1 Tag hyperrealistisches Tätowieren von Sommersprossen. Farbtheorie, Pigmente mixen, Arbeit an 2 echten Modellen. Starterkit und 6 Monate Mentorship inklusive.",
+                desc: "In 1 Tag lernst du das hyperrealistische Tätowieren von Sommersprossen. Von Farbtheorie und Pigmentmischung über Layering-Techniken für weiche, natürliche und multidimensionale Ergebnisse bis zur Arbeit an 2 echten Modellen. Ein Starterkit und 6 Monate Mentorship sind inklusive.",
                 meta: "1 Tag · 6–12 Teilnehmer · Hamburg",
               },
             ].map((c, i) => (
@@ -2669,8 +2687,11 @@ export default function ChiChiClubAcademy() {
                   </p>
 
                   <button className={i === 0 ? "btn-primary" : "btn-secondary"} onClick={openFunnel} style={{ width: "100%" }}>
-                    Kostenlos beraten lassen
+                    Beratungsgespräch vereinbaren
                   </button>
+                  <p style={{ fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5, color: "#000000", opacity: 0.6, textAlign: "center", marginTop: 8 }}>
+                    persönlich, kostenlos und unverbindlich.
+                  </p>
                 </div>
               </Reveal>
             ))}
@@ -2694,7 +2715,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 48,
             }}>
-              Du hast die Basis. Hier kommt das nächste Level.
+              Neue Perspektiven beginnen mit neuen Skills.
             </h2>
           </Reveal>
           </div>
@@ -2705,10 +2726,10 @@ export default function ChiChiClubAcademy() {
             gap: 16,
           }}>
             {[
-              { title: "Kosmetikerinnen", text: "Erweitere dein Angebot um eine hochpreisige Behandlung, die dein Business auf das nächste Level bringt.", icon: <Sparkles size={20} strokeWidth={1.5} color="#000000" /> },
-              { title: "Quereinsteigerinnen", text: "Du brauchst keine Beauty-Ausbildung. Der unkomplizierte Weg, um in der Beauty-Branche rentabel zu sein.", icon: <ArrowRightLeft size={20} strokeWidth={1.5} color="#000000" /> },
-              { title: "Ärztinnen & Mediziner", text: "Die Behandlung, die zu deinem Anspruch passt. Lerne das Beste von den Besten.", icon: <Stethoscope size={20} strokeWidth={1.5} color="#000000" /> },
-              { title: "Mütter", text: "Mach es wie Jette, Mutter von 3 Kindern. Familienfreundlich, selbstbestimmt, flexibel.", icon: <Heart size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Kosmetikerinnen", text: "Erweitere dein Angebot um eine spezialisierte, hochpreisige Behandlung und schaffe neue Möglichkeiten für das Wachstum deines Business.", icon: <Sparkles size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Quereinsteigerinnen", text: "Du brauchst keine Vorkenntnisse. Lerne Cosmetic Tattooing von Grund auf und lege mit intensiver Praxis und wertvollem Wissen den Grundstein für deinen Einstieg in die Beauty Branche oder deine eigene Selbstständigkeit.", icon: <ArrowRightLeft size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Ärztinnen & medizinische Fachkräfte", text: "Verbinde dein medizinisches Fachwissen mit ästhetischer Präzision und erweitere dein bestehendes Behandlungsangebot um eine perfekt ergänzende Dienstleistung.", icon: <Stethoscope size={20} strokeWidth={1.5} color="#000000" /> },
+              { title: "Mütter", text: "Baue dir beruflich etwas Eigenes auf und gestalte deinen Arbeitsalltag so, wie er zu deinem Familienleben passt. Selbstbestimmt, flexibel und in deinem eigenen Tempo.", icon: <Heart size={20} strokeWidth={1.5} color="#000000" /> },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.08}>
                 <div className="card-shadow" style={{
@@ -2758,7 +2779,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 48,
             }}>
-              Lerne das, was Jette in 12 Jahren perfektioniert hat.
+              Was Jette in 12 Jahren gelernt hat, gibt sie an dich weiter.
             </h2>
             </div>
           </Reveal>
@@ -2769,12 +2790,12 @@ export default function ChiChiClubAcademy() {
             gap: 16,
           }}>
             {[
-              { title: "Hyperrealistisches Tätowieren", text: "Eine Technik, die sich in ihrer Natürlichkeit abhebt. Lerne so hyperrealistisch zu tätowieren, dass es sich von \u201eecht\u201c nicht mehr unterscheiden lässt." },
-              { title: "Dein Business-Setup", text: "Starte mit einem konkreten Business-Setup. Dein branchenspezifischer Plan mit allen relevanten Themen für deinen erfolgreichen Start." },
-              { title: "6 Monate persönliches Mentoring", text: "Nach deiner Schulung wirst du von Jette durch hilfreiches Feedback begleitet. Bis du dich zu 100\u2009% sicher fühlst." },
-              { title: "Starterkit für deine ersten 20 Behandlungen", text: "Alles, was du brauchst, um professionell durchstarten zu können. Im Kit sind alle Materialien, mit denen wir im Chi Chi Club am liebsten arbeiten." },
-              { title: "Echte Referenzen für dein Portfolio", text: "Während der Intensivschulung wirst du an deinen ersten Modellen üben und baust so direkt dein Portfolio auf." },
-              { title: "Social Media & Kundengewinnung", text: "Lerne, wie du deine Onlinepräsenz aufbaust, die Kunden anzieht. Von Instagram-Strategie bis zur ersten Buchung." },
+              { title: "Hyperrealistisches Tätowieren", text: "Lerne die Kunst des hyperrealistischen Cosmetic Tattooing. Mit präzisen Techniken und einem geschulten Auge für Ästhetik entwickelst du das Gespür für natürliche Details und Proportionen, um Ergebnisse zu kreieren, die kaum von der Realität zu unterscheiden sind." },
+              { title: "Dein Business Setup", text: "Von der Preisgestaltung über Kundenkommunikation bis hin zu Branding und Positionierung. Erhalte wertvolle Business Insights und praxisnahes Wissen, um dein eigenes Business erfolgreich aufzubauen oder weiterzuentwickeln." },
+              { title: "6 Monate persönliches Mentoring", text: "Auch nach deiner Ausbildung stehen wir dir zur Seite. Mit persönlichem Feedback, fachlicher Unterstützung und Antworten auf deine Fragen begleiten wir dich bei deinen ersten Schritten in die Praxis." },
+              { title: "Professionelles Starterkit", text: "Alles, was du brauchst, um direkt durchzustarten. Dein Starterkit enthält sorgfältig kuratierte Tools und Materialien, die wir über Jahre getestet und perfektioniert haben. Darunter unsere eigens entwickelten Microblading Nadeln und, je nach Ausbildung, eine eigene Tattoo-Maschine für Lip Blush." },
+              { title: "Erste Referenzen für dein Portfolio", text: "Sammle bereits während deiner Ausbildung wertvolle Praxiserfahrung an echten Modellen und lerne, deine Ergebnisse professionell festzuhalten. So baust du von Anfang an dein eigenes Portfolio auf und schaffst Vertrauen bei zukünftigen Kundinnen." },
+              { title: "Social Media & Kundengewinnung", text: "Lerne, wie du deine Arbeit wirkungsvoll präsentierst, eine starke Onlinepräsenz aufbaust und die richtigen Kundinnen erreichst. Von ansprechendem Content über Instagram Marketing bis hin zu Strategien für eine erfolgreiche Kundengewinnung." },
             ].map((item, i) => (
               <Reveal key={i} delay={i * 0.06}>
                 <div className="card-shadow mobile-left-card" style={{
@@ -2833,7 +2854,7 @@ export default function ChiChiClubAcademy() {
               color: "#000000",
               marginBottom: 48,
             }}>
-              Drei Wege ins hyperrealistische Tätowieren.
+              Deine Ausbildung. Step by Step.
             </h2>
             </div>
           </Reveal>
@@ -2877,7 +2898,7 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 24,
                 }}>
-                  Präzision trifft Vision. Seit 2015.
+                  Eine eigene Handschrift. Seit 2015.
                 </h2>
                 <AboutText />
               </div>
@@ -2985,13 +3006,16 @@ export default function ChiChiClubAcademy() {
                   color: "#000000",
                   marginBottom: 24,
                 }}>
-                  Dein Schulungsstandort: Hamburg.
+                  Dein Lernort. Mitten in Hamburg.
                 </h2>
+                <p style={{ fontFamily: "var(--font-headline)", fontWeight: 700, fontSize: 16, lineHeight: 1.4, color: "#000000", marginTop: -12, marginBottom: 24 }}>
+                  Lerne dort, wo wir jeden Tag arbeiten.
+                </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 520 }}>
                   {[
-                    "Zentral in Hamburg gelegen. Amelungstraße 5, mitten im Zentrum.",
-                    "Helle, moderne Räume mit professionellem Equipment. Alles, was du zum Lernen brauchst, ist vor Ort.",
-                    "Restaurants, Hotels und öffentliche Verkehrsmittel in direkter Nähe. Auch für Anreisende unkompliziert.",
+                    "Deine Ausbildung findet direkt im Chi Chi Club statt. In unserem Studio in der Amelungstraße 5, mitten in Hamburg.",
+                    "Ein liebevoll gestalteter Ort mit einer besonderen Atmosphäre, hochwertigem Equipment und allem, was du für deine Ausbildung brauchst.",
+                    "Zentral gelegen und gut erreichbar. Mit schönen Cafés, Restaurants und Hotels in direkter Umgebung – auch perfekt, wenn du von außerhalb anreist.",
                   ].map((text, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                       <span style={{ flexShrink: 0, fontSize: 14, color: "#000000", marginTop: 2, lineHeight: 1.6 }}>✺</span>
@@ -3103,6 +3127,9 @@ export default function ChiChiClubAcademy() {
       <section style={{ padding: "60px 0", background: "#000000" }}>
         <div className="container final-cta-container" style={{ textAlign: "center", maxWidth: 900 }}>
           <Reveal>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--ivory)", opacity: 0.7, marginBottom: 16 }}>
+              Chi Chi Club Academy
+            </p>
             <h2 style={{
               fontFamily: "var(--font-headline)",
               fontWeight: 700,
@@ -3111,7 +3138,7 @@ export default function ChiChiClubAcademy() {
               color: "var(--ivory)",
               margin: "0 auto 16px",
             }}>
-              Die Technik, die den Chi Chi Club bekannt gemacht hat. Jetzt kannst du sie lernen.
+              Lerne die Techniken hinter den Ergebnissen, für die der Chi Chi Club bekannt ist.
             </h2>
             <p style={{
               fontFamily: "var(--font-body)",
@@ -3120,7 +3147,7 @@ export default function ChiChiClubAcademy() {
               color: "var(--ivory)",
               margin: "0 auto 40px",
             }}>
-              Ein kurzes Gespräch. Keine Verpflichtung. Wir schauen gemeinsam, ob die Academy das Richtige für dich ist.
+              Du bist neugierig geworden? Lass uns sprechen. Wir erzählen dir gerne mehr über die Academy, beantworten deine Fragen und finden gemeinsam heraus, welche Ausbildung zu dir passt. Kostenlos und ganz unverbindlich.
             </p>
             <button
               className="final-cta-btn"
@@ -3140,8 +3167,11 @@ export default function ChiChiClubAcademy() {
               onMouseEnter={(e) => { e.target.style.background = "var(--chi-chi-beige)"; e.target.style.borderColor = "var(--chi-chi-beige)"; }}
               onMouseLeave={(e) => { e.target.style.background = "var(--ivory)"; e.target.style.borderColor = "var(--ivory)"; }}
             >
-              Kostenlos beraten lassen
+              Beratungsgespräch vereinbaren
             </button>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.5, color: "var(--ivory)", opacity: 0.7, margin: "10px auto 0" }}>
+              persönlich, kostenlos und unverbindlich.
+            </p>
 
             {/* Trust element */}
             <div className="final-trust" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginTop: 32 }}>
@@ -3229,7 +3259,7 @@ export default function ChiChiClubAcademy() {
       {/* Mobile sticky CTA */}
       <div className="mobile-sticky-cta">
         <button className="btn-primary" onClick={openFunnel} style={{ width: "100%", fontSize: 15, padding: "14px 0" }}>
-          Kostenlos beraten lassen
+          Beratungsgespräch vereinbaren
         </button>
       </div>
 
