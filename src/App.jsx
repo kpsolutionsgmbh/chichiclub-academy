@@ -49,7 +49,7 @@ const testimonials = [
     role: "Studio Ella Vey, Berlin",
     avatar: IMG_ELLA,
     pull: "Für mich war die Ausbildung ein absoluter Gamechanger.",
-    text: "Ich kann die Chi Chi Academy wirklich nur von Herzen empfehlen! 🤍 Man bekommt hier nicht nur wahnsinnig viel Theorie, sondern auch jede Menge Praxis an die Hand – und zwar so, dass wirklich jede einzelne Frage beantwortet wird. Der Umgang ist super herzlich, die Atmosphäre im Chi Chi Club total schön, man fühlt sich sofort wohl und trotzdem auch individuell gesehen. Für mich war die Ausbildung ein absoluter Gamechanger: Ich habe gelernt, hyperrealistisch so präzise und hochwertig zu tätowieren, dass es sich klar von schlechtem Permanent Make-up abhebt. Und das Beste daran? Bis heute macht mir die Arbeit unglaublich viel Spaß – und meine Kund:innen sind durchweg glücklich mit ihren Ergebnissen.",
+    text: "Ich kann die Chi Chi Academy wirklich nur von Herzen empfehlen! 🤍 Man bekommt hier nicht nur wahnsinnig viel Theorie, sondern auch jede Menge Praxis an die Hand, und zwar so, dass wirklich jede einzelne Frage beantwortet wird. Der Umgang ist super herzlich, die Atmosphäre im Chi Chi Club total schön, man fühlt sich sofort wohl und trotzdem auch individuell gesehen. Für mich war die Ausbildung ein absoluter Gamechanger: Ich habe gelernt, hyperrealistisch so präzise und hochwertig zu tätowieren, dass es sich klar von schlechtem Permanent Make-up abhebt. Und das Beste daran? Bis heute macht mir die Arbeit unglaublich viel Spaß, und meine Kund:innen sind durchweg glücklich mit ihren Ergebnissen.",
   },
   {
     name: "Karina",
@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: "Kann ich davon leben?",
-    a: "Ja, absolut möglich! Cosmetic Tattooing bietet dir die Chance, dir ein eigenes Business aufzubauen oder ein attraktives zusätzliches Einkommen zu schaffen. Mit Behandlungspreisen von etwa 350 – 800 € steckt viel Potenzial in diesem Handwerk. Wie du dieses Potenzial nutzt, liegt in deiner Hand. Deshalb geben wir dir neben der Technik auch wertvolles Business-Wissen mit auf den Weg, um dir den Einstieg so einfach wie möglich zu machen.",
+    a: "Ja, absolut möglich! Cosmetic Tattooing bietet dir die Chance, dir ein eigenes Business aufzubauen oder ein attraktives zusätzliches Einkommen zu schaffen. Mit Behandlungspreisen von etwa 350 bis 800 € steckt viel Potenzial in diesem Handwerk. Wie du dieses Potenzial nutzt, liegt in deiner Hand. Deshalb geben wir dir neben der Technik auch wertvolles Business-Wissen mit auf den Weg, um dir den Einstieg so einfach wie möglich zu machen.",
   },
   {
     q: "Was passiert nach der Schulung?",
@@ -447,11 +447,11 @@ function AboutText() {
 
 function BentoGrid() {
   const smallCards = [
-    { id: "freedom", icon: <Clock size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Business. Dein Rhythmus.", text: "Ob als zweites Standbein neben deinem Job oder als eigene Selbstständigkeit – du entscheidest, wie du arbeitest, wann du arbeitest und wie dein Business in dein Leben passt." },
+    { id: "freedom", icon: <Clock size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Business. Dein Rhythmus.", text: "Ob als zweites Standbein neben deinem Job oder als eigene Selbstständigkeit: Du entscheidest, wie du arbeitest, wann du arbeitest und wie dein Business in dein Leben passt." },
     { id: "flexibility", icon: <Heart size={20} strokeWidth={1.5} color="#000000" />, headline: "Mehr als nur ein Job.", text: "Arbeite kreativ, entwickle deinen eigenen Stil und lerne ein Handwerk, mit dem du wirklich etwas bewegen kannst. Von kleinen ästhetischen Veränderungen bis hin zur optischen Korrektur von Asymmetrien. Eine Arbeit, die deinen Kundinnen ein neues Gefühl von Selbstbewusstsein schenkt und dich selbst jeden Tag erfüllt." },
     { id: "community", icon: <Users size={20} strokeWidth={1.5} color="#000000" />, headline: "Teil einer Community.", text: "Werde Teil der Chi Chi Club Community und verbinde dich mit Menschen, die deine Leidenschaft für Ästhetik und dieses besondere Handwerk teilen. Für Austausch, Inspiration und wertvolle Kontakte, die über deine Ausbildung hinausgehen." },
     { id: "marketing", icon: <Megaphone size={20} strokeWidth={1.5} color="#000000" />, headline: "Marketing & Sichtbarkeit.", text: "Gute Arbeit verdient es, gesehen zu werden. Lerne, wie du deine eigene Marke aufbaust, deine Arbeit authentisch präsentierst und genau die Kundinnen erreichst, die zu dir und deinem Stil passen." },
-    { id: "certification", icon: <Award size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Chi Chi Club Zertifikat.", text: "Nach erfolgreichem Abschluss erhältst du dein persönliches Chi Chi Club Academy Zertifikat – ein Nachweis deiner Ausbildung in einem der führenden und bekanntesten Studios Deutschlands für hyperrealistisches Cosmetic Tattooing." },
+    { id: "certification", icon: <Award size={20} strokeWidth={1.5} color="#000000" />, headline: "Dein Chi Chi Club Zertifikat.", text: "Nach erfolgreichem Abschluss erhältst du dein persönliches Chi Chi Club Academy Zertifikat, ein Nachweis deiner Ausbildung in einem der führenden und bekanntesten Studios Deutschlands für hyperrealistisches Cosmetic Tattooing." },
   ];
 
   return (
@@ -508,7 +508,7 @@ function BentoGrid() {
                 color: "var(--ivory)",
                 opacity: 0.7,
               }}>
-                Cosmetic Tattooing ist mehr als ein Beauty Trend. Natürlich definierte Augenbrauen, sanft betonte Lippen, Sommersprossen oder das Ausgleichen von leichten Asymmetrien – die Möglichkeiten sind vielseitig. Mit Behandlungspreisen von etwa 350–800 € eröffnet es dir die Chance, dein eigenes Business aufzubauen und langfristig finanziell unabhängig zu werden.
+                Cosmetic Tattooing ist mehr als ein Beauty Trend. Natürlich definierte Augenbrauen, sanft betonte Lippen, Sommersprossen oder das Ausgleichen von leichten Asymmetrien: Die Möglichkeiten sind vielseitig. Mit Behandlungspreisen von etwa 350 bis 800 € eröffnet es dir die Chance, dein eigenes Business aufzubauen und langfristig finanziell unabhängig zu werden.
               </p>
             </div>
           </Reveal>
@@ -1012,7 +1012,7 @@ function RoiCalculator() {
         {[
           { label: "Behandlungen / Monat", value: treatmentsPerMonth },
           { label: "Monatlicher Umsatz", value: `${monthlyRevenue.toLocaleString("de-DE")}€` },
-          { label: "Break-Even nach", value: weeksToBreakEven ? `${weeksToBreakEven} Wochen` : "—" },
+          { label: "Break-Even nach", value: weeksToBreakEven ? `${weeksToBreakEven} Wochen` : "-" },
         ].map((item, i) => (
           <div key={i} style={{
             background: "var(--ivory)",
@@ -1082,8 +1082,8 @@ function FunnelModal({ isOpen, onClose }) {
       subtext: "Damit wir den passenden Termin für dich finden.",
       options: [
         { value: "asap", label: "So schnell wie möglich", desc: "Ich bin bereit, sofort loszulegen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> },
-        { value: "1-3months", label: "In 1–3 Monaten", desc: "Ich plane meinen Start für die nächsten Wochen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> },
-        { value: "3-6months", label: "In 3–6 Monaten", desc: "Ich möchte mich in Ruhe vorbereiten", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
+        { value: "1-3months", label: "In 1 bis 3 Monaten", desc: "Ich plane meinen Start für die nächsten Wochen", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> },
+        { value: "3-6months", label: "In 3 bis 6 Monaten", desc: "Ich möchte mich in Ruhe vorbereiten", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
         { value: "exploring", label: "Ich informiere mich erst", desc: "Ich schaue mir erstmal alles an", icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> },
       ],
     },
@@ -2512,7 +2512,7 @@ export default function ChiChiClubAcademy() {
                   maxWidth: 560,
                   marginBottom: 20,
                 }}>
-                  In der Chi Chi Club Academy in Hamburg lernst du die Techniken hinter besonders natürlichen Ergebnissen. Von Microblading über Lip Blush bis hin zu Faux Freckles – vermittelt von Gründerin Jette Scherzer, mit langjähriger Erfahrung, fundiertem Fachwissen und einem besonderen Gespür für Ästhetik und Präzision.
+                  In der Chi Chi Club Academy in Hamburg lernst du die Techniken hinter besonders natürlichen Ergebnissen. Von Microblading über Lip Blush bis hin zu Faux Freckles, vermittelt von Gründerin Jette Scherzer, mit langjähriger Erfahrung, fundiertem Fachwissen und einem besonderen Gespür für Ästhetik und Präzision.
                 </p>
                 <div style={{ marginBottom: 32 }} />
               </Reveal>
@@ -2633,17 +2633,17 @@ export default function ChiChiClubAcademy() {
               {
                 title: "Microblading",
                 desc: "In 4 Tagen lernst du das hyperrealistische Tätowieren der Augenbrauen. Von Hauttypen und Brow Mapping über die Härchentechnik und die Arbeit an 2 echten Modellen bis hin zu Business Insights und Social Media Marketing. Ein Starterkit für deine ersten 20 Behandlungen und 6 Monate Mentorship sind inklusive.",
-                meta: "4 Tage · 6–12 Teilnehmer · Hamburg",
+                meta: "4 Tage · 6 bis 12 Teilnehmer · Hamburg",
               },
               {
                 title: "Lip Blush",
                 desc: "In 3 Tagen lernst du das hyperrealistische Tätowieren der Lippen. Von Hautkunde, Farbtheorie und Lip Mapping über präzise Schattierungstechniken bis zur Arbeit an einem echten Modell. Business Insights und Social Media Marketing inklusive. Ein professionelles Starterkit mit eigener Tattoomaschine und 6 Monate Mentorship sind ebenfalls enthalten.",
-                meta: "3 Tage · 6–12 Teilnehmer · Hamburg",
+                meta: "3 Tage · 6 bis 12 Teilnehmer · Hamburg",
               },
               {
                 title: "Freckles",
                 desc: "In 1 Tag lernst du das hyperrealistische Tätowieren von Sommersprossen. Von Farbtheorie und Pigmentmischung über Layering-Techniken für weiche, natürliche und multidimensionale Ergebnisse bis zur Arbeit an 2 echten Modellen. Ein Starterkit und 6 Monate Mentorship sind inklusive.",
-                meta: "1 Tag · 6–12 Teilnehmer · Hamburg",
+                meta: "1 Tag · 6 bis 12 Teilnehmer · Hamburg",
               },
             ].map((c, i) => (
               <Reveal key={c.title} delay={i * 0.1}>
@@ -3015,7 +3015,7 @@ export default function ChiChiClubAcademy() {
                   {[
                     "Deine Ausbildung findet direkt im Chi Chi Club statt. In unserem Studio in der Amelungstraße 5, mitten in Hamburg.",
                     "Ein liebevoll gestalteter Ort mit einer besonderen Atmosphäre, hochwertigem Equipment und allem, was du für deine Ausbildung brauchst.",
-                    "Zentral gelegen und gut erreichbar. Mit schönen Cafés, Restaurants und Hotels in direkter Umgebung – auch perfekt, wenn du von außerhalb anreist.",
+                    "Zentral gelegen und gut erreichbar. Mit schönen Cafés, Restaurants und Hotels in direkter Umgebung. Auch perfekt, wenn du von außerhalb anreist.",
                   ].map((text, i) => (
                     <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                       <span style={{ flexShrink: 0, fontSize: 14, color: "#000000", marginTop: 2, lineHeight: 1.6 }}>✺</span>
