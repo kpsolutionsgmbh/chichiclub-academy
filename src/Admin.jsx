@@ -16,8 +16,8 @@ const LABELS = {
   },
   timeline: {
     asap: "So schnell wie möglich",
-    "1-3months": "In 1–3 Monaten",
-    "3-6months": "In 3–6 Monaten",
+    "1-3months": "In 1 bis 3 Monaten",
+    "3-6months": "In 3 bis 6 Monaten",
     exploring: "Informiert sich erst",
   },
 };
