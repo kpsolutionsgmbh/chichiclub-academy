@@ -36,6 +36,7 @@ const CSS = `
   .mf-progress > div { height: 100%; background: var(--black); transition: width 0.35s ease; }
 
   .mf-body { max-width: 620px; margin: 0 auto; padding: 48px 24px 80px; }
+  body[data-cookie-open] .mf-body { padding-bottom: 300px; }
   .mf-step { animation: mfStep 0.35s ease; }
   .mf-kicker { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.55; margin: 0 0 14px; }
   .mf-h { font-family: var(--font-headline); font-weight: 700; font-size: clamp(24px, 4vw, 34px); line-height: 1.15; margin: 0 0 10px; }

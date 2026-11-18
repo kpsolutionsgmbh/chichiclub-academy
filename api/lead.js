@@ -1,4 +1,5 @@
 import { saveLead, newId } from "../lib/store.js";
+import { notifyLead } from "../lib/mail.js";
 
 const str = (v, max = 500) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
@@ -48,6 +49,7 @@ export default async function handler(req, res) {
 
   try {
     await saveLead(lead);
+    await notifyLead(lead);
     return res.status(200).json({ ok: true, id: lead.id });
   } catch (e) {
     console.error("lead save failed", e);

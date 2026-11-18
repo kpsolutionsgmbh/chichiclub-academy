@@ -1865,6 +1865,13 @@ function CookieBanner() {
     setVisible(false);
   };
 
+  // Solange der Banner offen ist, bekommen Vollbild-Overlays unten Platz (siehe ModelFunnel)
+  useEffect(() => {
+    if (!visible) return;
+    document.body.setAttribute("data-cookie-open", "");
+    return () => document.body.removeAttribute("data-cookie-open");
+  }, [visible]);
+
   if (!visible) return null;
 
   return (

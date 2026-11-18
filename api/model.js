@@ -1,4 +1,5 @@
 import { saveLead, newId } from "../lib/store.js";
+import { notifyModel } from "../lib/mail.js";
 
 const TREATMENTS = ["microblading", "freckles", "lipblush"];
 const MODEL_TYPES = ["demo", "trainee"];
@@ -56,6 +57,7 @@ export default async function handler(req, res) {
 
   try {
     await saveLead(entry, "models");
+    await notifyModel(entry);
     return res.status(200).json({ ok: true, id: entry.id });
   } catch (e) {
     console.error("model save failed", e);
